@@ -1,0 +1,76 @@
+\contentsline {chapter}{\numberline {1}Einf\IeC {\"u}hrung}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Zielsetzung}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Gliederung der Arbeit}{1}{section.1.3}
+\contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}NoSQL - Eine Einf\IeC {\"u}hrung}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Document Stores}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Extensible Record Store}{3}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Key-Value-Store}{4}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Graph Datenbanken}{4}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}NoSQL Theoretische Grundlagen}{5}{subsection.2.1.5}
+\contentsline {paragraph}{Replikation}{5}{section*.6}
+\contentsline {paragraph}{Fragmentierung}{5}{section*.7}
+\contentsline {paragraph}{Eventuelle Konsistenz}{5}{section*.8}
+\contentsline {paragraph}{Multiversion Concurrency Control (MVCC)}{5}{section*.9}
+\contentsline {paragraph}{MapReduce}{6}{section*.10}
+\contentsline {paragraph}{Vector Clocks (Vektor Uhren)}{6}{section*.11}
+\contentsline {paragraph}{Das CAP Theorem}{6}{section*.12}
+\contentsline {section}{\numberline {2.2}In Memory Datenbanken}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}Component Object Model}{7}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Architektur}{8}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}COM-Client}{8}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}COM-Server}{8}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}COM-Schnittstelle}{9}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}COM-Objekte}{9}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.6}Interface Definition Language}{9}{subsection.2.3.6}
+\contentsline {chapter}{\numberline {3}Systemanalyse}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}CAS genesisWorld}{11}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Architektur}{12}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Pr\IeC {\"a}sentationsschicht \& Logikschicht}{12}{subsection.3.1.2}
+\contentsline {paragraph}{Server-SDK-PlugIns}{13}{section*.16}
+\contentsline {subsection}{\numberline {3.1.3}Datenhaltungsschicht}{13}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Anforderungsanalyse}{14}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Funktionale Anforderungen}{14}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Nicht funktionale Anforderungen}{15}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Ermittlung relevanter Daten}{15}{section.3.3}
+\contentsline {chapter}{\numberline {4}Analyse ausgew\IeC {\"a}hlter Datenbanken}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Datenbanken}{19}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}CouchDB}{19}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}MongoDB}{20}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Voldemort}{20}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Redis}{21}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}HBase}{21}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Cassandra}{21}{subsection.4.1.6}
+\contentsline {subsection}{\numberline {4.1.7}VoltDB}{22}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}H2}{22}{subsection.4.1.8}
+\contentsline {section}{\numberline {4.2}Gegen\IeC {\"u}berstellung}{22}{section.4.2}
+\contentsline {section}{\numberline {4.3}Ergebnisfindung}{24}{section.4.3}
+\contentsline {chapter}{\numberline {5}Konzeption}{27}{chapter.5}
+\contentsline {section}{\numberline {5.1}Architektur}{27}{section.5.1}
+\contentsline {section}{\numberline {5.2}Technologien}{28}{section.5.2}
+\contentsline {paragraph}{Vaadin}{28}{section*.22}
+\contentsline {paragraph}{Jersey}{29}{section*.23}
+\contentsline {paragraph}{Apache Tomcat}{29}{section*.24}
+\contentsline {paragraph}{Opencsv}{29}{section*.25}
+\contentsline {paragraph}{JDBC}{29}{section*.26}
+\contentsline {section}{\numberline {5.3}Datenbank}{30}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Idee hinter der Data Tabelle}{30}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}W\IeC {\"o}rterb\IeC {\"u}cher}{31}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Auswahl geeigneter Zugriffsstrukturen}{31}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Extract Transform Load Prozess}{32}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Extract}{32}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Transform}{32}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Load}{33}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Sicherstellung der Aktualit\IeC {\"a}t der Daten}{33}{section.5.5}
+\contentsline {section}{\numberline {5.6}Darstellungskonzepte}{34}{section.5.6}
+\contentsline {chapter}{\numberline {6}Umsetzung}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kompression}{37}{section.6.1}
+\contentsline {chapter}{\numberline {7}Ergebnisanalyse}{39}{chapter.7}
+\contentsline {section}{\numberline {7.1}Test Aufbau}{39}{section.7.1}
+\contentsline {section}{\numberline {7.2}Auswertung}{39}{section.7.2}
+\contentsline {section}{\numberline {7.3}Handlungsempfehlungen}{39}{section.7.3}
+\contentsline {chapter}{\numberline {8}Zusammenfassung}{41}{chapter.8}
+\contentsline {section}{\numberline {8.1}Ergebnis}{41}{section.8.1}
+\contentsline {section}{\numberline {8.2}Ausblick}{41}{section.8.2}
+\contentsline {chapter}{Literaturverzeichnis}{43}{section*.32}

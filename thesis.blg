@@ -1,0 +1,39 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: titlepage.aux
+A level-1 auxiliary file: declaration.aux
+A level-1 auxiliary file: Chapter_Einfuehrung.aux
+A level-1 auxiliary file: Chapter_Grundlagen.aux
+A level-1 auxiliary file: Chapter_Analyse.aux
+A level-1 auxiliary file: Analyse_ausgewaehlter_Datenbanken.aux
+A level-1 auxiliary file: Chapter_Entwurf.aux
+A level-1 auxiliary file: Chapter_Umsetzung.aux
+A level-1 auxiliary file: Chapter_Ergebnisanalyse.aux
+A level-1 auxiliary file: Chapter_Zusammenfassung.aux
+The style file: babalpha-fl.bst
+Database file #1: thesis.bib
+Warning--string name "jss" is undefined
+--line 239 of file thesis.bib
+Warning--string name "jss" is undefined
+--line 270 of file thesis.bib
+Warning--string name "jss" is undefined
+--line 278 of file thesis.bib
+Warning--string name "jss" is undefined
+--line 355 of file thesis.bib
+Warning--string name "jss" is undefined
+--line 363 of file thesis.bib
+Warning--string name "jss" is undefined
+--line 371 of file thesis.bib
+Warning--string name "jss" is undefined
+--line 379 of file thesis.bib
+Warning--string name "jss" is undefined
+--line 388 of file thesis.bib
+Warning--empty language in Abadi:2006:ICE:1142473.1142548
+Warning--empty journal in tech2013
+Warning--empty journal in couch2013
+Warning--empty journal in cas2013a
+Warning--empty journal in cap2010
+Warning--empty journal in red2013
+Warning--empty journal in vod2013
+Warning--empty journal in volt2013b
+Warning--empty journal in volt2013a
+(There were 17 warnings)

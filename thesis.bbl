@@ -1,0 +1,287 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{KKN{\etalchar{+}}08}
+  \providebibliographyfont{name}{}%
+  \providebibliographyfont{lastname}{}%
+  \providebibliographyfont{title}{\emph}%
+  \providebibliographyfont{jtitle}{\btxtitlefont}%
+  \providebibliographyfont{etal}{\emph}%
+  \providebibliographyfont{journal}{}%
+  \providebibliographyfont{volume}{}%
+  \providebibliographyfont{ISBN}{\MakeUppercase}%
+  \providebibliographyfont{ISSN}{\MakeUppercase}%
+  \providebibliographyfont{url}{\url}%
+  \providebibliographyfont{numeral}{}%
+  \expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+
+\expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+\bibitem [{AMF06}]{Abadi:2006:ICE:1142473.1142548}
+\btxnamefont {Daniel \btxlastnamefont {Abadi}}, \btxnamefont {Samuel
+  \btxlastnamefont {Madden}}\btxandcomma {} \btxandlong {}\ \btxnamefont
+  {Miguel \btxlastnamefont {Ferreira}}\btxauthorcolon\ \btxtitlefont
+  {\btxifchangecase {Integrating compression and execution in column-oriented
+  database systems}{Integrating Compression and Execution in Column-oriented
+  Database Systems}}.
+\newblock \Btxinlong {}\ \btxtitlefont {Proceedings of the 2006 ACM SIGMOD
+  International Conference on Management of Data}, SIGMOD '06, \btxpageslong
+  {}\ 671--682, New York, NY, USA, 2006. \btxpublisherfont {ACM}\ifbtxprintISBN
+  {, \mbox{\btxISBN~\btxISBNfont {1-59593-434-0}}}.
+\newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/1142473.1142548}}.
+
+\bibitem [{ASK07}]{agarwal2007thrift}
+\btxnamefont {Aditya \btxlastnamefont {Agarwal}}, \btxnamefont {Mark
+  \btxlastnamefont {Slee}}\btxandcomma {} \btxandlong {}\ \btxnamefont {Marc
+  \btxlastnamefont {Kwiatkowski}}\btxauthorcolon\ \btxtitlefont
+  {\btxifchangecase {Thrift: Scalable cross-language services
+  implementation}{Thrift: Scalable Cross-Language Services Implementation}}.
+\newblock \btxtechreplong {}, Facebook,
+  \btxprintmonthyear{.}{April}{2007}{long}.
+\newblock {\latintext
+  \btxurlfont{http://incubator.apache.org/thrift/static/thrift-20070401.pdf}}.
+
+\bibitem [{CD10}]{books/daglib/0025185}
+\btxnamefont {Kristina \btxlastnamefont {Chodorow}} \btxandlong {}\
+  \btxnamefont {Michael \btxlastnamefont {Dirolf}}\btxauthorcolon\
+  \btxtitlefont {MongoDB - The Definitive Guide: Powerful and Scalable Data
+  Storage.}, \btxpageslong {}\ 1--10, 16--17, 101--104, 127--129, 143--147.
+\newblock \btxpublisherfont {O'Reilly}, 2010\ifbtxprintISBN {,
+  \mbox{\btxISBN~\btxISBNfont {978-1-449-38156-1}}}.
+
+\bibitem [{CDG{\etalchar{+}}06}]{Chang:2006:BDS:1267308.1267323}
+\btxnamefont {Fay \btxlastnamefont {Chang}}, \btxnamefont {Jeffrey
+  \btxlastnamefont {Dean}}, \btxnamefont {Sanjay \btxlastnamefont {Ghemawat}},
+  \btxnamefont {Wilson\btxfnamespacelong C. \btxlastnamefont {Hsieh}},
+  \btxnamefont {Deborah\btxfnamespacelong A. \btxlastnamefont {Wallach}},
+  \btxnamefont {Mike \btxlastnamefont {Burrows}}, \btxnamefont {Tushar
+  \btxlastnamefont {Chandra}}, \btxnamefont {Andrew \btxlastnamefont
+  {Fikes}}\btxandcomma {} \btxandlong {}\ \btxnamefont
+  {Robert\btxfnamespacelong E. \btxlastnamefont {Gruber}}\btxauthorcolon\
+  \btxtitlefont {\btxifchangecase {Bigtable: A distributed storage system for
+  structured data}{Bigtable: A Distributed Storage System for Structured
+  Data}}.
+\newblock \Btxinlong {}\ \btxtitlefont {Proceedings of the 7th USENIX Symposium
+  on Operating Systems Design and Implementation - Volume 7}, OSDI '06,
+  \btxpageslong {}\ 1--15, Berkeley, CA, USA, 2006. \btxpublisherfont {USENIX
+  Association}.
+\newblock {\latintext
+  \btxurlfont{http://dl.acm.org/citation.cfm?id=1267308.1267323}}.
+
+\bibitem [{Cor13}]{tech2013}
+\btxnamefont {Janssen \btxlastnamefont {Cory}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Sql server}{SQL Server}}.
+\newblock 2013.
+\newblock {\latintext
+  \btxurlfont{http://www.techopedia.com/definition/1243/sql-server}},
+  [Online;accessed 8-November-2013].
+
+\bibitem [{Cou13}]{couch2013}
+\btxnamefont {\btxlastnamefont {CouchDB}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Technical overview}{Technical Overview}}.
+\newblock 2013.
+\newblock {\latintext
+  \btxurlfont{http://docs.couchdb.org/en/latest/intro/overview.html}},
+  Online;accessed 27-November-2013.
+
+\bibitem [{CSA13}]{cas2013a}
+\btxnamefont {\btxlastnamefont {CAS-Software-AG}}\btxauthorcolon\
+  \btxjtitlefont {\btxifchangecase {Cas products webservices sdk x5
+  documentation}{CAS Products WebServices SDK x5 documentation}}.
+\newblock 2013.
+\newblock {\latintext
+  \btxurlfont{https://partnerportal.cas.de/WebServicesSDK/pages/architecture/overview.html}},
+  [Online;accessed 4-November-2013].
+
+\bibitem [{DG08}]{Dean:2008:MSD:1327452.1327492}
+\btxnamefont {Jeffrey \btxlastnamefont {Dean}} \btxandlong {}\ \btxnamefont
+  {Sanjay \btxlastnamefont {Ghemawat}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Mapreduce: Simplified data processing on large
+  clusters}{MapReduce: Simplified Data Processing on Large Clusters}}.
+\newblock \btxjournalfont {Commun. ACM}, 51(1):107--113,
+  \btxprintmonthyear{.}{1}{2008}{long}\ifbtxprintISSN {,
+  \mbox{\btxISSN~\btxISSNfont {0001-0782}}}.
+\newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/1327452.1327492}}.
+
+\bibitem [{Dr.00}]{cap2010}
+\btxnamefont {A.Brewer \btxlastnamefont {Dr.Eric}}\btxauthorcolon\
+  \btxjtitlefont {\btxifchangecase {Podc keynote}{PODC keynote}}.
+\newblock 2000.
+\newblock {\latintext
+  \btxurlfont{http://www.cs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf}},
+  Online;accessed 27-November-2013.
+
+\bibitem [{ESHB11}]{ElSappagh201191}
+\btxnamefont {Shaker\btxfnamespacelong H.\btxfnamespacelong Ali
+  \btxlastnamefont {El-Sappagh}}, \btxnamefont {Abdeltawab\btxfnamespacelong
+  M.\btxfnamespacelong Ahmed \btxlastnamefont {Hendawi}}\btxandcomma {}
+  \btxandlong {}\ \btxnamefont {Ali\btxfnamespacelong Hamed\btxfnamespacelong
+  El \btxlastnamefont {Bastawissy}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {A proposed model for data warehouse \{ETL\} processes}{A
+  proposed model for data warehouse \{ETL\} processes}}.
+\newblock \btxjournalfont {Journal of King Saud University - Computer and
+  Information Sciences}, 23(2):91 -- 104, 2011\ifbtxprintISSN {,
+  \mbox{\btxISSN~\btxISSNfont {1319-1578}}}.
+\newblock {\latintext
+  \btxurlfont{http://www.sciencedirect.com/science/article/pii/S131915781100019X}}.
+
+\bibitem [{GL02}]{Gilbert:2002:BCF:564585.564601}
+\btxnamefont {Seth \btxlastnamefont {Gilbert}} \btxandlong {}\ \btxnamefont
+  {Nancy \btxlastnamefont {Lynch}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Brewer's conjecture and the feasibility of consistent,
+  available, partition-tolerant web services}{Brewer's Conjecture and the
+  Feasibility of Consistent, Available, Partition-tolerant Web Services}}.
+\newblock \btxjournalfont {SIGACT News}, 33(2):51--59,
+  \btxprintmonthyear{.}{6}{2002}{long}\ifbtxprintISSN {,
+  \mbox{\btxISSN~\btxISSNfont {0163-5700}}}.
+\newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/564585.564601}}.
+
+\bibitem [{HKJR10}]{Hunt:2010:ZWC:1855840.1855851}
+\btxnamefont {Patrick \btxlastnamefont {Hunt}}, \btxnamefont {Mahadev
+  \btxlastnamefont {Konar}}, \btxnamefont {Flavio\btxfnamespacelong P.
+  \btxlastnamefont {Junqueira}}\btxandcomma {} \btxandlong {}\ \btxnamefont
+  {Benjamin \btxlastnamefont {Reed}}\btxauthorcolon\ \btxtitlefont
+  {\btxifchangecase {Zookeeper: Wait-free coordination for internet-scale
+  systems}{ZooKeeper: Wait-free Coordination for Internet-scale Systems}}.
+\newblock \Btxinlong {}\ \btxtitlefont {Proceedings of the 2010 USENIX
+  Conference on USENIX Annual Technical Conference}, USENIXATC'10,
+  \btxpageslong {}\ 1--11, Berkeley, CA, USA, 2010. \btxpublisherfont {USENIX
+  Association}.
+\newblock {\latintext
+  \btxurlfont{http://dl.acm.org/citation.cfm?id=1855840.1855851}}.
+
+\bibitem [{KKN{\etalchar{+}}08}]{kallman08}
+\btxnamefont {Robert \btxlastnamefont {Kallman}}, \btxnamefont {Hideaki
+  \btxlastnamefont {Kimura}}, \btxnamefont {Jonathan \btxlastnamefont
+  {Natkins}}, \btxnamefont {Andrew \btxlastnamefont {Pavlo}}, \btxnamefont
+  {Alexander \btxlastnamefont {Rasin}}, \btxnamefont {Stanley \btxlastnamefont
+  {Zdonik}}, \btxnamefont {Evan\btxfnamespacelong P.\btxfnamespacelong C.
+  \btxlastnamefont {Jones}}, \btxnamefont {Samuel \btxlastnamefont {Madden}},
+  \btxnamefont {Michael \btxlastnamefont {Stonebraker}}, \btxnamefont {Yang
+  \btxlastnamefont {Zhang}}, \btxnamefont {John \btxlastnamefont
+  {Hugg}}\btxandcomma {} \btxandlong {}\ \btxnamefont {Daniel\btxfnamespacelong
+  J. \btxlastnamefont {Abadi}}\btxauthorcolon\ \btxjtitlefont {\btxifchangecase
+  {{H}-{S}tore: a high-performance, distributed main memory transaction
+  processing system}{{H}-{S}tore: a High-Performance, Distributed Main Memory
+  Transaction Processing System}}.
+\newblock \btxjournalfont {Proc. VLDB Endow.}, 1(2):1496--1499,
+  2008\ifbtxprintISSN {, \mbox{\btxISSN~\btxISSNfont {2150-8097}}}.
+\newblock {\latintext
+  \btxurlfont{http://hstore.cs.brown.edu/papers/hstore-demo.pdf}}.
+
+\bibitem [{Lam78}]{Lamport:1978:TCO:359545.359563}
+\btxnamefont {Leslie \btxlastnamefont {Lamport}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Time, clocks, and the ordering of events in a distributed
+  system}{Time, Clocks, and the Ordering of Events in a Distributed System}}.
+\newblock \btxjournalfont {Commun. ACM}, 21(7):558--565,
+  \btxprintmonthyear{.}{7}{1978}{long}\ifbtxprintISSN {,
+  \mbox{\btxISSN~\btxISSNfont {0001-0782}}}.
+\newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/359545.359563}}.
+
+\bibitem [{LM10}]{Lakshman:2010:CDS:1773912.1773922}
+\btxnamefont {Avinash \btxlastnamefont {Lakshman}} \btxandlong {}\ \btxnamefont
+  {Prashant \btxlastnamefont {Malik}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Cassandra: a decentralized structured storage
+  system}{Cassandra: a decentralized structured storage system}}.
+\newblock \btxjournalfont {SIGOPS Oper. Syst. Rev.}, 44(2):1--5,
+  \btxprintmonthyear{.}{4}{2010}{long}\ifbtxprintISSN {,
+  \mbox{\btxISSN~\btxISSNfont {0163-5980}}}.
+\newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/1773912.1773922}}.
+
+\bibitem [{Loo01}]{SWB-088582566}
+\btxnamefont {Peter \btxlastnamefont {Loos}}\btxauthorcolon\ \btxtitlefont {Go
+  to COM : [das Objektmodell im Detail betrachtet; COM von Grund auf;
+  beispielorientiert]}.
+\newblock Go-To-Reihe. \btxpublisherfont {Addison-Wesley}, München [u.a.],
+  2001\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont {3-8273-1678-2}}}.
+
+\bibitem [{Pla13}]{SWB-381840476}
+\btxnamefont {Hasso \btxlastnamefont {Plattner}}\btxauthorcolon\ \btxtitlefont
+  {\btxifchangecase {A course in in-memory data management : The inner
+  mechanics of in-memory databases}{A Course in In-Memory Data Management : The
+  Inner Mechanics of In-Memory Databases}}, 2013\ifbtxprintISBN {,
+  \mbox{\btxISBN~\btxISBNfont {978-3-642-36524-9}}}.
+\newblock {\latintext
+  \btxurlfont{http://dx.doi.org/10.1007/978-3-642-36524-9}}.
+
+\bibitem [{Rup13}]{SWB-380277719}
+\btxnamefont {Chris \btxlastnamefont {Rupp}}\btxauthorcolon\ \btxtitlefont
+  {Systemanalyse kompakt}.
+\newblock \btxpublisherfont {Springer Vieweg}, Berlin, \btxeditionnumlong {3.
+  aufl.}{}, 2013\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont
+  {978-3-642-35445-8}}}.
+
+\bibitem [{RWE13}]{SWB-386976589}
+\btxnamefont {Ian \btxlastnamefont {Robinson}}, \btxnamefont {Jim
+  \btxlastnamefont {Webber}}\btxandcomma {} \btxandlong {}\ \btxnamefont {Emil
+  \btxlastnamefont {Eifrem}}\btxauthorcolon\ \btxtitlefont {Graph databases :
+  [compliments of Neo technology]}.
+\newblock \btxpublisherfont {OReilly}, Beijing, \btxeditionnumlong {1. ed.}{},
+  2013\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont {978-1-449-35626-2;
+  1-449-35626-5}}}.
+\newblock {\latintext
+  \btxurlfont{http://deposit.d-nb.de/cgi-bin/dokserv?id=4300566&prov=M&dok_var=1&dok_ext=htm}}.
+
+\bibitem [{Seg13}]{red2013}
+\btxnamefont {Karl \btxlastnamefont {Seguin}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {The little redis book}{The Little Redis Book}}.
+\newblock 2013.
+\newblock {\latintext \btxurlfont{http://openmymind.net/redis.pdf}},
+  [Online;accessed 11-November-2013].
+
+\bibitem [{SKRC10}]{Shvachko:2010:HDF:1913798.1914427}
+\btxnamefont {Konstantin \btxlastnamefont {Shvachko}}, \btxnamefont {Hairong
+  \btxlastnamefont {Kuang}}, \btxnamefont {Sanjay \btxlastnamefont
+  {Radia}}\btxandcomma {} \btxandlong {}\ \btxnamefont {Robert \btxlastnamefont
+  {Chansler}}\btxauthorcolon\ \btxtitlefont {\btxifchangecase {The hadoop
+  distributed file system}{The Hadoop Distributed File System}}.
+\newblock \Btxinlong {}\ \btxtitlefont {Proceedings of the 2010 IEEE 26th
+  Symposium on Mass Storage Systems and Technologies (MSST)}, MSST '10,
+  \btxpageslong {}\ 1--10, Washington, DC, USA, 2010. \btxpublisherfont {IEEE
+  Computer Society}\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont
+  {978-1-4244-7152-2}}}.
+\newblock {\latintext
+  \btxurlfont{http://dx.doi.org/10.1109/MSST.2010.5496972}}.
+
+\bibitem [{SSH11}]{SWB-352401869}
+\btxnamefont {Gunter \btxlastnamefont {Saake}}, \btxnamefont
+  {Kai\btxfnamespacelong Uwe \btxlastnamefont {Sattler}}\btxandcomma {}
+  \btxandlong {}\ \btxnamefont {Andreas \btxlastnamefont
+  {Heuer}}\btxauthorcolon\ \btxtitlefont {Datenbanken :
+  Implementierungstechniken}.
+\newblock \btxpublisherfont {mitp}, Heidelberg, \btxeditionnumlong {3.
+  aufl.}{}, 2011\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont
+  {978-3-8266-9156-0; 3-8266-9156-3}}}.
+\newblock {\latintext
+  \btxurlfont{http://deposit.d-nb.de/cgi-bin/dokserv?id=3872660&prov=M&dok_var=1&dok_ext=htm
+  ; http://d-nb.info/1014629934/04}}, Seiten : 176 - 182.
+
+\bibitem [{Vai13}]{vaish2013getting}
+\btxnamefont {G. \btxlastnamefont {Vaish}}\btxauthorcolon\ \btxtitlefont
+  {Getting Started with Nosql}, \btxpageslong {}\ 25--49.
+\newblock \btxpublisherfont {Packt Publishing, Limited}, 2013\ifbtxprintISBN {,
+  \mbox{\btxISBN~\btxISBNfont {9781849694995}}}.
+
+\bibitem [{Vol13a}]{vod2013}
+\btxnamefont {Project \btxlastnamefont {Voldemort}}\btxauthorcolon\
+  \btxjtitlefont {\btxifchangecase {Voldemort a distributed database}{Voldemort
+  a distributed database}}.
+\newblock 2013.
+\newblock {\latintext
+  \btxurlfont{http://www.project-voldemort.com/voldemort/}}, [Online;accessed
+  13-November-2013].
+
+\bibitem [{Vol13b}]{volt2013b}
+\btxnamefont {\btxlastnamefont {VoltDB}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Application brief}{Application Brief}}.
+\newblock 2013.
+\newblock {\latintext
+  \btxurlfont{http://voltdb.com/downloads/app_briefs/voltdb_transactions.pdf}},
+  [Online;accessed 14-November-2013].
+
+\bibitem [{Vol13c}]{volt2013a}
+\btxnamefont {\btxlastnamefont {VoltDB}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Technical overview}{Technical Overview}}.
+\newblock 2013.
+\newblock {\latintext
+  \btxurlfont{http://voltdb.com/downloads/datasheets_collateral/technical_overview.pdf}},
+  [Online;accessed 14-November-2013].
+
+\end{thebibliography}
