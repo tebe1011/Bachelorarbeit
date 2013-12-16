@@ -48,22 +48,21 @@
 \contentsline {section}{\numberline {4.3}Auswahl einer Datenbank}{24}{section.4.3}
 \contentsline {chapter}{\numberline {5}Konzeption}{27}{chapter.5}
 \contentsline {section}{\numberline {5.1}Architektur}{27}{section.5.1}
-\contentsline {section}{\numberline {5.2}Technologien}{28}{section.5.2}
-\contentsline {paragraph}{Vaadin}{28}{section*.22}
+\contentsline {section}{\numberline {5.2}Technologien}{29}{section.5.2}
+\contentsline {paragraph}{Vaadin}{29}{section*.22}
 \contentsline {paragraph}{Jersey}{29}{section*.23}
 \contentsline {paragraph}{Apache Tomcat}{29}{section*.24}
-\contentsline {paragraph}{Opencsv}{29}{section*.25}
-\contentsline {paragraph}{JDBC}{29}{section*.26}
+\contentsline {paragraph}{Opencsv}{30}{section*.25}
+\contentsline {paragraph}{JDBC}{30}{section*.26}
 \contentsline {section}{\numberline {5.3}Datenbank}{30}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Idee hinter der Data Tabelle}{30}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}W\IeC {\"o}rterb\IeC {\"u}cher}{31}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Auswahl geeigneter Zugriffsstrukturen}{31}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.1}Schema der Datenbank}{30}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Zugriffsstrukturen}{32}{subsection.5.3.2}
 \contentsline {section}{\numberline {5.4}Extract Transform Load Prozess}{32}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Extract}{32}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Transform}{32}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Load}{33}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}Sicherstellung der Aktualit\IeC {\"a}t der Daten}{33}{section.5.5}
-\contentsline {section}{\numberline {5.6}Darstellungskonzepte}{34}{section.5.6}
+\contentsline {subsection}{\numberline {5.4.2}Transform}{33}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Load}{34}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Sicherstellung der Aktualit\IeC {\"a}t der Daten}{34}{section.5.5}
+\contentsline {section}{\numberline {5.6}Darstellungskonzepte}{35}{section.5.6}
 \contentsline {chapter}{\numberline {6}Umsetzung}{37}{chapter.6}
 \contentsline {section}{\numberline {6.1}Kompression}{37}{section.6.1}
 \contentsline {chapter}{\numberline {7}Ergebnisanalyse}{39}{chapter.7}
