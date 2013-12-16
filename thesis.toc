@@ -72,4 +72,4 @@
 \contentsline {chapter}{\numberline {8}Zusammenfassung}{41}{chapter.8}
 \contentsline {section}{\numberline {8.1}Ergebnis}{41}{section.8.1}
 \contentsline {section}{\numberline {8.2}Ausblick}{41}{section.8.2}
-\contentsline {chapter}{Literaturverzeichnis}{43}{section*.32}
+\contentsline {chapter}{Literaturverzeichnis}{43}{section*.35}

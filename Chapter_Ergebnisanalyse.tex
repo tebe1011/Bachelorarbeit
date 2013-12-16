@@ -8,16 +8,39 @@
 ...
 
 %% ===========================
-\section{Test Aufbau}
-%% ===========================
-
-...
-
-%% ===========================
 \section{Auswertung}
 %% ===========================
 
-...
+
+\begin{table}[htbp]
+\centering
+\label{table:vergleich_abfragegeschwindigkeit}
+\begin{tabular} {l | r}
+Versuchskomponente & Zeit in ms  \\ \hline
+MSSQL Datenbank \& Altes Schema & 98000 \\
+MSSQL Datenbank \& Neues Schema & 350 \\
+H2 Datenbank \& Neues Schema & 80 \\
+\end{tabular}
+\caption{Abfragegeschwindigkeit Vergleich}
+\end{table}
+
+
+\begin{figure}[htbp]
+\centering
+\subfigure[Vergleich anhand Select-Performance]{\includegraphics[width=0.49\textwidth]{charts/select.pdf}}\hfill
+\subfigure[Vergleich anhand Update-Performance]{\includegraphics[width=0.49\textwidth]{charts/update.pdf}}\hfill
+\subfigure[Vergleich anhand Insert-Performance]{\includegraphics[width=0.5\textwidth]{charts/insert.pdf}}
+\caption{Abfragegeschwindigkeit Vergleich}
+\label{ergebniss_vergleich}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{pics/final_screen.png}
+\caption{Oberfläche des Systems}
+\label{ergebniss_oberflaeche}
+\end{figure}
+
 
 %% ===========================
 \section{Handlungsempfehlungen}
