@@ -45,7 +45,7 @@
 \contentsline {subsection}{\numberline {4.1.7}VoltDB}{22}{subsection.4.1.7}
 \contentsline {subsection}{\numberline {4.1.8}H2}{22}{subsection.4.1.8}
 \contentsline {section}{\numberline {4.2}Gegen\IeC {\"u}berstellung}{22}{section.4.2}
-\contentsline {section}{\numberline {4.3}Ergebnisfindung}{24}{section.4.3}
+\contentsline {section}{\numberline {4.3}Auswahl einer Datenbank}{24}{section.4.3}
 \contentsline {chapter}{\numberline {5}Konzeption}{27}{chapter.5}
 \contentsline {section}{\numberline {5.1}Architektur}{27}{section.5.1}
 \contentsline {section}{\numberline {5.2}Technologien}{28}{section.5.2}
