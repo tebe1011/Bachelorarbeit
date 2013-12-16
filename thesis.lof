@@ -22,10 +22,11 @@
 \contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Liniendiagramm}}}{36}{figure.caption.29}
 \contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Netzdiagramm}}}{36}{figure.caption.29}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Server Klassendiagramm\relax }}{38}{figure.caption.32}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Abfragegeschwindigkeit Vergleich\relax }}{40}{figure.caption.33}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Performance}}}{40}{figure.caption.33}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vergleich anhand Update-Performance}}}{40}{figure.caption.33}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vergleich anhand Insert-Performance}}}{40}{figure.caption.33}
-\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Oberfl\IeC {\"a}che des Systems\relax }}{40}{figure.caption.34}
+\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Abfragegeschwindigkeit Vergleich\relax }}{42}{figure.caption.34}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Performance}}}{42}{figure.caption.34}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vergleich anhand Update-Performance}}}{42}{figure.caption.34}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vergleich anhand Insert-Performance}}}{42}{figure.caption.34}
+\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Oberfl\IeC {\"a}che des Systems\relax }}{42}{figure.caption.35}
 \addvspace {10\p@ }

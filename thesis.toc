@@ -65,11 +65,10 @@
 \contentsline {section}{\numberline {5.6}Darstellungskonzepte}{35}{section.5.6}
 \contentsline {chapter}{\numberline {6}Umsetzung}{37}{chapter.6}
 \contentsline {section}{\numberline {6.1}Kompression}{37}{section.6.1}
-\contentsline {chapter}{\numberline {7}Ergebnisanalyse}{39}{chapter.7}
-\contentsline {section}{\numberline {7.1}Test Aufbau}{39}{section.7.1}
-\contentsline {section}{\numberline {7.2}Auswertung}{39}{section.7.2}
-\contentsline {section}{\numberline {7.3}Handlungsempfehlungen}{39}{section.7.3}
-\contentsline {chapter}{\numberline {8}Zusammenfassung}{41}{chapter.8}
-\contentsline {section}{\numberline {8.1}Ergebnis}{41}{section.8.1}
-\contentsline {section}{\numberline {8.2}Ausblick}{41}{section.8.2}
-\contentsline {chapter}{Literaturverzeichnis}{43}{section*.35}
+\contentsline {chapter}{\numberline {7}Ergebnisanalyse}{41}{chapter.7}
+\contentsline {section}{\numberline {7.1}Auswertung}{41}{section.7.1}
+\contentsline {section}{\numberline {7.2}Handlungsempfehlungen}{41}{section.7.2}
+\contentsline {chapter}{\numberline {8}Zusammenfassung}{43}{chapter.8}
+\contentsline {section}{\numberline {8.1}Ergebnis}{43}{section.8.1}
+\contentsline {section}{\numberline {8.2}Ausblick}{43}{section.8.2}
+\contentsline {chapter}{Literaturverzeichnis}{45}{section*.36}
