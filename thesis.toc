@@ -12,7 +12,7 @@
 \contentsline {paragraph}{Replikation}{5}{section*.6}
 \contentsline {paragraph}{Fragmentierung}{5}{section*.7}
 \contentsline {paragraph}{Eventuelle Konsistenz}{5}{section*.8}
-\contentsline {paragraph}{Multiversion Concurrency Control (MVCC)}{5}{section*.9}
+\contentsline {paragraph}{Multiversion Concurrency Control (MVCC)}{6}{section*.9}
 \contentsline {paragraph}{MapReduce}{6}{section*.10}
 \contentsline {paragraph}{Vector Clocks (Vektor Uhren)}{6}{section*.11}
 \contentsline {paragraph}{Das CAP Theorem}{6}{section*.12}
@@ -65,9 +65,8 @@
 \contentsline {section}{\numberline {5.6}Darstellungskonzepte}{35}{section.5.6}
 \contentsline {chapter}{\numberline {6}Umsetzung}{39}{chapter.6}
 \contentsline {section}{\numberline {6.1}Gewichtung der Zeit}{39}{section.6.1}
-\contentsline {section}{\numberline {6.2}Kompression}{39}{section.6.2}
-\contentsline {section}{\numberline {6.3}Anwendungslogik}{39}{section.6.3}
-\contentsline {section}{\numberline {6.4}Vaadin Komponenten}{39}{section.6.4}
+\contentsline {section}{\numberline {6.2}Klassen der Logik}{39}{section.6.2}
+\contentsline {section}{\numberline {6.3}Klassen des Clients}{39}{section.6.3}
 \contentsline {chapter}{\numberline {7}Ergebnisanalyse}{43}{chapter.7}
 \contentsline {section}{\numberline {7.1}Auswertung}{43}{section.7.1}
 \contentsline {section}{\numberline {7.2}Handlungsempfehlungen}{43}{section.7.2}

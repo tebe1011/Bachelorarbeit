@@ -35,6 +35,7 @@
 \usepackage{tabularx}
 \usepackage{caption}
 \usepackage{multirow}
+\usepackage{amsmath, amssymb, amstext, amsfonts, mathrsfs}
 \usepackage[absolute,overlay]{textpos}
 \usepackage{tikz}
 \usepackage[english,ngerman]{babel}
@@ -58,7 +59,6 @@
 						
 \usepackage[fixlanguage]{babelbib}	% sets german style for literature entries
 \selectbiblanguage{ngerman}			% for \bibliographystyle{babalpha}
-\usepackage{msc}
 %% --- End of Packages ---
 
 
