@@ -88,7 +88,34 @@ Die erste Überlegung hinsichtlich des Schemas ist welche Daten für die Beantwo
 
 Die Idee hinter dem Schema ist die Verwendung einer einzelnen Tabelle zur Aufbewahrung der Informationen über die Verbindungen. Diese Tabelle  ermöglicht es ausgehend von einem Benutzer alle Verbindungen zu anderen Personen zu finden. Im Grunde genommen sind vier Spalten dafür ausreichend. Die erste Spalte startID beinhaltet die Person von der die Suche ausgeht. Eine Zuordnung der Tupel zu einem Datum erfolgt über die Spalte Date. Um eine Unterscheidung zwischen den Verbindungen zu erhalten wird der Typ in der Spalte DataTyp vermerkt. Die letzte Spalte endID beinhaltet die Personen zu denen die Verbindung letztendlich führt. Anderen Spalten wie z.B. Town oder Country dienen lediglich der Filterung der Ergebnisse.
 
-Um mit den geringeren Speicherkapazitäten die uns zur Verfügung stehen zurechtzukommen wird auf das Problem der Datenredundanz eingegangen. Durch Normalisierung lässt sich Datenredundanz zwar nicht verringern allerdings kann man sie in kontrollierbare Bahnen lenken. Im neuen Schema wurden solche Maßnahmen auf die Spalte Town und Country angewendet. Beide Spalten beinhaltet voraussichtlich Millionen von Werten. Es gibt jedoch nur 193 Länder auf der Welt. Das bedeutet das Wörter wie Deutschland sich sehr oft wiederholen. Die Spalte Country ist vom Datentyp Varchar welches pro Zeichen 2 Byte benötigt. Das wären beim Wort Deutschland 22 Byte. Legt man nun für die Spalte Country eine neue Tabelle an wird in dieser jedes Land nur einmal vermerkt. Jedes Land bekommt einen Schlüssel in Form einer Zahl. In der eigentlichen Tabelle Data werden jetzt nur noch die Zahlen anstatt des vollständig ausgeschrieben Wortes verwendet. Das würde beispielsweise mit dem Wort Deutschland eine Reduktion von 22 Byte auf 1 Byte bewirken. Die Reduzierung auf 1 Byte lassen sich auf das TINYINT Format zurückführen. Das gleiche gilt für die Spalte Town. Bei ihr wird allerdings der Datentyp SMALLINT verwendet, mithilfe dessen ein Zahlenbereich von -32768 bis 32767 abgebildet werden kann. Die Spalten isEmployee, isContact und isFirm können nur zwei verschiedene Zustände darstellen. Stimmt oder stimmt nicht. Der Datentyp TINYINT reicht daher zur Abbildung des Zustandes völlig aus. Ein Feld vom Typ datetime benötigt 8 byte an Speicher. Um hier ebenfalls Einsparungen vorzunehmen wurde beschlossen das Datum als SMALLINT zu deklarieren. Dies ist möglich da nur das Tages-Format des Datums von Interesse ist. Dazu wird ein frei gewählter Nullpunkt festgelegt. In unserem Fall wurde der 01.01.1990 als Nullpunkt gewählt da keine älteren Daten existieren. Darauf aufbauend wird das Datum repräsentiert durch die Differenz in Tagen zum Nullpunkt in der Spalte Date abgelegt.
+Um mit den geringeren Speicherkapazitäten die uns zur Verfügung stehen zurechtzukommen wird auf das Problem der Datenredundanz eingegangen. Durch Normalisierung lässt sich Datenredundanz zwar nicht verringern allerdings kann man sie in kontrollierbare Bahnen lenken. Im neuen Schema wurden solche Maßnahmen auf die Spalte Town und Country angewendet. Beide Spalten beinhaltet voraussichtlich Millionen von Werten. Es gibt jedoch nur 193 Länder auf der Welt. Das bedeutet das Wörter wie Deutschland sich sehr oft wiederholen. Die Spalte Country ist vom Datentyp Varchar welches pro Zeichen 2 Byte benötigt. Das wären beim Wort Deutschland 22 Byte. Legt man nun für die Spalte Country eine neue Tabelle an wird in dieser jedes Land nur einmal vermerkt. Jedes Land bekommt einen Schlüssel in Form einer Zahl. In der eigentlichen Tabelle Data werden jetzt nur noch die Zahlen anstatt des vollständig ausgeschrieben Wortes verwendet. Das würde beispielsweise mit dem Wort Deutschland eine Reduktion von 22 Byte auf 1 Byte bewirken. Die Reduzierung auf 1 Byte lassen sich auf das TINYINT Format zurückführen. Das gleiche gilt für die Spalte Town. Bei ihr wird allerdings der Datentyp SMALLINT verwendet, mithilfe dessen ein Zahlenbereich von -32768 bis 32767 abgebildet werden kann. Die Spalten isEmployee, isContact und isFirm können nur zwei verschiedene Zustände darstellen. Stimmt oder stimmt nicht. Der Datentyp TINYINT reicht daher zur Abbildung des Zustandes völlig aus. Ein Feld vom Typ datetime benötigt 8 byte an Speicher. Um hier ebenfalls Einsparungen vorzunehmen wurde beschlossen das Datum als SMALLINT zu deklarieren. Dies ist möglich da nur das Tages-Format des Datums von Interesse ist. Dazu wird ein frei gewählter Nullpunkt festgelegt. In unserem Fall wurde der 01.01.1990 als Nullpunkt gewählt da keine älteren Daten existieren. Darauf aufbauend wird das Datum repräsentiert durch die Differenz in Tagen zum Nullpunkt in der Spalte Date abgelegt. Die Hochrechnung der Tabelle \ref{tb_speicherplatzverbrauch} zeigt das durch die Normalisierung der Speicherplatzverbrauch um den Faktor 6 gesenkt werden kann.
+
+\begin{table}[htbp]
+\centering
+\begin{tabulary} {\linewidth} {l  r  C  l  C  r}
+& & & & & \\
+\multicolumn{6}{l}{Speicherplatzverbrauch ohne Normalisierung}\\
+& & & & & \\
+Zeitpunkt(timestamp) & 8 byte & x & 18.000.000 & = & \textasciitilde 137 MB \\  
+Stadt(varchar) & 16 byte & x & 18.000.000 & = & \textasciitilde 343 MB \\  
+Land(varchar) & 20 byte & x & 18.000.000 & = & \textasciitilde 274 MB \\  
+\midrule
+& & & & Summe & \textasciitilde 754 MB\\
+& & & & & \\
+\multicolumn{6}{l}{Speicherplatzverbrauch mit Normalisierung}\\
+& & & & & \\
+Zeitpunkt(smallint) & 2 byte & x & 18.000.000 & = & \textasciitilde 34 MB \\  
+Stadt(integer) & 4 byte & x & 18.000.000 & = & \textasciitilde 72 MB \\  
+Stadt(varchar) & 16 byte & x & 21.000 & = & \textasciitilde 0,32 MB \\  
+Land(tinyint) & 1 byte & x & 18.000.000 & = & \textasciitilde 17 MB \\  
+Land(varchar) & 20 byte & x & 218 & = & \textasciitilde 0,004 MB \\
+\midrule  
+& & & & Summe & \textasciitilde 123 MB\\
+& & & & & \\
+\end{tabulary}
+\caption{Vergleich des Speicherplatzverbrauchs}
+\label{tb_speicherplatzverbrauch}
+\end{table}
 
 Möchte man nun die Abfrage eines Benutzers die eine Filterung anhand einer Stadt voraussieht beantworten, muss man zuerst an die ID der Stadt herankommen. Dabei können zwei verschiedene Ansätze verfolgt werden. Der erste Ansatz wäre einen Join zwischen Town und Data durchzuführen und direkt mit dem Namen der Stadt arbeiten. Diese Variante dürfte aufgrund des Kreuzproduktes von Millionen von Zeilen nicht sehr performant sein. Eine andere Möglichkeit ist eine separate Abfrage an die Datenbank zu stellen in der die ID zum Namen ermittelt wird. Mithilfe der ID kann dann ohne einen Join die Ergebnismenge ermittelt werden. Dieser Ansatz dürfte vor allem durch die Abwesenheit von Netzwerkzugriffen zur besseren Performance führen. Dieses Vorgehen kann für die Stadt, das Land und die Gruppenzugehörigkeit angewendet werden.
 
