@@ -42,21 +42,24 @@
 \BOOKMARK [0][]{chapter.5}{5 Konzeption}{}% 42
 \BOOKMARK [1][-]{section.5.1}{5.1 Architektur}{chapter.5}% 43
 \BOOKMARK [1][-]{section.5.2}{5.2 Technologien}{chapter.5}% 44
-\BOOKMARK [1][-]{section.5.3}{5.3 Datenbank}{chapter.5}% 45
-\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Schema der Datenbank}{section.5.3}% 46
+\BOOKMARK [1][-]{section.5.3}{5.3 Datenbankdesign}{chapter.5}% 45
+\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Konzeptionelles Design}{section.5.3}% 46
 \BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Zugriffsstrukturen}{section.5.3}% 47
 \BOOKMARK [1][-]{section.5.4}{5.4 Extract Transform Load Prozess}{chapter.5}% 48
 \BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Extract}{section.5.4}% 49
 \BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Transform}{section.5.4}% 50
 \BOOKMARK [2][-]{subsection.5.4.3}{5.4.3 Load}{section.5.4}% 51
-\BOOKMARK [1][-]{section.5.5}{5.5 Sicherstellung der Aktualit\344t der Daten}{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.5}{5.5 Synchronisation des Datenbestandes}{chapter.5}% 52
 \BOOKMARK [1][-]{section.5.6}{5.6 Darstellungskonzepte}{chapter.5}% 53
 \BOOKMARK [0][]{chapter.6}{6 Umsetzung}{}% 54
-\BOOKMARK [1][-]{section.6.1}{6.1 Kompression}{chapter.6}% 55
-\BOOKMARK [0][]{chapter.7}{7 Ergebnisanalyse}{}% 56
-\BOOKMARK [1][-]{section.7.1}{7.1 Auswertung}{chapter.7}% 57
-\BOOKMARK [1][-]{section.7.2}{7.2 Handlungsempfehlungen}{chapter.7}% 58
-\BOOKMARK [0][]{chapter.8}{8 Zusammenfassung}{}% 59
-\BOOKMARK [1][-]{section.8.1}{8.1 Ergebnis}{chapter.8}% 60
-\BOOKMARK [1][-]{section.8.2}{8.2 Ausblick}{chapter.8}% 61
-\BOOKMARK [0][]{section*.36}{Literaturverzeichnis}{}% 62
+\BOOKMARK [1][-]{section.6.1}{6.1 Gewichtung der Zeit}{chapter.6}% 55
+\BOOKMARK [1][-]{section.6.2}{6.2 Kompression}{chapter.6}% 56
+\BOOKMARK [1][-]{section.6.3}{6.3 Anwendungslogik}{chapter.6}% 57
+\BOOKMARK [1][-]{section.6.4}{6.4 Vaadin Komponenten}{chapter.6}% 58
+\BOOKMARK [0][]{chapter.7}{7 Ergebnisanalyse}{}% 59
+\BOOKMARK [1][-]{section.7.1}{7.1 Auswertung}{chapter.7}% 60
+\BOOKMARK [1][-]{section.7.2}{7.2 Handlungsempfehlungen}{chapter.7}% 61
+\BOOKMARK [0][]{chapter.8}{8 Zusammenfassung}{}% 62
+\BOOKMARK [1][-]{section.8.1}{8.1 Ergebnis}{chapter.8}% 63
+\BOOKMARK [1][-]{section.8.2}{8.2 Ausblick}{chapter.8}% 64
+\BOOKMARK [0][]{section*.38}{Literaturverzeichnis}{}% 65

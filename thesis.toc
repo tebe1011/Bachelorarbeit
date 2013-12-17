@@ -54,21 +54,24 @@
 \contentsline {paragraph}{Apache Tomcat}{29}{section*.24}
 \contentsline {paragraph}{Opencsv}{30}{section*.25}
 \contentsline {paragraph}{JDBC}{30}{section*.26}
-\contentsline {section}{\numberline {5.3}Datenbank}{30}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Schema der Datenbank}{30}{subsection.5.3.1}
+\contentsline {section}{\numberline {5.3}Datenbankdesign}{30}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Konzeptionelles Design}{30}{subsection.5.3.1}
 \contentsline {subsection}{\numberline {5.3.2}Zugriffsstrukturen}{32}{subsection.5.3.2}
 \contentsline {section}{\numberline {5.4}Extract Transform Load Prozess}{32}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Extract}{32}{subsection.5.4.1}
 \contentsline {subsection}{\numberline {5.4.2}Transform}{33}{subsection.5.4.2}
 \contentsline {subsection}{\numberline {5.4.3}Load}{34}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}Sicherstellung der Aktualit\IeC {\"a}t der Daten}{34}{section.5.5}
+\contentsline {section}{\numberline {5.5}Synchronisation des Datenbestandes}{34}{section.5.5}
 \contentsline {section}{\numberline {5.6}Darstellungskonzepte}{35}{section.5.6}
 \contentsline {chapter}{\numberline {6}Umsetzung}{37}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kompression}{37}{section.6.1}
+\contentsline {section}{\numberline {6.1}Gewichtung der Zeit}{37}{section.6.1}
+\contentsline {section}{\numberline {6.2}Kompression}{37}{section.6.2}
+\contentsline {section}{\numberline {6.3}Anwendungslogik}{37}{section.6.3}
+\contentsline {section}{\numberline {6.4}Vaadin Komponenten}{37}{section.6.4}
 \contentsline {chapter}{\numberline {7}Ergebnisanalyse}{41}{chapter.7}
 \contentsline {section}{\numberline {7.1}Auswertung}{41}{section.7.1}
 \contentsline {section}{\numberline {7.2}Handlungsempfehlungen}{41}{section.7.2}
 \contentsline {chapter}{\numberline {8}Zusammenfassung}{43}{chapter.8}
 \contentsline {section}{\numberline {8.1}Ergebnis}{43}{section.8.1}
 \contentsline {section}{\numberline {8.2}Ausblick}{43}{section.8.2}
-\contentsline {chapter}{Literaturverzeichnis}{45}{section*.36}
+\contentsline {chapter}{Literaturverzeichnis}{45}{section*.38}

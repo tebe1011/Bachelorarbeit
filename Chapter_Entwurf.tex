@@ -65,13 +65,13 @@ Da Java das Parsen von CSV-Dateien nativ nicht unterstützt, müssen wir auf Dri
 Die JDBC-API ermöglicht den programmgesteuerten Zugriff auf relationale Daten aus der Java Programmiersprache. Durch Verwendung der JDBC-API können Anwendungen SQL-Anweisungen ausführen, Ergebnisse abrufen und die Veränderungen auf die Datenquelle zurückschreiben. Der JDBC-API kann auch mit mehreren Datenquellen in einem verteilten, heterogenen Umgebung interagieren. 
 
 %% ===========================
-\section{Datenbank}
+\section{Datenbankdesign}
 %% ===========================
 
-...
+Das Datenbankdesign stellt einen der kritischsten Abschnitte der Konzeption dar. Festlegungen im Bereich des Datenmodells werden in dieser Phase getroffen. Sie entscheiden ob Anforderungen und Erwartungen erfüllt werden können. In dieser Phase sind die Charakteristika der Daten zu untersuchen und das Datenmodell entsprechend nach Ihnen auszulegen.
 
 %% ===========================
-\subsection{Schema der Datenbank}
+\subsection{Konzeptionelles Design}
 %% ===========================
 
 Normalisierung dient der Organisation von Feldern und Tabellen einer relationalen Datenbank, um Redundanz und Abhängigkeit zu minimieren. Die Kehrseite hingegen ist eine Steigerung des Aufwands um die benötigten Daten wiederzugewinnen. Normalisierung bietet die Möglichkeit einen Austausch zwischen Performance und Stabilität des Datenbankmodells vorzunehmen. 
@@ -137,7 +137,7 @@ Die in der Extraktion genannten Besonderheiten werden durch unterschiedliche Que
 Beim Laden der Datensätze in den H2 kommt ein sogenannter \"bulk load\" Prozess zum Einsatz. Dieser wird häufig beim laden von großen Datenmengen aus einer Datei eingesetzt. Er ermöglicht ein wesentlich schnelleres Befüllen der Datenbank bei großen Datenmengen im Gegensatz zu den INSERT-Operationen.
 
 %% ===========================
-\section{Sicherstellung der Aktualität der Daten}
+\section{Synchronisation des Datenbestandes}
 %% ===========================
 
 Systeme die auf den Datenbestand anderer Systeme aufbauen, können zwei verschiedenen Ansätze zur Sicherstellung ihrer Aktualität verfolgen. Unser nebenläufiges System bezeichnen wir als A und das System das den original Datenbestand darstellt als B. Einer der Ansätze ist die Intervall basierende Nachfrage über Veränderungen von A. Hierbei fragt A bei B in festgelegten Intervallen nach ob Daten verändert wurden. Die Wahl des Nachfrage-Intervalls stellt dabei eine der größten Schwierigkeiten dar. Ist der Intervall zu groß, sinkt die Aktualität des Datenbestandes. Ist er zu klein entsteht bei B ein starke Belastung. Der andere Ansatz ist das B Benachrichtigungen an A über Veränderungen sendet. Dadurch werden keine unnötigen Abläufe angestoßen, da nur im Falle von neuen Daten Prozesse in Bewegung gesetzt werden. Zwar wird die Aktualität der Daten gewährleistet jedoch büßt A an Entscheidungsfreiheit ein. A kann nicht mehr selbst entscheiden wann aktualisiert werden soll. Der zweite Ansatz ist zwar effizienter jedoch nicht immer umsetzbar. Das kann technische oder unternehmenspolitische Gründe haben, die eine Veränderung des Legacy Systems ausschließen.  
