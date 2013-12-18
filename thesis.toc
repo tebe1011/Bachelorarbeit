@@ -64,13 +64,14 @@
 \contentsline {section}{\numberline {5.5}Synchronisation des Datenbestandes}{34}{section.5.5}
 \contentsline {section}{\numberline {5.6}Darstellungskonzepte}{35}{section.5.6}
 \contentsline {chapter}{\numberline {6}Umsetzung}{39}{chapter.6}
-\contentsline {section}{\numberline {6.1}Gewichtung der Zeit}{39}{section.6.1}
-\contentsline {section}{\numberline {6.2}Klassen der Logik}{39}{section.6.2}
-\contentsline {section}{\numberline {6.3}Klassen des Clients}{39}{section.6.3}
-\contentsline {chapter}{\numberline {7}Ergebnisanalyse}{43}{chapter.7}
-\contentsline {section}{\numberline {7.1}Auswertung}{43}{section.7.1}
-\contentsline {section}{\numberline {7.2}Handlungsempfehlungen}{43}{section.7.2}
-\contentsline {chapter}{\numberline {8}Zusammenfassung}{45}{chapter.8}
-\contentsline {section}{\numberline {8.1}Ergebnis}{45}{section.8.1}
-\contentsline {section}{\numberline {8.2}Ausblick}{45}{section.8.2}
-\contentsline {chapter}{Literaturverzeichnis}{47}{section*.37}
+\contentsline {section}{\numberline {6.1}Erzeugung der Abfrage}{39}{section.6.1}
+\contentsline {section}{\numberline {6.2}ETL Prozess}{40}{section.6.2}
+\contentsline {section}{\numberline {6.3}Klassen der Logik}{42}{section.6.3}
+\contentsline {section}{\numberline {6.4}Klassen des Clients}{42}{section.6.4}
+\contentsline {chapter}{\numberline {7}Ergebnisanalyse}{45}{chapter.7}
+\contentsline {section}{\numberline {7.1}Auswertung}{45}{section.7.1}
+\contentsline {section}{\numberline {7.2}Handlungsempfehlungen}{45}{section.7.2}
+\contentsline {chapter}{\numberline {8}Zusammenfassung}{47}{chapter.8}
+\contentsline {section}{\numberline {8.1}Ergebnis}{47}{section.8.1}
+\contentsline {section}{\numberline {8.2}Ausblick}{47}{section.8.2}
+\contentsline {chapter}{Literaturverzeichnis}{49}{section*.38}
