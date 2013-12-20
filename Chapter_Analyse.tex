@@ -6,14 +6,14 @@
 \label{ch:Systemanalyse}
 %% ===========================
 
-Zu Beginn der Arbeiten wird eine Systemanalyse zur Ermittlung des Ist- und Soll-Zustandes durchgeführt. Nach \cite{SWB-380277719} versteht man darunter das Beschreiben der vorhandenen und zukünftigen Systeme. Im Rahmen der Analyse ist die Kontextabgrenzung eines der wichtigsten Bestandteile. Dabei wird eine Abgrenzung zwischen dem Umfang und der Umgebung des Systems vorgenommen. Zuerst wird in Abschnitt 3.1 eine Ist-Analyse durchgeführt. In Abschnitt 3.2 steht der Kern der Systemanalyse, die Anforderungen, im Mittelpunkt. Aufbauend auf den Anforderungen werden in Abschnitt 3.3 die für die Umsetzung relevanten Daten ermittelt. 
+Zu Beginn der Arbeiten wird eine Systemanalyse zur Ermittlung des Ist- und Soll-Zustandes durchgeführt. Nach \cite{SWB-380277719} versteht man darunter das Beschreiben der vorhandenen und zukünftigen Systeme. Im Rahmen der Analyse ist die Kontextabgrenzung eines der wichtigsten Bestandteile. Dabei wird eine Abgrenzung zwischen dem Umfang und der Umgebung des Systems vorgenommen. Zuerst wird in Abschnitt \ref{ch:Systemanalyse:sec:genesisWorld} eine Ist-Analyse durchgeführt. In Abschnitt \ref{ch:Systemanalyse:sec:Anforderungsanalyse} steht der Kern der Systemanalyse, die Anforderungen, im Mittelpunkt. Aufbauend auf den Anforderungen, werden in Abschnitt \ref{ch:Systemanalyse:sec:Information} die für die Umsetzung relevanten Daten ermittelt. 
 
 %% ===========================
 \section{CAS genesisWorld}
 \label{ch:Systemanalyse:sec:genesisWorld}
 %% ===========================
 
-CAS genesisWorld ist ein Programm das die Organisation und Zusammenarbeit in Kundenbeziehungen und zwischen Kollegen steigert. Alle Informationen bzw. Daten werden in CAS genesisWorld zentral gespeichert und sind so für alle verfügbar. Welche Daten ein Anwender sieht, hängt von seinen Rechten und Einstellungen ab. Die Daten, d. h. Termine, Aufgaben, Adressen, Dokumente usw. werden in CAS genesisWorld von den Nutzern gepflegt und aktuell gehalten. Darüber hinaus lassen sich alle Daten beliebig miteinander verknüpfen. So werden zusätzliche Zusammenhänge deutlich und der Informationsgehalt erhöht sich. Ein Besprechungstermin lässt sich beispielsweise mit den Adressen der Teilnehmer und dem Dokument der Tagesordnung verknüpfen.
+CAS genesisWorld ist ein Programm, dass die Organisation und Zusammenarbeit in Kundenbeziehungen und zwischen Kollegen steigert. Alle Informationen bzw. Daten werden in CAS genesisWorld zentral gespeichert und sind so für alle verfügbar. Welche Daten ein Anwender sieht, hängt von seinen Rechten und Einstellungen ab. Die Daten, d. h. Termine, Aufgaben, Adressen, Dokumente usw. werden in CAS genesisWorld von den Nutzern gepflegt und aktuell gehalten. Darüber hinaus lassen sich alle Daten beliebig miteinander verknüpfen. So werden zusätzliche Zusammenhänge deutlich und der Informationsgehalt erhöht sich. Ein Besprechungstermin lässt sich beispielsweise mit den Adressen, der Teilnehmer und dem Dokument der Tagesordnung verknüpfen.
 
 \begin{figure}[H]
 	\centering
@@ -26,10 +26,10 @@ CAS genesisWorld ist ein Programm das die Organisation und Zusammenarbeit in Kun
 \subsection{Architektur}
 %% ===========================
 
-Die n-Tier-Architektur von CAS genesisWorld lässt sich in in drei wesentliche Bereiche gliedern:
+Die N-Tier-Architektur von CAS genesisWorld, lässt sich in drei wesentliche Bereiche gliedern:
 
 \begin{itemize}
-	\item Die Präsentationsclients umfassen alle Dienste, die Benutzern die Informationen in Ansichten am Bildschirm zur Verfügung stellen.
+	\item Die Präsentationsclients umfassen alle Dienste, die Informationen in Bildschirm-Ansichten, dem Benutzern zur Verfügung stellen.
 	\item Der Applikationsserver umfasst alle Dienste, die die Geschäftslogik kapseln, Änderungen protokollieren, Benutzerrechte prüfen und die aufbereiteten Informationen den Präsentationsdiensten zur Verfügung stellen.
 	\item Die Datenbankschicht umfasst alle Dienste, die zur Datenhaltung selbst notwendig sind.
 \end{itemize}
@@ -39,9 +39,9 @@ Die n-Tier-Architektur von CAS genesisWorld lässt sich in in drei wesentliche B
 \subsection{Präsentationsschicht \& Logikschicht}
 %% ===========================
 
-CAS genesisWorld Clients existieren in Form einer 32bit Windows Anwendung, sowie Mobile Clients in Android und iOS. Die Kommunikation der Mobile Clients findet über REST statt \cite{cas2013a}.
+CAS genesisWorld Clients existieren in Form einer 32bit Windows Anwendung, sowie als Mobile Client in Android und iOS. Die Kommunikation der Mobile Clients findet über REST statt \cite{cas2013a}.
 
-Die Funktionalität des CAS genesisWorld-Applikationsservers wurde in Form von COM-Objekten implementiert. Damit stehen dessen Dienste auch Dritten zur Verfügung, die dadurch mit eigenen Applikationen die Informationen von CAS genesisWorld präsentieren oder weiterverarbeiten können. Als Basisdienste stehen der UserService für die Anmeldung und Rechteverwaltung sowie der DataService als zentraler Dienst für den Zugriff auf die CAS genesisWorld-Daten zur Verfügung. Die Schnittstelle des DataService wurde an Microsoft ADO angelehnt. Auf den Basisdiensten aufbauend existieren die Geschäftsdienste in Form der Schnittstellen der BusinessServices. Diese bieten spezielle Funktionen zu den jeweiligen Anwendungsbereichen.
+Die Funktionalität des CAS genesisWorld-Applikationsservers, wurde in Form von COM-Objekten implementiert. Damit stehen dessen Dienste auch Dritten zur Verfügung, die dadurch mit eigenen Applikationen die Informationen von CAS genesisWorld präsentieren oder weiterverarbeiten können. Als Basisdienste stehen der UserService und der DataService zu Verfügung. Für die Anmeldung und Rechteverwaltung ist der UserService zuständig. Der DataService hingegen, als zentraler Dienst für den Zugriff auf die CAS genesisWorld Daten. Die Schnittstelle des DataService wurde an Microsoft ADO angelehnt. Auf den Basisdiensten aufbauend existieren die Geschäftsdienste, in Form der Schnittstellen der BusinessServices. Diese bieten spezielle Funktionen zu den jeweiligen Anwendungsbereichen.
 
 \begin{figure}[H]
 	\centering
@@ -52,9 +52,9 @@ Die Funktionalität des CAS genesisWorld-Applikationsservers wurde in Form von C
 
 \paragraph{Server-SDK-PlugIns}
 
-Die Server-SDK-PlugIns bieten die Möglichkeit die Datenverarbeitung um eine eigene Logik zu erweitern oder zu modifizieren. 
+Die Server-SDK-PlugIns bieten die Möglichkeit, die Datenverarbeitung um eine eigene Logik zu erweitern oder zu modifizieren. 
 
-Realisiert werden die PlugIns als COM-Objekte die ein PlugIn-Interface namens IGWSDKDataPlugIn implementieren. Das erstellte COM-Objekt wird im Server von CAS genesisWorld registriert. Der Server delegiert bei einer Datenoperation den Aufruf an die für den jeweiligen Datensatz-Typen registrierten PlugIns. In Abbildung \ref{gw_plugin} wird anhand eines Beispieles der Vorgang dargestellt.
+Realisiert werden die PlugIns als COM-Objekte, die ein PlugIn-Interface namens IGWSDKDataPlugIn implementieren. Das erstellte COM-Objekt wird im Server von CAS genesisWorld registriert. Der Server delegiert bei einer Datenoperation den Aufruf an die für den jeweiligen Datensatz-Typen registrierten PlugIns. In Abbildung \ref{gw_plugin} wird anhand eines Beispieles der Vorgang dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -65,16 +65,16 @@ Realisiert werden die PlugIns als COM-Objekte die ein PlugIn-Interface namens IG
 
 Im Allgemeinen stehen in den COM-Schnittstellen der PlugIns jeweils alle Felder eines Datensatz-Typen zur Verfügung, sowie die individuelle Teilmenge der Felder mit neuen Werten. In den PlugIns besteht damit die Möglichkeit, alte bzw. neue Werte von Feldern zu untersuchen und zu vergleichen und auf das Ergebnis zu reagieren.
 
-Die Werte-Teilmenge des aktuell verarbeiteten Datensatzes kann verändert, d.h. erweitert oder reduziert werden, und die Werte selber sind änderbar. Darüber hinausgehend sind auch automatisierte Aktionen realisierbar, die weitere Datensätze betreffen. So könnten z.B. abhängig von den Eingangswerten einer neu angelegten Adresse neue Aufgaben angelegt und mit Inhalt versehen werden. Einige automatische Datenoperationen von CAS genesisWorld werden über den SDK-PlugIns verwandte CAS PlugIns realisiert.
+Die Werte-Teilmenge des aktuell verarbeiteten Datensatzes kann verändert, d.h. erweitert oder reduziert werden, und die Werte selber sind änderbar. Darüber hinausgehend sind auch automatisierte Aktionen realisierbar, die weitere Datensätze betreffen. So könnten z.B. abhängig von den Eingangswerten einer neu angelegten Adresse neue Aufgaben angelegt und mit Inhalt versehen werden. Einige automatische Datenoperationen von CAS genesisWorld werden über CAS PlugIns realisiert, die mit den SDK-PlugIns verwandt sind.
 
 %% ===========================
 \subsection{Datenhaltungsschicht}
 \label{ch:Systemanalyse:sec:genesisWorld:subsec:db}
 %% ===========================
 
-Die Datenhaltungsschicht wird durch einen Microsoft SQL Server 2008 (MSSQL) umgesetzt. Der SQL Server ist ein relationales Datenbankmanagementsystem (RDBMS) von Microsoft, das für den Einsatz im Konzern Umfeld konzipiert wurde. MSSQL verwendet T-SQL (Transact-SQL), eine Erweiterungen von Sybase und Microsoft, die mehrere Funktionen zum SQL-Standard hinzufügt \cite{tech2013}. Weiterhin unterstützt MSSQL standardisierte Datenbankschnittstellen wie Open Database Connectivity (ODBC) und Java Database Connectivity (JDBC).
+Die Datenhaltungsschicht enthält einen Microsoft SQL Server 2008 (MSSQL). Der SQL Server ist ein relationales Datenbankmanagementsystem (RDBMS) von Microsoft, dass für den Einsatz im Konzern Umfeld konzipiert wurde. MSSQL verwendet T-SQL (Transact-SQL), eine Erweiterungen von Sybase und Microsoft, die mehrere Funktionen zum SQL-Standard hinzufügt \cite{tech2013}. Weiterhin unterstützt MSSQL standardisierte Datenbankschnittstellen, wie Open Database Connectivity (ODBC) und Java Database Connectivity (JDBC).
   
-In den meisten relationalen Datenbanken werden Beziehungen über Primär-/ Fremdschlüsselbeziehungen hergestellt. In der CAS genesisWorld Datenbank werden nur Primärschlüssel verwendet. Die Beziehungen werden nicht wie sonst in mehreren Zwischentabellen realisiert sondern in einer einzigen Tabelle, die RelationTable. In Abbildung \ref{gw_2} ist ein Beispiel zu sehen.
+In den meisten relationalen Datenbanken werden Beziehungen über Primär-/ Fremdschlüsselbeziehungen hergestellt. In der CAS genesisWorld Datenbank werden nur Primärschlüssel verwendet. Die Beziehungen werden nicht wie sonst in mehreren Zwischentabellen realisiert, sondern in einer einzigen Tabelle, die RelationTable. In Abbildung \ref{gw_2} ist ein Beispiel zu sehen.
 
 \begin{figure}[ht]
 	\centering
@@ -83,14 +83,14 @@ In den meisten relationalen Datenbanken werden Beziehungen über Primär-/ Fremd
 	\label{gw_2}
 \end{figure}
 
-Die Spalten GUID1 und GUID2 beinhalten die jeweiligen Primärschlüssel der in Beziehung zu setzenden Tabellen. Als Zuordnungsmerkmal für die GGUID`s zu Ihren Tabellen dienen die Spalten TableSign1 und TableSign2, deren Werte Kürzel der Tabellennamen sind. Möglich wird die Verknüpfung verschiedener Tabellen durch einen besonderen Primärschlüssel. Dieser wird für jede neue Zeile generiert und ist in der gesamten Datenbank eindeutig. Er wird als Genesis Global Unique Identifier (GGUID) bezeichnet und ist ein 16 stelliger Binär-Wert. Alle Tabellen besitzen eine Spalte mit solchen Werten, was eine Datenintegrität in der gesamten Datenbank sicherstellt.
+Die Spalten GUID1 und GUID2 beinhalten die jeweiligen Primärschlüssel, der in Beziehung zu setzenden Tabellen. Als Zuordnungsmerkmal für die GGUID`s zu Ihren Tabellen, dienen die Spalten TableSign1 und TableSign2, deren Werte Kürzel der Tabellennamen sind. Möglich wird die Verknüpfung verschiedener Tabellen, durch einen besonderen Primärschlüssel. Dieser wird für jede neue Zeile generiert und ist in der gesamten Datenbank eindeutig. Er wird als Genesis Global Unique Identifier (GGUID) bezeichnet und ist ein 16 stelliger Binär-Wert. Alle Tabellen besitzen eine Spalte mit solchen Werten, was eine Datenintegrität in der gesamten Datenbank sicherstellt.
 
 %% ===========================
 \section{Anforderungsanalyse}
 \label{ch:Systemanalyse:sec:Anforderungsanalyse}
 %% ===========================
 
-Während der Anforderungsanalyse wird ermittelt welche Eigenschaften und Fähigkeiten das System zur Erreichung des Ziels benötigt. Wir unterscheiden bei der Einteilung der Anforderungen zwischen Funktionalen und nicht Funktionalen. Wie der Name bereits verratet wird bei dem erst genannten die Funktionalität des zu erstellenden Systems beschrieben. Unter die Kategorie der nicht Funktionalen fallen alle anderen Anforderungen. 
+Während der Anforderungsanalyse, wird ermittelt, welche Eigenschaften und Fähigkeiten das System zur Erreichung des Ziels benötigt. Wir unterscheiden bei der Einteilung der Anforderungen, zwischen Funktionalen und nicht Funktionalen. Wie der Name bereits verratet, wird bei dem erst genannten, die Funktionalität des zu erstellenden Systems beschrieben. Unter die Kategorie der nicht Funktionalen fallen alle anderen Anforderungen. 
 
 %% ===========================
 \subsection{Funktionale Anforderungen}
@@ -99,17 +99,17 @@ Während der Anforderungsanalyse wird ermittelt welche Eigenschaften und Fähigk
 Folgende funktionalen Anforderungen wurden festgelegt:
 
 \begin{itemize}
-\item Ermittlung der Anzahl der Beziehungen zwischen zwei Personen
+\item Ermittlung der Anzahl, der Beziehungen zwischen zwei Personen
 
 \item Ranking der Ergebnisse
 
-\item Rückgabewert beinhaltet Gesamtwert der Abfrage, sowie die einzelnen Werten aus denen er sich zusammensetzt
+\item Rückgabewert soll den Gesamtwert der Abfrage beinhaltet, sowie die einzelnen Werten aus denen er sich zusammensetzt
 
-\item Begrenzen der Ergebnisse durch die Anzahl der zurückgelieferten Personen
+\item Begrenzung der Ergebnisse, durch die Anzahl der zurückgelieferten Personen
 
 \item Möglichkeit zum eingrenzen der Ergebnisse auf einen Zeitraum
 
-\item Ein- und Ausblenden von Suchkriterien ohne eine neue Anfrage senden zu müssen
+\item Ein- und Ausblenden von Suchkriterien, ohne eine neue Anfrage senden zu müssen
 
 \item Manuelles gewichten der Suchkriterien
 
@@ -119,7 +119,7 @@ Folgende funktionalen Anforderungen wurden festgelegt:
 	\begin{itemize}
 	\item ausschließen von Personen oder eingrenzen auf Personen
 	\item Städte und/oder Länder der Personen
-	\item verringern auf Personen die einem Unternehmen zugeordnet sind 
+	\item verringern auf Personen, die einem Unternehmen zugeordnet sind 
 	\item beschränken auf Kontaktpersonen von Unternehmen
 	\item begrenzen auf Persönliche Kontakt Personen
 	\item vermindern um Personengruppen
@@ -153,9 +153,9 @@ Folgende nicht funktionale Anforderungen wurden erhoben:
 \label{ch:Systemanalyse:sec:Information}
 %% ===========================
 
-Die Datenbank der CAS Software AG umfasst 398 Tabellen, die zusammen wiederum 11.620 Spalten beinhalten. Aufgrund fehlender Dokumentation über die Umsetzung der darüberliegenden Anwendungsschicht und der Abwesenheit von definierten Beziehungen innerhalb der Datenbank wurde ein eigenes Verfahren zur Ermittlung der Beziehungen entwickelt. 
+Die Datenbank der CAS Software AG umfasst 398 Tabellen, die zusammen wiederum 11.620 Spalten beinhalten. Aufgrund einer fehlender Dokumentation, über die Umsetzung der darüberliegenden Anwendungsschicht und der Abwesenheit von definierten Beziehungen innerhalb der Datenbank, wurde ein eigenes Verfahren zur Ermittlung der Beziehungen entwickelt. 
 
-Für den Ausgangspunkt der Suche wurde eine Tabelle namens SysUser verwendet. Sie beinhaltet jeden Benutzer des Systems. Ihre Eignung beruht auf der Annahme das bei der Bewertung von Beziehungen zwischen Personen, die Person selbst dabei immer den Ausgangspunkt der Suche darstellt. Aus Datenbanksicht bedeutet das zuerst eine Tupel der SysUser Tabelle mit Ihrer GGUID herangezogen wird. Die GGUID ist dabei der erste Wert nach dem in der gesamten Datenbank gesucht wird. Sobald alle Tabellen gefunden wurden die den Wert beinhalten werden deren GGUIDs für die weitere Suche benutzt. Die Menge der Suche wird dabei nach jedem Schritt um die Teilmenge der bereits gefundenen Tabellen verringert. Die Suche wird abgebrochen sobald die Suchmenge keine Werte mehr enthält oder keine Tabellen mehr mit den entsprechenden Werten gefunden werden konnten. Durch dieses Vorgehen erhält man am Ende alle Beziehungen aufbauend auf der Annahme das die GGUID als Referenzierungswert benutzt wurde. In Abbildung \ref{gw_schema_alt} ist ein schon auf das Wesentliche Reduzierter Ausschnitt des Ergebnisses zu sehen. 
+Für den Ausgangspunkt der Suche, wurde eine Tabelle namens SysUser verwendet. Sie beinhaltet jeden Benutzer des Systems. Ihre Eignung beruht auf der Annahme, dass bei der Bewertung von Beziehungen zwischen Personen, die Person selbst dabei immer den Ausgangspunkt der Suche darstellt. Aus Datenbanksicht bedeutet, dass zuerst eine Tupel der SysUser Tabelle mit Ihrer GGUID herangezogen wird. Die GGUID ist dabei der erste Wert nach dem in der gesamten Datenbank gesucht wird. Sobald alle Tabellen gefunden wurden, die den Wert beinhalten, werden deren GGUIDs für die weitere Suche benutzt. Die Menge der Suche wird nach jedem Schritt, um die Teilmenge der bereits gefundenen Tabellen verringert. Die Suche wird abgebrochen, sobald die Suchmenge keine Werte mehr enthält oder keine Tabellen mehr mit den entsprechenden Werten gefunden werden konnten. Durch dieses Vorgehen erhält man am Ende alle Beziehungen, aufbauend auf der Annahme, dass die GGUID als Referenzierungswert benutzt wurde. In Abbildung \ref{gw_schema_alt}, ist ein schon auf das Wesentliche reduzierter Ausschnitt, des Ergebnisses zu sehen. 
 
 \begin{figure}[H]
 	\centering
@@ -164,16 +164,16 @@ Für den Ausgangspunkt der Suche wurde eine Tabelle namens SysUser verwendet. Si
 	\label{gw_schema_alt}
 \end{figure}
 
-Von den ursprünglich 398 Tabellen sind nur noch 17 übrig geblieben auf die im Weiteren Verlauf eingegangen wird. Alle Tabellen enthalten in der ursprünglichen Form wesentlich mehr Spalten wurden der Übersicht halber entfernt. Tabelle SysUser besitzt drei Spalten die von Bedeutung sind. Eine davon ist die GGUID die im folgenden nicht mehr erwähnt wird da Sie jede Tabelle enthält. Die OID wird für jeden Nutzer einmalig vergeben und wird in anderen Tabellen als Zuordnungsmerkmal verwendet. LoginName ist wie der Name schon sagt, der Benutzername des Nutzers und kann in der Oberfläche beim Anmelden in das neue System wieder verwendet werden. 
+Von den ursprünglich 398 Tabellen sind nur noch 17 übrig geblieben, auf die im Weiteren Verlauf eingegangen wird. Alle Tabellen enthalten in der ursprünglichen Form wesentlich mehr Spalten und wurden der Übersicht halber entfernt. Tabelle SysUser besitzt drei Spalten, die von Bedeutung sind. Eine davon ist die GGUID, die im folgenden nicht mehr erwähnt wird, da Sie jede Tabelle enthält. Die OID wird für jeden Nutzer einmalig vergeben und wird in anderen Tabellen als Zuordnungsmerkmal verwendet. LoginName ist wie der Name schon sagt, der Benutzername des Nutzers und kann beim anmelden auf der Oberfläche, wieder verwendet werden. 
 
-Aufgrund der Anforderung an Filterung durch Gruppen wurden die Tabellen SysGroupMember und SysGroup hinzugezogen. SysGroup besitzt eine GID was das gleiche für Gruppen ist wie die OID für Personen. Das Attribut GroupName wird für die Anzeige an der Oberfläche benötigt damit der Nutzer erkennen kann welche Gruppe er gerade ausgewählt hat. SysGroupMember stellt die Auflösungstabelle zwischen SysUser und SysGroup dar. Die Spalte GroupID beinhaltet Werte aus der SysGroup-GGUID Spalte. MemberID folgt dem gleichen Ansatz mit den SysUser-GGUID Werten. In Hinsicht auf die Logikschicht wird die Spalte InsertTimestamp für Veränderungen innerhalb der Gruppen benötigt.
+Aufgrund der Anforderung, Filterung durch Gruppen, wurden die Tabellen SysGroupMember und SysGroup hinzugezogen. SysGroup besitzt eine GID, die das Gleiche für Gruppen ist, wie die OID für Personen. Das Attribut GroupName, wird für die Anzeige an der Oberfläche benötigt. Mithilfe dessen der Nutzer erkennen kann, welche Gruppe er gerade ausgewählt hat. SysGroupMember stellt die Auflösungstabelle zwischen SysUser und SysGroup dar. Die Spalte GroupID beinhaltet Werte aus der SysGroup-GGUID Spalte. MemberID folgt dem gleichen Ansatz, mit den SysUser-GGUID Werten. In Hinsicht auf die Logikschicht, wird die Spalte InsertTimestamp für Veränderungen innerhalb der Gruppen benötigt.
 
-Die Adress0 Tabelle wird für die restlichen Filter Anforderungen benötigt. Town1 und Country1 geben die Stadt sowie das Land an in der die Person ansässig ist. Zur Ermittlung ob eine Person eine Kontaktperson, Mitarbeiter oder eine Firma repräsentiert werden die Attribute gwIsContact, gwIsEmployee und gwIsCompany benötigt. Name und ChristianName beinhalten den Vor- und Nachname der Person, welche bei der Zuordnung der Ergebnisse an der Benutzeroberfläche hilfreich sind. Vor ausgreifend ist zu sagen das nicht alle Telefongespräche über die dafür bestimmten Tabellen ermittelt werden können. Deswegen werden die Attribute PhoneFieldStr1-10 benötigt, mithilfe derer eine Zuordnung ermöglicht wird. 
+Die Adress0 Tabelle wird für die restlichen Filter Anforderungen benötigt. Town1 und Country1 geben die Stadt sowie das Land an, in der die Person ansässig ist. Zur Ermittlung, ob eine Person eine Kontaktperson, Mitarbeiter oder eine Firma repräsentiert, werden die Attribute gwIsContact, gwIsEmployee und gwIsCompany benötigt. Name und ChristianName beinhalten den Vor- und Nachname der Person, welche bei der Zuordnung der Ergebnisse an der Benutzeroberfläche hilfreich sind. Vorausgreifend ist zu sagen, dass nicht alle Telefongespräche, über die dafür bestimmten Tabellen ermittelt werden können. Deswegen werden die Attribute PhoneFieldStr1-10 benötigt, mithilfe derer eine Zuordnung ermöglicht wird. 
 
-Die TableRelation enthält wie in Abschnitt \ref{ch:Systemanalyse:sec:genesisWorld:subsec:db} behandelt die Beziehungen der Datenbank. Auf das Szenario bezogen wird für die GUID1 die GGUID der SysUser benutzt. Mithilfe der GUID2 können die mit der Person verknüpften Termine, Verkaufschancen, Telefonate, Dokumente und Emails ermittelt werden. TableSign1 und TableSign2 werden zur Identifikation der jeweiligen Tabellen benötigt.
+Die TableRelation enthält, wie in Abschnitt \ref{ch:Systemanalyse:sec:genesisWorld:subsec:db} behandelt, die Beziehungen der Datenbank. Auf das Szenario bezogen, wird für die GUID1 die GGUID der SysUser benutzt. Mithilfe der GUID2 können die mit der Person verknüpften Termine, Verkaufschancen, Telefonate, Dokumente und Emails ermittelt werden. TableSign1 und TableSign2 werden zur Identifikation der jeweiligen Tabellen benötigt.
 
-GWOpportunity0 enthält alle Informationen zu Verkaufschancen. Das Attribut InsertTimestamp wird zur Feststellung des Erzeugungszeitpunktes benötigt. Start\_dt und end\_dt legen den Zeitraum der Verkaufschance fest. Der Besitzer einer Verkaufschance wird über die AccountGUID bestimmt. Mit EMailStore0, Document0 Appointment0 und gwPhoneCall0 verhält es sich wie mit GWOpportunity0. Bei EMailStore0 ist zu erwähnen das SendDate zur zeitlichen Einordnung verwendet werden kann. Das Attribut DialledNumber der Tabelle gwPhoneCall0 wird zum Vergleich mit der in der Adresse hinterlegten Telefonnummer benötigt. Zur Überprüfung ob das Telefonat über einen Tag hinausging wird das Attribut duration herangezogen.
+GWOpportunity0 enthält alle Informationen zu Verkaufschancen. Das Attribut InsertTimestamp wird zur Feststellung des Erzeugungszeitpunktes benötigt. Start\_dt und end\_dt legen den Zeitraum der Verkaufschance fest. Der Besitzer einer Verkaufschance, wird über die AccountGUID bestimmt. Mit EMailStore0, Document0 Appointment0 und gwPhoneCall0 verhält es sich wie mit GWOpportunity0. Bei EMailStore0 ist zu erwähnen, dass SendDate zur zeitlichen Einordnung verwendet werden kann. Das Attribut DialledNumber der Tabelle gwPhoneCall0, wird zum Vergleich  mit der in der Adresse hinterlegten Telefonnummer, benötigt. Zur Überprüfung ob das Telefonat über einen Tag hinausging, wird das Attribut duration herangezogen.
 
-Bis jetzt galt die Annahme das alle Beziehungen über die TableRelation bestimmt werden können. Dies trifft allerdings nicht ganz zu. Dort werden nur die an der Oberfläche manuell Verknüpften Tabellen aufbewahrt. Die restlichen Beziehungen können aus den ORel-Tabellen ermittelt werden. Jeder dieser Tabellen enthält eine OID bzw. GID zur Bestimmung der beteiligten Personen und/oder Gruppen.
+Bis jetzt galt die Annahme, dass alle Beziehungen über die TableRelation bestimmt werden können. Dies trifft allerdings nicht ganz zu. Dort werden nur, die an der Oberfläche manuell Verknüpften Tabellen aufbewahrt. Die restlichen Beziehungen können aus den ORel-Tabellen ermittelt werden. Jeder dieser Tabellen enthält eine OID bzw. GID, die zur Bestimmung der beteiligten Personen und/oder Gruppen dienen.
 
-Eine Betrachtung basierend auf Zeitspannen impliziert das Veränderungen über  Daten über die Zeit. Um diese Änderungen zu erfassen wird die Tabelle ChangeLogBook benötigt. NewFieldValue enthält den neuen Wert eines Feldes. Wohingegen OldFieldValue den alten Wert des Feldes enthält. Die Spalte des geänderten Wertes ist in FieldName hinterlegt. Der Name der Tabelle ist der Spalt TableName zu entnehmen. Die Referenzierung auf eine Tupel wird in der Spalte TableGUID vorgenommen. Aus Gründen des Speicherplatzverbrauchs werden nur varchar Datentypen bei Zeichenfolgen verwendet. Varchar ist jedoch auf 4000 Zeichen limitiert. Falls Zeichenfolgen diese Grenze überschreiten werden die in der Tabelle MemoLogBook abgelegt. Dort wird der Datentyp Text verwendet der eine maximale Zeichenfolge von $2^{31-1}$  erlaubt.
+Eine Betrachtung basierend auf Zeitspannen, impliziert Veränderungen der  Daten über die Zeit gesehen. Um diese Änderungen zu erfassen, wird die Tabelle ChangeLogBook benötigt. NewFieldValue enthält den neuen Wert eines Feldes. Wohingegen OldFieldValue den alten Wert des Feldes enthält. Die Spalte des geänderten Wertes ist in FieldName hinterlegt. Der Name der Tabelle, ist der Spalte TableName zu entnehmen. Die Referenzierung auf eine Tupel wird in der Spalte TableGUID vorgenommen. Aus Gründen des Speicherplatzverbrauchs werden nur varchar Datentypen bei Zeichenfolgen verwendet. Varchar ist jedoch auf 4000 Zeichen limitiert. Falls Zeichenfolgen diese Grenze überschreiten, werden die in der Tabelle MemoLogBook abgelegt. Dort wird der Datentyp Text verwendet, der eine maximale Zeichenfolge von $2^{31-1}$  erlaubt.
