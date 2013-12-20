@@ -54,8 +54,8 @@
 \BOOKMARK [0][]{chapter.6}{6 Umsetzung}{}% 54
 \BOOKMARK [1][-]{section.6.1}{6.1 Erzeugung der Abfrage}{chapter.6}% 55
 \BOOKMARK [1][-]{section.6.2}{6.2 ETL Prozess}{chapter.6}% 56
-\BOOKMARK [1][-]{section.6.3}{6.3 Klassen der Logik}{chapter.6}% 57
-\BOOKMARK [1][-]{section.6.4}{6.4 Klassen des Clients}{chapter.6}% 58
+\BOOKMARK [1][-]{section.6.3}{6.3 Aufbau der Server.war}{chapter.6}% 57
+\BOOKMARK [1][-]{section.6.4}{6.4 Aufbau der Client.war}{chapter.6}% 58
 \BOOKMARK [0][]{chapter.7}{7 Ergebnisanalyse}{}% 59
 \BOOKMARK [1][-]{section.7.1}{7.1 Auswertung}{chapter.7}% 60
 \BOOKMARK [1][-]{section.7.2}{7.2 Handlungsempfehlungen}{chapter.7}% 61

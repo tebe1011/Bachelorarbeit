@@ -31,6 +31,7 @@
 \usepackage{subfigure}
 \usepackage{url}
 \usepackage{booktabs}
+\usepackage{listings}
 \usepackage{tabulary}
 \usepackage{tabularx}
 \usepackage{caption}
@@ -43,6 +44,13 @@
 \usepackage{algorithmic}	  % Code-Listings
 % see http://www.ctan.org/tex-archive/macros/latex/contrib/algorithm2e/algorithm2e.pdf
 % for more sophisticated algorithm listings
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{lightblue}{rgb}{0.97,0.99,1}
+
 
 \usepackage[raiselinks=true,
 						bookmarks=true,
@@ -230,6 +238,7 @@
    \renewcommand\thefigure{\Alph{section}.\arabic{figure}} 
    \renewcommand\thetable{\Alph{section}.\arabic{table}}}
 %% --- End of appenix numbering style ---
+
 
 
 %% **** END OF CLASS ****

@@ -175,6 +175,17 @@
   \mbox{\btxISSN~\btxISSNfont {0001-0782}}}.
 \newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/359545.359563}}.
 
+\bibitem [{LLS13}]{10.1109/ICDE.2013.6544811}
+\btxnamefont {Justin\btxfnamespacelong J. \btxlastnamefont {Levandoski}},
+  \btxnamefont {Per\btxfnamespacelong Ake \btxlastnamefont
+  {Larson}}\btxandcomma {} \btxandlong {}\ \btxnamefont {Radu \btxlastnamefont
+  {Stoica}}\btxauthorcolon\ \btxjtitlefont {\btxifchangecase {Identifying hot
+  and cold data in main-memory databases}{Identifying hot and cold data in
+  main-memory databases}}.
+\newblock \btxjournalfont {2013 IEEE 29th International Conference on Data
+  Engineering (ICDE)}, 0:26--37, 2013\ifbtxprintISSN {,
+  \mbox{\btxISSN~\btxISSNfont {1063-6382}}}.
+
 \bibitem [{LM10}]{Lakshman:2010:CDS:1773912.1773922}
 \btxnamefont {Avinash \btxlastnamefont {Lakshman}} \btxandlong {}\ \btxnamefont
   {Prashant \btxlastnamefont {Malik}}\btxauthorcolon\ \btxjtitlefont
