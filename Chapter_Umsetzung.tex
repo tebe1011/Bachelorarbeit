@@ -114,12 +114,19 @@ Mit der Klasse JerseyServer wird der REST-Server umgesetzt. Sie besitzt Methoden
 \end{center}
 \end{figure}
 
-Neben den Methoden zu Beantwortung von REST-Requests, enthält die Klasse alle Objekte zur Durchführung des ETL-Prozesses. Die Klasse ConnectorJDBC besitzt ein Attribut namens con welches den Verbindungsaufbau zum MSSQL Server mithilfe von JDBC ermöglicht. Zur Extraktion der Daten aus dem MSSQL 2008 wird ein Objekt der Klasse QueryBuilder verwendet. Wie in der Abbildung zu sehen werden für die verschiedenen Tabellen des neuen Schemas, jeweilige Methoden zur Verfügung gestellt. Methoden welche die Übergabewerte table, date und n besitzen, werden für die verschiedenen Verbindungsobjekte benötigt. Mithilfe des Parameters table wird der Name der Tabelle in der MSSQL Datenbank übergeben. Der Parameter date gibt das Feld an was für die Ermittlung des Datums verwendet werden soll. Um den Typ einer Verbindung zwischen Personen festzuhalten wird der Parameter n verwendet, der eine Zahl zwischen eins und fünf beinhaltet. QueryBuilder verwendet ein Objekt vom Typ CSV-Builder um die Ergebnisse in Dateien festzuhalten. Den Methoden wird als Übergabeparameter ein Dateiname sowie die Daten selbst übergeben.
+Neben den Methoden zu Beantwortung von REST-Requests, enthält die Klasse alle Objekte zur Durchführung des ETL-Prozesses. Die Klasse ConnectorJDBC besitzt ein Attribut namens con, welches den Verbindungsaufbau zum MSSQL Server, mithilfe von JDBC ermöglicht. Zur Extraktion der Daten aus dem MSSQL 2008 wird ein Objekt der Klasse QueryBuilder verwendet. Wie in der Abbildung zu sehen, werden für die verschiedenen Tabellen des neuen Schemas, eigene Methoden zur Verfügung gestellt. Methoden welche die Übergabewerte table, date und n besitzen, werden für die verschiedenen Verbindungsobjekte benötigt. Mithilfe des Parameters table, wird der Name der Tabelle in der MSSQL Datenbank übergeben. Der Parameter date gibt das Feld an, was für die Ermittlung des Datums verwendet werden soll. Um den Typ einer Verbindung zwischen Personen festzuhalten, wird der Parameter n verwendet, der eine Zahl zwischen eins und fünf beinhaltet. QueryBuilder verwendet ein Objekt vom Typ CSV-Builder, um die Ergebnisse in Dateien festzuhalten. Den Methoden wird als Übergabeparameter ein Dateiname, sowie die Daten selbst übergeben.
 
+Die Klasse Transform enthält Attribute und Methoden zur Bearbeitung der CSV-Dateien. Weiterhin werden, die durch die Extraktionen gewonnen CSV-Dateien, mithilfe eines CSVReaderWriter Objekts ausgelesen. Nach der Bearbeitung durch die Methoden der Transform-Klasse, werden die Daten wieder in CSV-Dateien abgelegt. CSVBuilder besitzt Methoden die zusätzliche Parameter zum schreiben aufweisen, die modifizierte Schreiboperationen erlauben. Wohingegen CSVReaderWriter mithilfe der Methode writeDataToCSV(), sowie den Parametern path und data allgemeine Schreiboperationen durchführt.
+
+Mithilfe der Klasse Load, wird die Datenbank befüllt. Sie kann wie zuvor erwähnt von einem Database Objekt verwendet werden oder durch ein JerseyServer Objekt. Beim JerseyServer werden mit der Methode load(), die Methoden der Load-Klasse aufgerufen. In der Klasse Database werden sie im Konstruktor aufgerufen. 
+
+Die Logik Klasse enthält alle Attribute und Methoden, zur Beantwortung von Anfragen, durch den Nutzer. Zur Generierung der Bedingungen einer SQL-Abfrage, werden separate Methoden verwendet. Die jeweiligen Methoden werden nur gerufen, sobald die entsprechende Bedingung, in der vom Nutzer erhaltenen JSON Datei, vorhanden ist. Angesteuert wird der Bau einer Abfrage durch die Methode buildQuery(). 
 
 %% ===========================
 \section{Aufbau der Client.war}
 %% ===========================
+
+
 
 \begin{figure}[htbp]
 \begin{center}
@@ -128,3 +135,11 @@ Neben den Methoden zu Beantwortung von REST-Requests, enthält die Klasse alle O
 \label{umsetzung_klassendiagramm_client}
 \end{center}
 \end{figure}
+
+%% ===========================
+\section{Aktualisierung des Datenbestandes}
+%% ===========================
+
+%% ===========================
+\section{Oberfläche}
+%% ===========================
