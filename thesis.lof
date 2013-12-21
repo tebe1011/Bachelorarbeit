@@ -26,10 +26,11 @@
 \contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Ausschnitt einer CSV-Datei mit Daten der Extraktion\relax }}{41}{figure.caption.32}
 \contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Server Klassendiagramm\relax }}{43}{figure.caption.33}
 \contentsline {figure}{\numberline {\relax 6.4}{\ignorespaces Client Klassendiagramm\relax }}{45}{figure.caption.34}
+\contentsline {figure}{\numberline {\relax 6.5}{\ignorespaces Oberfl\IeC {\"a}che des Systems\relax }}{46}{figure.caption.35}
+\contentsline {figure}{\numberline {\relax 6.6}{\ignorespaces Oberfl\IeC {\"a}che des Systems\relax }}{47}{figure.caption.36}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Abfragegeschwindigkeit Vergleich\relax }}{48}{figure.caption.36}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Performance}}}{48}{figure.caption.36}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vergleich anhand Update-Performance}}}{48}{figure.caption.36}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vergleich anhand Insert-Performance}}}{48}{figure.caption.36}
-\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Oberfl\IeC {\"a}che des Systems\relax }}{48}{figure.caption.37}
+\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Abfragegeschwindigkeit Vergleich\relax }}{50}{figure.caption.38}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Performance}}}{50}{figure.caption.38}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vergleich anhand Update-Performance}}}{50}{figure.caption.38}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vergleich anhand Insert-Performance}}}{50}{figure.caption.38}
 \addvspace {10\p@ }
