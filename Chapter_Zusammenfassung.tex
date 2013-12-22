@@ -36,13 +36,15 @@ Bei Änderungen, die eine Steigerung der Komplexität mit sich bringen, stellt s
 \label{ergebniss_vergleich}
 \end{figure}
 
-Die Ergebnisse der Tests zeigen, dass die H2-Datenbank deutlich schneller ist als die MSSQL Datenbank. Der H2 ist bei SELECT-Anweisungen, um den Faktor 37 schneller. Bei Update-Anweisungen sogar um den Faktor 117 schneller. Ebenso bei Insert-Anweisungen, die einen Unterschied um den Faktor 124 aufweisen. 
+Die Ergebnisse der Tests zeigen, dass die H2-Datenbank deutlich schneller ist als die MSSQL Datenbank. Der H2 ist bei SELECT-Anweisungen, um den Faktor 37 schneller. Bei Update-Anweisungen sogar um den Faktor 117 schneller. Ebenso bei Insert-Anweisungen, die einen Unterschied um den Faktor 124 aufweisen. Darauf lässt sich schließen, dass die H2-Datenbank mit ihren In-Memory-Tabellen deutlich schneller ist. Diese Geschwindigkeit wird durch den Verzicht auf Persistenz erlangt. In analytischen Systemen wo fast nur Leseoperationen durchgeführt werden stellt die mangelnde Persistenz kein großes Defizit dar. 
 
 %% ===========================
 \section{Handlungsempfehlungen}
 %% ===========================
 
-Desweiteren soll dargelegt werden, welche Möglichkeiten sich bei der Weiterführung des Projektes bieten und welche Schwierigkeiten auftreten könnten.
+Desweiteren soll dargelegt werden, welche Möglichkeiten sich bei der Weiterführung des Projektes bieten und welche Schwierigkeiten auftreten könnten. 
+
+Das momentane System ermittelt die Personen, die den stärksten Zusammenhang zueinander aufweisen, aufgrund der Anzahl der Verbindungen zwischen ihnen. Dabei wird lediglich die Häufigkeit gewertet. Um die stärke einer Beziehung zu bewerten könnten zusätzliche Regeln eingeführt werden. Diese Regeln müssten auf psychologischen Erkenntnissen und Erfahrungswerten aufbauen. Durch Regeln könnte die Aussagekraft des Ergebnisses weiter steigen. 
 
 %% ===========================
 \section{Ergebnis}

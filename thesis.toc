@@ -74,5 +74,5 @@
 \contentsline {section}{\numberline {7.1}Ergebnisanalyse}{49}{section.7.1}
 \contentsline {section}{\numberline {7.2}Handlungsempfehlungen}{50}{section.7.2}
 \contentsline {section}{\numberline {7.3}Ergebnis}{50}{section.7.3}
-\contentsline {section}{\numberline {7.4}Ausblick}{50}{section.7.4}
-\contentsline {chapter}{Literaturverzeichnis}{51}{section*.39}
+\contentsline {section}{\numberline {7.4}Ausblick}{51}{section.7.4}
+\contentsline {chapter}{Literaturverzeichnis}{53}{section*.39}
