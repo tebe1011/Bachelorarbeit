@@ -6,6 +6,64 @@
 \chapter{Umsetzung}
 %% ===========================
 
+
+%% ===========================
+\section{Aufbau der Server.war}
+%% ===========================
+
+Das Server Web Archive beinhaltet ein dynamisches Web Projekt aus dem Eclipse Web Tools Platform (WTP) Projekt. Das Project weist die typische Struktur eines Web Projektes auf. Daher wird im folgenden nur auf die Klassen eingegangen. Abbildung \ref{umsetzung_klassendiagramm_server} zeigt das Klassendiagramm der Server.war. Das Diagramm dient als Basis für die nachfolgenden Erläuterungen. 
+
+Die H2-Datenbank wird im Embedded-Modus betrieben, was eine Instanziierung der Datenbank zur Laufzeit notwendig macht. Die Instanziierung erfolgt in der Klasse Database. Das Attribut dataSource stellt die H2-Datenbank in Form eines Objektes dar. Eine Verbindung zur Datenbank wird mithilfe der Methode .getConnection() aufgebaut. Diese Verbindung wird permanent offen gehalten solang der Tomcat Server läuft. Dazu wird die Verbindung dem Attribut con zugewiesen, die von allen Methoden verwendet wird die eine Verbindung zur Datenbank aufbauen wollen. Um die Datenbank mit dem deployen der Web-Anwendungen zu starten, ist die Verwendung eines Servlets nötig. Dazu benutzen wir die Klasse EntryPoint die das Interface HttpServlet implementiert. Um das Servlet direkt beim Start aufzurufen wird in der web.xml folgende Zeilen eingetragen: 
+
+\begin{lstlisting}[language=XML]
+	<servlet>
+		<servlet-name>H2</servlet-name>
+		<servlet-class>de.cas.db.EntryPoint</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+\end{lstlisting}
+
+Die 1 im Element <load-on-startup> bewirkt den Aufruf der Methode init() die eine Instanziierung der Klasse Database vornimmt. Zur Erzeugung des Schemas wird eine separate Klasse namens SchemaBuilder eingesetzt. In Ihr werden sämtliche SQL-Anweisungen zur Generierung des Schemas aufbewahrt und können über die Methode createSchema() ausgeführt werden.
+
+Mit der Klasse JerseyServer wird der REST-Server umgesetzt. Sie besitzt Methoden die mit dne entsprechenden Annotationen wie @GET oder @OST die REST-Requests entgegen nehmen. Mit der Annotation @Path wird die URL angegeben unter der die Methode angesprochen werden kann. Diese Methoden können Übergabeparameter vom Typ UriInfo und/oder HttpHeaders besitzen, die Abrufe von Metadaten der REST-Requests ermöglichen. 
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{pics/ServerKlassendiagramm.pdf}
+\caption{Server Klassendiagramm}
+\label{umsetzung_klassendiagramm_server}
+\end{center}
+\end{figure}
+
+Neben den Methoden zu Beantwortung von REST-Requests, enthält die Klasse alle Objekte zur Durchführung des ETL-Prozesses. Die Klasse ConnectorJDBC besitzt ein Attribut namens con, welches den Verbindungsaufbau zum MSSQL Server, mithilfe von JDBC ermöglicht. Zur Extraktion der Daten aus dem MSSQL 2008 wird ein Objekt der Klasse QueryBuilder verwendet. Wie in der Abbildung zu sehen, werden für die verschiedenen Tabellen des neuen Schemas, eigene Methoden zur Verfügung gestellt. Methoden welche die Übergabewerte table, date und n besitzen, werden für die verschiedenen Verbindungsobjekte benötigt. Mithilfe des Parameters table, wird der Name der Tabelle in der MSSQL Datenbank übergeben. Der Parameter date gibt das Feld an, was für die Ermittlung des Datums verwendet werden soll. Um den Typ einer Verbindung zwischen Personen festzuhalten, wird der Parameter n verwendet, der eine Zahl zwischen eins und fünf beinhaltet. QueryBuilder verwendet ein Objekt vom Typ CSV-Builder, um die Ergebnisse in Dateien festzuhalten. Den Methoden wird als Übergabeparameter ein Dateiname, sowie die Daten selbst übergeben.
+
+Die Klasse Transform enthält Attribute und Methoden zur Bearbeitung der CSV-Dateien. Weiterhin werden, die durch die Extraktionen gewonnen CSV-Dateien, mithilfe eines CSVReaderWriter Objekts ausgelesen. Nach der Bearbeitung durch die Methoden der Transform-Klasse, werden die Daten wieder in CSV-Dateien abgelegt. CSVBuilder besitzt Methoden die zusätzliche Parameter zum schreiben aufweisen, die modifizierte Schreiboperationen erlauben. Wohingegen CSVReaderWriter mithilfe der Methode writeDataToCSV(), sowie den Parametern path und data allgemeine Schreiboperationen durchführt.
+
+Mithilfe der Klasse Load, wird die Datenbank befüllt. Sie kann wie zuvor erwähnt von einem Database Objekt verwendet werden oder durch ein JerseyServer Objekt. Beim JerseyServer werden mit der Methode load(), die Methoden der Load-Klasse aufgerufen. In der Klasse Database werden sie im Konstruktor aufgerufen. 
+
+Die Logik Klasse enthält alle Attribute und Methoden, zur Beantwortung von Anfragen, durch den Nutzer. Zur Generierung der Bedingungen einer SQL-Abfrage, werden separate Methoden verwendet. Die jeweiligen Methoden werden nur gerufen, sobald die entsprechende Bedingung, in der vom Nutzer erhaltenen JSON Datei, vorhanden ist. Angesteuert wird der Bau einer Abfrage durch die Methode buildQuery(). 
+
+%% ===========================
+\section{Aufbau der Client.war}
+\label{ch:Umsetzung:sec:clientwar}
+%% ===========================
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{pics/ClientKlassendiagramm.pdf}
+\caption{Client Klassendiagramm}
+\label{umsetzung_klassendiagramm_client}
+\end{center}
+\end{figure}
+
+Einstiegspunkt in der Client.war ist die Klasse CasAnalyticUI. Sie ist von der Klasse UI abgeleitet. Die UI ist die oberste Komponente jeder Komponentenhierarchie. Es gibt eine Benutzeroberfläche für jede Vaadin-Instanz in einem Browser-Fenster. Ein UI Objekt kann entweder ein gesamtes Browser-Fenster (oder Tab) oder einen Teil einer HTML-Seite, wo eine Vaadin-Anwendung eingebettet ist, darstellen. Nachdem eine UI von der Anwendung erstellt wurde, wird es mit der Methode init(VaadinRequest) initialisiert. Zur Übersicht werden die Komponenten der Darstellung in die Klasse RootUI ausgelagert. 
+
+RootUI wird dabei von der CasAnalayticUI instanziiert. Die Klasse RootUI beinhaltet das Anmeldefenster, sowie die Hauptansicht. Mithilfe der Methode buildLoginView() werden die Komponenten des Anmeldefensters zur UI hinzugefügt. Nach der Erzeugung der Komponenten, wird eine JerseyClient Klasse instanziiert. Diese wird verwendet sobald der Nutzer IP, Port und einen Namen eingegeben hat und auf anmelden geklickt hat. Anschließend wird die Methode doPostRequestUserData() gerufen, um zu überprüfen ob der Nutzer im System existiert. 
+
+Falls ja werden durch die Methode MainView() alle bisherigen Komponenten der UI entfernt und durch Komponenten des Hauptfensters ersetzt. Das JerseyClient Objekt wird direkt im Anschluss verwendet, um Mithilfe der Methode doPostRequestData() einen REST-Request an den Server zu senden. Dieser liefert das Ergebnis der Abfrage in einem JSON-Objekt zurück. Mit dessen eine erste Darstellung der Diagramms erzeugt wird. Das Diagramm selbst besitzt eine eigene Klasse namens ChartComponent. Sie leitet sich von der Klasse Chart ab, die Teil der VaadinChart Bibliothek ist. Mithilfe der Methode refreshChart() wird das Diagramm bei Benutzerabfragen aktualisiert. Dazu werden ihr die Namen der Personen für die x-Achse übergeben, sowie die neuen Balkenwerte. Weiterhin wird für jedes Vaadin-Objekt das eine Element an der Oberfläche darstellt, eine separate Methode zur Erzeugung verwendet. Änderungen am Aussehen oder der Funktion, der jeweiligen Vaadin-Objekte, werden nur innerhalb der entsprechenden Methode vorgenommen.
+
+An der Oberfläche gibt es Felder die nur Zahlen erwarten. Eingaben die nicht numerisch sind, werden durch den Einsatz der Klasse IntegerField verhindert. Diese erweitert die Klasse TextField. Sie besitzt einen Event-Listener, der jede Eingabe des Benutzers abfängt. Gibt der Nutzer nicht numerische Zeichen ein werden diese direkt wieder entfernt. Dadurch werden falsch Eingaben durch den Nutzer ausgeschlossen.
+
 %% ===========================
 \section{Erzeugung der Abfrage}
 %% ===========================
@@ -86,62 +144,6 @@ Die veränderten Daten werden wieder in CSV-Dateien abgelegt die gleich bezeichn
 
 Diese Datei wird bei jedem Start des Tomcats dazu verwendet einen Bulk-Load für die H2-Datenbank zu initialisieren. Nachdem die Datenbank mit Daten befüllt wurde werden abschließend die Indizes erzeugt.
 
-%% ===========================
-\section{Aufbau der Server.war}
-%% ===========================
-
-Das Server Web Archive beinhaltet ein dynamisches Web Projekt aus dem Eclipse Web Tools Platform (WTP) Projekt. Das Project weist die typische Struktur eines Web Projektes auf. Daher wird im folgenden nur auf die Klassen eingegangen. Abbildung \ref{umsetzung_klassendiagramm_server} zeigt das Klassendiagramm der Server.war. Das Diagramm dient als Basis für die nachfolgenden Erläuterungen. 
-
-Die H2-Datenbank wird im Embedded-Modus betrieben, was eine Instanziierung der Datenbank zur Laufzeit notwendig macht. Die Instanziierung erfolgt in der Klasse Database. Das Attribut dataSource stellt die H2-Datenbank in Form eines Objektes dar. Eine Verbindung zur Datenbank wird mithilfe der Methode .getConnection() aufgebaut. Diese Verbindung wird permanent offen gehalten solang der Tomcat Server läuft. Dazu wird die Verbindung dem Attribut con zugewiesen, die von allen Methoden verwendet wird die eine Verbindung zur Datenbank aufbauen wollen. Um die Datenbank mit dem deployen der Web-Anwendungen zu starten, ist die Verwendung eines Servlets nötig. Dazu benutzen wir die Klasse EntryPoint die das Interface HttpServlet implementiert. Um das Servlet direkt beim Start aufzurufen wird in der web.xml folgende Zeilen eingetragen: 
-
-\begin{lstlisting}[language=XML]
-	<servlet>
-		<servlet-name>H2</servlet-name>
-		<servlet-class>de.cas.db.EntryPoint</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-\end{lstlisting}
-
-Die 1 im Element <load-on-startup> bewirkt den Aufruf der Methode init() die eine Instanziierung der Klasse Database vornimmt. Zur Erzeugung des Schemas wird eine separate Klasse namens SchemaBuilder eingesetzt. In Ihr werden sämtliche SQL-Anweisungen zur Generierung des Schemas aufbewahrt und können über die Methode createSchema() ausgeführt werden.
-
-Mit der Klasse JerseyServer wird der REST-Server umgesetzt. Sie besitzt Methoden die mit dne entsprechenden Annotationen wie @GET oder @OST die REST-Requests entgegen nehmen. Mit der Annotation @Path wird die URL angegeben unter der die Methode angesprochen werden kann. Diese Methoden können Übergabeparameter vom Typ UriInfo und/oder HttpHeaders besitzen, die Abrufe von Metadaten der REST-Requests ermöglichen. 
-
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=1.0\textwidth]{pics/ServerKlassendiagramm.pdf}
-\caption{Server Klassendiagramm}
-\label{umsetzung_klassendiagramm_server}
-\end{center}
-\end{figure}
-
-Neben den Methoden zu Beantwortung von REST-Requests, enthält die Klasse alle Objekte zur Durchführung des ETL-Prozesses. Die Klasse ConnectorJDBC besitzt ein Attribut namens con, welches den Verbindungsaufbau zum MSSQL Server, mithilfe von JDBC ermöglicht. Zur Extraktion der Daten aus dem MSSQL 2008 wird ein Objekt der Klasse QueryBuilder verwendet. Wie in der Abbildung zu sehen, werden für die verschiedenen Tabellen des neuen Schemas, eigene Methoden zur Verfügung gestellt. Methoden welche die Übergabewerte table, date und n besitzen, werden für die verschiedenen Verbindungsobjekte benötigt. Mithilfe des Parameters table, wird der Name der Tabelle in der MSSQL Datenbank übergeben. Der Parameter date gibt das Feld an, was für die Ermittlung des Datums verwendet werden soll. Um den Typ einer Verbindung zwischen Personen festzuhalten, wird der Parameter n verwendet, der eine Zahl zwischen eins und fünf beinhaltet. QueryBuilder verwendet ein Objekt vom Typ CSV-Builder, um die Ergebnisse in Dateien festzuhalten. Den Methoden wird als Übergabeparameter ein Dateiname, sowie die Daten selbst übergeben.
-
-Die Klasse Transform enthält Attribute und Methoden zur Bearbeitung der CSV-Dateien. Weiterhin werden, die durch die Extraktionen gewonnen CSV-Dateien, mithilfe eines CSVReaderWriter Objekts ausgelesen. Nach der Bearbeitung durch die Methoden der Transform-Klasse, werden die Daten wieder in CSV-Dateien abgelegt. CSVBuilder besitzt Methoden die zusätzliche Parameter zum schreiben aufweisen, die modifizierte Schreiboperationen erlauben. Wohingegen CSVReaderWriter mithilfe der Methode writeDataToCSV(), sowie den Parametern path und data allgemeine Schreiboperationen durchführt.
-
-Mithilfe der Klasse Load, wird die Datenbank befüllt. Sie kann wie zuvor erwähnt von einem Database Objekt verwendet werden oder durch ein JerseyServer Objekt. Beim JerseyServer werden mit der Methode load(), die Methoden der Load-Klasse aufgerufen. In der Klasse Database werden sie im Konstruktor aufgerufen. 
-
-Die Logik Klasse enthält alle Attribute und Methoden, zur Beantwortung von Anfragen, durch den Nutzer. Zur Generierung der Bedingungen einer SQL-Abfrage, werden separate Methoden verwendet. Die jeweiligen Methoden werden nur gerufen, sobald die entsprechende Bedingung, in der vom Nutzer erhaltenen JSON Datei, vorhanden ist. Angesteuert wird der Bau einer Abfrage durch die Methode buildQuery(). 
-
-%% ===========================
-\section{Aufbau der Client.war}
-\label{ch:Umsetzung:sec:clientwar}
-%% ===========================
-
-Einstiegspunkt in der Client.war ist die Klasse CasAnalyticUI. Sie ist von der Klasse UI abgeleitet. Die UI ist die oberste Komponente jeder Komponentenhierarchie. Es gibt eine Benutzeroberfläche für jede Vaadin-Instanz in einem Browser-Fenster. Ein UI Objekt kann entweder ein gesamtes Browser-Fenster (oder Tab) oder einen Teil einer HTML-Seite, wo eine Vaadin-Anwendung eingebettet ist, darstellen. Nachdem eine UI von der Anwendung erstellt wurde, wird es mit der Methode init(VaadinRequest) initialisiert. Zur Übersicht werden die Komponenten der Darstellung in die Klasse RootUI ausgelagert. 
-
-RootUI wird dabei von der CasAnalayticUI instanziiert. Die Klasse RootUI beinhaltet das Anmeldefenster, sowie die Hauptansicht. Mithilfe der Methode buildLoginView() werden die Komponenten des Anmeldefensters zur UI hinzugefügt. Nach der Erzeugung der Komponenten, wird eine JerseyClient Klasse instanziiert. Diese wird verwendet sobald der Nutzer IP, Port und einen Namen eingegeben hat und auf anmelden geklickt hat. Anschließend wird die Methode doPostRequestUserData() gerufen, um zu überprüfen ob der Nutzer im System existiert. 
-
-Falls ja werden durch die Methode MainView() alle bisherigen Komponenten der UI entfernt und durch Komponenten des Hauptfensters ersetzt. Das JerseyClient Objekt wird direkt im Anschluss verwendet, um Mithilfe der Methode doPostRequestData() einen REST-Request an den Server zu senden. Dieser liefert das Ergebnis der Abfrage in einem JSON-Objekt zurück. Mit dessen eine erste Darstellung der Diagramms erzeugt wird. Das Diagramm selbst besitzt eine eigene Klasse namens ChartComponent. Sie leitet sich von der Klasse Chart ab, die Teil der VaadinChart Bibliothek ist. Mithilfe der Methode refreshChart() wird das Diagramm bei Benutzerabfragen aktualisiert. Dazu werden ihr die Namen der Personen für die x-Achse übergeben, sowie die neuen Balkenwerte. Weiterhin wird für jedes Vaadin-Objekt das eine Element an der Oberfläche darstellt, eine separate Methode zur Erzeugung verwendet. Änderungen am Aussehen oder der Funktion, der jeweiligen Vaadin-Objekte, werden nur innerhalb der entsprechenden Methode vorgenommen.
-
-An der Oberfläche gibt es Felder die nur Zahlen erwarten. Eingaben die nicht numerisch sind, werden durch den Einsatz der Klasse IntegerField verhindert. Diese erweitert die Klasse TextField. Sie besitzt einen Event-Listener, der jede Eingabe des Benutzers abfängt. Gibt der Nutzer nicht numerische Zeichen ein werden diese direkt wieder entfernt. Dadurch werden falsch Eingaben durch den Nutzer ausgeschlossen.
-
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=1.0\textwidth]{pics/ClientKlassendiagramm.pdf}
-\caption{Client Klassendiagramm}
-\label{umsetzung_klassendiagramm_client}
-\end{center}
-\end{figure}
 
 %% ===========================
 \section{Aktualisierung des Datenbestandes}
@@ -175,6 +177,6 @@ Der Bereich ganz rechts in der Leiste ist für den Ausschluss von Gruppen vorges
 \label{ergebniss_oberflaeche_haupt}
 \end{figure}
 
-Den zentrale Bereich des Fensters stellt das Diagramm dar. Die Balken selbst sind fünf verschiedene Elemente unterteilt. Jedes Elemente wird dabei durch eine andere Farbe dargestellt. Die fünf Elemente sind die verschiedenen Merkmale. Die Zuordnung der Farbe zu dem jeweiligen Merkmal wird über eine Legende im unteren Bereich des Fensters umgesetzt. Eine Besonderheit ist, dass durch einen Klick auf eine der Farben, das jeweilige Merkmal von der Darstellung ausgeschlossen wird. Beispielsweise kann der Nutzer auf die blaue Farbe neben dem Dokument klicken, was einen Neuaufbau des Diagramms, ohne dieses Merkmal bewirkt. Mit einem wiederholten Klick lässt sich das ganze Rückganggig machen. Zusätzlich zu der Y-Achse, die eine Gesamtpunktzahl aufzeigt, kann der jeweilige Anteil eines Merkmals betrachtet werden. Dies geschieht durch einfaches platzieren des Mauszeigers auf dem jeweiligen Bereich des Balkens. Dadurch öffnet sich ein Tooltip welches die Anzahl der Punkte im Verhältnis zur Gesamtpunktzahl zeigt.
+Den zentrale Bereich des Fensters stellt das Diagramm dar. Die Balken selbst sind fünf verschiedene Elemente unterteilt. Jedes Elemente wird dabei durch eine andere Farbe dargestellt. Die fünf Elemente sind die verschiedenen Merkmale. Die Zuordnung der Farbe zu dem jeweiligen Merkmal wird über eine Legende im unteren Bereich des Fensters umgesetzt. Eine Besonderheit ist, dass durch einen Klick auf eine der Farben, das jeweilige Merkmal von der Darstellung ausgeschlossen wird. Beispielsweise kann der Nutzer auf die blaue Farbe neben dem Dokument klicken, was einen Neuaufbau des Diagramms, ohne dieses Merkmal bewirkt. Durch diesen Ausschluss wird allerdings keine neue Abfrage gesendet. Das  bedeutet die Reihenfolge in der Personen angezeigt werden bleibt gleich, sowie die Datenbasis. Mit einem wiederholten Klick lässt sich das ganze Rückganggig machen. Zusätzlich zu der Y-Achse, die eine Gesamtpunktzahl aufzeigt, kann der jeweilige Anteil eines Merkmals betrachtet werden. Dies geschieht durch einfaches platzieren des Mauszeigers auf dem jeweiligen Bereich des Balkens. Dadurch öffnet sich ein Tooltip welches die Anzahl der Punkte im Verhältnis zur Gesamtpunktzahl zeigt.
 
 Die Anfragestellung erfolgt in der Regel mit dem dafür vorgesehen Button. Die Regler und das Datum lösen jedoch bei Veränderungen automatisch eine neue Abfrage aus. Dies soll die  die hohe Antwortgeschwindigkeit des Systems untermalen. Das Datum sowie die Gewichtung wurden dafür ausgewählt da diese die am meist benutzen Konfigurationsmöglichkeiten darstellen.
