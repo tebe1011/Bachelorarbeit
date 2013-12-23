@@ -6,21 +6,21 @@
 \label{ch:grundlagen}
 %% ===========================
 
-Diese Kapitel beschäftigt sich zum Teil mit NoSQL. Es wird auf die Bedeutung des Begriffs eingegangen, sowie die verschiedene Datenbank-Ausprägungen behandelt. Überdies werden grundlegende Begriffe aus dem NoSQl Umfeld erläutert. Damit sollen für spätere Untersuchungen Grundlagen geschaffen werden. Zu denen auch eine Erklärung zu In-Memory Datenbanken gehört. Neben den Datenbanken wird auf das Component Object Model eingegangen. Das Wissen hinsichtlich COM sollen dabei helfen Teile des Systems zu verstehen auf dem das Neue aufbaut.
+Diese Kapitel beschäftigt sich großteils mit dem Terminus NoSQL. Es wird auf die Bedeutung des Begriffs eingegangen, sowie die verschiedene Datenbank-Ausprägungen behandelt. Überdies werden grundlegende Begriffe aus dem NoSQL Umfeld erläutert. Damit sollen für spätere Untersuchungen Grundlagen geschaffen werden. Zu denen auch eine Erklärung der In-Memory Datenbanken gehört. Neben den Datenbanken wird auf das Component Object Model(COM) eingegangen. Es stellt die Basis des CAS genesisWorld Anwendungsservers dar und ist der Ausgangspunkt für weiterführende Untersuchungen.
 
 %% ===========================
 \section{NoSQL - Eine Einführung}
 \label{ch:grundlagen:sec:NoSQL}
 %% ===========================
 
-NoSQL ist keine Datenbank, noch nicht einmal ein Datenbanktyp. Der Terminus NoSQL fasst lediglich Datenbanken zusammen, die nicht dem Model der relationalen Algebra folgen. Eines haben Sie jedoch Gemeinsam, die treibende Idee die zu Ihrer Entwicklung geführt hat. Die Entstehung der NoSQL Datenbanken ist auf die schlechte Horizontale Skalierbarkeit von relationalen Datenbanken zurückzuführen. Verfügbarkeit und Skalierbarkeit sind unter gewissen Umständen wichtiger als Atomarität und Konsistenz. NoSQL Datenbanken lassen sich anhand Ihres Datenmodells unterscheiden. Nach \cite{vaish2013getting} ist eine Klassifizierung in folgenden Kategorien möglich:
+NoSQL ist keine Datenbank, noch nicht einmal ein Datenbanktyp. Der Terminus NoSQL fasst lediglich Datenbanken zusammen, die nicht dem Model der relationalen Algebra folgen. Eines haben sie jedoch gemeinsam, die treibende Idee die zu Ihrer Entwicklung geführt hat. Die Entstehung der NoSQL Datenbanken ist auf die schlechte horizontale Skalierbarkeit von relationalen Datenbanken zurückzuführen. Verfügbarkeit und Skalierbarkeit sind unter gewissen Umständen wichtiger als Atomarität und Konsistenz. NoSQL Datenbanken lassen sich anhand ihres Datenmodells unterscheiden. Nach \cite{vaish2013getting} ist eine Klassifizierung in folgende Kategorien möglich:
 
 %% ===========================
 \subsection{Document Stores}
 \label{ch:grundlagen:sec:NoSQL:DocumentStores}
 %% ===========================
 
-Document Stores koppeln komplexe Datenstrukturen (Dokumente) mit einem eindeutigen Schlüssel. Der Datenzugriff findet dabei in der Regel über das HTTP-Protokoll mit REST-API oder über das Apache Thrift-Protokoll statt \cite{agarwal2007thrift}. In Documents Stores gibt es außerdem kein Schema. Statt jeden Datensatz in einer Zeile bestehend aus Spalten zu speichern, wird Sie in einem Dokument abgelegt. Diese können als eine Datei auf dem Dateisystem betrachtet werden. Dieses Dokument kann alle möglichen Daten aufnehmen und muss dabei keinem Schema folgen. Obwohl die Daten schemalos sind, sind sie nicht frei von formellen Restriktionen. Die meisten der verfügbaren Datenbanken unter dieser Kategorie benutzen XML, JSON, BSON oder YAML. Document Stores eignen sich für den Einsatz von dynamische Entitäten, die unregelmäßige Strukturen besitzen.
+Document Stores koppeln komplexe Datenstrukturen (Dokumente) mit einem eindeutigen Schlüssel. Der Datenzugriff findet dabei in der Regel über das HTTP-Protokoll mit REST-API oder über das Apache Thrift-Protokoll statt \cite{agarwal2007thrift}. In Documents Stores gibt es außerdem kein Schema. Statt jeden Datensatz in einer Zeile bestehend aus Spalten zu speichern, werden sie in einem Dokument abgelegt. Diese können als eine Datei auf dem Dateisystem betrachtet werden. Solche Dokumente können alle möglichen Daten aufnehmen und müssen dabei keinem Schema folgen. Obwohl die Daten schemalos sind, sind sie nicht frei von formellen Restriktionen. Die meisten der verfügbaren Datenbanken unter dieser Kategorie benutzen XML, JSON, BSON oder YAML. Document Stores eignen sich für den Einsatz von dynamische Entitäten, die unregelmäßige Strukturen besitzen.
 
 %% ===========================
 \subsection{Extensible Record Store}
@@ -29,7 +29,7 @@ Document Stores koppeln komplexe Datenstrukturen (Dokumente) mit einem eindeutig
 
 Extensible Record Stores, auch Wide Column Stores und auf deutsch oft spaltenorientierte Datenbank genannt, speichern Daten mehrerer Einträge in Spalten anstatt in Zeilen. Jeder Eintrag einer Spalte besteht aus einem Namen, den Daten und einem Zeitstempel.
 
-In Extensible Record Stores werden sogenannte Spalten Familien zur Gruppierung ähnlicher oder verwandter Inhalte verwendet. In Abbildung \ref{wide_column_store} ist eine solche Spalten-Familie zu sehen. Spalten Familien besitzen keine logische Struktur und geben somit kein Schema vor. Weiterhin können sie tausende oder sogar Millionen von Spalten beinhalten weshalb sie auch Wide Columns Stores genannt werden. Verwandte Spalten werden in Spalten-Familien durch eine von der Anwendung bereitgestellte Reihe von Schlüsseln identifiziert. Weiterhin muss in einer Spalten-Familie nicht jede Zeile aus den gleichen Spalten bestehen.
+In Extensible Record Stores werden sogenannte Spalten Familien zur Gruppierung ähnlicher oder verwandter Inhalte verwendet. In Abbildung \ref{wide_column_store} ist eine solche Spalten-Familie zu sehen. Spalten Familien besitzen keine logische Struktur und geben somit kein Schema vor. Weiterhin können sie Millionen von Spalten beinhalten weshalb sie auch Wide Columns Stores genannt werden. Verwandte Spalten werden in Spalten-Familien durch eine von der Anwendung bereitgestellte Reihe von Schlüsseln identifiziert. Weiterhin muss in einer Spalten-Familie nicht jede Zeile aus den gleichen Spalten bestehen.
 
 \begin{figure}[H]
 	\centering
