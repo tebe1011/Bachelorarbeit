@@ -68,11 +68,11 @@
 \contentsline {section}{\numberline {6.2}Aufbau der Client.war}{41}{section.6.2}
 \contentsline {section}{\numberline {6.3}Erzeugung der Abfrage}{43}{section.6.3}
 \contentsline {section}{\numberline {6.4}ETL Prozess}{44}{section.6.4}
-\contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes}{46}{section.6.5}
-\contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{46}{section.6.6}
-\contentsline {chapter}{\numberline {7}Zusammenfassung}{49}{chapter.7}
-\contentsline {section}{\numberline {7.1}Ergebnisanalyse}{49}{section.7.1}
-\contentsline {section}{\numberline {7.2}Handlungsempfehlungen}{50}{section.7.2}
-\contentsline {section}{\numberline {7.3}Ergebnis}{50}{section.7.3}
-\contentsline {section}{\numberline {7.4}Ausblick}{51}{section.7.4}
-\contentsline {chapter}{Literaturverzeichnis}{53}{section*.39}
+\contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes ...Progress}{46}{section.6.5}
+\contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{47}{section.6.6}
+\contentsline {chapter}{\numberline {7}Zusammenfassung}{51}{chapter.7}
+\contentsline {section}{\numberline {7.1}Ergebnisanalyse}{51}{section.7.1}
+\contentsline {section}{\numberline {7.2}Handlungsempfehlungen}{52}{section.7.2}
+\contentsline {section}{\numberline {7.3}Ergebnis}{52}{section.7.3}
+\contentsline {section}{\numberline {7.4}Ausblick}{53}{section.7.4}
+\contentsline {chapter}{Literaturverzeichnis}{55}{section*.40}

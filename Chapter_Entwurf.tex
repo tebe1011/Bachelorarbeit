@@ -165,6 +165,7 @@ Beim Laden der Datensätze in den H2 kommt ein sogenannter "'bulk load"' zum Ein
 
 %% ===========================
 \section{Synchronisation des Datenbestandes}
+\label{ch:Konzeption:sec:updatedatenbestand}
 %% ===========================
 
 Systeme die auf den Datenbestand anderer Systeme aufbauen, können zwei verschiedenen Ansätze zur Sicherstellung ihrer Aktualität verfolgen. Unser nebenläufiges System bezeichnen wir als A und das System das den original Datenbestand beinhaltet als B. Einer der Ansätze ist die Intervall basierende Nachfrage über Veränderungen von A. Hierbei fragt A bei B in festgelegten Intervallen nach, ob Daten verändert wurden. Die Wahl des Nachfrage-Intervalls stellt dabei eine der größten Schwierigkeiten dar. Ist der Intervall zu groß, sinkt die Aktualität des Datenbestandes. Ist er zu klein, entsteht bei B ein starke Belastung. Der andere Ansatz ist das B über Benachrichtigungen A informiert. Dadurch werden keine unnötigen Abläufe angestoßen, da nur im Falle von neuen Daten, Prozesse in Bewegung gesetzt werden. Zwar wird die Aktualität der Daten gewährleistet jedoch büßt A an Entscheidungsfreiheit ein. A kann nicht mehr selbst entscheiden wann aktualisiert werden soll. Der zweite Ansatz ist zwar effizienter jedoch nicht immer umsetzbar. Das kann technische oder unternehmenspolitische Gründe haben, die notwendige Veränderung am Legacy Systems ausschließen.  
