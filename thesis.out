@@ -1,66 +1,63 @@
 \BOOKMARK [0][]{Inhaltsverzeichnis.0}{Inhaltsverzeichnis}{}% 1
 \BOOKMARK [0][]{chapter.1}{1 Einf\374hrung}{}% 2
-\BOOKMARK [1][-]{section.1.1}{1.1 Motivation}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.2}{1.2 Zielsetzung}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.3}{1.3 Gliederung der Arbeit}{chapter.1}% 5
-\BOOKMARK [0][]{chapter.2}{2 Grundlagen}{}% 6
-\BOOKMARK [1][-]{section.2.1}{2.1 NoSQL - Eine Einf\374hrung}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Document Stores}{section.2.1}% 8
-\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Extensible Record Store}{section.2.1}% 9
-\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 Key-Value-Store}{section.2.1}% 10
-\BOOKMARK [2][-]{subsection.2.1.4}{2.1.4 Graph Datenbanken}{section.2.1}% 11
-\BOOKMARK [2][-]{subsection.2.1.5}{2.1.5 NoSQL Theoretische Grundlagen}{section.2.1}% 12
-\BOOKMARK [1][-]{section.2.2}{2.2 In Memory Datenbanken}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.3}{2.3 Component Object Model}{chapter.2}% 14
-\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Architektur}{section.2.3}% 15
-\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 COM-Client}{section.2.3}% 16
-\BOOKMARK [2][-]{subsection.2.3.3}{2.3.3 COM-Server}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.4}{2.3.4 COM-Schnittstelle}{section.2.3}% 18
-\BOOKMARK [2][-]{subsection.2.3.5}{2.3.5 COM-Objekte}{section.2.3}% 19
-\BOOKMARK [2][-]{subsection.2.3.6}{2.3.6 Interface Definition Language}{section.2.3}% 20
-\BOOKMARK [0][]{chapter.3}{3 Systemanalyse}{}% 21
-\BOOKMARK [1][-]{section.3.1}{3.1 CAS genesisWorld}{chapter.3}% 22
-\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 Architektur}{section.3.1}% 23
-\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 Pr\344sentationsschicht \046 Logikschicht}{section.3.1}% 24
-\BOOKMARK [2][-]{subsection.3.1.3}{3.1.3 Datenhaltungsschicht}{section.3.1}% 25
-\BOOKMARK [1][-]{section.3.2}{3.2 Anforderungsanalyse}{chapter.3}% 26
-\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Funktionale Anforderungen}{section.3.2}% 27
-\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Nicht funktionale Anforderungen}{section.3.2}% 28
-\BOOKMARK [1][-]{section.3.3}{3.3 Ermittlung relevanter Daten}{chapter.3}% 29
-\BOOKMARK [0][]{chapter.4}{4 Analyse ausgew\344hlter Datenbanken}{}% 30
-\BOOKMARK [1][-]{section.4.1}{4.1 Datenbanken}{chapter.4}% 31
-\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 CouchDB}{section.4.1}% 32
-\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 MongoDB}{section.4.1}% 33
-\BOOKMARK [2][-]{subsection.4.1.3}{4.1.3 Voldemort}{section.4.1}% 34
-\BOOKMARK [2][-]{subsection.4.1.4}{4.1.4 Redis}{section.4.1}% 35
-\BOOKMARK [2][-]{subsection.4.1.5}{4.1.5 HBase}{section.4.1}% 36
-\BOOKMARK [2][-]{subsection.4.1.6}{4.1.6 Cassandra}{section.4.1}% 37
-\BOOKMARK [2][-]{subsection.4.1.7}{4.1.7 VoltDB}{section.4.1}% 38
-\BOOKMARK [2][-]{subsection.4.1.8}{4.1.8 H2}{section.4.1}% 39
-\BOOKMARK [1][-]{section.4.2}{4.2 Gegen\374berstellung}{chapter.4}% 40
-\BOOKMARK [1][-]{section.4.3}{4.3 Auswahl einer Datenbank}{chapter.4}% 41
-\BOOKMARK [0][]{chapter.5}{5 Konzeption}{}% 42
-\BOOKMARK [1][-]{section.5.1}{5.1 Architektur}{chapter.5}% 43
-\BOOKMARK [1][-]{section.5.2}{5.2 Technologien}{chapter.5}% 44
-\BOOKMARK [1][-]{section.5.3}{5.3 Datenbankdesign}{chapter.5}% 45
-\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Konzeptionelles Design}{section.5.3}% 46
-\BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Zugriffsstrukturen}{section.5.3}% 47
-\BOOKMARK [1][-]{section.5.4}{5.4 Extract Transform Load Prozess}{chapter.5}% 48
-\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Extract}{section.5.4}% 49
-\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Transform}{section.5.4}% 50
-\BOOKMARK [2][-]{subsection.5.4.3}{5.4.3 Load}{section.5.4}% 51
-\BOOKMARK [1][-]{section.5.5}{5.5 Synchronisation des Datenbestandes}{chapter.5}% 52
-\BOOKMARK [1][-]{section.5.6}{5.6 Darstellungskonzepte}{chapter.5}% 53
-\BOOKMARK [0][]{chapter.6}{6 Umsetzung}{}% 54
-\BOOKMARK [1][-]{section.6.1}{6.1 Aufbau der Server.war}{chapter.6}% 55
-\BOOKMARK [1][-]{section.6.2}{6.2 Aufbau der Client.war}{chapter.6}% 56
-\BOOKMARK [1][-]{section.6.3}{6.3 Erzeugung der Abfrage}{chapter.6}% 57
-\BOOKMARK [1][-]{section.6.4}{6.4 ETL Prozess}{chapter.6}% 58
-\BOOKMARK [1][-]{section.6.5}{6.5 Aktualisierung des Datenbestandes ...Progress}{chapter.6}% 59
-\BOOKMARK [1][-]{section.6.6}{6.6 Oberfl\344che}{chapter.6}% 60
-\BOOKMARK [0][]{chapter.7}{7 Zusammenfassung}{}% 61
-\BOOKMARK [1][-]{section.7.1}{7.1 Ergebnisanalyse}{chapter.7}% 62
-\BOOKMARK [1][-]{section.7.2}{7.2 Handlungsempfehlungen}{chapter.7}% 63
-\BOOKMARK [1][-]{section.7.3}{7.3 Ergebnis}{chapter.7}% 64
-\BOOKMARK [1][-]{section.7.4}{7.4 Ausblick}{chapter.7}% 65
-\BOOKMARK [0][]{section*.40}{Literaturverzeichnis}{}% 66
+\BOOKMARK [0][]{chapter.2}{2 Grundlagen}{}% 3
+\BOOKMARK [1][-]{section.2.1}{2.1 NoSQL - Eine Einf\374hrung}{chapter.2}% 4
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Document Stores}{section.2.1}% 5
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Extensible Record Store}{section.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 Key-Value-Store}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.4}{2.1.4 Graph Datenbanken}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.5}{2.1.5 NoSQL Theoretische Grundlagen}{section.2.1}% 9
+\BOOKMARK [1][-]{section.2.2}{2.2 In Memory Datenbanken}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{2.3 Component Object Model}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Architektur}{section.2.3}% 12
+\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 COM-Client}{section.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.3.3}{2.3.3 COM-Server}{section.2.3}% 14
+\BOOKMARK [2][-]{subsection.2.3.4}{2.3.4 COM-Schnittstelle}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.5}{2.3.5 COM-Objekte}{section.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.3.6}{2.3.6 Interface Definition Language}{section.2.3}% 17
+\BOOKMARK [0][]{chapter.3}{3 Systemanalyse}{}% 18
+\BOOKMARK [1][-]{section.3.1}{3.1 CAS genesisWorld}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 Architektur}{section.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 Pr\344sentationsschicht \046 Logikschicht}{section.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.1.3}{3.1.3 Datenhaltungsschicht}{section.3.1}% 22
+\BOOKMARK [1][-]{section.3.2}{3.2 Anforderungsanalyse}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Funktionale Anforderungen}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Nicht funktionale Anforderungen}{section.3.2}% 25
+\BOOKMARK [1][-]{section.3.3}{3.3 Ermittlung relevanter Daten}{chapter.3}% 26
+\BOOKMARK [0][]{chapter.4}{4 Analyse ausgew\344hlter Datenbanken}{}% 27
+\BOOKMARK [1][-]{section.4.1}{4.1 Datenbanken}{chapter.4}% 28
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 CouchDB}{section.4.1}% 29
+\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 MongoDB}{section.4.1}% 30
+\BOOKMARK [2][-]{subsection.4.1.3}{4.1.3 Voldemort}{section.4.1}% 31
+\BOOKMARK [2][-]{subsection.4.1.4}{4.1.4 Redis}{section.4.1}% 32
+\BOOKMARK [2][-]{subsection.4.1.5}{4.1.5 HBase}{section.4.1}% 33
+\BOOKMARK [2][-]{subsection.4.1.6}{4.1.6 Cassandra}{section.4.1}% 34
+\BOOKMARK [2][-]{subsection.4.1.7}{4.1.7 VoltDB}{section.4.1}% 35
+\BOOKMARK [2][-]{subsection.4.1.8}{4.1.8 H2}{section.4.1}% 36
+\BOOKMARK [1][-]{section.4.2}{4.2 Gegen\374berstellung}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.3}{4.3 Auswahl einer Datenbank}{chapter.4}% 38
+\BOOKMARK [0][]{chapter.5}{5 Konzeption}{}% 39
+\BOOKMARK [1][-]{section.5.1}{5.1 Architektur}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.2}{5.2 Technologien}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.3}{5.3 Datenbankdesign}{chapter.5}% 42
+\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Konzeptionelles Design}{section.5.3}% 43
+\BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Zugriffsstrukturen}{section.5.3}% 44
+\BOOKMARK [1][-]{section.5.4}{5.4 Extract Transform Load Prozess}{chapter.5}% 45
+\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Extract}{section.5.4}% 46
+\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Transform}{section.5.4}% 47
+\BOOKMARK [2][-]{subsection.5.4.3}{5.4.3 Load}{section.5.4}% 48
+\BOOKMARK [1][-]{section.5.5}{5.5 Synchronisation des Datenbestandes}{chapter.5}% 49
+\BOOKMARK [1][-]{section.5.6}{5.6 Darstellungskonzepte}{chapter.5}% 50
+\BOOKMARK [0][]{chapter.6}{6 Umsetzung}{}% 51
+\BOOKMARK [1][-]{section.6.1}{6.1 Aufbau der Server.war}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.2}{6.2 Aufbau der Client.war}{chapter.6}% 53
+\BOOKMARK [1][-]{section.6.3}{6.3 Erzeugung der Abfrage}{chapter.6}% 54
+\BOOKMARK [1][-]{section.6.4}{6.4 ETL Prozess}{chapter.6}% 55
+\BOOKMARK [1][-]{section.6.5}{6.5 Aktualisierung des Datenbestandes ...Progress}{chapter.6}% 56
+\BOOKMARK [1][-]{section.6.6}{6.6 Oberfl\344che}{chapter.6}% 57
+\BOOKMARK [0][]{chapter.7}{7 Zusammenfassung}{}% 58
+\BOOKMARK [1][-]{section.7.1}{7.1 Ergebnisanalyse}{chapter.7}% 59
+\BOOKMARK [1][-]{section.7.2}{7.2 Handlungsempfehlungen}{chapter.7}% 60
+\BOOKMARK [1][-]{section.7.3}{7.3 Ergebnis}{chapter.7}% 61
+\BOOKMARK [1][-]{section.7.4}{7.4 Ausblick}{chapter.7}% 62
+\BOOKMARK [0][]{section*.40}{Literaturverzeichnis}{}% 63
