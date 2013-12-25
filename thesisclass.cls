@@ -158,14 +158,6 @@
 {0.2ex plus 0.2ex minus 0.2ex}			% Post-Margin
 {\chapterheadfont\normalsize\bfseries}	% Style
 }
-\renewcommand{\paragraph}{%
-\@startsection{paragraph}%
-{4}		% Structure level
-{0mm}	% Indention
-{1.3ex plus 1ex minus 0.3ex}			% Pre-Margin
-{0.2ex plus 0.2ex minus 0.2ex}			% Post-Margin
-{\chapterheadfont\normalsize\bfseries}	% Style
-}
 \renewcommand{\subparagraph}{%
 \@startsection{subparagraph}%
 {5}		% Structure level
