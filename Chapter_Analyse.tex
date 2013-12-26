@@ -92,6 +92,8 @@ Die Spalten GUID1 und GUID2 beinhalten die jeweiligen Primärschlüssel, der in 
 
 Während der Anforderungsanalyse, wird ermittelt, welche Eigenschaften und Fähigkeiten das System zur Erreichung des Ziels benötigt. Wir unterscheiden bei der Einteilung der Anforderungen, zwischen Funktionalen und nicht Funktionalen. Wie der Name bereits verratet, wird bei dem erst genannten, die Funktionalität des zu erstellenden Systems beschrieben. Unter die Kategorie der nicht Funktionalen fallen alle anderen Anforderungen. 
 
+Bevor wird auf die funktionalen und nicht funktionalen Anforderungen eingehen, wird die Fragestellung beschrieben, die mit dem System beantwortet werden soll. Mit dem zu entwickelndem System soll eine Art Ranking von Personen des Systems möglich sein. Dabei soll ermittelt werden können, welche Personen die Stärkste Beziehung, zu einer vorher bestimmten Person, besitzen. Der Nutzer soll dadurch erkennen, mit welchen Personen er am meisten Kontakt hat. Die Häufigkeit des Kontakts wird dabei anhand von fünf verschiedenen Kriterien ermittelt. Zu einem wird der E-Mail Verkehr, der Personen, für die Betrachtung herangezogen. Überdies werden die Telefonate unter den Personen miteinbezogen. Außerdem spielen nachvollziehbare Treffen(Termine) eine Rolle. Zwischen Personen geteilte Dokumente werden auch als Kriterium festgesetzt. Das letzte Kriterium stell die Verkaufschance gegenüber einem Kunden dar. Wie stark letztendlich die Beziehung zu einer anderen Person ist, wird anhand der Anzahl solcher Kriterien ermittelt.  
+
 %% ===========================
 \subsection{Funktionale Anforderungen}
 %% ===========================
@@ -157,7 +159,7 @@ Die Datenbank der CAS Software AG umfasst 398 Tabellen, die zusammen wiederum 11
 
 Für den Ausgangspunkt der Suche, wurde eine Tabelle namens SysUser verwendet. Sie beinhaltet jeden Benutzer des Systems. Ihre Eignung beruht auf der Annahme, dass bei der Bewertung von Beziehungen zwischen Personen, die Person selbst dabei immer den Ausgangspunkt der Suche darstellt. Aus Datenbanksicht bedeutet, dass zuerst eine Tupel der SysUser Tabelle mit Ihrer GGUID herangezogen wird. Die GGUID ist dabei der erste Wert, nachdem in der gesamten Datenbank gesucht wird. Sobald alle Tabellen gefunden wurden, die den Wert beinhalten, werden deren GGUIDs für die weitere Suche verwendet. Die Menge der Suche wird nach jedem Schritt, um die Teilmenge der bereits gefundenen Tabellen verringert. Die Suche wird abgebrochen, sobald die Suchmenge keine Werte mehr aufweist oder keine Tabellen mehr mit den entsprechenden Werten gefunden wurden. Durch dieses Vorgehen erhält man am Ende alle Beziehungen, aufbauend auf der Annahme, dass die GGUID als Referenzierungswert benutzt wurde. In Abbildung \ref{gw_schema_alt}, ist ein schon auf das Wesentliche reduzierter Ausschnitt, des Ergebnisses zu sehen. 
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
   \includegraphics[width=1.0\textwidth]{pics/schema_alt.pdf}
 	\caption{Auszug aus dem Schema des MSSQL 2008}
