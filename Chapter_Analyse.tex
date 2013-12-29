@@ -54,7 +54,7 @@ Die Funktionalität des CAS genesisWorld-Applikationsservers, wurde in Form von 
 
 Die Server-SDK-PlugIns bieten die Möglichkeit, die Datenverarbeitung um eine eigene Logik zu erweitern oder zu modifizieren. 
 
-Realisiert werden die PlugIns als COM-Objekte, die ein PlugIn-Interface namens IGWSDKDataPlugIn implementieren. Das erstellte COM-Objekt wird im Server von CAS genesisWorld registriert. Der Server delegiert bei einer Datenoperation den Aufruf an die für den jeweiligen Datensatz-Typen registrierten PlugIns. In Abbildung \ref{gw_plugin} wird anhand eines Beispieles der Vorgang verdeutlicht.
+Realisiert werden die PlugIns als COM-Objekte, die ein PlugIn-Interface namens \textit{IGWSDKDataPlugIn} implementieren. Das erstellte COM-Objekt wird im Server von CAS genesisWorld registriert. Der Server delegiert bei einer Datenoperation den Aufruf an die für den jeweiligen Datensatz-Typen registrierten PlugIns. In Abbildung \ref{gw_plugin} wird anhand eines Beispieles der Vorgang verdeutlicht.
 
 \begin{figure}[H]
 	\centering
@@ -74,7 +74,7 @@ Die Werte-Teilmenge des aktuell verarbeiteten Datensatzes kann verändert, d.h. 
 
 Die Datenhaltungsschicht enthält einen Microsoft SQL Server 2008 (MSSQL). Der SQL Server ist ein relationales Datenbankmanagementsystem (RDBMS) von Microsoft, dass für den Einsatz im Konzern Umfeld konzipiert wurde. MSSQL verwendet T-SQL (Transact-SQL), eine Erweiterungen von Sybase und Microsoft, die mehrere Funktionen zum SQL-Standard hinzufügt \cite{tech2013}. Weiterhin unterstützt MSSQL standardisierte Datenbankschnittstellen, wie Open Database Connectivity (ODBC) und Java Database Connectivity (JDBC).
   
-In den meisten relationalen Datenbanken werden Beziehungen über Primär-/ Fremdschlüsselbeziehungen hergestellt. In der CAS genesisWorld Datenbank werden nur Primärschlüssel eingesetzt. Die Beziehungen werden nicht wie sonst in mehreren Zwischentabellen realisiert, sondern in einer einzigen Tabelle, die RelationTable. In Abbildung \ref{gw_2} ist ein Beispiel zu sehen.
+In den meisten relationalen Datenbanken werden Beziehungen über Primär-/ Fremdschlüsselbeziehungen hergestellt. In der CAS genesisWorld Datenbank werden nur Primärschlüssel eingesetzt. Die Beziehungen werden nicht wie sonst in mehreren Zwischentabellen realisiert, sondern in einer einzigen Tabelle, die \textit{RelationTable}. In Abbildung \ref{gw_2} ist ein Beispiel zu sehen.
 
 \begin{figure}[ht]
 	\centering
@@ -83,7 +83,7 @@ In den meisten relationalen Datenbanken werden Beziehungen über Primär-/ Fremd
 	\label{gw_2}
 \end{figure}
 
-Die Spalten GUID1 und GUID2 beinhalten die jeweiligen Primärschlüssel, der in Beziehung zu setzenden Tabellen. Als Zuordnungsmerkmal für die GGUID`s zu Ihren Tabellen, dienen die Spalten TableSign1 und TableSign2, deren Werte Kürzel der Tabellennamen sind. Möglich wird die Verknüpfung verschiedener Tabellen, durch einen besonderen Primärschlüssel. Dieser wird für jede neue Zeile generiert und ist in der gesamten Datenbank eindeutig. Er wird als Genesis Global Unique Identifier (GGUID) bezeichnet und ist ein 16 stelliger Binär-Wert. Alle Tabellen besitzen eine Spalte mit solchen Werten, was eine Datenintegrität in der gesamten Datenbank sicherstellt.
+Die Spalten \textit{GUID1} und \textit{GUID2} beinhalten die jeweiligen Primärschlüssel, der in Beziehung zu setzenden Tabellen. Als Zuordnungsmerkmal für die \textit{GGUID}s zu Ihren Tabellen, dienen die Spalten \textit{TableSign1} und \textit{TableSign2}, deren Werte Kürzel der Tabellennamen sind. Möglich wird die Verknüpfung verschiedener Tabellen, durch einen besonderen Primärschlüssel. Dieser wird für jede neue Zeile generiert und ist in der gesamten Datenbank eindeutig. Er wird als Genesis Global Unique Identifier (GGUID) bezeichnet und ist ein 16 stelliger Binär-Wert. Alle Tabellen besitzen eine Spalte mit solchen Werten, was eine Datenintegrität in der gesamten Datenbank sicherstellt.
 
 %% ===========================
 \section{Anforderungsanalyse}
@@ -103,19 +103,19 @@ Folgende funktionalen Anforderungen wurden erhoben:
 \begin{itemize}
 \item Ermittlung der Anzahl, der Beziehungen zwischen zwei Personen
 
-\item Ranking der Ergebnisse
+\item Ranking der Personen, basierend auf der Anzahl der Summe von Verbindungsmerkmalen, zu der Person von der die Suche ausgeht
 
-\item Rückgabewert soll den Gesamtwert der Abfrage beinhaltet, sowie die einzelnen Werte aus denen er sich zusammensetzt
+\item Abfrageergebnis soll die Summe der gesamten Verbindungsmerkmale, sowie die Summe der einzelnen Verbindungsmerkmale, zu den jeweiligen Person enthalten
 
-\item Begrenzung der Ergebnisse, durch die Anzahl der zurückgelieferten Personen
+\item Begrenzung des Ergebnisses, hinsichtlich der Anzahl der Personen
 
-\item Möglichkeit zum eingrenzen der Ergebnisse auf einen Zeitraum
+\item Möglichkeit zum eingrenzen des Ergebnisses auf einen Zeitraum
 
 \item Ein- und Ausblenden von Suchkriterien, ohne eine neue Anfrage senden zu müssen
 
-\item Manuelles gewichten der Suchkriterien
+\item Gewichtung der Suchkriterien durch den Nutzer
 
-\item Gewichten der Zeitspannen durch den Nutzer
+\item Gewichtung von Zeitspannen durch den Nutzer
 
 \item Filterung der Ergebnismenge durch,	
 	\begin{itemize}
@@ -135,18 +135,18 @@ Folgende funktionalen Anforderungen wurden erhoben:
 Folgende nicht funktionale Anforderungen wurden erhoben:
 
 \begin{itemize}
-
-	\item In Memory Datenbanken in Betracht ziehen, bei Tauglichkeit einsetzen und testen
 	
-	\item Nur eine Rechner Instanz für Datenbank und Applikationsserver 
+	\item Eine Rechnerinstanz für Datenbankserver und Applikationsserver 
 	
-	\item Antwortzeiten des Systems möglichst gering halten
+	\item Sehr hohe Abfragegeschwindigkeit
 	
-	\item Beachtung der Portabilität, damit der entwickelte Prototyp einfach auf anderen Systemen installiert werden kann.
+	\item Lose Kopplung	(zwischen Logik und Darstellung)
 	
-	\item Lose Kopplung zwischen Präsentationsschicht und Logikschicht
+	\item Hohe Portabilität
 	
-	\item Daten auf der Oberfläche graphisch aufbereitet darstellen; keine Konsolen Eingabe/Ausgabe
+	\item Graphische Darstellung des Ergebnisses
+	
+	\item keine zusätzliche Kosten
 
 \end{itemize}
 
@@ -155,9 +155,9 @@ Folgende nicht funktionale Anforderungen wurden erhoben:
 \label{ch:Systemanalyse:sec:Information}
 %% ===========================
 
-Die Datenbank der CAS Software AG umfasst 398 Tabellen, die zusammen wiederum 11.620 Spalten beinhalten. Aufgrund einer fehlender Dokumentation, über die Umsetzung der darüberliegenden Anwendungsschicht und der Abwesenheit von definierten Beziehungen innerhalb der Datenbank, wurde ein eigenes Verfahren zur Ermittlung der Beziehungen entwickelt. 
+Die Datenbank der CAS Software AG umfasst 398 Tabellen, die zusammen wiederum 11.620 Spalten beinhalten. Aufgrund einer fehlender Dokumentation über die Umsetzung der Anwendungsschicht und der Abwesenheit von definierten Beziehungen innerhalb der Datenbank, wurde ein eigenes Verfahren zur Ermittlung der Beziehungen entwickelt. 
 
-Für den Ausgangspunkt der Suche, wurde eine Tabelle namens SysUser verwendet. Sie beinhaltet jeden Benutzer des Systems. Ihre Eignung beruht auf der Annahme, dass bei der Bewertung von Beziehungen zwischen Personen, die Person selbst dabei immer den Ausgangspunkt der Suche darstellt. Aus Datenbanksicht bedeutet, dass zuerst eine Tupel der SysUser Tabelle mit Ihrer GGUID herangezogen wird. Die GGUID ist dabei der erste Wert, nachdem in der gesamten Datenbank gesucht wird. Sobald alle Tabellen gefunden wurden, die den Wert beinhalten, werden deren GGUIDs für die weitere Suche verwendet. Die Menge der Suche wird nach jedem Schritt, um die Teilmenge der bereits gefundenen Tabellen verringert. Die Suche wird abgebrochen, sobald die Suchmenge keine Werte mehr aufweist oder keine Tabellen mehr mit den entsprechenden Werten gefunden wurden. Durch dieses Vorgehen erhält man am Ende alle Beziehungen, aufbauend auf der Annahme, dass die GGUID als Referenzierungswert benutzt wurde. In Abbildung \ref{gw_schema_alt}, ist ein schon auf das Wesentliche reduzierter Ausschnitt, des Ergebnisses zu sehen. 
+Für den Ausgangspunkt der Suche, wurde eine Tabelle namens \textit{SysUser} verwendet. Sie beinhaltet jeden Benutzer des Systems. Ihre Eignung beruht auf der Annahme, dass bei der Bewertung von Beziehungen zwischen Personen, die Person selbst dabei immer den Ausgangspunkt der Suche darstellt. Aus Datenbanksicht bedeutet, dass zuerst eine Tupel der \textit{SysUser} Tabelle mit Ihrer \textit{GGUID} herangezogen wird. Die \textit{GGUID} ist dabei der erste Wert, nachdem in der gesamten Datenbank gesucht wird. Sobald alle Tabellen gefunden wurden, die den Wert beinhalten, werden deren \textit{GGUID}s für die weitere Suche verwendet. Die Menge der Suche wird nach jedem Schritt, um die Teilmenge der bereits gefundenen Tabellen verringert. Die Suche wird abgebrochen, sobald die Suchmenge keine Werte mehr aufweist oder keine Tabellen mehr mit den entsprechenden Werten gefunden wurden. Durch dieses Vorgehen erhält man am Ende alle Beziehungen, aufbauend auf der Annahme, dass die \textit{GGUID} als Referenzierungswert benutzt wurde. In Abbildung \ref{gw_schema_alt}, ist ein schon auf das Wesentliche reduzierter Ausschnitt, des Ergebnisses zu sehen. 
 
 \begin{figure}[htbp]
 	\centering
@@ -166,16 +166,16 @@ Für den Ausgangspunkt der Suche, wurde eine Tabelle namens SysUser verwendet. S
 	\label{gw_schema_alt}
 \end{figure}
 
-Von den ursprünglich 398 Tabellen sind nur noch 17 übrig geblieben, auf die im Weiteren Verlauf eingegangen wird. Alle Tabellen enthalten in der ursprünglichen Form wesentlich mehr Spalten und wurden der Übersicht halber entfernt. Tabelle SysUser besitzt drei Spalten, die von Bedeutung sind. Eine davon ist die GGUID, die im folgenden nicht mehr erwähnt wird, da Sie jede Tabelle enthält. Die OID wird für jeden Nutzer einmalig vergeben und wird in anderen Tabellen als Zuordnungsmerkmal verwendet. LoginName ist wie der Name schon sagt, der Benutzername des Nutzers und kann beim anmelden auf der Oberfläche, wieder verwendet werden. 
+Von den ursprünglich 398 Tabellen sind nur noch 17 übrig geblieben, auf die im Weiteren Verlauf eingegangen wird. Alle Tabellen enthalten in der ursprünglichen Form wesentlich mehr Spalten und wurden der Übersicht halber entfernt. Tabelle\textit{SysUser} besitzt drei Spalten, die von Bedeutung sind. Eine davon ist die \textit{GGUID}, die im folgenden nicht mehr erwähnt wird, da sie jede Tabelle enthält. Die \textit{OID} wird für jeden Nutzer einmalig vergeben und wird in anderen Tabellen als Zuordnungsmerkmal verwendet. \textit{LoginName} ist wie der Name schon sagt, der Benutzername des Nutzers und kann beim anmelden auf der Oberfläche, wieder verwendet werden. 
 
-Aufgrund der Anforderung, Filterung durch Gruppen, wurden die Tabellen SysGroupMember und SysGroup hinzugezogen. SysGroup besitzt eine GID, die das Gleiche für Gruppen ist, wie die OID für Personen. Das Attribut GroupName, wird für die Anzeige an der Oberfläche benötigt. Mithilfe dessen der Nutzer erkennen kann, welche Gruppe er gerade ausgewählt hat. SysGroupMember stellt die Auflösungstabelle zwischen SysUser und SysGroup dar. Die Spalte GroupID beinhaltet Werte aus der SysGroup-GGUID Spalte. MemberID folgt dem gleichen Ansatz, mit den SysUser-GGUID Werten. In Hinsicht auf die Logikschicht, wird die Spalte InsertTimestamp für Veränderungen innerhalb der Gruppen benötigt.
+Aufgrund der Anforderung, Filterung durch Gruppen, wurden die Tabellen \textit{SysGroupMember} und \textit{SysGroup} hinzugezogen. \textit{SysGroup} besitzt eine \textit{GID}, die sich bei Gruppen genauso verhält, wie die \textit{OID} bei den Personen. Das Attribut \textit{GroupName}, wird für die Anzeige an der Oberfläche benötigt. Mithilfe dessen der Nutzer erkennen kann, welche Gruppe er gerade ausgewählt hat. \textit{SysGroupMember} stellt die Auflösungstabelle zwischen \textit{SysUser} und \textit{SysGroup} dar. Die Spalte \textit{GroupID} beinhaltet Werte aus der \textit{SysGroup-GGUID} Spalte. \textit{MemberID} folgt dem gleichen Ansatz, mit den \textit{SysUser-GGUID} Werten. In Hinsicht auf die Logikschicht, wird die Spalte \textit{InsertTimestamp} für Veränderungen innerhalb der Gruppen benötigt.
 
-Die Adress0 Tabelle wird für die restlichen Filter Anforderungen benötigt. Town1 und Country1 geben die Stadt sowie das Land an, in der die Person ansässig ist. Zur Ermittlung, ob eine Person eine Kontaktperson, Mitarbeiter oder eine Firma repräsentiert, werden die Attribute gwIsContact, gwIsEmployee und gwIsCompany benötigt. Name und ChristianName beinhalten den Vor- und Nachname der Person, welche bei der Zuordnung der Ergebnisse an der Benutzeroberfläche hilfreich sind. Im voraus ist zu sagen, dass nicht alle Telefongespräche, über die dafür bestimmten Tabellen ermittelt werden können. Deswegen werden die Attribute PhoneFieldStr1-10 benötigt, mithilfe derer eine Zuordnung ermöglicht wird. 
+Die \textit{Adress0} Tabelle wird für die restlichen Filter Anforderungen benötigt. \textit{Town1} und \textit{Country1} geben die Stadt sowie das Land an, in der die Person ansässig ist. Zur Ermittlung, ob eine Person eine Kontaktperson, Mitarbeiter oder eine Firma repräsentiert, werden die Attribute \textit{gwIsContact}, \textit{gwIsEmployee} und \textit{gwIsCompany} benötigt. Name und \textit{ChristianName} beinhalten den Vor- und Nachname der Person, welche bei der Zuordnung der Ergebnisse an der Benutzeroberfläche hilfreich sind. Im voraus ist zu sagen, dass nicht alle Telefongespräche, über die dafür bestimmten Tabellen ermittelt werden können. Deswegen werden die Attribute \textit{PhoneFieldStr1-10} benötigt, mithilfe derer eine Zuordnung ermöglicht wird. 
 
-Die TableRelation enthält, wie in Abschnitt \ref{ch:Systemanalyse:sec:genesisWorld:subsec:db} behandelt, die Beziehungen der Datenbank. Auf das Szenario bezogen, wird für die GUID1 die GGUID der SysUser benutzt. Mithilfe der GUID2 könne,n die mit der Person verknüpften Termine, Verkaufschancen, Telefonate, Dokumente und Emails ermittelt werden. TableSign1 und TableSign2 werden zur Identifikation der jeweiligen Tabellen benötigt.
+Die \textit{TableRelation} enthält, wie in Abschnitt \ref{ch:Systemanalyse:sec:genesisWorld:subsec:db} behandelt, die Beziehungen der Datenbank. Auf das Szenario bezogen, wird für die \textit{GUID1} die \textit{GGUID} der \textit{SysUser} benutzt. Mithilfe der \textit{GUID2} könne,n die mit der Person verknüpften Termine, Verkaufschancen, Telefonate, Dokumente und E-Mails ermittelt werden. \textit{TableSign1} und \textit{TableSign2} werden zur Identifikation der jeweiligen Tabellen benötigt.
 
-GWOpportunity0 enthält alle Informationen zu Verkaufschancen. Das Attribut InsertTimestamp wird zur Feststellung des Erzeugungszeitpunktes benötigt. Start\_dt und end\_dt legen den Zeitraum der Verkaufschance fest. Der Besitzer einer Verkaufschance, wird über die AccountGUID bestimmt. Mit EMailStore0, Document0 Appointment0 und gwPhoneCall0 verhält es sich wie mit GWOpportunity0. Bei EMailStore0 ist zu erwähnen, dass SendDate zur zeitlichen Einordnung verwendet werden kann. Das Attribut DialledNumber der Tabelle gwPhoneCall0, wird zum Vergleich  mit der in der Adresse hinterlegten Telefonnummer, benötigt. Zur Überprüfung ob das Telefonat über einen Tag hinausging, wird das Attribut duration herangezogen.
+\textit{GWOpportunity0} enthält alle Informationen zu Verkaufschancen. Das Attribut \textit{InsertTimestamp} wird zur Feststellung des Erzeugungszeitpunktes benötigt. \textit{Start\_dt} und \textit{end\_dt} legen den Zeitraum der Verkaufschance fest. Der Besitzer einer Verkaufschance, wird über die \textit{AccountGUID} bestimmt. Mit \textit{EMailStore0}, \textit{Document0} \textit{Appointment0} und \textit{gwPhoneCall0} verhält es sich wie mit \textit{GWOpportunity0}. Bei \textit{EMailStore0} ist zu erwähnen, dass \textit{SendDate} zur zeitlichen Einordnung verwendet werden kann. Das Attribut \textit{DialledNumber} der Tabelle \textit{gwPhoneCall0}, wird zum Vergleich  mit der in der Adresse hinterlegten Telefonnummer, benötigt. Zur Überprüfung ob das Telefonat über einen Tag hinausging, wird das Attribut \textit{duration} herangezogen.
 
-Bis jetzt galt die Annahme, dass alle Beziehungen über die TableRelation bestimmt werden können. Dies trifft allerdings nicht ganz zu. Dort werden nur, die an der Oberfläche manuell verknüpften Tabellen aufbewahrt. Die restlichen Beziehungen können aus den ORel-Tabellen ermittelt werden. Jeder dieser Tabellen enthält eine OID bzw. GID, die zur Bestimmung der beteiligten Personen und/oder Gruppen dienen.
+Bis jetzt galt die Annahme, dass alle Beziehungen über die\textit{TableRelation} bestimmt werden können. Dies trifft allerdings nicht für alle Beziehungen zu. Dort werden nur, die an der Oberfläche manuell verknüpften Tabellen aufbewahrt. Die restlichen Beziehungen können aus den ORel-Tabellen ermittelt werden. Jeder dieser Tabellen enthält eine \textit{OID} bzw. \textit{GID}, die zur Bestimmung der beteiligten Personen und/oder Gruppen dienen.
 
-Eine Betrachtung basierend auf Zeitspannen, impliziert Veränderungen der Daten über die Zeit gesehen. Um diese Änderungen zu erfassen, wird die Tabelle ChangeLogBook benötigt. NewFieldValue enthält den neuen Wert eines Feldes. Wohingegen OldFieldValue den alten Wert des Feldes enthält. Die Spalte des geänderten Wertes ist in FieldName hinterlegt. Der Name der Tabelle, ist der Spalte TableName zu entnehmen. Die Referenzierung auf eine Tupel wird in der Spalte TableGUID vorgenommen. Aus Gründen des Speicherplatzverbrauchs werden nur varchar Datentypen bei Zeichenfolgen verwendet. Varchar ist jedoch auf 4000 Zeichen limitiert. Falls Zeichenfolgen diese Grenze überschreiten, werden die in der Tabelle MemoLogBook abgelegt. Dort wird der Datentyp Text verwendet, der eine maximale Zeichenfolge von $2^{31-1}$  erlaubt.
+Eine Betrachtung basierend auf Zeitspannen, impliziert Veränderungen der Daten über die Zeit gesehen. Um diese Änderungen zu erfassen, wird die Tabelle \textit{ChangeLogBook} benötigt. \textit{NewFieldValue} enthält den neuen Wert eines Feldes. Wohingegen \textit{OldFieldValue} den alten Wert des Feldes enthält. Die Spalte des geänderten Wertes ist in \textit{FieldName} hinterlegt. Der Name der Tabelle, ist der Spalte \textit{TableName} zu entnehmen. Die Referenzierung auf eine Tupel wird in der Spalte \textit{TableGUID} vorgenommen. Aus Gründen des Speicherplatzverbrauchs werden nur varchar Datentypen bei Zeichenfolgen verwendet. Varchar ist jedoch auf 4000 Zeichen limitiert. Falls Zeichenfolgen diese Grenze überschreiten, werden die in der Tabelle \textit{MemoLogBook} abgelegt. Dort wird der Datentyp Text verwendet, der eine maximale Zeichenfolge von $2^{31-1}$  erlaubt.

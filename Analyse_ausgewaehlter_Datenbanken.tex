@@ -7,13 +7,14 @@ Ein Ziel der Bachelor Thesis ist hohe Performance in der Beantwortung der Benutz
 
 %% ===========================
 \section{Datenbanken}
-\label{ch:AnalyseDatenbanken}
+\label{ch:AnalyseDatenbanken:sec:Datenbanken}
 %% ===========================
 
 Im folgenden werden nun einige Datenbanken vorgestellt. Dabei wird insbesondere versucht, einen guten Überblick über die Charakteristika der einzelnen Datenbanken zu geben. Der dahinter stehende Gedanken ist, dass der Vergleich und die Auswahl, besser nachvollziehbar werden. 
 
 %% ===========================
 \subsection{CouchDB}
+\label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:CouchDB}
 %% ===========================
 
 CouchDB \cite{couch2013} ist eine dokumentenorientierten Datenbank, die seit Anfang 2008 unter der  Apache-Lizenz verbreitet wird. In CouchDB werden die Daten in Collections anstatt in Tabellen abgelegt. Collections bestehen aus einer Sammlung von unabhängigen Dokumenten. Jedes Dokument verwaltet seine eigenen Daten in einem freien Schema. 
@@ -22,6 +23,7 @@ CouchDB unterscheidet sich von anderen Systemen dadurch, dass es Eventual Consis
 
 %% ===========================
 \subsection{MongoDB}
+\label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:MongoDB}
 %% ===========================
 
 MongoDB ist ein in C++ geschriebener, Open Source Document Store \cite{books/daglib/0025185}. Es besitzt einige Ähnlichkeiten mit CouchDB. Beide bieten Indizes auf Collections, sind lockless, und bieten einen Abfragemechanismus für Dokumente. Es gibt jedoch wichtige Unterschiede:
@@ -38,6 +40,7 @@ MongoDB speichert Daten in einem JSON-ähnlichen, binären Format namens BSON. B
 
 %% ===========================
 \subsection{Voldemort}
+\label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:Voldemort}
 %% ===========================
 
 Projekt Voldemort \cite{vod2013} ist ein verteilter Key-Value-Store (entwickelt von LinkedIn), der ein hoch skalierbares Speicher-System zur Verfügung stellt. Voldemort repliziert sich durch automatisches partitionieren und anschließendes verteilen der Daten auf multiple Server. Jeder Server stellt einen unabhängigen Knoten im System dar, der für die Verwaltung seiner Daten verantwortlich ist. Dadurch existiert kein Single Point of Failure im Cluster. Ein solches Daten Model erlaubt eine Cluster Expansion, ohne eine Neuverteilung der Daten vornehmen zu müssen. In Voldemort können verschiedene Storage Systeme, wie BerkeleyDB oder MySQL eingesetzt werden. 
@@ -57,12 +60,14 @@ Eine Möglichkeit für Range Scans ist dabei nicht vorhanden. Der Parameter Vers
 
 %% ===========================
 \subsection{Redis}
+\label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:Redis}
 %% ===========================
 
 Redis \cite{red2013} ist ein In-Memory-, Key-Value-Store mit einer Option für Persistenz. Redis Datenmodell unterstützt Strings, Hashes, Listen, Mengen und sortierte Mengen. Obwohl Redis für In-Memory-Daten entworfen wurde, kann je nach Anwendungsfall ein (semi-) persistenter Bestand angelegt werden. Entweder durch Momentaufnahmen der Daten und anschließendes ablegen auf der Festplatte, in regelmäßigen Abständen oder durch Aufzeichnen eines Logs mit allen ausgeführten Operationen. Weiterhin kann Redis mit einem Master-Slave-Architektur repliziert werden. Genau wie andere Key-Value-Stores implementiert Redis insert, delete und lookup Operatoren. Weiterhin setzt Redis atomare Updates durch locking um. 
 
 %% ===========================
 \subsection{HBase} 
+\label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:HBase}
 %% ===========================
 
 HBase ist eine verteiltes, Open Source Column Store Datenbanksystem, welches auf Googles BigTable basiert \cite{Chang:2006:BDS:1267308.1267323}. HBase läuft auf Apache Hadoop und Apache ZooKeeper  \cite{Hunt:2010:ZWC:1855840.1855851} und verwendet das Hadoop Distributed Filesystem (HDFS) \cite{Shvachko:2010:HDF:1913798.1914427}, um Störung-Toleranz und Replikation zu bieten. Zeilen Operationen sind in HBase atomar, mit Sperren auf Zeilenebene und Transaktionen. Partitionierung und Verteilung sind transparent, da es keine Client-Seitiges Hashing oder feste Schlüsselräume wie in einigen NoSQL-Systeme gibt. 
@@ -70,6 +75,7 @@ Insbesondere stellt es lineare und modulare Skalierbarkeit, sowie streng konsist
 
 %% ===========================
 \subsection{Cassandra} 
+\label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:Cassandra}
 %% ===========================
 Apache Cassandra ist eine verteilte Column Store Datenbank die von Facebook entwickelt wurde \cite{Lakshman:2010:CDS:1773912.1773922}. Sie ist eine Mischung aus Amazon Dynamo und Google BigTable, wodurch sie des öfteren als Hybrid zwischen Key-Value-Store und Column Store bezeichnet wird. Cassandra wurde entwickelt, um große Daten-Workloads über mehrere Knoten, ohne Single Point of Failure zu behandeln. Die Architektur ist von der Annahme geprägt, dass System-und Hardware-Fehler auftreten können und auch wirklich auftreten. Cassandra behandelt das Problem von Fehlern durch Verwendung eines Peer-to-Peer-System, in dem alle Knoten gleich sind und die Daten von allen Knoten des Clusters verteilt werden. Jeder Knoten tauscht Informationen über das Cluster im Sekunden Takt aus. Ein Commit-Log auf jedem Knoten fängt Schreibaktivität ab, um Datenhaltbarkeit zu gewährleisten. Daten werden auch auf eine In-Memory Struktur geschrieben, die memtable. Sobald die Speicherstruktur voll ist, werden die Daten in eine Datei auf die Festplatte geschrieben, auch SSTable genannt. Alle Schreibvorgänge werden automatisch aufgeteilt und in Cluster repliziert. 
 
@@ -79,12 +85,14 @@ Ein weiteres Unterscheidungsmerkmal stellt die Möglichkeit zur Angabe der Konsi
 
 %% ===========================
 \subsection{VoltDB} 
+\label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:VoltDB}
 %% ===========================
 
 VoltDB \cite{volt2013a} ist ein ACID-konformes, relationales In-Memory-Datenbanksystem, abgeleitet vom Forschungsprototyp H-Store \cite{kallman08}. Es basiert auf einer Shared-Nothing-Architektur und wurde entwickelt, um auf einem Cluster mit mehreren Knoten zu laufen. Dies wird erreicht, indem man die Datenbank in getrennte Partitionen aufteilt, bei dem jeder Knoten, Besitzer und Verantwortlicher für die jeweiligen Partitionen ist. Durch Verwendung von Stored procedures als Transaktionseinheit, werden Round-Trip-Messages zwischen SQL Anfragen verhindert. Die Anfragen werden seriell in einem einzigen Thread ausgeführt, sodass kein locking and latching mehr notwendig ist \cite{volt2013b}. Die Daten werden im Arbeitsspeicher gehalten, was eine Ausführung ohne Netzwerkzugriff und I/O Vorgänge ermöglicht, falls die Daten nur auf einem Knoten liegen.  
 
 %% ===========================
 \subsection{H2} 
+\label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:H2}
 %% ===========================
 
 H2 ist ein in Java geschriebenes relationales Datenbanksystem, dass im Jahre 2004 von Thomas Müller veröffentlicht wurde. Es wird unter der Eclipse Public License verbreitet und ist damit Open Source. H2 bietet neben den festplattenbasierten Tabellen, auch eine In-Memory Variante an. Tabellen können dabei dauerhaft oder temporär sein. Weiterhin beherrscht H2 referenzielle Integrität, Transaktionen, Clustering, Datenkompression, Verschlüsselung und SSL. Die Datenbank kann im Embedded- oder Server-Modus betrieben werden.

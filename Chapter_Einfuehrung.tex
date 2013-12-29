@@ -1,8 +1,6 @@
-%% content.tex
-%%
-
 %% ==============
 \chapter{Einführung}
+\label{ch:Einfuehrung}
 %% ==============
 
 Unternehmen fällt es immer schwerer sich über Produkte am Markt zu differenzieren, aufgrund der stetig steigenden Homogenität und der damit verbunden Austauschbarkeit der Produkte. Dadurch werden Kunden- und Serviceorientierung besonders interessant für die Differenzierung vom Wettbewerb. Durch eine höherwertige und individuelle Kundebearbeitung, können unter anderem für Unternehmen Wettbewerbsvorteile entstehen. Sämtliche Prozesse und Gestaltungen innerhalb des Unternehmens, die darauf abzielen, werden unter dem Terminus Customer Relationship Management(CRM) zusammengefasst. Unter dem CRM-Ansatz versteht man die Bearbeitung der Beziehung eines Unternehmens zu seinem Kunden. Dabei wird sich zum Ziel gesetzt, die Aufgaben im Kundenmanagement schneller und effizienter zu bewältigen. CRM-Systeme bieten hierzu die technologische Unterstützung. Systeme dieser Art sind meist Datenbankanwendungen, die zur strukturierten Erfassung sämtlicher Daten beim Kundenkontakt dienen. In CRM-Systemen werden vier Hauptzielrichtungen fokussiert, die unabhängig von der sich doch stark unterscheidenden Umsetzungen innerhalb der verschiedenen CRM-Systemen sind. Zu einem erhofft man sich eine innovative und zielgerichtete Leistungsangebot Erstellung für den Kunden. Zum anderen wird eine Optimierung der eigenen Geschäftsprozesse im Kundenmanagement angestrebt. Weiterhin wird auf eine verbesserte Analyse, der Kundendaten gesetzt. Überdies setzen sich CRM-Systeme zum Ziel, die Marketing- und Vertriebsinstrumente zu unterstützen. Neben den operativen Komponenten zur Erfassung der Daten, besitzen einige CRM-Systeme analytische Komponenten. Diese werten die Kundendaten anwendungsorientiert aus und bieten Erkenntnisse über die Ausgestaltung der Geschäftsprozesse zum Kunden hin.
@@ -11,12 +9,18 @@ Die Grundlage von analytischen CRM-Systemen, ist die Aufbewahrung relevanter und
 Die Daten werden daher völlig unabhängig von den operativen Geschäftsprozessen, in neue, logische Zusammenhänge gesetzt. Dabei wird der Detaillierungsgrad der Daten verändert. In analytischen Systemen geschieht dies durch eine Verdichtung der Daten, was eine höhere Granularität der Daten zur Folge hat. Speicherplatzbedarf,  Verarbeitungsgeschwindigkeit und die Flexibilität eines Systems hängen unmittelbar von dessen Granularität ab. Verdichtung können beispielsweise durch Bildung von Aggregaten oder Summierung verschiedener Datenobjekte erreicht werden. Aus technischer Sicht ist eine möglichst hoher Grad an Granularität von Vorteil. Den dadurch sinkt der Speicherplatzbedarf, sowie die Anzahl bzw. Größe der Indexdateien und der Aufwand in der Datenmanipulation. Neben der Verdichtung, sind Normalisierung und Partitionierung weitere Gestaltungskriterien bei den Data-Warehouses. Analytische CRM-Systeme zeichnen sich nicht nur durch die Datenhaltung aus. Desweiteren implementieren sie Regeln, zur Bewertung der zugrundeliegenden Daten. Solche Regeln spiegeln die betriebswirtschaftlich-
 organisatorische Fragestellungen in einer Anwendungslogik wieder. Überdies spielt die Darstellung der Analyse Ergebnisse eine wichtige Rolle, da sie das Verständnis und somit die Akzeptanz der Nutzer beeinflusst. Außerdem bietet sie eine Hilfestellung bei der Interpretation der Ergebnisse durch den Nutzer.
 
+%% ==============
 \section{Zielsetzung}
+\label{ch:Einfuehrung:sec:Zielsetzung}
+%% ==============
 
 Im Rahmen der Bachelorarbeit soll ein solches analytisches CRM-System entwickelt werden. Um den Umfang einzuschränken, soll ein simples Szenario festgelegt werden. In der CAS Software AG wurden bereits Ansätze im analytischen Umfeld verfolgt, jedoch konnte bis jetzt kein System akzeptable Verarbeitungsgeschwindigkeit liefern. Das zu entwickelnde System soll den Datenbestand von CAS genesisWorld zwar verwenden, allerdings parallel dazu betrieben werden. Das bedeutet, dass nicht auf vorhandenem aufgebaut werden kann, sondern vielmehr eine Neuentwicklung angestrebt wird. Damit erhofft man sich Altlasten, des bestehenden Systems, zu umgehen und bessere Resultate zu erzielen. Dabei sollen Entwicklungen der letzten Jahre, wie NoSQL- und In-Memory-Datenbanken, untersucht werden. Darauf aufbauend soll eine Gegenüberstellung der Datenbanken durchgeführt werden. Neben der Auswahl einer Datenbank, ist eine Wahl geeigneter Technologien, für die Kommunikation und Anwendungslogik, zu treffen. Basierend auf dem zuvor festgelegten Szenario sollen relevante Daten ermittelt und extrahiert werden. Die dadurch gewonnen Daten sind von Fehlern zu bereinigen und in ein einheitliches Format zu bringen.
 In der Anwendungslogik ist neben den ETL-Funktionen, eine Generierung von Abfragen umzusetzen. Jede dieser Komponenten soll unabhängig von anderen aufrufbar sein. Zur Sicherstellung der Aktualität der Daten, müssen Lösungswege zu dessen Sicherstellung untersucht und umgesetzt werden. Um die Ergebnisse der Anwendungslogik für den Nutzer grafisch aufzubereiten, soll auch ein Client implementiert werden. Die Oberfläche des Clients sollte möglichst übersichtlich und einfach zu handhaben sein. Mithilfe der Oberfläche sind Überprüfungen in Bezug auf akzeptable Reaktionsgeschwindigkeiten anzustellen. 
 
+%% ==============
 \section{Gliederung}
+\label{ch:Einfuehrung:sec:Gliederung}
+%% ==============
 
 Die weiteren Arbeiten untergliedern sich in folgende Abschnitte: 
  

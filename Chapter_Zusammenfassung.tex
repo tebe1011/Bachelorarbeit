@@ -2,21 +2,30 @@
 %%
 
 %% ===========================
-\chapter{Zusammenfassung}
+\chapter{Fazit und Ausblick}
 \label{ch:Ergebnis}
 %% ===========================
 
-...
+In diesem abschließenden Kapitel werden die Ergebnisse dieser Arbeit in ihren wichtigsten Punkten zusammengefasst und anhand der Anforderungen aus Kapitel \ref{ch:Systemanalyse:sec:Anforderungsanalyse} bewertet. Anschließend wird ein Ausblick auf weiterführende Möglichkeiten sowie zukünftige Verbesserungsmöglichkeiten gegeben. 
 
 %% ===========================
-\section{Ergebnisanalyse}
+\section{Zusammenfassung}
+\label{ch:Ergebnis:sec:zusammenfassung}
 %% ===========================
 
-Einer der wichtigsten Anforderungen ist die geringe Abfragegeschwindigkeit. Tabelle \ref{table:vergleich_abfragegeschwindigkeit} zeigt, dass man dieser Forderung gerecht wird. Ebenfalls deutlich zu erkennen, ist die Auswirkung des geänderten Schemas. Der Sprung von 98.000 ms auf 350 ms, ist durch die Reduktion zu erklären. Im neuen Schema existieren weniger Tabellen und weniger Tupeln. Außerdem ist im neuen Schema kein Verbund mehr notwendig, der sehr rechenintensiv sein kann. Allerdings muss einem klar sein, dass solche Maßnahmen, wie sie im Schemadesign ergriffen wurden, weitreichende Folgen haben. Eine davon ist eine sehr schlechte Erweiterbarkeit des Schemas. Im momentanen Schema können lediglich Spalten hinzugezogen werden, dessen Inhalt in allen Merkmalen vorhanden ist. Außerdem würde für jede Spalte weitere 18 Mio. Werte hinzukommen. Hinzunahme von Merkmal spezifischen Attributen führt ebenfalls zu hohem Änderungsaufwand. Die Konsequenz wäre eine Normalisierung die aus der data-Tabelle mehrere Tabellen macht. Dies würde den Einsatz von Verbundoperatoren erfordern. Dadurch würde die Abfragezeit wieder steigen. Allerdings wären wesentlich weniger Verbundoperatoren nötig als im alten Schema. Aufgrund dessen ist trotzdem mit einer deutlichen geringeren Abfragegeschwindigkeit zu rechnen.  
+Aus der Motivation heraus wurde in der vorliegenden Arbeit eine analytische Komponente für das CRM-System der CAS Software AG entwickelt. Hierzu wurden zuerst alle relevanten, operativen Komponenten für die Entwicklung ermittelt. Anschließend wurde eine Szenario festgelegt, in dessen die Personen mit den meisten Verbindungen, zu einer ausgewählten Person ermittelt werden. Mit dieser analytischen(anderes Wort verwenden) Frage im Hinterkopf, wurde die Datenbank nach den passenden Datensätzen, zur Beantwortung der Aufgabenstellung durchsucht. Nachdem klar war, welche Daten zu übernehmen sind, wurde nach einer passenden Datenbank gesucht. Dabei wurden NoSQL-Datenbanken auf ihre Eignung in Bezug auf unsere Anforderungen untersucht. Sie konnten in diesem Fall allerdings nicht überzeugen, somit entschied man sich für die In-Memory fähige H2-Datenbank.   
+
+Aufbauend auf der bereits getätigten Wahl der Datenbank wurden Konzepte zur Umsetzung des Systems  erstellt. Bei der Konzeption wurde deduktiv vorgegangen. Zuerst wurde die Architektur festgelegt. Aufbauend auf ihr wurden die einzelnen Komponenten detailliert geplant. Bei der Planung wurde nicht versucht ein all könnendes System zu entwickeln, sondern vielmehr eine optimale Lösung für das Szenario zu erreichen. Nachdem alle Technologien, sowie Vorgehensweisen festgelegt wurden, ging man auf die Umsetzungen ein. Indessen eine Beschreibung der Funktionsweisen, der einzelnen Komponenten durchgeführt wurde. Neben der Funktionsweise wurden die Interaktion unter den Komponenten beschrieben. Schließlich ging man noch auf die Umsetzung der Darstellung ein, die eine Visualisierung des zuvor beschrieben bot. 
+ 
+%% ===========================
+\section{Bewertung der Ergebnisse}
+\label{ch:Ergebnis:sec:bewertung}
+%% ===========================
+
+Einer der wichtigsten Anforderungen ist die geringe Abfragegeschwindigkeit. Tabelle \ref{tb:vergleichAbfragegeschwindigkeit} zeigt, dass man dieser Forderung gerecht wird. Ebenfalls deutlich zu erkennen, ist die Auswirkung des geänderten Schemas. Der Sprung von 98.000 ms auf 350 ms, ist durch die Reduktion zu erklären. Im neuen Schema existieren weniger Tabellen und Tupeln. Außerdem ist im neuen Schema kein Verbund mehr notwendig, der sehr rechenintensiv sein kann. Allerdings muss einem klar sein, dass solche Maßnahmen, wie sie im Schemadesign ergriffen wurden, weitreichende Folgen haben. Eine davon ist eine sehr schlechte Erweiterbarkeit des Schemas. Im momentanen Schema können lediglich Spalten hinzugezogen werden, dessen Inhalt in allen Merkmalen vorhanden ist. Außerdem würde für jede Spalte weitere 18 Mio. Werte hinzukommen. Hinzunahme von Merkmal spezifischen Attributen führt ebenfalls zu hohem Änderungsaufwand. Die Konsequenz wäre eine Normalisierung die aus der data-Tabelle mehrere Tabellen macht. Dies würde den Einsatz von Verbundoperatoren erfordern. Dadurch würde die Abfragezeit wieder steigen. Allerdings wären wesentlich weniger Verbundoperatoren nötig als im alten Schema. Aufgrund dessen ist trotzdem mit einer deutlichen geringeren Abfragegeschwindigkeit zu rechnen.  
 
 \begin{table}[htbp]
 \centering
-\label{table:vergleich_abfragegeschwindigkeit}
 \begin{tabular} {l | r}
 Versuchskomponente & Zeit in ms  \\ \hline
 MSSQL Datenbank \& Altes Schema & 98000 \\
@@ -24,6 +33,7 @@ MSSQL Datenbank \& Neues Schema & 350 \\
 H2 Datenbank \& Neues Schema & 80 \\
 \end{tabular}
 \caption{Abfragegeschwindigkeit Vergleich}
+\label{tb:vergleichAbfragegeschwindigkeit}
 \end{table}
 
 Bei Änderungen, die eine Steigerung der Komplexität mit sich bringen, stellt sich eine Frage. Ist die Datenbank nur aufgrund des geänderten Schemas deutlich schneller? Um dieser Frage nachzugehen wurden einige Tests durchgeführt. Abbildung \ref{ergebniss_vergleich} zeigt die Ergebnisse dieser Testreihen. Alle Test wurden auf einem Rechner durchgeführt. Dieser simulierte den Zugriff von 100 gleichzeitigen Benutzern, mithilfe von Multithreading. Die in den Diagrammen angegebene Zeit bezieht sich somit auf die Ausführung aller 100 Abfragen. Jeder simulierte Benutzer führt somit die auf der y Achse angegebene Anweisung aus. Beim obersten Balken in (a) sind es beispielsweise 15 Mio. SELECT-Anweisungen pro Benutzer. In (b) sind es hingegen 15 Mio. Update-Anweisungen. Die Insert-Anweisungen zeigt (c).    
@@ -40,21 +50,10 @@ Bei Änderungen, die eine Steigerung der Komplexität mit sich bringen, stellt s
 Die Ergebnisse der Tests zeigen, dass die H2-Datenbank deutlich schneller ist als die MSSQL Datenbank. Der H2 ist bei SELECT-Anweisungen, um den Faktor 37 schneller. Bei Update-Anweisungen sogar um den Faktor 117 schneller. Ebenso bei Insert-Anweisungen, die einen Unterschied um den Faktor 124 aufweisen. Darauf lässt sich schließen, dass die H2-Datenbank mit ihren In-Memory-Tabellen deutlich schneller ist. Diese Geschwindigkeit wird durch den Verzicht auf Persistenz erlangt. In analytischen Systemen wo fast nur Leseoperationen durchgeführt werden stellt die mangelnde Persistenz kein großes Defizit dar. 
 
 %% ===========================
-\section{Handlungsempfehlungen}
+\section{Ausblick}
+\label{ch:Ergebnis:sec:Ausblick}
 %% ===========================
 
 Desweiteren soll dargelegt werden, welche Möglichkeiten sich bei der Weiterführung des Projektes bieten und welche Schwierigkeiten auftreten könnten. 
 
-Das momentane System ermittelt die Personen, die den stärksten Zusammenhang zueinander aufweisen, aufgrund der Anzahl der Verbindungen zwischen ihnen. Dabei wird lediglich die Häufigkeit gewertet. Um die stärke einer Beziehung zu bewerten könnten zusätzliche Regeln eingeführt werden. Diese Regeln müssten auf psychologischen Erkenntnissen und Erfahrungswerten aufbauen. Durch Regeln könnte die Aussagekraft des Ergebnisses weiter steigen. 
-
-%% ===========================
-\section{Ergebnis}
-%% ===========================
-
-...
-
-%% ===========================
-\section{Ausblick}
-%% ===========================
-
-...
+Das momentane System ermittelt die Personen, die den stärksten Zusammenhang zueinander aufweisen, aufgrund der Anzahl der Verbindungen zwischen ihnen. Dabei wird lediglich die Häufigkeit gewertet. Um die stärke einer Beziehung zu bewerten könnten zusätzliche Regeln eingeführt werden. Diese Regeln müssten auf psychologischen Erkenntnissen und Erfahrungswerten aufbauen. Durch Regeln könnte die Aussagekraft des Ergebnisses weiter steigen. Beispielsweise ist die Kommunikation durch Termine, Telefonate und E-Mail Verkehr, kein Indikator für Vertrauen oder dergleichen. Dokumente in die man anderen Personen Einsicht gewährt und nicht öffentlich sind, setzen eine enge Zusammenarbeit oder Vertrauen voraus.  
