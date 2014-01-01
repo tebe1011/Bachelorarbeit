@@ -73,7 +73,7 @@
 \contentsline {section}{\numberline {6.2}Aufbau der Client.war}{43}{section.6.2}
 \contentsline {section}{\numberline {6.3}Erzeugung der Abfrage}{45}{section.6.3}
 \contentsline {section}{\numberline {6.4}ETL Prozess}{46}{section.6.4}
-\contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes ...Progress}{48}{section.6.5}
+\contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes}{48}{section.6.5}
 \contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{49}{section.6.6}
 \contentsline {chapter}{\numberline {7}Fazit und Ausblick}{53}{chapter.7}
 \contentsline {section}{\numberline {7.1}Zusammenfassung}{53}{section.7.1}
