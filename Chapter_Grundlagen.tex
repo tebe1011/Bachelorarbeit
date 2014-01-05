@@ -31,7 +31,7 @@ Extensible Record Stores, auch Wide Column Stores speichern Daten mehrerer Eintr
 
 In Extensible Record Stores werden sogenannte Spalten-Familien zur Gruppierung ähnlicher oder verwandter Inhalte verwendet. In Abbildung \ref{wide_column_store} ist eine solche Spalten-Familie zu sehen. Spalten-Familien besitzen keine logische Struktur und geben somit kein Schema vor. Weiterhin können sie Millionen von Spalten beinhalten, weshalb sie auch Wide Columns Stores genannt werden. Verwandte Spalten werden in Spalten-Familien durch eine von der Anwendung bereitgestellte Reihe von Schlüsseln identifiziert. Weiterhin muss in einer Spalten-Familie nicht jede Zeile aus den gleichen Spalten bestehen.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
   \includegraphics[width=0.8\textwidth, width=0.8\textwidth]{pics/wide_column_stores.pdf}
 	\caption{Beispiel einer Spalten-Familie}
@@ -54,7 +54,7 @@ Key-Value-Stores sind die einfachsten NoSQL-Datenbanken. Sie ermöglichen die Sp
 
 Eine Graphdatenbank verwendet die Graphentheorie zur Abbildung und Abfrage von Beziehungen \cite{SWB-386976589}. Im Grunde besteht eine solche Datenbank aus einer Menge von Knoten und Kanten. Jeder Knoten repräsentiert dabei eine Entität, wohingegen Kanten Beziehungen oder Verbindung zwischen zwei Knoten darstellen. Abbildung \ref{graph_database} verdeutlicht dies in einem Beispiel. Knoten definieren sich durch einen sogenannten "unique identifier", sowie durch die Anzahl abgehenden und/oder eingehenden Kanten und einer Menge von Attributen. Kanten werden wie Knoten definiert, nur dass diese, anstatt Kanten, einen Start- und End-Knoten besitzen. Graph-Datenbanken eignen sich gut für die Analyse von Verbindungen, weshalb sie oft zur Datengewinnung im Social Media Umfeld genutzt werden.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
   \includegraphics[width=1.0\textwidth, width=1.0\textwidth]{pics/graphdatabase.pdf}
 	\caption{Beispiele von Knoten und Kanten in einer Graph Datenbank}
@@ -88,20 +88,20 @@ Vektorenuhren  basieren auf der Arbeit von Lamport \cite{Lamport:1978:TCO:359545
 \label{ch:grundlagen:sec:InMemoryDatenbanken}
 %% ===========================
 
-Eine In-Memory-Datenbank (IMDB) ist ein Datenbank-Management-System, das in erster Linie den Hauptspeicher als Medium für die Datenablage benutzt. Eine IMDB wird auch als Hauptspeicher-Datenbank (MMDB) oder Echtzeit-Datenbank (RTDB) bezeichnet. IMDBs sind schneller als die Festplatten optimierte Datenbanken, denn sie führen weniger CPU-Befehle beim Lesen und Schreiben aus und ihre internen Optimierungsalgorithmen sind viel einfacher gestaltet. Einsatz finden sie vor allem in Anwendungen, bei denen Reaktionszeit von entscheidender Bedeutung ist. Mehrkernprozessoren, 64-bit Architekturen und gesunkene RAM Preise stellen die treibenden Faktoren in der Entwicklung solcher Systeme dar \cite{SWB-381840476}.
+Eine In-Memory-Datenbank (IMDB) ist ein Datenbankmanagementsystem, dass in erster Linie den Hauptspeicher als Medium für die Datenablage verwendet. Eine IMDB wird auch als Hauptspeicher-Datenbank (MMDB) oder Echtzeit-Datenbank (RTDB) bezeichnet. IMDBs sind schneller als die Festplatten optimierte Datenbanken, denn sie führen weniger CPU-Befehle beim Lesen und Schreiben aus und ihre internen Optimierungsalgorithmen sind viel einfacher gestaltet. Einsatz finden sie vor allem in Anwendungen, bei denen Reaktionszeit von entscheidender Bedeutung ist. Mehrkernprozessoren, 64-bit Architekturen und gesunkene RAM Preise stellen die treibenden Faktoren in der Entwicklung solcher Systeme dar \cite{SWB-381840476}.
 
 Die hohe Performance dieser Systeme kann nicht durch simples verschieben der Daten in den Hauptspeicher erreicht werden. Bisherige Konzepte des Datenbankentwurfs müssen dabei neu überdacht werden. In herkömmlichen Datenbanken ist der Speicherverbrauch kein relevanter Faktor. In IMDBs hingegen ist der Einsatz von Speicherplatz sparenden Maßnahmen eine Notwendigkeit. Dictionary Encoding, Run-Length Encoding oder Cluster Encoding sind nur einige Techniken zur Reduktion des Speicherplatzverbrauches. Solche Techniken bieten sich vor allem in spaltenorientierten Systemen aufgrund der geringen Entropie innerhalb der Spalten an \cite{Abadi:2006:ICE:1142473.1142548}. Neben den Optimierungsansätzen in der Datenhaltung können Regeln formuliert werden, um nicht mehr verwendete Daten zu erkennen. Dabei kann z.B. zwischen aktiven Daten (Daten von nicht abgeschlossenen Geschäftsprozessen) und passiven Daten (Daten von abgeschlossenen Geschäftsprozessen) unterschieden werden \cite{10.1109/ICDE.2013.6544811}. Wenn ein Geschäftsprozess in sich abgeschlossen ist, werden die Daten nur noch aus Datenvorhaltungsgründen aufbewahrt. Die zur Datenaufbewahrung benötigte Hauptspeicherkapazität, kann durch solche Regeln stark reduziert werden.
  
-In-Memory Datenbanken, die den relationalen Ansatz verfolgen, besitzen zudem geänderte Query Optimierer. In herkömmlichen RDBMS sind Lese- und Schreiboperationen einer der wichtigsten Faktoren zur Bestimmung des optimalen Query Plans. Sie spielen jedoch eine stark untergeordnete Rolle in IMDB. Im Gegenzug nimmt die Reduktion von CPU-Zyklen einen höheren Stellenwert ein.
+In-Memory Datenbanken, die den relationalen Ansatz verfolgen, besitzen zudem geänderte Abfrageoptimierer. In herkömmlichen RDBMS sind Lese- und Schreiboperationen eine der wichtigsten Faktoren zur Bestimmung des optimalen Abfrageplans. Sie spielen jedoch eine stark untergeordnete Rolle in IMDB. Im Gegenzug nimmt die Reduktion von CPU-Zyklen einen höheren Stellenwert ein.
 
-In traditionellen Datenbanken stellt das Wiederherstellen aufgrund des nicht flüchtigen Speichers kein Problem dar. IMDB müssen dagegen für den Fall eines Systemausfalls Snapshot Dateien anlegen. Diese werden zur Wiederherstellung des Datenbestandes benötigt. Snapshots sind Abbilder des aktuellen Datenbestandes. Um Rücksicht auf die Performance zu nehmen, werden die Snapshots entweder in Intervallen oder zu festgelegten Ereignissen erzeugt. Damit Veränderungen an Daten zwischen Snapshots nicht verloren gehen, werden Sie in Log Dateien zwischengespeichert. Zusammen mit den Snapshots dienen sie als Grundlage für die Datenwiederherstellung. 
+In traditionellen Datenbanken stellt das Wiederherstellen aufgrund des nicht flüchtigen Speichers kein Problem dar. IMDB müssen dagegen für den Fall eines Systemausfalls Snapshot Dateien anlegen. Diese werden zur Wiederherstellung des Datenbestandes benötigt. Snapshots sind Abbilder des aktuellen Datenbestandes. Um Rücksicht auf die Performance zu nehmen, werden die Snapshots entweder in Intervallen oder zu festgelegten Ereignissen erzeugt. Damit Veränderungen an Daten zwischen Snapshots nicht verloren gehen, werden sie in Log Dateien zwischengespeichert. Zusammen mit den Snapshots dienen sie als Grundlage für die Datenwiederherstellung. 
 
 %% ===========================
 \section{Component Object Model}
 \label{ch:grundlagen:sec:ComponentObjectModel}
 %% ===========================
 
-Component Object Model (COM) ist ein binärer-Schnittstellenstandard für Software-Komponenten, der von Microsoft im Jahr 1993 eingeführt wurde \cite{SWB-088582566}. Er wird verwendet, um Interprozesskommunikation und dynamische Objekterstellung in einer Vielzahl von Programmiersprachen zu ermöglichen. Um zu verstehen was COM ist (und damit alle COM-basierten Technologien), muss einem klar sein, dass es sich nicht um eine objektorientierte Sprache, sondern um einen Standard handelt. Er definiert nicht die Sprache, Struktur oder Implementierungsdetails. Jeder dieser Entscheidungen werden dem Programmierer überlassen. Es spezifiziert lediglich ein Objekt Model und die Anforderungen an die Kommunikationen zwischen COM-Objekten und anderen Objekten. Es spielt dabei keine Rolle, ob Objekte sich im gleichen oder in unterschiedlichen Prozessen befinden. Sie können sogar auf unterschiedlichen Rechner laufen. Die Umsetzung in verschiedenen Sprachen ist durch die Umsetzung der Kommunikation in binären Maschinen Code möglich. Das führt dazu, dass COM des öfteren als binärer Standard referenziert wird.
+Component Object Model (COM) ist ein binärer-Schnittstellenstandard für Software-Komponenten, der von Microsoft im Jahr 1993 eingeführt wurde \cite{SWB-088582566}. Er wird verwendet, um Interprozesskommunikation und dynamische Objekterstellung in einer Vielzahl von Programmiersprachen zu ermöglichen. Um zu verstehen was COM ist (und damit alle COM-basierten Technologien), muss einem klar sein, dass es sich nicht um eine objektorientierte Sprache, sondern um einen Standard handelt. Er definiert nicht die Sprache, Struktur oder Implementierungsdetails. Jeder dieser Entscheidungen werden dem Programmierer überlassen. Es spezifiziert lediglich ein Objekt Model und die Anforderungen an die Kommunikationen zwischen COM-Objekten und anderen Objekten. Es spielt dabei keine Rolle, ob Objekte sich im gleichen oder in unterschiedlichen Prozessen befinden. Sie können sogar auf unterschiedlichen Rechner laufen. Die Umsetzung in verschiedenen Sprachen ist durch die Umsetzung der Kommunikation in binären Maschinencode möglich. Das führt dazu, dass COM des öfteren als binärer Standard referenziert wird.
 
 COM bietet die Möglichkeit, auf viele Windows Funktionen zuzugreifen. Des weiteren ist COM die Basis für die OLE–Automation (Object Linking and Embedding) und ActiveX. Die Verwendung des COM-Standards bietet weiterhin folgende Vorteile:
 
@@ -121,7 +121,7 @@ COM bietet die Möglichkeit, auf viele Windows Funktionen zuzugreifen. Des weite
 
 COM basiert auf dem Client/Server-Prinzip. Wie in Abbildung \ref{GL_COM} zu sehen, erzeugt ein COM-Client, eine COM-Komponente in einem so genannten COM-Server und nutzt die Funktionalität des Objektes über COM-Schnittstellen. 
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
   \includegraphics[width=1.0\textwidth, width=1.0\textwidth]{pics/Grundlagen_com.pdf}
 	\caption{Bestandteile einer COM-Architektur}
