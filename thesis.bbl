@@ -204,7 +204,7 @@
 \newblock Go-To-Reihe. \btxpublisherfont {Addison-Wesley}, München [u.a.],
   2001\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont {3-8273-1678-2}}}.
 
-\bibitem [{Pla13}]{SWB-381840476}
+\bibitem [{Pla13a}]{SWB-381840476}
 \btxnamefont {Hasso \btxlastnamefont {Plattner}}\btxauthorcolon\ \btxtitlefont
   {\btxifchangecase {A course in in-memory data management : The inner
   mechanics of in-memory databases}{A Course in In-Memory Data Management : The
@@ -212,6 +212,15 @@
   \mbox{\btxISBN~\btxISBNfont {978-3-642-36524-9}}}.
 \newblock {\latintext
   \btxurlfont{http://dx.doi.org/10.1007/978-3-642-36524-9}}.
+
+\bibitem [{Pla13b}]{SWB-394434307}
+\btxnamefont {Hasso \btxlastnamefont {Plattner}}\btxauthorcolon\ \btxtitlefont
+  {Lehrbuch In-Memory Data Management : Grundlagen der In-Memory-Technologie}.
+\newblock \btxpublisherfont {Springer Gabler}, Wiesbaden, c2013\ifbtxprintISBN
+  {, \mbox{\btxISBN~\btxISBNfont {978-3-658-03212-8; 3-658-03212-X}}}.
+\newblock {\latintext
+  \btxurlfont{http://deposit.d-nb.de/cgi-bin/dokserv?id=4452889&prov=M&dok_var=1&dok_ext=htm}},
+  201309.
 
 \bibitem [{Rup13}]{SWB-380277719}
 \btxnamefont {Chris \btxlastnamefont {Rupp}}\btxauthorcolon\ \btxtitlefont
