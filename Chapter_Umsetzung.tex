@@ -50,17 +50,17 @@ Die Logik Klasse enthält alle Attribute und Methoden zur Beantwortung von Anfra
 \label{ch:Umsetzung:sec:clientwar}
 %% ===========================
 
-\begin{figure}[htbp]
+Einstiegspunkt in der Client.war ist die Klasse \textit{CasAnalyticUI}. Sie ist von der Klasse \textit{UI} abgeleitet. Die \textit{UI} ist die oberste Komponente jeder Komponentenhierarchie in Vaadin. Es gibt eine Benutzeroberfläche für jede Vaadin-Instanz in einem Browserfenster. Ein \textit{UI} Objekt kann entweder ein gesamtes Browserfenster(oder Tab) oder einen Teil einer HTML-Seite, wo eine Vaadin-Anwendung eingebettet ist darstellen. Nachdem eine \textit{UI} von der Anwendung erstellt wurde, wird diese mit der Methode \textit{init(VaadinRequest)} initialisiert. Zur Übersicht werden die Komponenten der Darstellung in die Klasse \textit{RootUI} ausgelagert. 
+
+\textit{RootUI} wird dabei von der \textit{CasAnalayticUI} instanziiert. Die Klasse \textit{RootUI} beinhaltet das Anmeldefenster, sowie die Hauptansicht. Mithilfe der Methode buildLoginView() werden die Komponenten des Anmeldefensters zur \textit{UI} Komponente hinzugefügt. Nach der Erzeugung der Komponenten, wird eine \textit{JerseyClient} Klasse instanziiert. Diese wird verwendet sobald der Nutzer IP, Port und einen Namen eingegeben hat und auf anmelden klickt. Anschließend wird die Methode \textit{doPostRequestUserData()} gerufen, um zu überprüfen ob der Nutzer im System vorhanden ist. 
+
+\begin{figure}[H]
 \begin{center}
 \includegraphics[width=1.0\textwidth]{pics/ClientKlassendiagramm.pdf}
 \caption{Client Klassendiagramm}
 \label{umsetzung_klassendiagramm_client}
 \end{center}
 \end{figure}
-
-Einstiegspunkt in der Client.war ist die Klasse \textit{CasAnalyticUI}. Sie ist von der Klasse \textit{UI} abgeleitet. Die \textit{UI} ist die oberste Komponente jeder Komponentenhierarchie in Vaadin. Es gibt eine Benutzeroberfläche für jede Vaadin-Instanz in einem Browserfenster. Ein \textit{UI} Objekt kann entweder ein gesamtes Browserfenster(oder Tab) oder einen Teil einer HTML-Seite, wo eine Vaadin-Anwendung eingebettet ist darstellen. Nachdem eine \textit{UI} von der Anwendung erstellt wurde, wird diese mit der Methode \textit{init(VaadinRequest)} initialisiert. Zur Übersicht werden die Komponenten der Darstellung in die Klasse \textit{RootUI} ausgelagert. 
-
-\textit{RootUI} wird dabei von der \textit{CasAnalayticUI} instanziiert. Die Klasse \textit{RootUI} beinhaltet das Anmeldefenster, sowie die Hauptansicht. Mithilfe der Methode buildLoginView() werden die Komponenten des Anmeldefensters zur \textit{UI} Komponente hinzugefügt. Nach der Erzeugung der Komponenten, wird eine \textit{JerseyClient} Klasse instanziiert. Diese wird verwendet sobald der Nutzer IP, Port und einen Namen eingegeben hat und auf anmelden klickt. Anschließend wird die Methode \textit{doPostRequestUserData()} gerufen, um zu überprüfen ob der Nutzer im System vorhanden ist. 
 
 Falls ja, werden durch die Methode \textit{MainView()} alle bisherigen Komponenten der \textit{UI} entfernt und durch Komponenten des Hauptfensters ersetzt. Das \textit{JerseyClient} Objekt wird direkt im Anschluss verwendet, um Mithilfe der Methode \textit{doPostRequestData()} einen REST-Request an den Server zu senden. Dieser liefert das Ergebnis der Abfrage in einem JSON-Objekt zurück. Mit dessen eine erste Erzeugung des Diagramms durchgeführt wird. Das Diagramm selbst besitzt eine eigene Klasse namens \textit{ChartComponent}. Sie leitet sich von der Klasse \textit{Chart} ab, die Teil der VaadinChart-Bibliothek ist. Mithilfe der Methode \textit{refreshChart()} wird das Diagramm bei Benutzerabfragen aktualisiert. Dazu werden ihr die Namen der Personen für die x-Achse übergeben, sowie die neuen Balkenwerte. Weiterhin wird für jedes Vaadin-Objekt, welches eine Element an der Oberfläche darstellt, eine separate Methode zur Erzeugung verwendet. Änderungen am Aussehen oder an der Funktionalität der jeweiligen Vaadin-Objekte, werden nur innerhalb der entsprechenden Methode vorgenommen.
 
@@ -136,7 +136,7 @@ Jede Antwort einer SQL-Abfrage zur Gewinnung von Daten, wird in einer SCV-Datei 
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=1.0\textwidth]{pics/umsetzung_csv_datei.png}
-\caption{Ausschnitt einer CSV-Datei mit Daten der Extraktion}
+\caption{Ausschnitt einer CSV-Datei nach der Extraktion}
 \label{fig:umsetzung_csv_datei}
 \end{center}
 \end{figure}
@@ -179,7 +179,7 @@ In diesem Abschnitt wird die Umsetzung auf der Darstellungsebene erörtert. Den 
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=2.0]{pics/login.png}
-\caption{Oberfläche des Systems}
+\caption{Anmeldefenster}
 \label{ergebniss_oberflaeche_anmeld}
 \end{figure}
 
@@ -194,7 +194,7 @@ Der Bereich ganz rechts in der Leiste, ist für den Ausschluss von Gruppen vorge
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{pics/final_screen.png}
-\caption{Oberfläche des Systems}
+\caption{Hauptseite der Anwendung}
 \label{ergebniss_oberflaeche_haupt}
 \end{figure}
 

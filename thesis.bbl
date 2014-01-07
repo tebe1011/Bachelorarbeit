@@ -38,6 +38,15 @@
 \newblock {\latintext
   \btxurlfont{http://incubator.apache.org/thrift/static/thrift-20070401.pdf}}.
 
+\bibitem [{Bre00}]{cap2010}
+\btxnamefont {Dr.\btxfnamespacelong Eric \btxlastnamefont
+  {Brewer}}\btxauthorcolon\ \btxjtitlefont {\btxifchangecase {Podc
+  keynote}{PODC keynote}}.
+\newblock 2000.
+\newblock {\latintext
+  \btxurlfont{http://www.cs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf}},
+  Online;accessed 27-November-2013.
+
 \bibitem [{CD10}]{books/daglib/0025185}
 \btxnamefont {Kristina \btxlastnamefont {Chodorow}} \btxandlong {}\
   \btxnamefont {Michael \btxlastnamefont {Dirolf}}\btxauthorcolon\
@@ -99,14 +108,6 @@
   \btxprintmonthyear{.}{1}{2008}{long}\ifbtxprintISSN {,
   \mbox{\btxISSN~\btxISSNfont {0001-0782}}}.
 \newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/1327452.1327492}}.
-
-\bibitem [{Dr.00}]{cap2010}
-\btxnamefont {A.Brewer \btxlastnamefont {Dr.Eric}}\btxauthorcolon\
-  \btxjtitlefont {\btxifchangecase {Podc keynote}{PODC keynote}}.
-\newblock 2000.
-\newblock {\latintext
-  \btxurlfont{http://www.cs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf}},
-  Online;accessed 27-November-2013.
 
 \bibitem [{ESHB11}]{ElSappagh201191}
 \btxnamefont {Shaker\btxfnamespacelong H.\btxfnamespacelong Ali
@@ -263,6 +264,14 @@
 \newblock {\latintext
   \btxurlfont{http://deposit.d-nb.de/cgi-bin/dokserv?id=3872660&prov=M&dok_var=1&dok_ext=htm
   ; http://d-nb.info/1014629934/04}}, Seiten : 176 - 182.
+
+\bibitem [{Sto11}]{NewSQL2011}
+\btxnamefont {Michael \btxlastnamefont {Stonebraker}}\btxauthorcolon\
+  \btxjtitlefont {\btxifchangecase {New sql: An alternative to nosql and old
+  sql for new oltp apps}{New SQL: An Alternative to NoSQL and Old SQL for New
+  OLTP Apps}}.
+\newblock 0, 2011.
+\newblock [Online;accessed 23-November-2013].
 
 \bibitem [{Vai13}]{vaish2013getting}
 \btxnamefont {G. \btxlastnamefont {Vaish}}\btxauthorcolon\ \btxtitlefont

@@ -13,14 +13,14 @@ Diese Kapitel beschäftigt sich zu großen Teilen mit dem Terminus NoSQL. Es wir
 \label{ch:grundlagen:sec:NoSQL}
 %% ===========================
 
-NoSQL ist keine Datenbank, noch nicht einmal ein Datenbanktyp. Der Terminus NoSQL fasst lediglich Datenbanken zusammen, die nicht dem Model der relationalen Algebra folgen. Eines haben sie jedoch gemeinsam: Die treibende Idee, die zu Ihrer Entwicklung geführt hat. Die Entstehung der NoSQL Datenbanken ist auf die schlechte horizontale Skalierbarkeit von relationalen Datenbanken zurückzuführen. Verfügbarkeit und Skalierbarkeit sind unter gewissen Umständen wichtiger als Atomarität und Konsistenz. NoSQL Datenbanken lassen sich anhand ihres Datenmodells unterscheiden. Nach \cite{vaish2013getting} ist eine Klassifizierung in folgende Kategorien möglich:
+NoSQL ist ein Begriff der weder für eine bestimmte Datenbank, noch für einen bestimmten Datenbanktyp verwendet wird. Der Terminus NoSQL fasst lediglich Datenbanken zusammen, die nicht dem Model der relationalen Algebra folgen. Eines haben sie jedoch gemeinsam: Die treibende Idee, die zu Ihrer Entwicklung geführt hat. Die Entstehung der NoSQL Datenbanken ist auf die schlechte horizontale Skalierbarkeit von relationalen Datenbanken zurückzuführen. Verfügbarkeit und Skalierbarkeit unter gewissen Umständen wichtiger als Atomarität und Konsistenz. Dieser Umstand führte neben der Entwicklung von NoSQL-Datenbanken zur Entstehung von Datenbanken die unter dem Terminus NewSQL zusammengefasst werden. Sie verfolgen einen anderen Ansatz als NoSQL Datenbanken und werden im Rahmen dieser Arbeit nicht näher betrachtet, weshalb weiterhin auf \cite{NewSQL2011} verwiesen wird. Weiterhin lassen sich NoSQL Datenbanken anhand ihres Datenmodells unterscheiden. Nach \cite{vaish2013getting} ist eine Klassifizierung in folgende Kategorien möglich:
 
 %% ===========================
 \subsection{Document Stores}
 \label{ch:grundlagen:sec:NoSQL:DocumentStores}
 %% ===========================
 
-Document Stores koppeln komplexe Datenstrukturen (Dokumente) mit einem eindeutigen Schlüssel. Der Datenzugriff findet dabei in der Regel über das HTTP-Protokoll mit REST-API oder über das Apache Thrift-Protokoll statt \cite{agarwal2007thrift}. In Documents Stores gibt es außerdem kein Schema. Statt jeden Datensatz in einer Zeile bestehend aus Spalten zu speichern, werden sie in einem Dokument abgelegt. Diese können als eine Datei auf dem Dateisystem betrachtet werden. Solche Dokumente können alle möglichen Daten aufnehmen und müssen dabei keinem Schema folgen. Obwohl die Daten schemalos sind, sind sie nicht frei von formellen Restriktionen. Die meisten der verfügbaren Datenbanken unter dieser Kategorie benutzen XML, JSON, BSON oder YAML. Document Stores eignen sich für den Einsatz von dynamische Entitäten, die unregelmäßige Strukturen besitzen.
+Document Stores koppeln komplexe Datenstrukturen (Dokumente) mit einem eindeutigen Schlüssel. Der Datenzugriff findet dabei in der Regel über das HTTP-Protokoll mit REST-API oder über das Apache Thrift-Protokoll statt \cite{agarwal2007thrift}. In Document Stores gibt es außerdem kein Schema. Statt jeden Datensatz in einer Zeile bestehend aus Spalten zu speichern, werden sie in einem Dokument abgelegt. Diese können als eine Datei auf dem Dateisystem betrachtet werden. Solche Dokumente können alle möglichen Daten aufnehmen und müssen dabei keinem Schema folgen. Obwohl die Daten schemalos sind, sind sie nicht frei von formellen Restriktionen. Die meisten der verfügbaren Datenbanken unter dieser Kategorie benutzen XML, JSON, BSON oder YAML. Document Stores eignen sich für den Einsatz von dynamische Entitäten, die unregelmäßige Strukturen besitzen.
 
 %% ===========================
 \subsection{Extensible Record Store}
@@ -57,7 +57,7 @@ Eine Graphdatenbank verwendet die Graphentheorie zur Abbildung und Abfrage von B
 \begin{figure}[htbp]
 	\centering
   \includegraphics[width=1.0\textwidth, width=1.0\textwidth]{pics/graphdatabase.pdf}
-	\caption{Beispiele von Knoten und Kanten in einer Graph Datenbank}
+	\caption{Objekte in einer Graphdatenbank}
 	\label{graph_database}
 \end{figure}
 
@@ -68,7 +68,7 @@ Eine Graphdatenbank verwendet die Graphentheorie zur Abbildung und Abfrage von B
 
 Im Nachfolgenden werden Begriffe und Verfahren erläutert, die durch die NoSQL Bewegung geprägt wurden.
 
-\paragraph{Replikation} Replikation im Falle von verteilten Datenbanken bedeutet, dass ein Datenelement auf mehr als einem Knoten gespeichert ist. Dies ist sehr nützlich, um Leseleistungen der Datenbanken zu erhöhen. Ermöglicht wird dies durch einen Load-Balancer, der Lesevorgänge über viele Maschinen verteilt. Neben den schnellen Lesezugriffen, wird durch den Load-Balancer auch die Ausfallsicherheit erhöht.  
+\paragraph{Replikation} Replikation im Falle von verteilten Datenbanken bedeutet, dass ein Datenelement auf mehr als einem Knoten gespeichert ist. Dies ist sehr nützlich, um Leseleistungen der Datenbanken zu erhöhen. Ermöglicht wird dies durch einen Load-Balancer, der Lesevorgänge über viele Maschinen verteilt und somit auch die Ausfallsicherheit erhöht.  
 
 \paragraph{Fragmentierung} Fragmentierung in der Datenbank ist der Zustand, bei dem die Daten in mehrere Fragmente aufgeteilt wurden. Diese können dann über viele Knoten verteilt werden. Die Datenpartitionierung kann beispielsweise mit einer konsistenten Hash-Funktion erfolgen, die auf dem Primärschlüssel der Datenelemente angewendet wird, um das zugehörige Fragment zu bestimmen.
 
@@ -76,15 +76,15 @@ Im Nachfolgenden werden Begriffe und Verfahren erläutert, die durch die NoSQL B
 
 \paragraph{Multiversion Concurrency Control (MVCC)} MVCC ist eine effiziente Methode, mehrere Prozesse auf die selben Daten parallel zugreifen zu lassen, ohne eine Beschädigung der Daten und Deadlocks zu riskieren. Es ist eine Alternative zu den Lock-basierten Ansätzen, wobei jeder Prozess zuerst eine exklusive Sperre auf einem Datenelement anfordern muss, bevor es gelesen oder aktualisiert werden kann. Zu diesem Zweck werden intern verschiedene Versionen eines Objektes gehalten.
 
-\paragraph{MapReduce} MapReduce ist ein von Google entwickeltes Programmiermodell für verteilte Berechnungen und ist in einem Papier von Dean und Ghemawat \cite{Dean:2008:MSD:1327452.1327492} beschrieben. Anwendungen, die mit dem MapReduce-Framework geschrieben werden, können automatisch auf mehreren Computern verteilt werden, ohne dass der Entwickler einen benutzerdefinierten Code für die Synchronisation und Parallelisierung schreiben muss. Es kann verwendet werden, um Aufgaben auf großen Datenmengen durchzuführen, die zu groß für eine einzelne Maschine zu handhaben wären.
+\paragraph{MapReduce} MapReduce ist ein von Google entwickeltes Programmiermodell für verteilte Berechnungen und ist in einem Artikel von Dean und Ghemawat \cite{Dean:2008:MSD:1327452.1327492} beschrieben. Anwendungen, die mit dem MapReduce-Framework geschrieben werden, können automatisch auf mehreren Computern verteilt werden, ohne dass der Entwickler einen benutzerdefinierten Code für die Synchronisation und Parallelisierung schreiben muss. Es kann verwendet werden, um Aufgaben auf großen Datenmengen durchzuführen, die zu groß für eine einzelne Maschine zu handhaben wären.
 
 \paragraph{Vektorenuhren }
 Vektorenuhren  basieren auf der Arbeit von Lamport \cite{Lamport:1978:TCO:359545.359563} und werden von vielen Datenbanken verwendet, um festzustellen, ob ein Datenelement durch konkurrierende Prozesse verändert wurde. Jedes Datenelement besitzt eine Vektoruhr, welche aus Tupeln mit verschiedenen Zeitpunkten besteht. Jeder Zeitpunkt stellt einen Prozess dar, der eine Modifikation an dem Datenelement vorgenommen hat. Jede Uhr beginnt bei Null und wird durch seinen Prozess bei jedem Schreibvorgang erhöht. Um den eigenen Wert der Uhr zu erhöhen, verwendet der Schreibprozess das Maximum aller Uhrenwerte im Vektor und erhöht sie um eins. Wenn zwei Versionen eines Elements zusammengeführt werden, können die Vektoruhren benutzt werden, um Konflikte zu erkennen. Wenn mehr als ein Wert einer Uhr differenziert, muss ein Konflikt vorhanden sein. Wenn es keinen Konflikt gibt, kann die aktuelle Version durch den Vergleich der Maxima der Uhren ermittelt werden.
 
-\paragraph{Das CAP-Theorem} Das CAP-Theorem wurde von Dr. Brewer erstmals in einem Symposium \cite{cap2010} über den Trade-Off in verteilten Systemen eingeführt und wurde später von Gilbert und Lynch \cite{Gilbert:2002:BCF:564585.564601} formalisiert. Es besagt, dass in einem verteilten Datenspeichersystem nur zwei Merkmale aus Verfügbarkeit, Konsistenz und  Partitionstoleranz garantiert werden können. Verfügbarkeit bedeutet in diesem Fall, dass die Clients in einem bestimmten Zeitraum immer Daten lesen und schreiben können. Eine partitionierte, verteilte Datenbank ist fehlertolerant gegen temporäre Verbindungsprobleme und ermöglicht es, Partitionen über Knoten zu trennen. Ein System das tolerant partitioniert ist, kann nur eine starke Konsistenz durch Verminderungen in seiner Verfügbarkeit erreichen. Grund dafür ist, dass es zuerst sicherstellen muss, ob jeder Schreibvorgang abgeschlossen wurde, bevor er eine Replikation durchführen kann. Jedoch kann es vorkommen, dass dies in einer verteilten Umgebung nicht möglich ist. Ursachen dafür können Verbindungsfehler oder andern temporäre Hardwareprobleme sein.
+\paragraph{Das CAP-Theorem} Das CAP-Theorem wurde von Brewer erstmals in einem Symposium \cite{cap2010} über den Trade-Off in verteilten Systemen eingeführt und wurde später von Gilbert und Lynch \cite{Gilbert:2002:BCF:564585.564601} formalisiert. Es besagt, dass in einem verteilten Datenspeichersystem nur zwei Merkmale aus Verfügbarkeit, Konsistenz und  Partitionstoleranz garantiert werden können. Verfügbarkeit bedeutet in diesem Fall, dass die Clients in einem bestimmten Zeitraum immer Daten lesen und schreiben können. Eine partitionierte, verteilte Datenbank ist fehlertolerant gegen temporäre Verbindungsprobleme und ermöglicht es, Partitionen über Knoten zu trennen. Ein System das tolerant partitioniert ist, kann nur eine starke Konsistenz durch Verminderungen in seiner Verfügbarkeit erreichen. Grund dafür ist, dass es zuerst sicherstellen muss, ob jeder Schreibvorgang abgeschlossen wurde, bevor er eine Replikation durchführen kann. Jedoch kann es vorkommen, dass dies in einer verteilten Umgebung nicht möglich ist. Ursachen dafür können Verbindungsfehler oder andern temporäre Hardwareprobleme sein.
 
 %% ===========================
-\section{In Memory Datenbanken}
+\section{In-Memory Datenbanken}
 \label{ch:grundlagen:sec:InMemoryDatenbanken}
 %% ===========================
 
@@ -95,6 +95,8 @@ Die hohe Performance dieser Systeme kann nicht durch einfaches verschieben der D
 In-Memory Datenbanken die den relationalen Ansatz verfolgen besitzen zudem geänderte Abfrageoptimierer. In herkömmlichen RDBMS sind Lese- und Schreiboperationen eine der wichtigsten Faktoren zur Bestimmung des optimalen Abfrageplans. Sie spielen jedoch eine stark untergeordnete Rolle in IMDB. Im Gegenzug nimmt die Reduktion von CPU-Zyklen einen höheren Stellenwert ein.
 
 In traditionellen Datenbanken stellt das Wiederherstellen aufgrund des nicht flüchtigen Speichers kein Problem dar. IMDB müssen dagegen für den Fall eines Systemausfalls Snapshot-Dateien anlegen. Diese werden zur Wiederherstellung des Datenbestandes benötigt. Snapshots sind Abbilder des aktuellen Datenbestandes. Um Rücksicht auf die Performance zu nehmen, werden die Snapshots entweder in Intervallen oder zu festgelegten Ereignissen erzeugt. Damit Veränderungen an Daten zwischen Snapshots nicht verloren gehen, werden sie in Log Dateien zwischengespeichert. Zusammen mit den Snapshots dienen sie als Grundlage für die Datenwiederherstellung. 
+
+An dieser Stelle schließt die Einführung im Bereich der Datenbanken. Im folgenden wird auf das Component Object Model eingegangen, welches dem besseren Verständnis von Arbeiten mit den CAS genesisWorld Komponenten dient.
 
 %% ===========================
 \section{Component Object Model}

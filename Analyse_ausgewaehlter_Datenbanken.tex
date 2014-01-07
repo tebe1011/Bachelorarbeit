@@ -79,7 +79,7 @@ Insbesondere stellt es lineare und modulare Skalierbarkeit, sowie streng konsist
 %% ===========================
 Apache Cassandra ist eine verteilte Column Store Datenbank die von Facebook entwickelt wurde \cite{Lakshman:2010:CDS:1773912.1773922}. Sie ist eine Mischung aus Amazon Dynamo und Google BigTable, wodurch sie des öfteren als Hybrid zwischen Key-Value-Store und Column Store bezeichnet wird. Cassandra wurde entwickelt, um große Daten-Workloads über mehrere Knoten, ohne Single Point of Failure zu behandeln. Die Architektur ist von der Annahme geprägt, dass System-und Hardware-Fehler auftreten können und auch wirklich auftreten. Cassandra behandelt das Problem von Fehlern durch Verwendung eines Peer-to-Peer-System, in dem alle Knoten gleich sind und die Daten von allen Knoten des Clusters verteilt werden. Jeder Knoten tauscht Informationen über das Cluster im Sekunden Takt aus. Ein Commit-Log auf jedem Knoten fängt Schreibaktivität ab, um Datenhaltbarkeit zu gewährleisten. Daten werden auch auf eine In-Memory Struktur geschrieben, die memtable. Sobald die Speicherstruktur voll ist, werden die Daten in eine Datei auf die Festplatte geschrieben, auch SSTable genannt. Alle Schreibvorgänge werden automatisch aufgeteilt und in Cluster repliziert. 
 
-Cassandras Datenmodell basiert auf einem partitionierten Row-Store mit variabler Konsistenz. Zeilen werden in Tabellen organisiert, die erste Komponente des Primärschlüssels einer Tabelle, ist der Partition Schlüssel. Innerhalb einer Partition, werden Zeilen nach den verbliebenen Spalten des Primärschlüssels geclustert. Andere Spalten können getrennt von dem Primärschlüssel indiziert werden. Was Cassandra von HBase unterscheidet sind Spalten, die in einer verschachtelten Weise in Spalte Familien gruppiert werden können.
+Cassandras Datenmodell basiert auf einem partitionierten Row-Store mit eventueller Konsistenz. Zeilen werden in Tabellen organisiert, die erste Komponente des Primärschlüssels einer Tabelle, ist der Partition Schlüssel. Innerhalb einer Partition, werden Zeilen nach den verbliebenen Spalten des Primärschlüssels geclustert. Andere Spalten können getrennt von dem Primärschlüssel indiziert werden. Was Cassandra von HBase unterscheidet sind Spalten, die in einer verschachtelten Weise in Spalte Familien gruppiert werden können.
 
 Ein weiteres Unterscheidungsmerkmal stellt die Möglichkeit zur Angabe der Konsistenz Anforderung dar, die zum Zeitpunkt der Abfrage angebbar ist. Weiterhin ist Cassandra ein schreiborientiertes System, während HBase entwickelt wurde, um hohe Leistung für intensive Lese Workloads zu erzielen.
 
@@ -88,7 +88,7 @@ Ein weiteres Unterscheidungsmerkmal stellt die Möglichkeit zur Angabe der Konsi
 \label{ch:AnalyseDatenbanken:sec:Datenbanken:subsec:VoltDB}
 %% ===========================
 
-VoltDB \cite{volt2013a} ist ein ACID-konformes, relationales In-Memory-Datenbanksystem, abgeleitet vom Forschungsprototyp H-Store \cite{kallman08}. Es basiert auf einer Shared-Nothing-Architektur und wurde entwickelt, um auf einem Cluster mit mehreren Knoten zu laufen. Dies wird erreicht, indem die Datenbank in getrennte Partitionen aufgeteilt wird, bei dem jeder Knoten Besitzer und Verantwortlicher für die jeweiligen Partitionen ist. Durch Verwendung von Stored procedures als Transaktionseinheit, werden Round-Trip-Messages zwischen SQL Anfragen verhindert. Die Anfragen werden seriell in einem einzigen Thread ausgeführt, sodass kein locking and latching mehr notwendig ist \cite{volt2013b}. Die Daten werden im Arbeitsspeicher gehalten, was eine Ausführung ohne Netzwerkzugriff und I/O Vorgänge ermöglicht, falls die Daten nur auf einem Knoten liegen.  
+VoltDB \cite{volt2013a} ist ein ACID-konformes, relationales In-Memory-Datenbanksystem, abgeleitet vom Forschungsprototyp H-Store \cite{kallman08}. Da VoltDB auf dem Ansatz der relationalen Algebra beruht zählt es zu den NewSQL-Datenbanken. Es basiert auf einer Shared-Nothing-Architektur und wurde entwickelt, um auf einem Cluster mit mehreren Knoten zu laufen. Dies wird erreicht, indem die Datenbank in getrennte Partitionen aufgeteilt wird, bei dem jeder Knoten Besitzer und Verantwortlicher für die jeweiligen Partitionen ist. Durch Verwendung von Stored procedures als Transaktionseinheit, werden Round-Trip-Messages zwischen SQL Anfragen verhindert. Die Anfragen werden seriell in einem einzigen Thread ausgeführt, sodass kein locking and latching mehr notwendig ist \cite{volt2013b}. Die Daten werden im Arbeitsspeicher gehalten, was eine Ausführung ohne Netzwerkzugriff und I/O Vorgänge ermöglicht, falls die Daten nur auf einem Knoten liegen.  
 
 %% ===========================
 \subsection{H2} 
@@ -116,7 +116,7 @@ Die Frage nach ein Schema stellt sich bei einer Betrachtung der Datenstruktur. W
 
 \begin{table}[H]
 \tiny
-\caption{Gegenüberstellung von den Charakteristika der Datenbanken}
+\caption{Gegenüberstellung der Datenbanken Charakteristiken}
 \label{tb_charakteristika}
 \setlength{\tabcolsep}{1mm}
 \begin{tabulary} {\linewidth} {C | C | C | C | C | C | C | C | C}
