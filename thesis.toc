@@ -56,7 +56,7 @@
 \contentsline {section}{\numberline {5.2}Technologien}{31}{section.5.2}
 \contentsline {paragraph}{Vaadin}{31}{section*.29}
 \contentsline {paragraph}{Jersey}{31}{section*.30}
-\contentsline {paragraph}{Apache Tomcat}{31}{section*.31}
+\contentsline {paragraph}{Apache Tomcat7}{31}{section*.31}
 \contentsline {paragraph}{opencsv}{32}{section*.32}
 \contentsline {paragraph}{JDBC}{32}{section*.33}
 \contentsline {section}{\numberline {5.3}Datenbankdesign}{32}{section.5.3}
