@@ -154,6 +154,13 @@ Diese Datei wird bei jedem Start des Tomcats dazu verwendet, um einen Bulk-Load 
 
 Wie zuvor in Abschnitt \ref{ch:Konzeption:sec:updatedatenbestand} behandelt, wird die Aktualisierung unseres Datenbestandes von CAS genesisWorld angestoßen. Zur Implementierung, ist die Definition einer COM-Komponente notwendig. Dazu wird eine DLL-Datei angelegt. Diese muss Namenskonventionen einhalten. Dateien die aufgenommen werden sollen, müssen mit dem Prefix \textit{pGSAxExtCustomServerDataPlugin} beginnen. Die DLL-Datei ist in der \textit{RegisterSDKDataPlugIns.xml} hinterlegt, damit der Anwendungsserver beim Start unser Plugin findet. Weiterhin ist in der XML-Datei eine Tabelle paarweise mit einer DLL angegeben. Dadurch wird ein Plugin auf eine Datenbanktabelle registriert und bekommt alle betreffenden Änderungen mit.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.8]{pics/plugin_klassendiagramm.pdf}
+\caption{Klassendiagramm Plugin}
+\label{ergebniss_plugin_klassendiagramm}
+\end{figure}
+
 Die Programmbibliothek selbst ist in Delphi realisiert. Abbildung \ref{ergebniss_plugin_klassendiagramm} zeigt die Struktur der DLL-Datei. Die Klasse selbst implementiert sechs verschiedene Schnittstellen. \textit{ComObj} stellt Funktionen zur Erstellung und Bearbeitung von COM-Objekten zur Verfügung. Um Funktionalitäten von CAS genesisWorld vollständig zu nutzen, wird die \textit{ActiveX} Schnittstelle benötigt. Wie bereits behandelt findet die Übertragung der Daten über das REST-Protokoll statt, wofür die \textit{idHttp} Schnittstelle verwendet wird. Um Konvertierungen der vom Anwendungsserver erhaltenen Binärwerte vorzunehmen, werden die Funktionen der Schnittstellen \textit{CAS\_ToolsCOM} und \textit{CAS\_VarType14Fix} genutzt. Die eigentliche Kernfunktionalität, das Abfangen der geänderten Daten, wird durch die Funktionen der \textit{IGWSDKDataPlugin} Schnittstelle implementiert.
 
 Die Funktionen der Abbildung \ref{ergebniss_plugin_klassendiagramm} gehören von der Funktion \textit{BeforeAddNew()} bis \textit{AfterUndelete()} zur \textit{IGWSDKDataPlugin} Schnittstelle. Es sind zwar alle Funktionen in der DLL implementiert, allerdings werden nur die Funktionen die mit \textit{After} beginnen auch mit Logik hinterlegt. Für unser System reicht es nämlich aus, über Änderungen im Nachhinein benachrichtigt zu werden. Diese Funktionen enthalten alle die gleiche Logik und unterscheiden sich lediglich in den Übergabeparameter.
@@ -162,13 +169,6 @@ Die Logik innerhalb der Funktionen sieht wie folgt aus. Eine Veränderungen der 
 
 Der POST-Request enthält lediglich die \textit{GGUID} und die Art der Operation, die auf den Daten ausgeführt wurde. Bei einem Update beispielsweise wird ein Header mit einem Key-Value übermittelt. In unserem Server wird lediglich überprüft, ob der geändert Wert bereits existiert. Falls ja wird er gelöscht und neu ermittelt. Falls nein, nur letzteres.
 
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.8]{pics/plugin_klassendiagramm.pdf}
-\caption{Klassendiagramm Plugin}
-\label{ergebniss_plugin_klassendiagramm}
-\end{figure}
 
 %% ===========================
 \section{Oberfläche}

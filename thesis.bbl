@@ -134,6 +134,16 @@
   \mbox{\btxISSN~\btxISSNfont {0163-5700}}}.
 \newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/564585.564601}}.
 
+\bibitem [{GR11}]{Grow2013}
+\btxnamefont {John \btxlastnamefont {Gantz}} \btxandlong {}\ \btxnamefont
+  {David \btxlastnamefont {Reinsel}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Extracting value from chaos}{Extracting Value from
+  Chaos}}.
+\newblock 0, 2011.
+\newblock {\latintext
+  \btxurlfont{http://www.emc.com/collateral/analyst-reports/idc-extracting-value-from-chaos-ar.pdf}},
+  [Online;accessed 09-January-2014].
+
 \bibitem [{HKJR10}]{Hunt:2010:ZWC:1855840.1855851}
 \btxnamefont {Patrick \btxlastnamefont {Hunt}}, \btxnamefont {Mahadev
   \btxlastnamefont {Konar}}, \btxnamefont {Flavio\btxfnamespacelong P.
@@ -280,7 +290,9 @@
   sql for new oltp apps}{New SQL: An Alternative to NoSQL and Old SQL for New
   OLTP Apps}}.
 \newblock 0, 2011.
-\newblock [Online;accessed 23-November-2013].
+\newblock {\latintext
+  \btxurlfont{http://cacm.acm.org/blogs/blog-cacm/109710-new-sql-an-alternative-to-nosql-and-old-sql-for-new-oltp-apps/fulltext}},
+  [Online;accessed 23-November-2013].
 
 \bibitem [{Vai13}]{vaish2013getting}
 \btxnamefont {G. \btxlastnamefont {Vaish}}\btxauthorcolon\ \btxtitlefont

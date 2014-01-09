@@ -1,36 +1,36 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces Beispiel einer Spalten-Familie\relax }}{6}{figure.caption.11}
-\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Objekte in einer Graphdatenbank\relax }}{7}{figure.caption.12}
-\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Bestandteile einer COM-Architektur\relax }}{10}{figure.caption.20}
+\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces Beispiel einer Spalten-Familie\relax }}{4}{figure.caption.11}
+\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Objekte in einer Graphdatenbank\relax }}{5}{figure.caption.12}
+\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Bestandteile einer COM-Architektur\relax }}{8}{figure.caption.20}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Verkn\IeC {\"u}pfungen in CAS genesisWorld\relax }}{13}{figure.caption.21}
-\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Schematische Darstellung der Architektur von CAS genesisWorld\relax }}{14}{figure.caption.22}
-\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Beispiel zur Benachrichtigung von Plugins anhand eines Ablaufs bei einem Update\relax }}{15}{figure.caption.24}
-\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Funktionsweise von RelationTable anhand eines Beispiels\relax }}{16}{figure.caption.25}
-\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Auszug aus dem Schema des MSSQL 2008\relax }}{19}{figure.caption.26}
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Verkn\IeC {\"u}pfungen in CAS genesisWorld\relax }}{11}{figure.caption.21}
+\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Schematische Darstellung der Architektur von CAS genesisWorld\relax }}{12}{figure.caption.22}
+\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Beispiel zur Benachrichtigung von Plugins anhand eines Ablaufs bei einem Update\relax }}{13}{figure.caption.24}
+\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Funktionsweise von RelationTable anhand eines Beispiels\relax }}{14}{figure.caption.25}
+\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Auszug aus dem Schema des MSSQL 2008\relax }}{17}{figure.caption.26}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Konzeptionelle Darstellung der Architektur\relax }}{30}{figure.caption.28}
-\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Neues Datenbankschema\relax }}{33}{figure.caption.34}
-\contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Sequenzdiagramm f\IeC {\"u}r einen neuen Datensatz\relax }}{37}{figure.caption.36}
-\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Entw\IeC {\"u}rfe f\IeC {\"u}r die Oberfl\IeC {\"a}che\relax }}{38}{figure.caption.37}
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Konzeptionelle Darstellung der Architektur\relax }}{28}{figure.caption.28}
+\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Neues Datenbankschema\relax }}{31}{figure.caption.34}
+\contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Sequenzdiagramm f\IeC {\"u}r einen neuen Datensatz\relax }}{35}{figure.caption.36}
+\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Entw\IeC {\"u}rfe f\IeC {\"u}r die Oberfl\IeC {\"a}che\relax }}{36}{figure.caption.37}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Server Klassendiagramm\relax }}{42}{figure.caption.38}
-\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Client Klassendiagramm\relax }}{44}{figure.caption.39}
-\contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Gewichtung der Zeit\relax }}{46}{figure.caption.40}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Grober Entwurf des Aufbaus der Hauptseite}}}{46}{figure.caption.40}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tortendiagramm}}}{46}{figure.caption.40}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Balkendiagramm}}}{46}{figure.caption.40}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Tree Map}}}{46}{figure.caption.40}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Liniendiagramm}}}{46}{figure.caption.40}
-\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Netzdiagramm}}}{46}{figure.caption.40}
-\contentsline {figure}{\numberline {\relax 6.4}{\ignorespaces Ausschnitt einer CSV-Datei nach der Extraktion\relax }}{47}{figure.caption.41}
-\contentsline {figure}{\numberline {\relax 6.5}{\ignorespaces Klassendiagramm Plugin\relax }}{49}{figure.caption.42}
-\contentsline {figure}{\numberline {\relax 6.6}{\ignorespaces Anmeldefenster\relax }}{49}{figure.caption.43}
-\contentsline {figure}{\numberline {\relax 6.7}{\ignorespaces Hauptseite der Anwendung\relax }}{50}{figure.caption.44}
+\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Server Klassendiagramm\relax }}{40}{figure.caption.38}
+\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Client Klassendiagramm\relax }}{42}{figure.caption.39}
+\contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Gewichtung der Zeit\relax }}{44}{figure.caption.40}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Grober Entwurf des Aufbaus der Hauptseite}}}{44}{figure.caption.40}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tortendiagramm}}}{44}{figure.caption.40}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Balkendiagramm}}}{44}{figure.caption.40}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Tree Map}}}{44}{figure.caption.40}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Liniendiagramm}}}{44}{figure.caption.40}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Netzdiagramm}}}{44}{figure.caption.40}
+\contentsline {figure}{\numberline {\relax 6.4}{\ignorespaces Ausschnitt einer CSV-Datei nach der Extraktion\relax }}{45}{figure.caption.41}
+\contentsline {figure}{\numberline {\relax 6.5}{\ignorespaces Klassendiagramm Plugin\relax }}{46}{figure.caption.42}
+\contentsline {figure}{\numberline {\relax 6.6}{\ignorespaces Anmeldefenster\relax }}{47}{figure.caption.43}
+\contentsline {figure}{\numberline {\relax 6.7}{\ignorespaces Hauptseite der Anwendung\relax }}{48}{figure.caption.44}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Abfragegeschwindigkeit Vergleich\relax }}{55}{figure.caption.46}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Performance}}}{55}{figure.caption.46}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vergleich anhand Update-Performance}}}{55}{figure.caption.46}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vergleich anhand Insert-Performance}}}{55}{figure.caption.46}
+\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Abfragegeschwindigkeit Vergleich\relax }}{53}{figure.caption.46}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Performance}}}{53}{figure.caption.46}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vergleich anhand Update-Performance}}}{53}{figure.caption.46}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vergleich anhand Insert-Performance}}}{53}{figure.caption.46}
