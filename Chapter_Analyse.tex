@@ -95,7 +95,7 @@ Die Spalten \textit{GUID1} und \textit{GUID2} beinhalten die jeweiligen Primärs
 
 Während der Anforderungsanalyse wird ermittelt welche Eigenschaften und Fähigkeiten das System zur Erreichung der Ziele benötigt. Wir unterscheiden bei der Einteilung der Anforderungen zwischen Funktionalen und Nichtfunktionalen. Beim erst genannten wird die Funktionalität des zu erstellenden Systems beschrieben, wohingegen alle anderen Anforderungen unter letzteres Fallen. 
 
-Bevor wir auf die funktionalen und nichtfunktionalen Anforderungen eingehen, wird das umzusetzende Szenario näher beschrieben. Mit dem zu entwickelndem System soll eine Form des Rankings von Personen, innerhalb des Systems, ermöglicht werden. Dabei soll ermittelt werden können, welche Personen die stärkste Beziehung zu einer vorher bestimmten Person besitzen. Der Nutzer soll dadurch erkennen mit welchen Personen er am meisten Kontakt hat. Die Häufigkeit des Kontakts wird dabei anhand von fünf verschiedenen Merkmalen ermittelt. Zu einem wird der E-Mail Verkehr unter den Personen für die Betrachtung herangezogen. Überdies werden die Telefonate unter den Personen miteinbezogen. Außerdem spielen nachvollziehbare Treffen unter den Personen(Termine) eine Rolle. Zwischen Personen geteilte Dokumente werden auch als Merkmal festgesetzt. Das letzte Merkmal stell die Verkaufschance gegenüber einem Kunden dar. Wie stark letztendlich die Beziehung zu einer anderen Person ist, wird anhand der Anzahl solcher Merkmale ermittelt. Auf die fünf Merkmale wird im weiteren Verlauf der Arbeit nur noch mit dem Begriff "Verbindungsmerkmale" verwiesen.   
+Bevor wir auf die funktionalen und nichtfunktionalen Anforderungen eingehen, wird das umzusetzende Szenario näher beschrieben. Mit dem zu entwickelndem System soll eine Bewertung der Beziehung zwischen Personen aus CAS genesisWorld ermöglicht werden. Indessen soll ermittelt werden, welche Personen die ausgeprägteste Beziehung zu einer vorher bestimmten Person besitzen. Die Bewertung der Ausprägung basiert dabei auf der Häufigkeit des Kontakts mit der Person. Die Häufigkeit des Kontakts wird dabei anhand von fünf verschiedenen Merkmalen ermittelt. Zu einem wird der E-Mail-Verkehr unter den Personen für die Betrachtung herangezogen. Überdies werden die Telefonate unter den Personen miteinbezogen. Außerdem spielen nachvollziehbare Treffen (Termine) zwischen den Personen eine Rolle. Unter Personen geteilte Dokumente werden auch als Merkmal festgesetzt. Das letzte Merkmal stell die Verkaufschance gegenüber einem Kunden dar. Wie ausgeprägt letztendlich die Beziehung zu einer anderen Person ist, wird anhand der Anzahl solcher Merkmale ermittelt. Auf die fünf Merkmale wird im weiteren Verlauf der Arbeit nur noch mit dem Begriff "Verbindungsmerkmale" verwiesen. Weiterhin ist die Betrachtung nicht auf die gesamte Dauer des Kontakts vorgesehen, sondern auf festgelegte Zeitspannen. Beispielsweise sollte es möglich sein, die Ergebnisse auf den Zeitraum vom 01.02 bis 10.08.2013 einzugrenzen. Zusätzlich sollten weitere Eingrenzungen möglich sein, die im folgenden Abschnitt beschrieben werden.
 
 %% ===========================
 \subsection{Funktionale Anforderungen}
@@ -104,7 +104,7 @@ Bevor wir auf die funktionalen und nichtfunktionalen Anforderungen eingehen, wir
 Folgende funktionale Anforderungen wurden erhoben:
 
 \begin{itemize}
-\item Ermittlung der Anzahl von Beziehungen zwischen zwei Personen
+\item Ermittlung der Anzahl von Verbindungsmerkmalen ausgehend von einer Personen, zu allen anderen Personen im CRM-System
 
 \item Ranking der Personen basierend auf der Summe von Verbindungsmerkmalen, die von der Ausgangsperson ausgehen
 
@@ -141,9 +141,9 @@ Folgende nicht nichtfunktionale Anforderungen wurden erhoben:
 	
 	\item Eine Rechnerinstanz für Datenbankserver und Applikationsserver 
 	
-	\item Sehr hohe Verarbeitungsgeschwindigkeit(unter einer Sekunde)
+	\item Sehr hohe Verarbeitungsgeschwindigkeit (unter einer Sekunde)
 	
-	\item Lose Kopplung(zwischen Logik und Darstellung)
+	\item Lose Kopplung (zwischen Logik und Darstellung)
 	
 	\item Portabilität
 	
