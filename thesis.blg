@@ -12,30 +12,29 @@ A level-1 auxiliary file: Chapter_Zusammenfassung.aux
 The style file: babalpha-fl.bst
 Database file #1: thesis.bib
 Warning--string name "jss" is undefined
---line 291 of file thesis.bib
+--line 363 of file thesis.bib
 Warning--string name "jss" is undefined
---line 322 of file thesis.bib
+--line 394 of file thesis.bib
 Warning--string name "jss" is undefined
---line 330 of file thesis.bib
+--line 402 of file thesis.bib
 Warning--string name "jss" is undefined
---line 407 of file thesis.bib
+--line 479 of file thesis.bib
 Warning--string name "jss" is undefined
---line 415 of file thesis.bib
+--line 487 of file thesis.bib
 Warning--string name "jss" is undefined
---line 423 of file thesis.bib
+--line 495 of file thesis.bib
 Warning--string name "jss" is undefined
---line 431 of file thesis.bib
+--line 503 of file thesis.bib
 Warning--string name "jss" is undefined
---line 440 of file thesis.bib
+--line 512 of file thesis.bib
 Warning--empty language in Abadi:2006:ICE:1142473.1142548
 Warning--empty journal in cap2010
 Warning--empty journal in tech2013
 Warning--empty journal in couch2013
 Warning--empty journal in cas2013a
-Warning--empty journal in Grow2013
 Warning--empty journal in red2013
 Warning--empty journal in NewSQL2011
 Warning--empty journal in vod2013
 Warning--empty journal in volt2013b
 Warning--empty journal in volt2013a
-(There were 19 warnings)
+(There were 18 warnings)

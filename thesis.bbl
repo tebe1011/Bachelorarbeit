@@ -134,15 +134,14 @@
   \mbox{\btxISSN~\btxISSNfont {0163-5700}}}.
 \newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/564585.564601}}.
 
-\bibitem [{GR11}]{Grow2013}
-\btxnamefont {John \btxlastnamefont {Gantz}} \btxandlong {}\ \btxnamefont
-  {David \btxlastnamefont {Reinsel}}\btxauthorcolon\ \btxjtitlefont
-  {\btxifchangecase {Extracting value from chaos}{Extracting Value from
-  Chaos}}.
-\newblock 0, 2011.
+\bibitem [{Hel13}]{SWB-375372644}
+\btxnamefont {Stefan \btxlastnamefont {Helmke}}\btxauthorcolon\ \btxtitlefont
+  {\btxifchangecase {Effektives customer relationship management : Instrumente
+  - einführungskonzepte - organisation}{Effektives Customer Relationship
+  Management : Instrumente - Einführungskonzepte - Organisation}},
+  2013\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont {978-3-8349-4176-3}}}.
 \newblock {\latintext
-  \btxurlfont{http://www.emc.com/collateral/analyst-reports/idc-extracting-value-from-chaos-ar.pdf}},
-  [Online;accessed 09-January-2014].
+  \btxurlfont{http://swbplus.bsz-bw.de/bsz375372644cov.htmhttp://dx.doi.org/10.1007/978-3-8349-4176-3}}.
 
 \bibitem [{HKJR10}]{Hunt:2010:ZWC:1855840.1855851}
 \btxnamefont {Patrick \btxlastnamefont {Hunt}}, \btxnamefont {Mahadev
@@ -324,5 +323,13 @@
 \newblock {\latintext
   \btxurlfont{http://voltdb.com/downloads/datasheets_collateral/technical_overview.pdf}},
   [Online;accessed 14-November-2013].
+
+\bibitem [{WH04}]{SWB-1001}
+\btxnamefont {Klaus\btxfnamespacelong D. \btxlastnamefont {Wilde}} \btxandlong
+  {}\ \btxnamefont {Hajo \btxlastnamefont {Hippner}}\btxauthorcolon\
+  \btxtitlefont {Methodisches Vorgehen zur Einführung von CRM}.
+\newblock \btxpublisherfont {Springer Gabler}, Wiesbaden, 2004\ifbtxprintISBN
+  {, \mbox{\btxISBN~\btxISBNfont {978-3-409-12520-8}}}.
+\newblock S. 15.
 
 \end{thebibliography}
