@@ -31,7 +31,7 @@
 \contentsline {subsection}{\numberline {2.3.5}COM-Objekte}{11}{subsection.2.3.5}
 \contentsline {subsection}{\numberline {2.3.6}Interface Definition Language}{11}{subsection.2.3.6}
 \contentsline {chapter}{\numberline {3}Systemanalyse}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}CASgenesisWorld}{13}{section.3.1}
+\contentsline {section}{\numberline {3.1}CAS genesisWorld}{13}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Architektur}{14}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Pr\IeC {\"a}sentationsschicht \& Logikschicht}{14}{subsection.3.1.2}
 \contentsline {paragraph}{Server-SDK-Plugins}{15}{section*.23}
@@ -71,7 +71,7 @@
 \contentsline {section}{\numberline {5.6}Darstellungskonzepte}{37}{section.5.6}
 \contentsline {chapter}{\numberline {6}Umsetzung}{41}{chapter.6}
 \contentsline {section}{\numberline {6.1}Aufbau der Server.war}{41}{section.6.1}
-\contentsline {section}{\numberline {6.2}Aufbau der Client.war}{43}{section.6.2}
+\contentsline {section}{\numberline {6.2}Aufbau der Client.war}{42}{section.6.2}
 \contentsline {section}{\numberline {6.3}Erzeugung der Abfrage}{45}{section.6.3}
 \contentsline {section}{\numberline {6.4}ETL Prozess}{46}{section.6.4}
 \contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes}{48}{section.6.5}
