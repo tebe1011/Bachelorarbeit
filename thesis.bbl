@@ -213,6 +213,14 @@
 \newblock Go-To-Reihe. \btxpublisherfont {Addison-Wesley}, München [u.a.],
   2001\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont {3-8273-1678-2}}}.
 
+\bibitem [{Mü13}]{h2:2013}
+\btxnamefont {Thomas \btxlastnamefont {Müller}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {H2 tutorial}{H2 Tutorial}}.
+\newblock 0, 2013.
+\newblock {\latintext
+  \btxurlfont{http://www.h2database.com/html/tutorial.html}}, [Online;accessed
+  06-Januar-2014].
+
 \bibitem [{Pla13a}]{SWB-381840476}
 \btxnamefont {Hasso \btxlastnamefont {Plattner}}\btxauthorcolon\ \btxtitlefont
   {\btxifchangecase {A course in in-memory data management : The inner
