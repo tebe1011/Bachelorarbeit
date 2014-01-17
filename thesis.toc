@@ -17,8 +17,8 @@
 \contentsline {subsection}{\numberline {2.1.5}Theoretische Grundlagen}{7}{subsection.2.1.5}
 \contentsline {paragraph}{Replikation}{7}{section*.13}
 \contentsline {paragraph}{Fragmentierung}{7}{section*.14}
-\contentsline {paragraph}{Eventuelle Konsistenz}{7}{section*.15}
-\contentsline {paragraph}{Multiversion Concurrency Control (MVCC)}{8}{section*.16}
+\contentsline {paragraph}{Eventual-Consistency}{7}{section*.15}
+\contentsline {paragraph}{Multiversion Concurrency Control (MVCC)}{7}{section*.16}
 \contentsline {paragraph}{MapReduce}{8}{section*.17}
 \contentsline {paragraph}{Vektoruhren}{8}{section*.18}
 \contentsline {paragraph}{Das CAP-Theorem}{8}{section*.19}
