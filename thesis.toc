@@ -72,12 +72,12 @@
 \contentsline {subsection}{\numberline {5.4.1}Extract}{35}{subsection.5.4.1}
 \contentsline {subsection}{\numberline {5.4.2}Transform}{36}{subsection.5.4.2}
 \contentsline {subsection}{\numberline {5.4.3}Load}{36}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}Synchronisation des Datenbestandes}{37}{section.5.5}
+\contentsline {section}{\numberline {5.5}Synchronisation des Datenbestandes}{36}{section.5.5}
 \contentsline {section}{\numberline {5.6}Darstellungskonzepte}{38}{section.5.6}
 \contentsline {chapter}{\numberline {6}Umsetzung}{41}{chapter.6}
 \contentsline {section}{\numberline {6.1}Aufbau der Server.war}{41}{section.6.1}
 \contentsline {section}{\numberline {6.2}Aufbau der Client.war}{42}{section.6.2}
-\contentsline {section}{\numberline {6.3}Erzeugung der Abfrage}{45}{section.6.3}
+\contentsline {section}{\numberline {6.3}Erzeugung der SQL-Abfrage}{45}{section.6.3}
 \contentsline {section}{\numberline {6.4}ETL Prozess}{46}{section.6.4}
 \contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes}{48}{section.6.5}
 \contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{49}{section.6.6}

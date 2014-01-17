@@ -67,10 +67,10 @@ Falls ja, werden durch die Methode \textit{MainView()} alle bisherigen Komponent
 An der Oberfläche gibt es Felder die nur Zahlen erwarten. Eingaben die nicht numerisch sind werden durch den Einsatz der Klasse \textit{IntegerField} verhindert. Diese erweitert die Klasse \textit{TextField}. Sie besitzt einen Event-Listener, der jede Eingabe des Benutzers abfängt. Gibt der Nutzer nicht numerische Zeichen ein werden diese direkt wieder entfernt. Dadurch werden Falscheingaben durch den Nutzer ausgeschlossen.
 
 %% ===========================
-\section{Erzeugung der Abfrage}
+\section{Erzeugung der SQL-Abfrage}
 %% ===========================
 
-Um SQL-Abfragen möglichst schlank zu halten, erfolgt die Erzeugung dynamisch. Die SQL-Abfrage kann dadurch je nach Benutzereingabe unterschiedlich aufgebaut sein kann. Die Basisfunktionalität ändert sich allerdings nicht. Diese besteht aus der Bildung von Summen der verschiedenen Verbindungsmerkmale. Nachdem festgestellt wurde wie viele Verbindungsmerkmale von den jeweiligen Typen zu einer Person verlaufen, wird zusätzlich die Gesamtsumme der Verbindungsmerkmale zu einer Person gebildet. Die Summe wird zur Sortierung der Ergebnisse verwendet. Bei der Sortierung wird absteigend vorgegangen, um die Personen mit den meisten Verbindungsmerkmale zu der von der Suche ausgehend Person zu ermitteln. Das Ergebnis wird wiederum auf eine durch den Benutzer festgelegte Anzahl reduziert. Überdies beschränkt die Abfrage den Zeitraum durch die Verwendung der Spalte \textit{Date}.
+Um eine SQL-Abfragen mit möglichst wenigen Bedienungen zu verwenden erfolgt die Erzeugung dynamisch. Die SQL-Abfrage kann dadurch je nach Benutzereingabe unterschiedlich aufgebaut sein kann. Die Basisfunktionalität ändert sich allerdings nicht. Diese besteht aus der Bildung von Summen der verschiedenen Verbindungsmerkmale. Nachdem festgestellt wurde wie viele Verbindungsmerkmale von den jeweiligen Typen zu einer Person verlaufen, wird zusätzlich die Gesamtsumme der Verbindungsmerkmale zu einer Person gebildet. Die Summe wird zur Sortierung der Ergebnisse verwendet. Bei der Sortierung wird absteigend vorgegangen, um die Personen mit den meisten Verbindungsmerkmale zu der von der Suche ausgehend Person zu ermitteln. Das Ergebnis wird wiederum auf eine durch den Benutzer festgelegte Anzahl reduziert. Überdies beschränkt die Abfrage den Zeitraum durch die Verwendung der Spalte \textit{Date}.
 
 Nutzer können durch nutzen der Filteroperatoren weitere Bedingungen zur SQL-Abfrage hinzufügen. Eine von ihnen ist die Gewichtung von Zeitspannen. Das Verfahren zur Gewichtung der Zeit wird anhand der Abbildung \ref{fig:umsetzung:gewichtungderzeit} erläutert. Die Abbildung zeigt ein Koordinatensystem mit der Gewichtung von einzelnen Zeitpunkten. Die x-Achse stellt den zeitlichen Verlauf und die y-Achse die Gewichtung dar. Der Startzeitpunkt wird durch $t_{s}$ markiert, wohingegen $t_{e}$ den Endzeitpunkt angibt. Mithilfe von $t_1$ und $t_2$ werden die zu gewichtenden Zeitspannen festgelegt. Um nun die Zeitspannen anders zu gewichten wird eine lineare Abstufung der Tage vorgenommen. Für die Zeitspanne zwischen $t_{s}$ und $t_1$ bedeutet dies, dass der Wert eines Tages zunehmend steigt. Wird $t_1$ erreicht, besitzt jeder Tage wieder eine Wertigkeit von 1. Bei $t_2$ verhält es sich ähnlich. Mit jedem Tag ab $t_2$ sinkt der Wert des Tages bis der Zeitpunkt $t_{e}$ erreicht ist.
 
@@ -107,34 +107,34 @@ Mit den Faktoren und Variablen werden die Werte der Tage berechnet. Dazu wird de
 \draw[color=black]  (4,3) -- (9,3)   node[right] {}; 
 \draw[color=black]  (9,3) -- (12,0)   node[right] {};  
 
-\draw[dotted][color=black]  (0.5,0.75) -- (1.5,0.75);
-\draw[dotted][color=black]  (1.5,1.5) -- (2.5,1.5);
-\draw[dotted][color=black]  (2.5,2.25) -- (3.5,2.25);
-\draw[dotted][color=black]  (3.5,3) -- (4.5,3);
+\draw[dotted][color=black]  (1,0.75) -- (2,0.75);
+\draw[dotted][color=black]  (2,1.5) -- (3,1.5);
+\draw[dotted][color=black]  (3,2.25) -- (4,2.25);
+\draw[dotted][color=black]  (4,3) -- (5,3);
 
-\draw[dotted][color=black]  (0.5,0.75) -- (0.5,0);
-\draw[dotted][color=black]  (1.5,1.5) -- (1.5,0);
-\draw[dotted][color=black]  (2.5,2.25) -- (2.5,0);
-\draw[dotted][color=black]  (3.5,3) -- (3.5,0);
-\draw[dotted][color=black]  (4.5,3) -- (4.5,0);
+\draw[dotted][color=black]  (1,0.75) -- (1,0);
+\draw[dotted][color=black]  (2,1.5) -- (2,0);
+\draw[dotted][color=black]  (3,2.25) -- (3,0);
+\draw[dotted][color=black]  (4,3) -- (4,0);
+\draw[dotted][color=black]  (5,3) -- (5,0);
+\draw[dotted][color=black]  (6,3) -- (6,0);
+\draw[dotted][color=black]  (7,3) -- (7,0);
 
-\draw[dotted][color=black]  (8.5,3) -- (8.5,0);
-\draw[dotted][color=black]  (9.5,3) -- (9.5,0);
-\draw[dotted][color=black]  (10.5,2) -- (10.5,0);
-\draw[dotted][color=black]  (11.5,1) -- (11.5,0);
+\draw[dotted][color=black]  (8,3) -- (8,0);
+\draw[dotted][color=black]  (9,3) -- (9,0);
+\draw[dotted][color=black]  (10,2) -- (10,0);
+\draw[dotted][color=black]  (11,1) -- (11,0);
 
-\draw[dotted][color=black]  (8.5,3) -- (9.5,3);
-\draw[dotted][color=black]  (9.5,2) -- (10.5,2);
-\draw[dotted][color=black]  (10.5,1) -- (11.5,1);
+\draw[dotted][color=black]  (8,3) -- (9,3);
+\draw[dotted][color=black]  (9,2) -- (10,2);
+\draw[dotted][color=black]  (10,1) -- (11,1);
 
-\draw[dotted][color=black]  (1,0.75) -- (1,1.05)   node[above] {$t_{s}+1$}; 
-\draw[dotted][color=black]  (2,1.5) -- (2,1.8)   node[above] {$t_{s}+2$}; 
-\draw[dotted][color=black]  (3,2.25) -- (3,2.55)   node[above] {$t_{s}+3$}; 
-\draw[dotted][color=black]  (4,3) -- (4,3.3)   node[above] {$t_{s}+4$}; 
+\draw[dashed][color=black]  (1,0.75) -- (1,1.05)   node[above] {$t_{s}+1$}; 
+\draw[dashed][color=black]  (2,1.5) -- (2,1.8)   node[above] {$t_{s}+2$}; 
+\draw[dashed][color=black]  (3,2.25) -- (3,2.55)   node[above] {$t_{s}+3$};  
 
-\draw[dotted][color=black]  (9,3) -- (9,3.3)   node[above] {$t_{e}-3$}; 
-\draw[dotted][color=black]  (10,2) -- (10,2.3)   node[above] {$t_{e}-2$}; 
-\draw[dotted][color=black]  (11,1) -- (11,1.3)   node[above] {$t_{e}-1$}; 
+\draw[dashed][color=black]  (10,2) -- (10,2.3)   node[above] {$t_{e}-2$}; 
+\draw[dashed][color=black]  (11,1) -- (11,1.3)   node[above] {$t_{e}-1$}; 
 
 \end{tikzpicture} 
 \end{center}
