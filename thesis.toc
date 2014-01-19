@@ -34,10 +34,10 @@
 \contentsline {section}{\numberline {3.1}CAS genesisWorld}{13}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Architektur}{14}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Pr\IeC {\"a}sentationsschicht \& Logikschicht}{14}{subsection.3.1.2}
-\contentsline {paragraph}{Server-SDK-Plugins}{15}{section*.23}
-\contentsline {subsection}{\numberline {3.1.3}Datenhaltungsschicht}{15}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.3}Server-SDK-Plugin}{15}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Datenhaltungsschicht}{15}{subsection.3.1.4}
 \contentsline {section}{\numberline {3.2}Anforderungsanalyse}{16}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Funktionale Anforderungen}{17}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.1}Funktionale Anforderungen}{16}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Nichtfunktionale Anforderungen}{17}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Ermittlung relevanter Daten}{18}{section.3.3}
 \contentsline {chapter}{\numberline {4}Bestimmung einer Datenbank}{21}{chapter.4}
@@ -54,33 +54,32 @@
 \contentsline {section}{\numberline {4.3}Auswahl einer Datenbank}{26}{section.4.3}
 \contentsline {chapter}{\numberline {5}Konzeption}{29}{chapter.5}
 \contentsline {section}{\numberline {5.1}Architektur}{29}{section.5.1}
-\contentsline {paragraph}{Vaadin Client-Side-Engine}{29}{section*.29}
-\contentsline {paragraph}{Vaadin Servlet}{29}{section*.30}
-\contentsline {paragraph}{REST Client \& Server}{30}{section*.31}
-\contentsline {paragraph}{Logik}{30}{section*.32}
-\contentsline {paragraph}{CAS genesisWorld Plugin}{31}{section*.33}
-\contentsline {section}{\numberline {5.2}Technologien}{31}{section.5.2}
-\contentsline {paragraph}{Vaadin}{31}{section*.34}
-\contentsline {paragraph}{Jersey}{31}{section*.35}
-\contentsline {paragraph}{Apache Tomcat7}{32}{section*.36}
-\contentsline {paragraph}{opencsv}{32}{section*.37}
-\contentsline {paragraph}{JDBC}{32}{section*.38}
-\contentsline {section}{\numberline {5.3}Datenbankdesign}{32}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Konzeptionelles Design}{32}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Zugriffsstrukturen}{34}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Extract Transform Load Prozess}{35}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Extract}{35}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Transform}{36}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Load}{36}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}Synchronisation des Datenbestandes}{36}{section.5.5}
-\contentsline {section}{\numberline {5.6}Darstellungskonzepte}{38}{section.5.6}
+\contentsline {paragraph}{Vaadin Client-Side-Engine}{29}{section*.28}
+\contentsline {paragraph}{Client-Webprojekt}{30}{section*.29}
+\contentsline {paragraph}{Server-Webprojekt}{30}{section*.30}
+\contentsline {paragraph}{H2-Datenbank}{31}{section*.31}
+\contentsline {paragraph}{CAS genesisWorld Plugin}{31}{section*.32}
+\contentsline {section}{\numberline {5.2}Datenbankdesign}{31}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Konzeptionelles Design}{31}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Zugriffsstrukturen}{34}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Extract Transform Load Prozess}{34}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Extract}{35}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Transform}{36}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Load}{36}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Darstellungskonzepte}{36}{section.5.4}
+\contentsline {section}{\numberline {5.5}Technologien}{38}{section.5.5}
+\contentsline {paragraph}{Vaadin}{38}{section*.37}
+\contentsline {paragraph}{Jersey}{39}{section*.38}
+\contentsline {paragraph}{Apache Tomcat7}{39}{section*.39}
+\contentsline {paragraph}{opencsv}{39}{section*.40}
+\contentsline {paragraph}{JDBC}{39}{section*.41}
 \contentsline {chapter}{\numberline {6}Umsetzung}{41}{chapter.6}
 \contentsline {section}{\numberline {6.1}Aufbau der Server.war}{41}{section.6.1}
 \contentsline {section}{\numberline {6.2}Aufbau der Client.war}{42}{section.6.2}
 \contentsline {section}{\numberline {6.3}Erzeugung der SQL-Abfrage}{45}{section.6.3}
 \contentsline {section}{\numberline {6.4}ETL Prozess}{46}{section.6.4}
 \contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes}{48}{section.6.5}
-\contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{49}{section.6.6}
+\contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{50}{section.6.6}
 \contentsline {chapter}{\numberline {7}Fazit und Ausblick}{53}{chapter.7}
 \contentsline {section}{\numberline {7.1}Zusammenfassung}{53}{section.7.1}
 \contentsline {section}{\numberline {7.2}Bewertung der Ergebnisse}{53}{section.7.2}

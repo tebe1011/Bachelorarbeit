@@ -6,83 +6,68 @@
 \label{ch:Konzeption}
 %% ===========================
 
-Ein Konzept dient in der Softwarearchitektur der Bildung eines abstrakten Systemmodells als Basis für die Umsetzung. Zur Gestaltung werden technische Details weggelassen und stattdessen allgemeingültige Begriffe und ihre Zusammenhänge festgelegt. Weiterhin wird ein Grundverständnis durch Definieren von Strukturen und Konzepten gebildet. Zu Beginn der Überlegung werden Systemgrenzen bestimmt und beschrieben was Teil des Systems ist. Überdies werden Schnittstellen definiert, die Wechselwirkungen zwischen den Komponenten beschreiben. Weiterhin werden im Zuge der Überlegungen Technologien ausgewählt, die zur Umsetzung der verschiedenen Komponenten verwendet werden. Abschließend wird auf die Entwürfe der einzelnen Komponenten näher eingegangen.  
+Ein Konzept dient in der Softwarearchitektur der Konstruktion eines abstrakten Systemmodells. Zur Gestaltung werden technische Details weggelassen und stattdessen allgemeingültige Begriffe und ihre Zusammenhänge festgelegt. Weiterhin wird ein Grundverständnis durch Definieren von Strukturen und Konzepten gebildet. Darüber hinaus werden Schnittstellen definiert, die Wechselwirkungen zwischen den Komponenten beschreiben. Weiterhin werden im Zuge der Überlegungen Technologien ausgewählt, die zur Umsetzung der verschiedenen Komponenten verwendet werden. Abschließend wird auf die Entwürfe der einzelnen Komponenten näher eingegangen.  
 
 %% ===========================
 \section{Architektur}
 %% ===========================
 
-Zuerst wird ein erster Überblick über den groben Aufbau des Systems gegeben. In Abbildung \ref{konzept_architektur} können die Zusammenhänge des abzubildenden Software-Systems betrachtet werden. Bei einer Betrachtung in der 3-Schichten-Architektur stellen der Browser und die Client.war die Darstellungsschicht dar. Die Logikschichtschicht ist in der Server.war umgesetzt. Die Datenbank befindet sich zwar auch in der Server.war, allerdings ist sie trotzdem unabhängig und kann jederzeit separat betrieben werden.
+Zuerst wird ein erster Überblick über den geplanten Aufbau des Systems gegeben. Abbildung \ref{konzept_architektur} zeigt die Komponenten des Systems und der Umwelt. Der Tomcat mit seinen Webcontainern bildet die Basis des Systems. Wie auf der Abbildung zu sehen sind zwei verschiedene Projekte vorgesehen. Zum einen ein Client-Webprojekt und zum anderen ein Server-Webprojekt. Das Client-Webprojekt soll die Klassen und Methoden zur Umsetzung der Darstellung beinhalten. Die Anwendungslogik sowie die Datenbank sind im Server-Webprojekt vorgesehen. Der Grund für die Aufteilung in zwei verschiedene Webprojekte ist die Anforderung einer losen Kopplung zwischen Client und Server. Beide Webprojekt werden in Form von Web-Archive-Dateien in einem Apache-Tomcat-Webserver deployed und können über die entsprechende URL angesprochen werden. Weiterhin soll ein selbstgeschriebenes Plugin für den CAS genesisWorld Anwendungsserver die Aktualität des Systems garantieren. Der Browser, CAS genesisWorld und der MSSQL-Server stellen die Umwelt des Systems dar. Im Folgenden wird auf jede Komponente der Architektur eingegangen und ihre Rolle im Gebilde erläutert.
 
 \begin{figure}[htbp]
 \centering
   \includegraphics[width=0.8\textwidth, width=0.8\textwidth]{pics/Konzept_architektur.pdf}
-\caption{Konzeptionelle Darstellung der Architektur}
+\caption{Komponenten des Systems und der Umwelt}
 \label{konzept_architektur}
 \end{figure} 
 
 \paragraph{Vaadin Client-Side-Engine}
-Die Vaadin Client-Side-Engine verwaltet das Rendering der Oberfläche im Web-Browser.  Dies geschieht durch den Einsatz verschiedener clientseitiger Widgets, die das Gegenstück zu den serverseitigen Komponenten bilden. Es leitet Benutzerinteraktionen an die Serverseite weiter und rendert anschließend die Änderungen für die Benutzeroberfläche. Die Kommunikation findet über asynchrone HTTP-oder HTTPS-Anfragen statt.
 
-\paragraph{Vaadin Servlet}
-Serverseitig arbeitet die Vaadin-Anwendung auf der Java-Servlet-API. Das Vaadin-Servlet oder genauer die Klasse \textit{VaadinServlet} ist für die Delegation verschiedenen Clients zuständig. Sie empfängt Anfragen und legt mithilfe von Cookies fest welche Benutzersitzung, zu welchem Client gehört.
-Interaktionen mit den Komponentender Oberfläche erzeugen Events, die zunächst auf der Clientseite durch Widgets verarbeitet werden. Nachfolgend werden die Events durch den HTTP-Server, das Vaadin-Servlet und durch die Komponenten der Benutzeroberfläche geleitet, bis sie zu den in der Anwendung definierten Event-Listenern gelangen. In den Listenern wird mithilfe des REST-Clients ein POST-Requests an die Logik gesendet. Dieser enthält alle in der Oberfläche definierten Parameter. 
+Die Vaadin Client-Side-Engine verwaltet das Rendering der Oberfläche im Web-Browser.  Dies geschieht durch den Einsatz verschiedener clientseitiger Widgets, die das Gegenstück zu den serverseitigen Vaadin-Komponenten bilden. Es leitet Benutzerinteraktionen an die Serverseite weiter und rendert anschließend die Änderungen für die Benutzeroberfläche. Die Kommunikation findet über asynchrone HTTP-oder HTTPS-Anfragen statt. Weiterhin wird die Komponente durch Vaadin automatisch erzeugt und wird daher als gegeben betrachtet.
 
-In der Server.war werden REST-Requests entgegen genommen. Anhand der mitübertragenen Filteroptionen werden die Bedingungen für die Datenbankabfrage zusammengestellt. Anschließend wird eine Verbindung zur H2-Datenbank aufgebaut. Das Ergebnis der Abfrage wird in das JSON-Format überführt und zurück an die Client.war geschickt. Dort angekommen werden die Daten an die Vaadin-Komponenten übergeben, was einen Neuaufbau der entsprechenden Seitenbereiche bewirkt.      
+\paragraph{Client-Webprojekt}
 
-\paragraph{REST Client \& Server}
-Eine der Anforderung ist die unabhängige Umsetzung von Client und Server. Die lose Kopplung zwischen Darstellung und Logik wird durch die Aufteilung in zwei verschiedene Projekte erreicht. Die Client.war beinhaltet die Klassen und Objekte der Darstellung. Wohingegen die Server.war alle Elemente zur Umsetzung der Logik enthält. Die Verwendung des REST-Protokolls zwischen der Client.war und Server.war stellt den nächsten Schritt der losen Kopplung dar. Einer der Vorteile ist, dass Funktionen des Systems durch andere Anwendungen genutzt werden können, ohne Änderungen am Server durchführen zu müssen. Beide WAR-Dateien werden in einem Apache-Tomcat-Webserver deployed und können über die dementsprechende URL angesprochen werden.
+Die Oberfläche des Systems wird durch ein Vaadin-Projekt realisiert. Mit dessen Hilfe werden die Bedien- und Darstellungselemente der Anwendung definiert. Sie ist außerdem für die Interaktion mit dem Benutzer zuständig. Die Delegation von verschiedenen Clients beispielsweise wird von einem Vaadin-Servlet erledigt. Dazu zählt das Empfangen von Anfragen und deren Zuordnung zu einer Sitzung des jeweiligen Benutzers. Die Elemente der Oberfläche selbst werden in Java geschrieben. Mithilfe der Java-Klasssen wird zur Laufzeit eine Javascript basierte Homepage erzeugt. Den Übergang von Java auf Javascript übernimmt Vaadin.
 
-\paragraph{Logik}
-Die Logikkomponente in der Architektur stellt eine Zusammenfassung aller Funktionen des Anwendungskerns dar. Sie kümmert sich um die Generierung der Abfragen, welche an die Datenbank gestellt werden. Dabei erfolgt eine dynamische Generierung der Abfragen, um nicht durch unnötige Bedingungen die Verarbeitungsgeschwindigkeit zu verringern. Abfragen werden mithilfe der Java Database Connectivity (JDBC) an die Datenbank gestellt. Neben den Funktionen zur Abfragegenerierung enthält die Logikkomponente Prozesse zum Extrahieren und Transformieren von Daten aus der MSSQL-Datenbank. Der ETL-Prozess wird nur einmalig ausgeführt, allerdings stellt er einen wichtigen  Schritt für die Umsetzung dar. 
+Das Server-Webprojekt ist eine weitere Komponente mit der interagiert werden soll. Die Kommunikation zwischen den beiden Komponenten soll über das REST-Protokoll stattfinden. Dazu implementiert das Client-Webprojekt einen REST-Client. Die Verwendung des REST-Protokolls zwischen dem Client-Webprojekt und Server-Webprojekt stellt überdies einen weiteres Element der losen Kopplung dar.
 
-\paragraph{CAS genesisWorld Plugin}
-Um nicht periodisch Extraktion und Transformation wiederholen zu müssen, wird ein selbstgeschriebenes Plugin im CAS genesisWorld Anwendungsserver eingesetzt. Die Grundidee des Plugins ist, dass neue System über Änderungen in den Datensätzen der MSSQL-Datenbank zu benachrichtigen. Dort soll eine Kontrolle stattfinden, die den Datensatz auf Relevanz überprüft. Wird eine Relevanz festgestellt besorgt sich der Anwendungsserver, anhand der zuvor übermittelten GGUID, alle benötigten Daten.
+Ein Prozess in dem die einzelnen Bestandteile Verwendung finden, könnte wie folgt aussehen: Die Interaktionen der Benutzer mit der Oberfläche würden Events erzeugen, die zunächst auf der Clientseite durch Widgets verarbeitet werden. Nachfolgend würden die Events durch den HTTP-Server an das Vaadin-Servlet übergeben werden. Dieser leitet die Events an die entsprechenden Vaadin-Objekte weiter, bis sie zu den in der Anwendung definierten Event-Listenern gelangen. In den Listenern werden anschließend die REST-Clients aufgerufen. Mit Hilfe der REST-Clients werden die Eingaben der Nutzer an das Server-Webprojekt übermittelt. 
 
-%% ===========================
-\section{Technologien}
-%% ===========================
+\paragraph{Server-Webprojekt}
 
-Als einer der am meist verbreitetsten Programmiersprachen stellt Java die Grundlage aller verwendeten Technologien dar. Zur Darstellung der Inhalte für den Client wird Vaadin verwendet. Der Apache Tomcat7 nimmt die Rolle des Anwendungsservers ein. Die Kommunikation auf Basis von RESTful Web Services wird mithilfe von Jersey realisiert. Weiterhin wird opencsv für das Lesen und Schreiben von CSV-Dateien verwendet. JDBC dient der Kommunikation zwischen Anwendungsserver und der Datenbank. Die H2-Datenbank stellt die Datenquelle des Systems dar. Im Folgenden werden alle Bestandteile, bis auf die H2-Datenbank die bereits erläutert wurde, näher beschrieben. 
+Die eigentliche Lösung der Problemstellung soll im Server-Webprojekt des Softwaresystems implementiert werden. Es soll vollständig auf Java basieren. In ihr werden sich Klassen und Methoden befinden die eine Ermittlung der Informationen aus der H2-Datenbank ermöglichen. Zur Bestimmung der SQL-Parameter soll ein REST-Server implementiert werden, der die Beinutzeingaben entgegennimmt. Der REST-Server ist außerdem für die Kommunikation mit dem Plugin zuständig.
 
-\paragraph{Vaadin}
+Weiterhin soll das Projekt sämtliche ETL-Prozessschritte implementieren. Die genaue Vorgehensweise des Prozesses wird in Abschnitt \ref{ch:konzeption:etl} behandelt. 
 
-Vaadin ist ein Open-Source, Java basiertes Framework für den Aufbau von modernen Web-Anwendungen. Der Kerngedanke des Frameworks ist, dass die gesamte Anwendungslogik auf der Serverseite einer Anwendung ausgeführt wird, während die Clientseite nur für das Senden der Benutzeraktionen an den Server und für die Reaktion auf die Antworten verantwortlich ist. Da es auf GWT basiert, kann sowohl der Client- und Server-Code in reinem Java geschrieben werden.
+%Die Logikkomponente in der Architektur stellt eine Zusammenfassung aller Funktionen des Anwendungskerns dar. Sie kümmert sich um die Generierung der Abfragen, welche an die Datenbank gestellt werden. Dabei erfolgt eine dynamische Generierung der Abfragen, um nicht durch unnötige Bedingungen die Verarbeitungsgeschwindigkeit zu verringern. Abfragen werden mithilfe der Java Database Connectivity (JDBC) an die Datenbank gestellt. Neben den Funktionen zur Abfragegenerierung enthält die Logikkomponente Prozesse zum Extrahieren und Transformieren von Daten aus der MSSQL-Datenbank. Der ETL-Prozess wird nur einmalig ausgeführt, allerdings stellt er einen wichtigen  Schritt für die Umsetzung dar. 
 
-Die aktuelle Version von Vaadin wurde im Februar 2013 veröffentlicht. Die folgenreichste Änderung von Vaadin6 war die Integration von GWT zu Vaadin, die eine bessere Unterstützung für die clientseitige Widget-Entwicklung bedeutet und sogar die Möglichkeit zum Erstellen von offline Anwendungen mit sich bringt.
 
-Neben Open-Source ist die im Unternehmen vorhandene Erfahrung ein Grund für die Wahl des Frameworks. Allerdings war VaadinCharts, eine Erweiterung für Vaadin, für die Auswahl ausschlaggebend. Es basiert auf Highcharts, einem JavaScript-Packet. Highcharts zeichnet sich durch eine umfangreiche Sammlung an Funktionen zur Darstellung von Diagrammen aus. 
+%In der Server.war werden REST-Requests entgegen genommen. Anhand der mitübertragenen Filteroptionen werden die Bedingungen für die Datenbankabfrage zusammengestellt. Anschließend wird eine Verbindung zur H2-Datenbank aufgebaut. Das Ergebnis der Abfrage wird in das JSON-Format überführt und zurück an die Client.war geschickt. Dort angekommen werden die Daten an die Vaadin-Komponenten übergeben, was einen Neuaufbau der entsprechenden Seitenbereiche bewirkt.      
 
-\paragraph{Jersey}
+\paragraph{H2-Datenbank}
 
-Jersey ist ein Open-Source-Framework zur Entwicklung von RESTful Web Services in Java, welches eine Unterstützung für JAX-RS-APIs bietet und die JAX-RS (JSR 311 und JSR 339)-Referenzimplementierung darstellt. JAX-RS-Annotationen werden verwendet um die Relevanz von Java-Klassen für REST zu definieren. Jersey ist die Referenzimplementierung dieser Spezifikation. Jersey enthält im Grunde einen REST-Server und einen REST-Client. Auf der Serverseite verwendet Jersey ein Servlet zum  abtastet von vordefinierten Klassen, um REST-Ressourcen zu identifizieren. Über die web.xml Konfigurationsdatei werden die von der Jersey-Distribution bereitgestellten Servlets registriert. Diese Servlets analysieren die eingehenden HTTP-Nachrichten und wählen die richtige Klasse und Methode für die Anfragen aus. Diese Auswahl basiert auf Annotationen in den Klasse und Methoden. Weiterhin unterstützt JAX-RS die Erstellung von XML und JSON mithilfe der Java Architektur für XML Binding (JAXB).
+Die H2-Datenbank ist als Teil des Server-Webprojektes geplant. Dies wird durch den Betrieb im Embbeded-Modus ermöglicht. Dadurch kann direkt aus dem Java-Code heraus mit der Datenbank gearbeitet werden. Um möglichst kurze Antwortzeiten zu Erreichen soll die In-Memory-Variante der Tabellen verwendet werden.
 
-\paragraph{Apache Tomcat7}
+\paragraph{CAS genesisWorld Plugin} Systeme die auf dem Datenbestand anderer Systeme aufbauen können zwei verschiedene  Ansätze zur Sicherstellung ihrer Aktualität verfolgen. Unser nebenläufiges System bezeichnen wir als A und den CAS genesisWorld Anwendungsserver als B. Einer der Ansätze ist die Intervall basierte Nachfrage über Veränderungen von A. Hierbei fragt A bei B zu festgelegten Zeitpunkten nach, ob Daten verändert wurden. Die Definition eines optimalen Intervalls stellt eine der größten Schwierigkeiten dar. Ist der Intervall zu groß, sinkt die Aktualität des Datenbestandes. Ist er zu klein, entsteht eine starke Belastung für B. Der andere Ansatz ist A über Veränderungen an den Datensätzen von B zu informieren. Dadurch werden keine unnötigen Abläufe angestoßen, da nur im Falle einer Manipulation eines Datensatzes Prozesse in Bewegung gesetzt werden. Zwar wird die Aktualität der Daten gewährleistet, jedoch büßt A an Entscheidungsfreiheit ein. A kann nicht mehr selbst entscheiden wann aktualisiert wird. Der zweite Ansatz ist zwar effizienter, allerdings nicht immer umsetzbar. Das kann technische oder unternehmenspolitische Gründe haben, die notwendige Veränderung am Legacy-Systems ausschließen.  
 
-Tomcat ist ein Open-Source Webserver, entwickelt von der Apache Group. Der Apache Tomcat implementiert die Java-Servlet und die Javaserver-Pages(JSP) Spezifikationen von Sun Microsystems und ist daher ebenfalls eine Referenzimplementierung. Er stellt weiterhin eine rein auf Java basierende HTTP-Webserver Umgebung dar. Apache Tomcat enthält Tools für Konfiguration und Management, kann aber auch durch die Bearbeitung von XML-Dateien konfiguriert werden.
-
-\paragraph{opencsv}
-
-Da Java das Parsen von CSV-Dateien nativ nicht unterstützt wird auf eine Drittanbieterbibliothek zurückgegriffen. Diese heißt opencsv und ist eine sehr einfache CSV-Parser-Bibliothek für Java. Die Bibliothek kann zum erstellen, lesen und schreiben von CSV-Dateien verwendet werden. Die beste Fähigkeit des opencsv-Parsers ist das Mapping von Ergebnissen auf Java-Bean-Objekte.
-
-\paragraph{JDBC}
-
-Die JDBC-API ermöglicht den programmgesteuerten Zugriff auf relationale Daten, direkt aus der Java Programmiersprache heraus. Durch die Verwendung der JDBC-API können Java-Anwendungen SQL-Anweisungen ausführen, Ergebnisse abrufen und die Veränderungen auf die Datenquelle zurückschreiben. Die JDBC-API kann auch mit mehreren Datenquellen in einer verteilten, heterogenen Umgebung interagieren. 
+In CAS genesisWorld gibt es die Möglichkeit den zweiten Ansatz umzusetzen. Die Idee dabei ist den CAS genesisWorld Anwendungsserver um ein Plugin zu erweitern, welches über Veränderungen in den Datensätzen benachrichtigt wird. Das Plugin soll über einen REST-Client die \textit{GGUID} des betroffenen Datensatzes an den Server-Webprojekt senden. Dort soll eine Kontrolle stattfinden, die den Datensatz auf Relevanz überprüft. Wird eine Relevanz festgestellt besorgt sich das Server-Webprojekt, anhand der zuvor übermittelten GGUID, alle benötigten Daten.
 
 %% ===========================
 \section{Datenbankdesign}
 %% ===========================
 
-Das Datenbankdesign stellt einen wichtigen Abschnitt der Konzeption dar. Festlegungen im Bereich des Datenmodells werden in dieser Phase getroffen. Sie entscheiden ob Anforderungen und Erwartungen erfüllt werden können. In dieser Phase sind die Charakteristika der Daten zu untersuchen und das Datenmodell entsprechend nach ihnen auszulegen.
+Das Datenbankdesign stellt einen wichtigen Abschnitt der Konzeption dar. An dieser Stelle werden Festlegungen im Bereich des Datenmodells getroffen. Sie entscheiden, ob Anforderungen und Erwartungen erfüllt werden können. Weiterhin werden die Charakteristika der Daten untersucht und das Datenmodell entsprechend nach ihnen ausgelegt.
 
 %% ===========================
 \subsection{Konzeptionelles Design}
 %% ===========================
 
-Normalisierung dient der Organisation von Feldern und Tabellen einer relationalen Datenbank, um Redundanz und Abhängigkeit zu minimieren. Die Kehrseite hingegen ist eine Steigerung des Aufwands, um die benötigten Daten wiederzugewinnen. Normalisierung bietet dem Designer die Möglichkeit einen Austausch zwischen Performance und Stabilität des Datenbankmodells vorzunehmen. 
-In unserem Fall stellt ersteres absolute Priorität dar. Daher wird versucht die Normalisierung so gering wie möglich zu halten. 
+Zunächst wird auf das geplante Schema der H2-Datenbank eingegangen. Indessen werden die Überlegungen und Gründe die zur Entstehung des Schemas geführt haben erläutert. 
 
-Die erste Überlegung hinsichtlich des Schemas ist welche Daten für die Beantwortung der Abfragen benötigt werden. Der Datenbankdesigner steht bei analytischen System immer wieder vor der Entscheidung, wie viele Informationen aus dem alten System in das Neue übernommen werden sollten. Um höchst mögliche Performance zu erreichen werden lediglich die für das Szenario benötigten Daten extrahiert. Allerdings entsteht durch nachträgliches hinzunehmen von Funktionen ein erhöhter Aufwand für Änderungen am Schema und des ETL-Prozesses. Abbildung \ref{konzept_SchemaNeu} zeigt das für die Datenbank neu entworfene Schema. 
+Die Normalisierung dient der Organisation von Feldern und Tabellen einer relationalen Datenbank, um Redundanz und Abhängigkeit zu minimieren. Die Kehrseite hingegen, ist eine Steigerung des Aufwands, um die benötigten Daten wiederzugewinnen. Normalisierung bietet dem Designer die Möglichkeit einen Austausch zwischen Performance und Stabilität des Datenbankmodells vorzunehmen. 
+In diesem Fall stellt ersteres absolute Priorität dar. Daher soll die Normalisierung so gering wie möglich gehalten werden. 
+
+Die erste Überlegung hinsichtlich des Schemas führt zu der Frage, welche Daten zur Umsetzung des Systems benötigt werden. Der Datenbankdesigner steht bei analytischen System immer wieder vor der Entscheidung, wie viele Informationen aus dem alten System in das neue System übernommen werden sollten. Um höchstmögliche Verarbeitungsgeschwindigkeiten zu erreichen, werden lediglich die für das Szenario benötigten Daten extrahiert. Abbildung \ref{konzept_SchemaNeu} zeigt das für die Datenbank neu entworfene Schema. 
 
 \begin{figure}[htbp]
 \centering
@@ -91,11 +76,13 @@ Die erste Überlegung hinsichtlich des Schemas ist welche Daten für die Beantwo
 \label{konzept_SchemaNeu}
 \end{figure} 
 
-Die Idee hinter dem Schema ist die Verwendung einer einzelnen Tabelle zur Aufbewahrung der Informationen über die Verbindungen zwischen den Beziehungen. Diese Tabelle ermöglicht es ausgehend von einer Person alle Verbindungen zu anderen Personen zu finden. Im Grunde genommen sind vier Spalten dafür ausreichend. Die erste Spalte \textit{startID} beinhaltet die Person von der die Suche ausgeht. Eine Zuordnung der Tupel zu einem Datum erfolgt über die Spalte \textit{Date}. Um Verbindungsmerkmale zu unterscheiden werden Zahlen von eins bis fünf für die jeweiligen Verbindungsmerkmale in der Spalte \textit{DataTyp} verwendet. Die letzte Spalte \textit{endID} beinhaltet die Personen zu denen die Verbindungen letztendlich führen. Alle anderen Spalten wie z.B. \textit{Town} oder \textit{Country} dienen der Filterung der Ergebnisse.
+Die Idee hinter dem Schema ist die Verwendung einer einzelnen Tabelle zur Aufbewahrung der Informationen über die Verbindungen zwischen den Beziehungen. Diese Tabelle ermöglicht es ausgehend von einer Person alle Verbindungen die zu anderen Personen führen herauszufinden. Im Grunde genommen sind vier Spalten dafür ausreichend. Die erste Spalte \textit{startID} beinhaltet die Person von der die Suche ausgeht. Eine Zuordnung der Tupel zu einem Datum erfolgt über die Spalte \textit{Date}. Um Verbindungsmerkmale zu unterscheiden, werden Zahlen von eins bis fünf für die jeweiligen Verbindungsmerkmale in der Spalte \textit{DataTyp} verwendet. Die letzte Spalte \textit{endID} beinhaltet die ID von Personen, zu denen die Verbindungen letztendlich führen. Alle anderen Spalten wie z.B. \textit{Town} oder \textit{Country} dienen der Filterung von Abfragen.
 
-Um mit den geringeren Speicherkapazitäten des Hauptspeichers zurechtzukommen, wird auf das Problem der Datenredundanz eingegangen. Durch Normalisierung lässt sich Datenredundanz zwar nicht verringern, allerdings kann man sie in kontrollierbare Bahnen lenken. Im neuen Schema werden solche Maßnahmen auf die Spalte \textit{Town} und \textit{Country} angewendet. Beide Spalten werden voraussichtlich Millionen von Werten beinhalten. Allerdings gibt es nur 193 Länder auf der Welt. Wörter wie Deutschland werden sich daher sehr oft wiederholen. Die Spalte \textit{Country} ist vom Datentyp \texttt{Varchar}, welches pro Zeichen 2 Byte benötigt. Das wären beim Wort Deutschland 22 Byte. Zur Vermeidung der stetigen Wiederholung von langen Wörtern wird für die Spalte \textit{Country} eine neue Tabelle angelegt. In dieser wird jedes Land nur einmal vermerkt und bekommt einen Schlüssel in Form einer Zahl. In der eigentlichen Tabelle Data werden nur noch die Schlüssel, anstatt den vollständig ausgeschriebenen Wörtern verwendet. Das würde beispielsweise bei dem Wort "Deutschland" eine Reduktion von 22 Byte auf 1 Byte bewirken. Die Reduzierung auf 1 Byte wird durch die Verwendung des tinyint Datentyps erreicht. Das gleiche gilt für die Spalte \textit{Town}. Bei ihr wird allerdings der Datentyp smallint verwendet, mithilfe dessen ein Zahlenbereich von -32768 bis 32767 abgebildet werden kann. Die Spalten \textit{isEmployee}, \textit{isContact} und \textit{isFirm} können nur zwei verschiedene Zustände darstellen. Trifft zu oder trifft nicht zu. Der Datentyp \texttt{bool} reicht daher zur Abbildung der zweiwertigen Zustände aus. Ein Feld vom Datentyp datetime benötigt 8 byte an Speicher. Um hier ebenfalls Einsparungen vorzunehmen, wurde beschlossen das Datum als smallint zu deklarieren. Dies ist möglich, weil nur der Tag innerhalb des Datums von Interesse ist. Dazu wird ein frei gewählter Nullpunkt festgelegt. In unserem Fall wurde der 01.01.1990 als Nullpunkt gewählt, da keine älteren Daten existieren, die Relevanz besitzen. Der Wert eines Datum wird durch die Anzahl der Tage seit dem Nullpunkt ermittelt. Dieser Wert wird anschließend in der Spalte \textit{Date} abgelegt. Die Hochrechnung der Tabelle \ref{tb_speicherplatzverbrauch} zeigt, dass durch die Normalisierung der Speicherplatzverbrauch um bis zu $ \frac{1}{6} $ gesenkt werden kann.
+Um mit den geringeren Speicherkapazitäten des Hauptspeichers zurechtzukommen, wird auf das Problem der Datenredundanz eingegangen. Durch Normalisierung lässt sich Datenredundanz zwar nicht verringern, allerdings kann man sie in kontrollierbare Bahnen lenken. Im neuen Schema werden solche Maßnahmen auf die Spalte \textit{Town} und \textit{Country} angewendet. 
 
-Wird eine Benutzerabfrage die eine Filterung anhand einer Stadt voraussieht beantworten gestellt, wird zuerst die \textit{ID} der Stadt benötigt. Dabei können zwei verschiedene Ansätze verfolgt werden. Der erste Ansatz wäre ein Verbund zwischen \textit{Town} und \textit{Data}, um direkt mit dem Namen der Stadt zu arbeiten. Diese Variante dürfte aufgrund des Kreuzproduktes von Millionen von Zeilen nicht sehr performant sein. Eine andere Möglichkeit wäre eine separate Abfrage an die Datenbank zu stellen, in der die \textit{ID} zum Namen ermittelt wird. Mithilfe der \textit{ID} kann dann ohne einen Verbund die Ergebnismenge ermittelt werden. Dieser Ansatz dürfte vor allem durch die Abwesenheit von Netzwerkzugriffen zu geringeren Antwortzeiten führen. Dieses Vorgehen kann für die Stadt, das Land und die Gruppenzugehörigkeit angewendet werden.
+Die Spalte \textit{Country} beispielsweise wird voraussichtlich Millionen von Werten beinhalten, jedoch gibt es nur eine Hand voll Länder auf der Welt. Die Ländernamen werden sich daher sehr oft wiederholen. Der Datentyp Varchar benötigt pro Zeichen 2 Byte an Speicherplatz. Aufgrund der stetigen Wiederholung von gleichen Wörtern ist die Verwendung von Varchar an dieser Stelle ungeeignet. Angesichts dessen werden die Ländernamen in einer eigenen Tabelle aufbewahrt. In dieser wird jedes Land nur einmal vermerkt und bekommt einen Primärschlüssel in Form einer Zahl. In der Tabelle \textit{Data} wird dann nur noch der jeweilige Fremdschlüssel verwendet. Das würde zum Beispiel bei dem Wort "Deutschland" eine Reduktion von 22 Byte auf 1 Byte bewirken. Die Reduzierung auf 1 Byte entsteht durch die Verwendung des Datentyps tinyint. Das alles gilt ebenfalls für die Spalte \textit{Town}. Bei ihr wird allerdings der Datentyp smallint verwendet, da dessen Zahlenbereich von -32768 bis 32767 reicht. Damit lassen sich alle Städte aus dem MSSQL-Server abdecken. 
+
+Die Spalten \textit{isEmployee}, \textit{isContact} und \textit{isFirm} können nur zwei verschiedene Zustände darstellen. Trifft zu oder trifft nicht zu. Der Datentyp \texttt{bool} reicht daher zur Abbildung der zweiwertigen Zustände aus. Ein Feld vom Datentyp datetime benötigt 8 byte an Speicher. Um hier ebenfalls Einsparungen vorzunehmen, wurde beschlossen das Datum als smallint zu deklarieren. Dies ist möglich, weil nur der Tag innerhalb des Datums von Interesse ist. Dazu wird ein frei gewählter Nullpunkt festgelegt. In unserem Fall wurde der 01.01.1990 als Nullpunkt gewählt, da keine älteren Daten existieren, die Relevanz besitzen. Der Wert eines Datum wird durch die Anzahl der Tage seit dem Nullpunkt ermittelt. Dieser Wert wird anschließend in der Spalte \textit{Date} abgelegt. Die Hochrechnung der Tabelle \ref{tb_speicherplatzverbrauch} zeigt, dass durch die Normalisierung der Speicherplatzverbrauch um bis zu $ \frac{1}{6} $ gesenkt werden kann.
 
 \begin{table}[htbp]
 \centering
@@ -124,11 +111,16 @@ Land(varchar) & 20 byte & x & 218 & = & \textasciitilde 0,004 MB \\
 \label{tb_speicherplatzverbrauch}
 \end{table}
 
+Wird eine Benutzerabfrage gestellt die eine Filterung anhand einer Stadt voraussieht, wird zuerst die \textit{ID} der Stadt benötigt. Dabei können zwei verschiedene Ansätze verfolgt werden. Der erste Ansatz wäre ein Verbund zwischen \textit{Town} und \textit{Data}, um direkt mit dem Namen der Stadt zu arbeiten. Diese Variante dürfte aufgrund des Kreuzproduktes von Millionen von Zeilen nicht sehr performant sein. Eine andere Möglichkeit wäre eine separate Abfrage an die Datenbank zu stellen, in der die \textit{ID} zum Namen ermittelt wird. Mithilfe der \textit{ID} kann dann ohne einen Verbund die Ergebnismenge ermittelt werden. Dieser Ansatz dürfte vor allem durch die Abwesenheit von Netzwerkzugriffen zu geringeren Antwortzeiten führen. Dieses Vorgehen kann für die Stadt, das Land und die Gruppenzugehörigkeit angewendet werden.
+
+
 Die Tabelle \textit{GroupDate} unterscheidet sich von den anderen Tabellen wie \textit{Town} oder \textit{Country}, da in dieser noch weitere Details vermerkt sind. Diese ermöglichen es die Zusammenstellung von Gruppen über die Zeit nachzuvollziehen. In der Spalte \textit{Action} wird festgelegt, ob die Tupel einen Eintritt oder einen Austritt einer Person darstellt. Die Spalte \textit{Date} beinhaltet das Datum des Ereignisses. Mithilfe beider Attribute lassen sich Gruppenzusammensetzung auf bestimmte Zeitpunkte bezogen rekonstruieren.
 
 %% ===========================
 \subsection{Zugriffsstrukturen}
 %% ===========================
+
+Zum Beschleunigen der Zugriffe auf die Datensätze der H2-Datenbank wird auf die beabsichtigten Zugriffsverfahren eingegangen. 
 
 Indizes werden zur Beschleunigung von Suchen nach bestimmten Spaltenwerten eingesetzt. Ohne Indizes müsste die H2-Datenbank beim ersten Datensatz beginnen und dann die gesamte Tabelle durchgehen, um eine Abfrage zu beantworten. Je größer die Tabelle ist, desto höher sind die Kosten dafür. Der Einsatz von Indizes ist in Anbetracht der Zielsetzung von niedrigen Antwortzeiten ein interessantes Hilfsmittel. Jeder Index bedeutet allerdings einen Zuwachs im Speicherplatzverbrauch. Zur Indexierung der Tabellen \textit{Town}, \textit{Country}, \textit{User} und \textit{Group} eignen sich Hash-Indizes. Sie bieten einen extrem schnellen Zugriff auf die Daten. Diese Schnelligkeit ergibt sich aus der Verwendung von Berechnungsvorschriften, zur Ermittlung der Position des gesuchten Wertes. Indizierungen sollen im vorliegenden Schema über die Spalten mit der Bezeichnung \textit{Name} vorgenommen werden, da der Client mit dem Namen anstatt mit der ID arbeitet. Mithilfe des Namens wird deshalb die zugehörige ID ermittelt. Die Nutzung von Hash-Indizes bringt allerdings Limitierungen mit sich. Eine der wichtigsten ist, dass sie nur für Vergleiche ("=") verwendbar sind. Somit werden keine Wertebereichabfragen ("<" oder ">") unterstützt. Es gibt allerdings noch andere Nachteile \cite{SWB-352401869}, auf die aber in dieser Arbeit nicht näher eingegangen wird. 
 
@@ -137,9 +129,20 @@ Für die Tabelle \textit{UserGroup} eignet sich der B\textsuperscript{+}-Baum-In
 
 %% ===========================
 \section{Extract Transform Load Prozess}
+\label{ch:konzeption:etl}
 %% ===========================
 
 Daten der operativen Systeme unterstützen die wertschöpfenden Geschäftsprozesse innerhalb eines Unternehmens. Sie sind demnach auf die Steuerung und Überwachung des Tagesgeschäftes ausgerichtet und daher transaktionsbezogen. Somit sind die Daten in ihren Begrifflichkeiten häufig nicht vergleichbar und ihrer Bewertung sowie Konsolidierung unterschiedlich. Um die Daten dennoch für analytische Zwecke einzusetzen, ist eine Überführung in eine geeignete Struktur von Vorteil. Eine solche Überführung wird in der Literatur als Extract-Transform-Load (ETL)-Prozess bezeichnet \cite{ElSappagh201191}. 
+
+Abbildung \ref{konzept:etl} zeigt das erarbeitete Konzept zur Umsetzung des ETL-Prozesses. In den nächsten drei Abschnitten wird jeder ETL-Schritt näher erläutert.
+
+\begin{figure}[htbp]
+\centering
+  \includegraphics[width=1.0\textwidth, width=1.0\textwidth]{pics/ETL.pdf}
+\caption{ETL-Prozess}
+\label{konzept:etl}
+\end{figure} 
+
 
 %% ===========================
 \subsection{Extract}
@@ -172,22 +175,6 @@ Die in der Extraktion genannten Besonderheiten werden durch unterschiedliche Dat
 Beim Laden der Datensätze in die H2-Datenbank kommt ein sogenannter "bulk load" zum Einsatz. Dieser wird häufig zum Laden von großen Datenmengen aus einer Datei in eine Datenbank eingesetzt. Er ermöglicht ein wesentlich schnelleres einspielen von großen Datenmengen in die Datenbank, gegenüber der Verwendung von INSERT-Operatoren.
 
 %% ===========================
-\section{Synchronisation des Datenbestandes}
-\label{ch:Konzeption:sec:updatedatenbestand}
-%% ===========================
-
-Systeme die auf dem Datenbestand anderer Systeme aufbauen können zwei verschiedene  Ansätze zur Sicherstellung ihrer Aktualität verfolgen. Unser nebenläufiges System bezeichnen wir als A und den CAS genesisWorld Anwendungsserver als B. Einer der Ansätze ist die Intervall basierte Nachfrage über Veränderungen von A. Hierbei fragt A bei B zu festgelegten Zeitpunkten nach, ob Daten verändert wurden. Die Definition eines optimalen Intervalls stellt eine der größten Schwierigkeiten dar. Ist der Intervall zu groß, sinkt die Aktualität des Datenbestandes. Ist er zu klein, entsteht eine starke Belastung für B. Der andere Ansatz ist A über Veränderungen an den Datensätzen von B zu informieren. Dadurch werden keine unnötigen Abläufe angestoßen, da nur im Falle einer Manipulation eines Datensatzes Prozesse in Bewegung gesetzt werden. Zwar wird die Aktualität der Daten gewährleistet, jedoch büßt A an Entscheidungsfreiheit ein. A kann nicht mehr selbst entscheiden wann aktualisiert wird. Der zweite Ansatz ist zwar effizienter, allerdings nicht immer umsetzbar. Das kann technische oder unternehmenspolitische Gründe haben, die notwendige Veränderung am Legacy-Systems ausschließen.  
-
-\begin{figure}[htbp]
-\centering
-  \includegraphics[width=1.0\textwidth, width=1.0\textwidth]{pics/sequenzdiagramm.pdf}
-\caption{Sequenzdiagramm für einen neuen Datensatz}
-\label{konzept_sequenz}
-\end{figure}
-
-In CAS genesisWorld gibt es die Möglichkeit den zweiten Ansatz umzusetzen. Die Idee dabei ist den CAS genesisWorld Anwendungsserver um ein sogenanntes Plugin zu erweitern, welches über Veränderungen in den Datensätzen benachrichtigt wird. Ein solches Plugin kann als COM-Objekt, mithilfe des Interfaces \textit{IGWSDKDataPlugIn}, realisiert werden. Das erzeugte COM-Objekt wird anschließend im Server von CAS genesisWorld registriert. Der Server delegiert, wie in Abbildung \ref{konzept_sequenz} zu sehen, bei einer Datenoperation den Aufruf an die für die jeweiligen Tabellen registrierten Plugins. Das Plugin selbst soll einen REST-Client besitzt, der einen POST-Request an die Logik sendet. Er enthält die \textit{GGUID} des veränderten Datensatzes. Mithilfe dieser wird die Extraktion des betroffenen Datensatzes angestoßen. Geplant ist neue Datensätze zuerst in einer CSV-Datei zwischenzuspeichern und anschließend in die H2-Datenbank einzufügen. In der H2-Datenbank können zum Aktualisieren der Daten nur neue oder gelöschte Datensätze beachtet werden. Um auch Updates zu berücksichtigen müsste zu jeder Tupel die entsprechende \textit{GGUID} vorhanden sein. Ohne die \textit{GGUID} ist eine Zuordnung der Datensätze zwischen den Datenbanken nicht möglich. In diesem Fall wurde entschieden, dass dies kein Problem darstellt.
-
-%% ===========================
 \section{Darstellungskonzepte}
 \label{ch:Konzeption:sec:Darstellungskonzepte}
 %% ===========================
@@ -195,6 +182,17 @@ In CAS genesisWorld gibt es die Möglichkeit den zweiten Ansatz umzusetzen. Die 
 Bei der Konzeption einer Darstellung ist der Detaillierungsgrad von Informationen ein wichtiger Leitfaden. In unserem Fall ist nicht die Eigenschaft eines Verbindungsmerkmals von interessiere, sondern ihr Typ und ihre Häufigkeit zu einer bestimmten Person. Da keine Detailinformationen zum Verbindungsmerkmal vorhanden sind, kann jeder Benutzer frei wählen von welcher Person ausgehend die Analyse stattfinden soll. Für die Oberfläche bedeutet dies einen Einstiegspunkt in Form eines Fensters in dem der Benutzername einer Person, von dem die Suche ausgehen soll, eingegeben wird. Zusätzlich soll die IP-Adresse und Portnummer des Servers angegeben werden, falls sich dieser auf einem anderen Rechner befindet.
 
 Nach der Anmeldung findet eine Weiterleitung auf die eigentliche Seite statt. Dessen Aufbau ist in Abbildung \ref{konzept_darstellung} (a) zu sehen. Im oberen Bereich auf der Seite sind alle Regler, CheckBoxen und Eingabefelder zur Filterung der Ergebnismenge zu finden. Direkt darunter befindet sich ein Diagramm, welches das Ergebnis der Abfrage visualisieren soll.
+
+\begin{figure}[htbp]
+\subfigure[Grober Entwurf des Aufbaus der Hauptseite]{\includegraphics[width=0.49\textwidth]{pics/konzept_mockup.png}}\hfill
+\subfigure[Tortendiagramm]{\includegraphics[width=0.49\textwidth]{pics/konzept_tortendiagramm.pdf}}\hfill
+\subfigure[Balkendiagramm]{\includegraphics[width=0.49\textwidth]{pics/konzept_balkendiagramm.pdf}}\hfill
+\subfigure[Tree Map]{\includegraphics[width=0.49\textwidth]{pics/konzept_tree_map.pdf}}\hfill
+\subfigure[Liniendiagramm]{\includegraphics[width=0.49\textwidth]{pics/konzept_liniendiagramm.pdf}}\hfill
+\subfigure[Netzdiagramm]{\includegraphics[width=0.49\textwidth]{pics/konzept_netzdiagramm.pdf}}
+\caption{Entwürfe für die Oberfläche}
+\label{konzept_darstellung}
+\end{figure}
 
 Es gibt einige Diagrammtypen allerdings ergeben sich Einschränkungen durch das verwendete Framework. Im Grunde lässt sich jede Darstellung umsetzen, allerdings ist das Aufwand-Nutzen-Verhältnis zu berücksichtigen. In einer Vorauswahl wurden einige  Typen ausgewählt die in Abbildung \ref{konzept_darstellung} (b)-(f) dargestellt sind. 
 
@@ -210,14 +208,33 @@ Kreisdiagramme ermöglichen eine Betrachtung der Gesamtheit zu ihren Einzelstüc
 
 Das Balkendiagramm ist für die Darstellung der Daten am geeignetsten. Reihenfolgen beispielsweise lasse sich durch die resultierenden Stufen sehr gut darstellen. Balken selbst lassen sich außerdem in einzelne Teile aufspalten, ohne die Übersichtlichkeit zu verringern. Gegenüber dem Kreisdiagramm kann es zwar keine Betrachtung des Gesamten liefern, allerdings ist das in diesem Anwendungsfall auch nicht nötig. 
 
+%% ===========================
+\section{Technologien}
+%% ===========================
 
-\begin{figure}[htbp]
-\subfigure[Grober Entwurf des Aufbaus der Hauptseite]{\includegraphics[width=0.49\textwidth]{pics/konzept_mockup.png}}\hfill
-\subfigure[Tortendiagramm]{\includegraphics[width=0.49\textwidth]{pics/konzept_tortendiagramm.pdf}}\hfill
-\subfigure[Balkendiagramm]{\includegraphics[width=0.49\textwidth]{pics/konzept_balkendiagramm.pdf}}\hfill
-\subfigure[Tree Map]{\includegraphics[width=0.49\textwidth]{pics/konzept_tree_map.pdf}}\hfill
-\subfigure[Liniendiagramm]{\includegraphics[width=0.49\textwidth]{pics/konzept_liniendiagramm.pdf}}\hfill
-\subfigure[Netzdiagramm]{\includegraphics[width=0.49\textwidth]{pics/konzept_netzdiagramm.pdf}}
-\caption{Entwürfe für die Oberfläche}
-\label{konzept_darstellung}
-\end{figure}
+Als eine der am meist verbreitetsten Programmiersprachen, stellt Java die Grundlage aller verwendeten Technologien dar. Zur Darstellung der Inhalte für den Client wird Vaadin verwendet. Der Apache Tomcat nimmt die Rolle des Anwendungsservers ein. Die Kommunikation auf Basis von RESTful Web Services wird mithilfe von Jersey realisiert. Weiterhin wird opencsv für das Lesen und Schreiben von CSV-Dateien verwendet. JDBC wird zur Kommunikation zwischen dem Anwendungsserver und der Datenbank. Die H2-Datenbank stellt die Datenquelle des Systems dar. Im Folgenden werden alle Bestandteile, bis auf die bereits erläutert H2-Datenbank, näher beschrieben. 
+
+\paragraph{Vaadin}
+
+Vaadin ist ein Open-Source-Framework für den Aufbau von modernen Web-Anwendungen.
+Es verwendet ein reines serverseitiges, eventbasiertes Modell und ermöglicht eine Anwendungsentwicklung ohne direkte Verwendung von HTML und JavaScript-Code. Das Framework ermöglicht es, die gesamte Anwendungslogik auf der Serverseite einer Anwendung auszuführen, während die Clientseite nur für das Senden der Benutzeraktionen an den Server und für die Reaktion auf die Antworten verantwortlich ist. Da es auf GWT basiert, kann sowohl der Client- als auch der Server-Code in reinem Java geschrieben werden.
+
+Die aktuelle Version von Vaadin wurde im Februar 2013 veröffentlicht. Die folgenreichste Änderung von Vaadin6 war die Integration von GWT zu Vaadin, die eine bessere Unterstützung für die clientseitige Widget-Entwicklung bedeutet und sogar die Möglichkeit zum Erstellen von Offline-Anwendungen mit sich bringt.
+
+Die im Unternehmen vorhandene Erfahrung und Open-Source stellen relevante Entscheidungsfaktoren in der Wahl von Vaadin. Allerdings war VaadinCharts, eine Erweiterung für Vaadin, für die Auswahl ausschlaggebend. Es basiert auf Highcharts, einem JavaScript-Packet. Highcharts zeichnet sich durch eine umfangreiche Sammlung an Funktionen zur Darstellung von Diagrammen aus. 
+
+\paragraph{Jersey}
+
+Jersey ist ein Open-Source-Framework zur Entwicklung von RESTful Web Services in Java, welches eine Unterstützung für JAX-RS-APIs bietet und die JAX-RS (JSR 311 und JSR 339)-Referenzimplementierung darstellt. JAX-RS-Annotationen werden verwendet um die Relevanz von Java-Klassen für REST zu definieren. Jersey enthält einen REST-Server und einen REST-Client. Auf der Serverseite verwendet Jersey ein Servlet zum Abtasten von vordefinierten Klassen, um REST-Ressourcen zu identifizieren. Über die web.xml Konfigurationsdatei werden die von der Jersey-Distribution bereitgestellten Servlets registriert. Diese Servlets analysieren die eingehenden HTTP-Nachrichten und wählen die richtige Klasse und Methode für die Anfragen aus. Diese Auswahl basiert auf Annotationen in diesen Klassen und Methoden. Weiterhin unterstützt JAX-RS die Erstellung von XML und JSON mithilfe der Java Architektur für XML Binding (JAXB).
+
+\paragraph{Apache Tomcat7}
+
+Tomcat ist ein Open-Source-Webserver, der von der Apache Group entwickelt wurde. Der Apache Tomcat implementiert die Java Servlets-, sowie die JavaServer Pages-Spezifikation von Sun Microsystems und stellt folglich eine Referenzimplementierung dar. Er stellt weiterhin eine rein auf Java-basierende HTTP-Webserverumgebung dar. Weiterhin kann der Tomcat über eine Oberfläche sowie durch Bearbeiten von XML-Dateien konfiguriert werden.
+
+\paragraph{opencsv}
+
+Da Java das Parsen von CSV-Dateien nativ nicht unterstützt, wird auf eine Drittanbieterbibliothek zurückgegriffen. Diese heißt opencsv und ist eine sehr einfache CSV-Parser-Bibliothek für Java. Die Bibliothek kann zum Erstellen, Lesen und Schreiben von CSV-Dateien verwendet werden. Die wichtigste Fähigkeit des opencsv-Parsers ist das Mapping von CSV-Daten auf Java-Bean-Objekte.
+
+\paragraph{JDBC}
+
+Die JDBC-API ermöglicht den programmgesteuerten Zugriff auf relationale Daten, direkt aus der Java Programmiersprache heraus. Durch die Verwendung der JDBC-API können Java-Anwendungen SQL-Anweisungen ausführen, Ergebnisse abrufen und die Veränderungen auf die Datenquelle zurückschreiben. Die JDBC-API kann auch mit mehreren Datenquellen in einer verteilten, heterogenen Umgebung interagieren. 
