@@ -54,6 +54,26 @@ Die Funktionalität des CAS genesisWorld Anwendungsservers wurde in Form von COM
 \end{figure}
 
 %% ===========================
+\subsection{Datenhaltungsschicht}
+\label{ch:Systemanalyse:sec:genesisWorld:subsec:db}
+%% ===========================
+
+Die Datenhaltungsschicht enthält einen Microsoft SQL Server 2008 (MSSQL). Der SQL Server ist ein relationales Datenbankmanagementsystem (RDBMS) von Microsoft, dass für den Einsatz im Konzernumfeld konzipiert wurde. MSSQL verwendet T-SQL (Transact-SQL), eine Erweiterungen von Sybase und Microsoft, die den SQL-Standard um prozedurale Sprachelemente erweitert \cite{tech2013}. Weiterhin unterstützt MSSQL standardisierte Datenbankschnittstellen, wie Open Database Connectivity (ODBC) und Java Database Connectivity (JDBC).
+
+Beim Schema der Datenbank wird auf eine Besonderheit eingegangen. In relationalen Datenbanken werden Beziehungen über Primär- und Fremdschlüssel abgebildet. Dies ist auch in der MSSQL-Datenbank der Fall, jedoch mit einer Besonderheit. In der MSSQL-Datenbank werden nur Primärschlüssel deklariert. Es werden Fremdschlüssel verwendet allerdings sind sie nicht als solche deklariert.
+
+Ein Grund dafür ist die Art wie die Funktionalität zur Verknüpfung sämtlicher Datensätze in der Datenbank umgesetzt wurde. Abbildung \ref{gw_2} zeigt das ER-Modell zu dieser Funktionalität. Bei 198 Tabellen würde die Funktionalität durch die M:N-Beziehung zu 39.006 Auflösungstabellen führen. Um das zu vermeiden wird lediglich eine Tabelle verwendet. Sie besitzt vier relevante Spalten. In zwei von ihnen werden die Fremdschlüssel der in Beziehung zu setzenden Tabellen aufbewahrt. Damit die nächst höhere Schicht die Primärschlüssel den entsprechenden Tabellen zuordnen kann werden in den anderen beiden Spalten die Zuordnungskürzel hinterlegt. Jede Tabelle besitzt sein eigenes Kürzel. Dies ist nur möglich weil die beiden Spalten in denen die Fremdschlüssel aufbewahrt werden nicht als solche deklariert sind.
+
+\begin{figure}[ht]
+	\centering
+  \includegraphics[width=0.9\textwidth, width=0.9\textwidth]{pics/erm.pdf}
+	\caption{ER-Modell}
+	\label{gw_2}
+\end{figure}
+
+Die Spalten \textit{GUID1} und \textit{GUID2} beinhalten die jeweiligen Primärschlüssel der in Beziehung zu setzenden Tabellen. Mithilfe der Spalten \textit{TableSign1} und \textit{TableSign2} können die \textit{GGUID}s den Tabellen, aus denen sie entstammen, zugeordnet werden. Die \textit{GGUID} ist in der gesamten Datenbank eindeutig und dient als Primärschlüssel für jede Tupel in der Datenbank.
+
+%% ===========================
 \subsection{Server-SDK-Plugin}
 \label{ch:Systemanalyse:sec:genesisWorld:subsec:plugin}
 %% ===========================
@@ -74,74 +94,23 @@ Im Allgemeinen stehen in den COM-Schnittstellen der Plugins, jeweils alle Felder
 Die Werte des aktuell verarbeiteten Datensatzes können verändert, d.h. erweitert oder reduziert werden. Darüber hinausgehend sind auch automatisierte Aktionen realisierbar, die weitere Datensätze betreffen. So könnten z.B. abhängig von den Eingangswerten einer neu angelegten Adresse, neue Aufgaben angelegt und mit Inhalt versehen werden. Einige automatische Datenoperationen von CAS genesisWorld werden über CAS-Plugins realisiert, die mit den SDK-Plugins verwandt sind.
 
 %% ===========================
-\subsection{Datenhaltungsschicht}
-\label{ch:Systemanalyse:sec:genesisWorld:subsec:db}
-%% ===========================
-
-Die Datenhaltungsschicht enthält einen Microsoft SQL Server 2008 (MSSQL). Der SQL Server ist ein relationales Datenbankmanagementsystem (RDBMS) von Microsoft, dass für den Einsatz im Konzernumfeld konzipiert wurde. MSSQL verwendet T-SQL (Transact-SQL), eine Erweiterungen von Sybase und Microsoft, die den SQL-Standard um prozedurale Sprachelemente erweitert \cite{tech2013}. Weiterhin unterstützt MSSQL standardisierte Datenbankschnittstellen, wie Open Database Connectivity (ODBC) und Java Database Connectivity (JDBC).
-
-Zunächst wird auf das Schema der Datenbank eingegangen. Dabei wird nicht das gesamte Schema erläutert sondern nur relevante Teile näher betrachtet.    
-
-In relationalen Datenbanken werden Beziehungen über Primär- und Fremdschlüssel abgebildet. Dies ist auch in der MSSQL-Datenbank der Fall, jedoch mit einer Besonderheit. In der MSSQL-Datenbank werden nur Primärschlüssel deklariert. Die Fremdschlüssel sind vorhanden aber nicht als solche markiert. 
-
-Auf die Table Relation eingehen
-
-\textit{TableRelation} 
-
-
-Abbildung \ref{gw_2} zeigt eine beispielhafte, schematische Darstellung der \textit{TableRelation}.
-
-\begin{figure}[ht]
-	\centering
-  \includegraphics[width=0.9\textwidth, width=0.9\textwidth]{pics/gW_tablerealtion.pdf}
-	\caption{Funktionsweise der \textit{RelationTable} anhand eines Beispiels}
-	\label{gw_2}
-\end{figure}
-
-Die Spalten \textit{GUID1} und \textit{GUID2} beinhalten die jeweiligen Primärschlüssel der in Beziehung zu setzenden Tabellen. Mithilfe der Spalten \textit{TableSign1} und \textit{TableSign2} können die \textit{GGUID}s den Tabellen, aus denen sie entstammen, zugeordnet werden. Die \textit{GGUID} ist in der gesamten Datenbank eindeutig und dient als Primärschlüssel für jede Tupel in der Datenbank.
-
-%% ===========================
 \section{Anforderungsanalyse}
 \label{ch:Systemanalyse:sec:Anforderungsanalyse}
 %% ===========================
 
-Während der Anforderungsanalyse wird ermittelt, welche Eigenschaften und Fähigkeiten das System zur Erreichung der Ziele benötigt. Bei der Einteilung der Anforderungen wird zwischen Funktionalen und Nichtfunktionalen unterschieden. Bei ersterem wird die Funktionalität des zu erstellenden Systems beschrieben, wohingegen alle anderen Anforderungen unter letzteres Fallen. 
+Während der Anforderungsanalyse wird ermittelt, welche Eigenschaften und Fähigkeiten das System zur Erreichung der Ziele benötigt. Bei der Einteilung der Anforderungen wird zwischen Funktionalen und Nichtfunktionalen unterschieden. Bei ersterem wird die Funktionalität des zu erstellenden Systems beschrieben, wohingegen die Randbedingungen und Qualitätsanforderungen unter letzteres Fallen. 
 
 %% ===========================
 \subsection{Funktionale Anforderungen}
 %% ===========================
 
-Bevor wir auf die funktionalen und nichtfunktionalen Anforderungen eingehen, wird das umzusetzende Szenario näher beschrieben. Mit dem zu entwickelndem System soll eine Bewertung der Beziehung zwischen Personen aus CAS genesisWorld ermöglicht werden. Indessen soll ermittelt werden, welche Personen die ausgeprägteste Beziehung zu einer vorher bestimmten Person besitzen. Die Bewertung der Ausprägung basiert auf der Anzahl von Kontakten zwischen den Person. Ein Kontakt wird dabei anhand von fünf verschiedenen Merkmalen ermittelt. Zu einem wird der E-Mail-Verkehr unter den Personen für die Betrachtung herangezogen. Überdies werden in der Bewertung Telefonate zwischen Personen beachtet. Außerdem spielen nachvollziehbare Treffen (Termine) zwischen den Personen eine Rolle. Zwischen Personen geteilte Dokumente werden auch als Merkmal festgesetzt. Das letzte Merkmal ist die Verkaufschance gegenüber einem Kunden. Wie ausgeprägt letztendlich die Beziehung zu einer anderen Person ist, wird anhand der Anzahl solcher Merkmale ermittelt. Auf die fünf Merkmale wird im weiteren Verlauf der Arbeit nur noch mit dem Begriff "Verbindungsmerkmale" verwiesen. Weiterhin ist die Betrachtung nicht auf die gesamte Dauer des Kontakts vorgesehen, sondern auf festgelegte Zeitspannen. Beispielsweise sollten die Ergebnisse auf den Zeitraum vom 01.02 bis 10.08.2013 eingrenzbar sein. Zusätzlich sollten weitere Eingrenzungen möglich sein, die im folgenden Abschnitt beschrieben werden.
+Der Kernfunktionalität ist die Bewertung von Beziehungen zwischen Personen aus einem CRM-System. Die Bewertung soll auf den sogenannten CRM-Objekten basieren. Jedes Objekt repräsentiert ein anderes Element des CRM-Systems. Die Adresse einer Person ist z.B. ein solches CRM-Objekt. Die Adresse allerdings ist ein Objekt welches nur einer Person zuzuordnen ist. In der Umsetzung der Funktionalität spielen Objekte die mehrere Personen betreffen eine Rolle. Um eine Beziehung bewerten zu können werden Objekte herangezogen die einen Austausch von Informationen unter Personen wiederspiegeln.
+ 
+Das erste Objekt welches dem Kriterium gerecht wird ist der Termin. Indessen eine Zusammenkunft bestimmter Personen stattfindet. Das Dokument stellt das nächste Objekt dar. Dessen Eignung beruht auf der Möglichkeit anderen Personen Zugriffsrechte und somit Einsicht auf Dokumente zu gewähren. Zur Beachtung des Informationsaustauschs durch verbale sowie schriftliche Kommunikation werden die E-Mail und das Telefonat einbezogen. Das letzte Objekt ist die Verkaufschance. Sie repräsentiert eine Aussicht auf einen potentiellen Abschluss eines Geschäfts. Durch sie können Vertriebsmitarbeiter ihre Leads strukturiert und organisiert ablegen.
 
-Folgende funktionale Anforderungen wurden erhoben:
+Der Wert einer Beziehung soll anhand der Anzahl von Objekten, in denen beide Personen vorkommen, ermittelt werden. Ein Beispiel für eine solche Anzahl von Objekten sind alle Termine an denen beide Personen teilgenommen haben. Summiert mit der Anzahl der anderen Objekte ergibt sich die Wertigkeit der Beziehung. 
 
-\begin{itemize}
-\item Das System soll die Anzahl von Verbindungsmerkmalen zwischen Personen ermitteln können
-
-\item Das Abfrageergebnis soll eine Rangordnung unter den Personen besitzen und auf der Summe von Verbindungsmerkmalen basieren
-
-\item Das Abfrageergebnis soll die Summe der gesamten Verbindungsmerkmale zu den jeweiligen Person enthalten sowie die Summe der einzelnen Verbindungsmerkmale
-
-\item Benutzer sollen das Abfrageergebnis auf eine bestimmte Anzahl von Personen eingrenzen können
-
-\item Der Zeitraum soll durch den Benutzer beliebig eingrenzbar sein
-
-\item Suchkriterien sollten durch den Benutzer ein- und ausgeblendet werden können, ohne eine neue Abfrage senden zu müssen
-
-\item Gewichtung der Verbindungsmerkmale durch den Nutzer
-
-\item Gewichtung von Zeitspannen durch den Nutzer
-
-\item Filterung der Ergebnismenge durch:	
-	\begin{itemize}
-	\item Ausschließen von Personen oder Eingrenzen auf Personen
-	\item Städte und/oder Länder der Personen
-	\item Verringern auf Personen, die einem Unternehmen zugeordnet sind 
-	\item Beschränken auf Kontaktpersonen von Unternehmen
-	\item Begrenzen auf Kontaktpersonen die keinem Unternehmen angehören
-	\item Vermindern um Personengruppen
-	\end{itemize}
-\end{itemize}
+Weiterhin soll der Benutzer die Bewertung aller Beziehungen zu einer Person ermitteln können. Die Beziehungen sind in einer absteigenden Reihenfolge nach ihrem Werte zu präsentiert. Das Ergebnis soll außerdem durch den Benutzer auf eine von ihm festgelegte Menge an Beziehungen eingrenzbar sein. Neben der Anzahl von Beziehungen soll auch der für die Bewertung betrachtete Zeitraum verändert werden können. Es soll auch möglich sein den Zeitraum unterschiedlich zu gewichten. Dazu sind zwei Zeitspannen festzulegen. Die eine beginnt am Anfang des Zeitraums und endet zu einem angegeben Zeitpunkt. Die andere beginnt zu einem angegeben Zeitpunkt und reicht bis zum Ende des Zeitraums. Beide Zeitpunkte sollen durch den Benutzer angegeben werden können. Nicht nur der Zeitraum sondern auch die CRM-Objekte sollen gewichtbar sein. Hierzu soll dem Benutzer die Möglichkeit offen stehen einzelne Objekte wie Dokumente differenziert zu gewichten. Überdies soll er entscheiden können welche Personen, Gruppen, Städte, Kontakte, Firmenkontakte, Mitarbeiter und Länder aus der Bewertung ausgeschlossen werden.
 
 %% ===========================
 \subsection{Nichtfunktionale Anforderungen}
@@ -151,17 +120,17 @@ Folgende nichtfunktionale Anforderungen wurden erhoben:
 
 \begin{itemize}
 	
-	\item Eine Rechnerinstanz für Datenbankserver und Applikationsserver 
+	\item Falls die Möglichkeit besteht nur eine Rechnerinstanz für den Datenbankserver und Applikationsserver verwenden.
 	
-	\item Sehr kurze Antwortzeiten (< 1s)
+	\item Das System soll sehr kurze Antwortzeiten (< 1s) in der Beantwortung von Benutzerabfragen aufweisen. 
 	
-	\item Lose Kopplung (zwischen Logik und Darstellung)
+	\item In der Implementierung soll versucht werden eine möglichst lose Kopplung zwischen der Anwendungslogik und den Komponenten der Darstellung zu erreichen.
 	
-	\item Portabilität
+	\item Das System soll eine hohe Portabilität aufweisen, damit es einfach auf anderen Rechnern in Betrieb genommen werden kann.
 	
-	\item Graphische Darstellung des Ergebnisses
+	\item Die Ergebnisse der Bewertung sind dem Nutzer graphisch aufzubereiten. 
 	
-	\item Keine zusätzliche Kosten
+	\item Der Einsatz von Open-Source-Produkten ist gegenüber den von kommerziellen Produkten vorzuziehen.
 
 \end{itemize}
 
@@ -169,6 +138,8 @@ Folgende nichtfunktionale Anforderungen wurden erhoben:
 \section{Ermittlung relevanter Daten}
 \label{ch:Systemanalyse:sec:Information}
 %% ===========================
+
+In diesem Abschnitt werden die relevanten Datensätze aus der MSSQL-Datenbank erörtert. Dazu werden Tabellen die zum realisieren der funktionalen Anforderungen notwendig sind näher beschrieben.
 
 Die Datenbank der CAS Software AG umfasst 398 Tabellen, die zusammen wiederum 11.620 Spalten beinhalten. Aufgrund einer fehlenden Dokumentation über die Umsetzung der Anwendungsschicht und Beziehungen nicht über Fremdschlüssel identifiziert werden können wurde ein eigenes Verfahren zur Ermittlung von Beziehungen entwickelt. 
 
