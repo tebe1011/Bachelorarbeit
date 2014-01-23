@@ -45,11 +45,11 @@
 \BOOKMARK [1][-]{section.5.2}{5.2 Datenbankdesign}{chapter.5}% 45
 \BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Konzeptionelles Design}{section.5.2}% 46
 \BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Zugriffsstrukturen}{section.5.2}% 47
-\BOOKMARK [1][-]{section.5.3}{5.3 Extract Transform Load Prozess}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.3}{5.3 ETL-Prozess}{chapter.5}% 48
 \BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Extract}{section.5.3}% 49
 \BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Transform}{section.5.3}% 50
 \BOOKMARK [2][-]{subsection.5.3.3}{5.3.3 Load}{section.5.3}% 51
-\BOOKMARK [1][-]{section.5.4}{5.4 Darstellungskonzepte}{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.4}{5.4 Entwurf der Oberfl\344che}{chapter.5}% 52
 \BOOKMARK [1][-]{section.5.5}{5.5 Technologien}{chapter.5}% 53
 \BOOKMARK [0][]{chapter.6}{6 Umsetzung}{}% 54
 \BOOKMARK [1][-]{section.6.1}{6.1 Aufbau der Server.war}{chapter.6}% 55
@@ -62,4 +62,4 @@
 \BOOKMARK [1][-]{section.7.1}{7.1 Zusammenfassung}{chapter.7}% 62
 \BOOKMARK [1][-]{section.7.2}{7.2 Bewertung der Ergebnisse}{chapter.7}% 63
 \BOOKMARK [1][-]{section.7.3}{7.3 Ausblick}{chapter.7}% 64
-\BOOKMARK [0][]{section*.52}{Literaturverzeichnis}{}% 65
+\BOOKMARK [0][]{section*.54}{Literaturverzeichnis}{}% 65

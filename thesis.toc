@@ -62,17 +62,17 @@
 \contentsline {section}{\numberline {5.2}Datenbankdesign}{31}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Konzeptionelles Design}{31}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Zugriffsstrukturen}{34}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Extract Transform Load Prozess}{34}{section.5.3}
+\contentsline {section}{\numberline {5.3}ETL-Prozess}{34}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Extract}{35}{subsection.5.3.1}
 \contentsline {subsection}{\numberline {5.3.2}Transform}{36}{subsection.5.3.2}
 \contentsline {subsection}{\numberline {5.3.3}Load}{36}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}Darstellungskonzepte}{36}{section.5.4}
+\contentsline {section}{\numberline {5.4}Entwurf der Oberfl\IeC {\"a}che}{37}{section.5.4}
 \contentsline {section}{\numberline {5.5}Technologien}{38}{section.5.5}
-\contentsline {paragraph}{Vaadin}{38}{section*.37}
-\contentsline {paragraph}{Jersey}{39}{section*.38}
-\contentsline {paragraph}{Apache Tomcat7}{39}{section*.39}
-\contentsline {paragraph}{opencsv}{39}{section*.40}
-\contentsline {paragraph}{JDBC}{39}{section*.41}
+\contentsline {paragraph}{Vaadin}{39}{section*.39}
+\contentsline {paragraph}{Jersey}{39}{section*.40}
+\contentsline {paragraph}{Apache Tomcat7}{39}{section*.41}
+\contentsline {paragraph}{opencsv}{39}{section*.42}
+\contentsline {paragraph}{JDBC}{39}{section*.43}
 \contentsline {chapter}{\numberline {6}Umsetzung}{41}{chapter.6}
 \contentsline {section}{\numberline {6.1}Aufbau der Server.war}{41}{section.6.1}
 \contentsline {section}{\numberline {6.2}Aufbau der Client.war}{42}{section.6.2}
@@ -84,4 +84,4 @@
 \contentsline {section}{\numberline {7.1}Zusammenfassung}{53}{section.7.1}
 \contentsline {section}{\numberline {7.2}Bewertung der Ergebnisse}{53}{section.7.2}
 \contentsline {section}{\numberline {7.3}Ausblick}{55}{section.7.3}
-\contentsline {chapter}{Literaturverzeichnis}{57}{section*.52}
+\contentsline {chapter}{Literaturverzeichnis}{57}{section*.54}
