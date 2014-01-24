@@ -123,6 +123,14 @@
 \newblock {\latintext
   \btxurlfont{http://www.sciencedirect.com/science/article/pii/S131915781100019X}}.
 
+\bibitem [{Gei11}]{geisler2011datenbanken}
+\btxnamefont {F. \btxlastnamefont {Geisler}}\btxauthorcolon\ \btxtitlefont
+  {Datenbanken: Grundlagen und Design}.
+\newblock \btxpublisherfont {mitp}, 2011\ifbtxprintISBN {,
+  \mbox{\btxISBN~\btxISBNfont {9783826690884}}}.
+\newblock {\latintext
+  \btxurlfont{http://books.google.de/books?id=u7kbZYs0fdcC}}, S. 177-180.
+
 \bibitem [{GL02}]{Gilbert:2002:BCF:564585.564601}
 \btxnamefont {Seth \btxlastnamefont {Gilbert}} \btxandlong {}\ \btxnamefont
   {Nancy \btxlastnamefont {Lynch}}\btxauthorcolon\ \btxjtitlefont

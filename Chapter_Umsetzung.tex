@@ -7,13 +7,13 @@
 \label{ch:umsetzung}
 %% ===========================
 
-In diesem Kapitel wird auf die konkrete Umsetzung der Konzepte eingegangen. Die Komponenten des Systems selbst wurden aus architektonischer Sicht, wie in der Konzeption beschrieben umgesetzt. Daher wird vielmehr auf die genaue Umsetzung der Funktionen und Prozesse eingegangen. Anhand von Klassendiagrammen wird in den ersten beiden Kapiteln die Struktur und Funktionsweise der Webprojekte erläutert. Weiterhin wird der ETL-Prozess und die Abfrageerzeugung genauer betrachtet. Der genaue Ablauf in der Aktualisierung wird in dem darauf folgenden Abschnitt beschrieben. Abschließend wird der Aufbau der Oberfläche mit den damit verbundenen Designentscheidungen erläutert. 
+In diesem Kapitel wird auf die Implementierung der Konzepte eingegangen. Die Komponenten des Systems selbst wurden aus architektonischer Sicht, wie in der Konzeption beschrieben umgesetzt. Daher wird vielmehr auf die genaue Umsetzung der Funktionen und Prozesse eingegangen. Anhand von Klassendiagrammen wird in den ersten beiden Kapiteln die Struktur und Funktionsweise der Webprojekte erläutert. Weiterhin wird der ETL-Prozess und die Abfrageerzeugung genauer eingegangen. Der genaue Ablauf in der Aktualisierung wird in dem darauf folgenden Abschnitt beschrieben. Abschließend wird der Aufbau der Oberfläche mit den damit verbundenen Designentscheidungen erläutert. 
 
 %% ===========================
-\section{Aufbau der Server.war}
+\section{Server-Webprojekt}
 %% ===========================
 
-Die Web-Archive-Datei beinhaltet ein dynamisches Webprojekt aus dem Eclipse Web Tools Platform (WTP)-Projekt. Das Webprojekte besitzt die Struktur und Einstellungen die automatisch beim erzeugen des Projektes festgelegt werden. Deshalb wird direkt auf die Klassen eingegangen. Abbildung \ref{umsetzung_klassendiagramm_server} zeigt das Klassendiagramm der Server-WAR-Datei. Das Diagramm dient als Basis für die nachfolgenden Erläuterungen. 
+Das Webprojekt behält die Struktur und Einstellungen die beim Erzeugen des Projektes vorgegeben werden bei. Deshalb wird direkt auf die Klassen eingegangen. Abbildung \ref{umsetzung_klassendiagramm_server} zeigt das Klassendiagramm des Server-Webprojekt. Das Diagramm dient als Basis für die nachfolgenden Erläuterungen. 
 
 Die H2-Datenbank wird im Embedded-Modus betrieben, was eine Instanziierung der Datenbank zur Laufzeit notwendig macht. Die Instanziierung erfolgt in der Klasse \textit{Database}. Das Attribut \textit{dataSource} stellt die H2-Datenbank in Form eines Objektes dar. Eine Verbindung zur Datenbank wird mithilfe der Methode \textit{getConnection()} aufgebaut. Diese Verbindung wird permanent offen gehalten, solang der Tomcat-Server läuft. Dazu wird die Verbindung dem Attribut \textit{con} zugewiesen, welches von allen Methoden verwendet wird, die eine Verbindung zur Datenbank aufbauen wollen. Um die Datenbank mit der Web-Anwendungen zu starten, ist die Verwendung eines Servlets nötig. Dazu benutzen wir die Klasse \textit{EntryPoint}, die das Interface \textit{HttpServlet} implementiert. Um das Servlet direkt beim Start aufzurufen sind in der \textit{web.xml} folgende Zeilen eingetragen: 
 
@@ -37,7 +37,7 @@ Die 1 im Element \textit{<load-on-startup>} bewirkt den Aufruf der Methode \text
 
 Mit der Klasse \textit{JerseyServer} wird der REST-Server umgesetzt. Sie besitzt Methoden die mit den entsprechenden Annotationen, wie \textit{@GET} oder \textit{@POST}, die REST-Requests entgegen nehmen. Mit der Annotation \textit{@Path} wird die URL angegeben, unter der die Methode angesprochen werden kann. Diese Methoden können Übergabeparameter vom Typ \textit{UriInfo} und/oder \textit{HttpHeaders} besitzen, die Abrufe von Metadaten der REST-Requests ermöglichen. 
 
-Neben den Methoden zur Beantwortung von REST-Requests, enthält die Klasse alle Objekte zur Durchführung des ETL-Prozesses. Die Klasse \textit{ConnectorJDBC} besitzt ein Attribut namens \textit{con}, welches den Verbindungsaufbau zum MSSQL-Server, mithilfe von JDBC ermöglicht. Zur Extraktion der Daten aus dem MSSQL-Server wird ein Objekt der Klasse \textit{QueryBuilder} verwendet. Wie in der Abbildung zu sehen werden für die verschiedenen Tabellen, des neuen Schemas, eigene Methoden zur Verfügung gestellt. Methoden welche die Übergabewerte \textit{table}, \textit{date} und \textit{n} besitzen, werden für die verschiedenen Verbindungsmerkmale benötigt. Mithilfe des Parameters table wird der Name der Tabelle in der MSSQL Datenbank übergeben. Der Parameter \textit{date} gibt das Feld an, was für die Ermittlung des Datums verwendet werden soll. Um den Typ eines Verbindungsmerkmals zwischen Personen festzuhalten wird der Parameter \textit{n} verwendet, der eine Zahl zwischen eins und fünf beinhaltet. \textit{QueryBuilder} verwendet ein Objekt vom Typ \textit{CSV-Builder}, um die Ergebnisse in Dateien festzuhalten. Den Methoden wird als Übergabeparameter ein Dateiname, sowie die zu speichernden Informationen übergeben.
+Neben den Methoden zur Beantwortung von REST-Requests, enthält die Klasse alle Objekte zur Durchführung des ETL-Prozesses. Die Klasse \textit{ConnectorJDBC} besitzt ein Attribut namens \textit{con}, welches den Verbindungsaufbau zum MSSQL-Server, mithilfe von JDBC ermöglicht. Zur Extraktion der Daten aus dem MSSQL-Server wird ein Objekt der Klasse \textit{QueryBuilder} verwendet. Wie in der Abbildung zu sehen werden für die verschiedenen Tabellen, des neuen Schemas, eigene Methoden zur Verfügung gestellt. Methoden welche die Übergabewerte \textit{table}, \textit{date} und \textit{n} besitzen, werden für die verschiedenen CRM-Objekte benötigt. Mithilfe des Parameters table wird der Name der Tabelle in der MSSQL Datenbank übergeben. Der Parameter \textit{date} gibt das Feld an, was für die Ermittlung des Datums verwendet werden soll. Um den Typ eines CRM-Objektes zwischen Personen festzuhalten wird der Parameter \textit{n} verwendet, der eine Zahl zwischen eins und fünf beinhaltet. \textit{QueryBuilder} verwendet ein Objekt vom Typ \textit{CSV-Builder}, um die Ergebnisse in Dateien festzuhalten. Den Methoden wird als Übergabeparameter ein Dateiname, sowie die zu speichernden Informationen übergeben.
 
 Die Klasse \textit{Transform} enthält Attribute und Methoden zur Bearbeitung der CSV-Dateien. Weiterhin werden die durch die Extraktionen gewonnen CSV-Dateien mithilfe eines \textit{CSVReaderWriter} Objekts ausgelesen. Nach der Bearbeitung durch die Methoden der \textit{Transform} Klasse, werden die Daten wieder in CSV-Dateien abgelegt. \textit{CSVBuilder} besitzt Methoden die zusätzliche Parameter zum schreiben aufweisen, die modifizierte Schreiboperationen erlauben. Wohingegen \textit{CSVReaderWriter} mithilfe der Methode \textit{writeDataToCSV()}, sowie den Parametern \textit{path} und \textit{data} allgemeine Schreiboperationen durchführt.
 
@@ -46,7 +46,7 @@ Mithilfe der Klasse \textit{Load} wird die Datenbank befüllt. Sie kann wie zuvo
 Die Klasse \textit{Logik} beinhaltet Attribute und Methoden zum beantworten von Benutzerabfragen. Um Bedingungen zu einer SQL-Abfrage hinzuzufügen werden separate Methoden verwendet. Die jeweiligen Methoden werden nur gerufen, sobald die entsprechende Bedingung in der vom Nutzer erhaltenen JSON-Datei vorhanden ist. Generiert werden die Abfragen durch die Methode \textit{buildQuery()}. 
 
 %% ===========================
-\section{Aufbau der Client.war}
+\section{Client-Webprojekt}
 \label{ch:Umsetzung:sec:clientwar}
 %% ===========================
 
@@ -70,7 +70,7 @@ An der Oberfläche gibt es Felder die nur Zahlen erwarten. Eingaben die nicht nu
 \section{Erzeugung der SQL-Abfrage}
 %% ===========================
 
-Um eine SQL-Abfragen mit möglichst wenigen Bedienungen zu verwenden erfolgt die Erzeugung dynamisch. Die SQL-Abfrage kann dadurch je nach Benutzereingabe unterschiedlich aufgebaut sein kann. Die Basisfunktionalität ändert sich allerdings nicht. Diese besteht aus der Bildung von Summen der verschiedenen Verbindungsmerkmale. Nachdem festgestellt wurde wie viele Verbindungsmerkmale von den jeweiligen Typen zu einer Person verlaufen, wird zusätzlich die Gesamtsumme der Verbindungsmerkmale zu einer Person gebildet. Die Summe wird zur Sortierung der Ergebnisse verwendet. Bei der Sortierung wird absteigend vorgegangen, um die Personen mit den meisten Verbindungsmerkmale zu der von der Suche ausgehend Person zu ermitteln. Das Ergebnis wird wiederum auf eine durch den Benutzer festgelegte Anzahl reduziert. Überdies beschränkt die Abfrage den Zeitraum durch die Verwendung der Spalte \textit{Date}.
+Um eine SQL-Abfragen mit möglichst wenigen Bedienungen zu verwenden erfolgt die Erzeugung dynamisch. Die SQL-Abfrage kann dadurch je nach Benutzereingabe unterschiedlich aufgebaut sein kann. Die Basisfunktionalität ändert sich allerdings nicht. Diese besteht aus der Bildung von Summen der verschiedenen CRM-Objekte. Nachdem festgestellt wurde wie viele CRM-Objekte von den jeweiligen Typen zu einer Person verlaufen, wird zusätzlich die Gesamtsumme der CRM-Objekte zu einer Person gebildet. Die Summe wird zur Sortierung der Ergebnisse verwendet. Bei der Sortierung wird absteigend vorgegangen, um die Personen mit den meisten CRM-Objekten zu der von der Suche ausgehend Person zu ermitteln. Das Ergebnis wird wiederum auf eine durch den Benutzer festgelegte Anzahl reduziert. Überdies beschränkt die Abfrage den Zeitraum durch die Verwendung der Spalte \textit{Date}.
 
 Nutzer können durch nutzen der Filteroperatoren weitere Bedingungen zur SQL-Abfrage hinzufügen. Eine von ihnen ist die Gewichtung von Zeitspannen. Das Verfahren zur Gewichtung der Zeit wird anhand der Abbildung \ref{fig:umsetzung:gewichtungderzeit} erläutert. Die Abbildung zeigt ein Koordinatensystem mit der Gewichtung von einzelnen Zeitpunkten. Die x-Achse stellt den zeitlichen Verlauf und die y-Achse die Gewichtung dar. Der Startzeitpunkt wird durch $t_{s}$ markiert, wohingegen $t_{e}$ den Endzeitpunkt angibt. Mithilfe von $t_1$ und $t_2$ werden die zu gewichtenden Zeitspannen festgelegt. Um nun die Zeitspannen anders zu gewichten wird eine lineare Abstufung der Tage vorgenommen. Für die Zeitspanne zwischen $t_{s}$ und $t_1$ bedeutet dies, dass der Wert eines Tages zunehmend steigt. Wird $t_1$ erreicht, besitzt jeder Tage wieder eine Wertigkeit von 1. Bei $t_2$ verhält es sich ähnlich. Mit jedem Tag ab $t_2$ sinkt der Wert des Tages bis der Zeitpunkt $t_{e}$ erreicht ist.
 
@@ -152,18 +152,17 @@ Innerhalb von Zeiträumen können sich Gruppen verändern, jedoch können diese 
 \section{ETL Prozess}
 %% ===========================
 
-Um an die notwendigen Daten zu gelangen werden zuerst die Informationen aus der MSSQL-Datenbank extrahiert. Dazu wird ein Verbund gebildet, der Tupeln aus den betroffenen Tabellen verschmelzen lässt. Die in CAS genesisWorld manuell hinterlegten Verbindungen werden mithilfe der Tabelle \textit{TableRelation} ermittelt. Zur Beschaffung der Verbindungen wird als erstes eine SQL-Abfrage definiert, die für jede der Tabellen \textit{gwOpportunity}, \textit{gwPhoneCall0}, \textit{Document0}, \textit{EmailStore0} und \textit{Appointment0} separat ausgeführt wird. 
+Um an die notwendigen Daten zu gelangen werden zuerst die Informationen aus der MSSQL-Datenbank extrahiert. Dazu wird ein Verbund gebildet, der Tupeln aus den betroffenen Tabellen verschmelzen lässt. Die Erzeuger der CRM-Objekte werden mithilfe der Tabelle \textit{TableRelation} ermittelt. Zur Beschaffung der Verknüpfung zwischen der Person und den CRM-Objekten wird als erstes eine SQL-Abfrage definiert, die für jede der Tabellen \textit{gwOpportunity}, \textit{gwPhoneCall0}, \textit{Document0}, \textit{EmailStore0} und \textit{Appointment0} separat ausgeführt wird. 
 
-Mithilfe eines Verbundes zwischen den Tabellen \textit{SysUser} und \textit{Address0} werden die Adressen zu den Personen ermittelt. Anschließend werden durch einen Verbund zwischen \textit{TableRelation} und \textit{SysUser} alle Tabellen ermittelt die mit den Personen eine Verbindung besitzen. Der nächste Verbund wird zwischen \textit{TableRelation} und einer der fünf zuvor genannten Tabellen gebildet. Um beispielsweise festzustellen welche anderen Personen mit einem Dokument arbeiten, wird ein weiterer Verbund mit der passenden ORel-Tabelle gebildet. In der ORel-Tabelle kann die \textit{OID} positiv, sowie negativ sein. Bei einem negativen Wert stellt die \textit{OID}, eine \textit{GID} der Tabelle \textit{SysGroup} dar. Zur Auflösung von Gruppen in einzelne Personen werden folgende Verbunde gebildet. Zuerst zwischen \textit{SysGroup} und \textit{SysGroupMember}, um alle Personen die zu einer Gruppe gehören zu erhalten. Anschließend zwischen \textit{SysGroupMember} und \textit{SysUser}, um die \textit{OID} der Person zu erhalten. 
+Mithilfe eines Verbundes zwischen den Tabellen \textit{SysUser} und \textit{Address0} werden die Adressen zu den Personen ermittelt. Anschließend werden durch einen Verbund zwischen \textit{TableRelation} und \textit{SysUser} alle Tabellen ermittelt, mit denen die Personen eine Verknüpfung besitzen. Der nächste Verbund wird zwischen \textit{TableRelation} und einer der fünf zuvor genannten Tabellen gebildet. Um beispielsweise festzustellen mit welchen anderen Personen das Dokument geteilt ist, wird ein weiterer Verbund mit der passenden ORel-Tabelle gebildet. In der ORel-Tabelle kann die \textit{OID} positiv, sowie negativ sein. Bei einem negativen Wert stellt die \textit{OID}, eine \textit{GID} der Tabelle \textit{SysGroup} dar. Zur Auflösung von Gruppen in einzelne Personen werden folgende Verbunde gebildet. Zuerst zwischen \textit{SysGroup} und \textit{SysGroupMember}, um alle Personen die zu einer Gruppe gehören zu erhalten. Anschließend zwischen \textit{SysGroupMember} und \textit{SysUser}, um die \textit{OID} der Person zu erhalten. 
 
-
-Die durch den Verbund gewonnen Informationen werden weiterhin auf drei relevante Werte verringert. Zu einem die \textit{OID} des \textit{SysUser}, von dem die Suche ausgeht. Zum anderen das Datum, welches durch ein Verbindungsmerkmal ermittelt wird. Weiterhin wird die zweite \textit{OID} behalten, die durch den Verbund mit einer zweiten \textit{SysUser} Tabelle gewonnen wird. Zum Schluss wird manuell eine vierte Information beigefügt, die besagt welchem Verbindungsmerkmal die Tupel entstammt. 
+Die durch den Verbund gewonnen Informationen werden weiterhin auf drei relevante Werte verringert. Zu einem die \textit{OID} des \textit{SysUser}, von dem die Suche ausgeht. Zum anderen das Datum, welches durch das CRM-Objekt ermittelt wird. Weiterhin wird die zweite \textit{OID} beibehalten, die durch den Verbund mit einer zweiten \textit{SysUser} Tabelle gewonnen wird. Zum Schluss wird manuell eine vierte Information beigefügt, die besagt welchem CRM-Objekt die Tupel entstammt. 
 
 Für den Sonderfall das ein Datum über mehrere Tage geht, wird eine fünfte Spalte hinzugefügt, welche den Zeitraum in Tagen beinhaltet. Zur Beschaffung der geschobenen Termine wird genau wie in der Konzeption beschrieben verfahren.
 
-Zur Ermittlung von direkten Verbindungen zwischen Personen wird lediglich ein Verbund aus den ORel-Tabellen eines Verbindungsmerkmales gebildet. Dieser Verbund beinhaltet bereits die \textit{OID} der beiden Personen. Zur Ermittlung des Datums wird noch ein Verbund mit der Tabelle des Verbindungsmerkmals gebildet. Die negativen \textit{OID} Werte werden genauso wie oben beschrieben aufgelöst. 
+Zur Ermittlung von direkten Verbindungen zwischen Personen wird lediglich ein Verbund aus den ORel-Tabellen eines CRM-Objektes gebildet. Dieser Verbund beinhaltet bereits die \textit{OID} der beiden Personen. Zur Ermittlung des Datums wird noch ein Verbund mit der Tabelle des CRM-Objekts gebildet. Die negativen \textit{OID} Werte werden genauso wie oben beschrieben aufgelöst. 
 
-Jedes Ergebnis einer Extraktionsabfrage wird in einer CSV-Datei direkt auf dem Tomcat gespeichert. Diese CSV-Dateien stellen die Grundlage der Transformation dar. Jede dieser Dateien beinhaltet Verbindungen zwischen Personen, in der Form wie sie in Abbildung \ref{fig:umsetzung_csv_datei} zu sehen ist. 
+Jedes Ergebnis einer Extraktionsabfrage wird in einer CSV-Datei direkt auf dem Tomcat gespeichert. Diese CSV-Dateien stellen die Grundlage der Transformation dar. Jede dieser Dateien beinhaltet die Werte für die Tabelle \textit{Data} aus der H2-Datenbank, in der Form wie sie in Abbildung \ref{fig:umsetzung_csv_datei} zu sehen ist. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -186,29 +185,29 @@ Diese Datei werden bei jedem Start der Datenbank verwendet, um einen Bulk-Load f
 
 Wie zuvor in Abschnitt \ref{ch:Konzeption:sec:updatedatenbestand} behandelt, wird die Aktualisierung unseres Datenbestandes von CAS genesisWorld angestoßen. Die Implementierung ist in Form einer COM-Komponente umgesetzt. Sie wird in einer DLL-Datei definiert. Diese muss Namenskonventionen einhalten. Es werden nur Dateien vom CAS genesisWorld Anwendungsserver erkannt die mit dem Prefix \textit{pGSAxExtCustomServerDataPlugin} beginnen. Die DLL-Datei ist in der \textit{RegisterSDKDataPlugIns.xml} hinterlegt, damit der Anwendungsserver beim Start das Plugin findet. Weiterhin ist in der XML-Datei eine Tabelle paarweise mit einer DLL angegeben. Dadurch wird ein Plugin auf eine Datenbanktabelle registriert und bekommt alle betreffenden Änderungen mit.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.8]{pics/plugin_klassendiagramm.pdf}
-\caption{Klassendiagramm Plugin}
-\label{ergebniss_plugin_klassendiagramm}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-  \includegraphics[width=1.0\textwidth, width=1.0\textwidth]{pics/sequenzdiagramm.pdf}
-\caption{Sequenzdiagramm für einen neuen Datensatz}
-\label{konzept_sequenz}
-\end{figure}
-
-In CAS genesisWorld gibt es die Möglichkeit den zweiten Ansatz umzusetzen. Die Idee dabei ist den CAS genesisWorld Anwendungsserver um ein sogenanntes Plugin zu erweitern, welches über Veränderungen in den Datensätzen benachrichtigt wird. Ein solches Plugin kann als COM-Objekt, mithilfe des Interfaces \textit{IGWSDKDataPlugIn}, realisiert werden. Das erzeugte COM-Objekt wird anschließend im Server von CAS genesisWorld registriert. Der Server delegiert, wie in Abbildung \ref{konzept_sequenz} zu sehen, bei einer Datenoperation den Aufruf an die für die jeweiligen Tabellen registrierten Plugins. Das Plugin selbst soll einen REST-Client besitzt, der einen POST-Request an die Logik sendet. Er enthält die \textit{GGUID} des veränderten Datensatzes. Mithilfe dieser wird die Extraktion des betroffenen Datensatzes angestoßen. Geplant ist neue Datensätze zuerst in einer CSV-Datei zwischenzuspeichern und anschließend in die H2-Datenbank einzufügen. In der H2-Datenbank können zum Aktualisieren der Daten nur neue oder gelöschte Datensätze beachtet werden. Um auch Updates zu berücksichtigen müsste zu jeder Tupel die entsprechende \textit{GGUID} vorhanden sein. Ohne die \textit{GGUID} ist eine Zuordnung der Datensätze zwischen den Datenbanken nicht möglich. In diesem Fall wurde entschieden, dass dies kein Problem darstellt.
-
 Die Programmbibliothek selbst ist in Delphi geschrieben. Abbildung \ref{ergebniss_plugin_klassendiagramm} zeigt die Struktur der DLL-Datei. Die Klasse selbst implementiert sechs verschiedene Schnittstellen. \textit{ComObj} stellt Funktionen zur Erstellung und Bearbeitung von COM-Objekten zur Verfügung. Um Funktionalitäten von CAS genesisWorld vollständig zu nutzen, wird die \textit{ActiveX} Schnittstelle benötigt. Wie bereits behandelt findet die Übertragung der Daten über das REST-Protokoll statt, wofür die \textit{idHttp} Schnittstelle verwendet wird. Um Konvertierungen der vom Anwendungsserver erhaltenen Binärwerte vorzunehmen, werden die Funktionen der Schnittstellen \textit{CAS\_ToolsCOM} und \textit{CAS\_VarType14Fix} genutzt. Das Abfangen der geänderten Daten, welches die eigentliche Kernfunktionalität darstellt, wird durch die Funktionen der \textit{IGWSDKDataPlugin} Schnittstelle implementiert.
 
 Die Funktionen der Abbildung \ref{ergebniss_plugin_klassendiagramm} gehören von \textit{BeforeAddNew()} bis \textit{AfterUndelete()} zur \textit{IGWSDKDataPlugin} Schnittstelle. Es sind zwar alle Funktionen der \textit{IGWSDKDataPlugin} Schnittstelle in der DLL implementiert, allerdings sind nur die Funktionen die mit \textit{After} beginnen auch mit Logik hinterlegt. Für unser System reicht es nämlich aus, über Änderungen im Nachhinein benachrichtigt zu werden. Die Funktionen enthalten alle die gleiche Logik und unterscheiden sich lediglich in den Übergabeparameter.
 
-Die Funktionsweise wird im Folgenden anhand der Abläufe in der Logik erläutert. Nachdem der Nutzer Datensätze geändert hat wird das Plugin aufgerufen. Die entsprechende Funktion erhält die \textit{GGUID} der Tupel, den Namen der Spalte, sowie die veränderten Werte. Anschließend wird überprüft, ob die Änderungen für unser System von Relevanz ist. Falls sie sich als relevant herausstellen, wird die \textit{aGGUID} in einen String konvertiert. Anschließend werden die Header-Werte der \textit{idHttp} Variable gesetzt. Sie beinhalten Werte wie die URI oder HTTP-Metadaten. Sobald alle Daten in der \textit{idHttp} gesetzt sind, wird ein POST-Request an unser System übermittelt. 
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.7]{pics/plugin_klassendiagramm.pdf}
+\caption{Klassendiagramm Plugin}
+\label{ergebniss_plugin_klassendiagramm}
+\end{figure}
+
+Die Funktionsweise wird im Folgenden anhand der Abläufe in der Logik erläutert und sind auch in der Abbildung \ref{konzept_sequenz} zu sehen. Nachdem der Benutzer Datensätze geändert hat wird das Plugin aufgerufen. Die entsprechende Funktion erhält die \textit{GGUID} der Tupel, den Namen der Spalte, sowie die veränderten Werte. Anschließend wird überprüft, ob die Änderungen für unser System von Relevanz ist. Falls sie sich als relevant herausstellen, wird die \textit{aGGUID} in einen String konvertiert. Anschließend werden die Header-Werte der \textit{idHttp} Variable gesetzt. Sie beinhalten Werte wie die URI oder HTTP-Metadaten. Sobald alle Daten in der \textit{idHttp} gesetzt sind, wird ein POST-Request an unser System übermittelt. 
 
 Der POST-Request enthält lediglich die \textit{GGUID} und die Art der Operation, die auf den Daten ausgeführt wurde. Bei neuen Daten beispielsweise wird ein Header namens "newGGUID" und dem Wert der \textit{GGUID} gesetzt. Im Anwendungsserver wird der neue Wert zuerst in eine CSV-Datei geschrieben und anschließend in die Datenbank eingefügt.
+
+
+\begin{figure}[htbp]
+\centering
+  \includegraphics[width=0.8\textwidth]{pics/sequenzdiagramm.pdf}
+\caption{Sequenzdiagramm für einen neuen Datensatz}
+\label{konzept_sequenz}
+\end{figure}
+
 
 
 %% ===========================
