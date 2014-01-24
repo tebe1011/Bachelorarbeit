@@ -152,7 +152,14 @@ Innerhalb von Zeiträumen können sich Gruppen verändern, jedoch können diese 
 \section{ETL Prozess}
 %% ===========================
 
-Um an die notwendigen Daten zu gelangen werden zuerst die Informationen aus der MSSQL-Datenbank extrahiert. Dazu wird ein Verbund gebildet, der Tupeln aus den betroffenen Tabellen verschmelzen lässt. Die Erzeuger der CRM-Objekte werden mithilfe der Tabelle \textit{TableRelation} ermittelt. Zur Beschaffung der Verknüpfung zwischen der Person und den CRM-Objekten wird als erstes eine SQL-Abfrage definiert, die für jede der Tabellen \textit{gwOpportunity}, \textit{gwPhoneCall0}, \textit{Document0}, \textit{EmailStore0} und \textit{Appointment0} separat ausgeführt wird. 
+Um an die notwendigen Daten zu gelangen werden zuerst die Informationen aus der MSSQL-Datenbank extrahiert. Das Vorgehen ist in Abbildung \ref{umsetzung_extract} dargestellt. Dazu wird ein Verbund gebildet, der Tupeln aus den betroffenen Tabellen verschmelzen lässt. Die Erzeuger der CRM-Objekte werden mithilfe der Tabelle \textit{TableRelation} ermittelt. Zur Beschaffung der Verknüpfung zwischen der Person und den CRM-Objekten wird als erstes eine SQL-Abfrage definiert, die für jede der Tabellen \textit{gwOpportunity}, \textit{gwPhoneCall0}, \textit{Document0}, \textit{EmailStore0} und \textit{Appointment0} separat ausgeführt wird. 
+
+\begin{figure}[htbp]
+\centering
+  \includegraphics[width=1.0\textwidth]{pics/konzept_extraktion.pdf}
+\caption{Vorgehensweise bei der Extraktion}
+\label{umsetzung_extract}
+\end{figure} 
 
 Mithilfe eines Verbundes zwischen den Tabellen \textit{SysUser} und \textit{Address0} werden die Adressen zu den Personen ermittelt. Anschließend werden durch einen Verbund zwischen \textit{TableRelation} und \textit{SysUser} alle Tabellen ermittelt, mit denen die Personen eine Verknüpfung besitzen. Der nächste Verbund wird zwischen \textit{TableRelation} und einer der fünf zuvor genannten Tabellen gebildet. Um beispielsweise festzustellen mit welchen anderen Personen das Dokument geteilt ist, wird ein weiterer Verbund mit der passenden ORel-Tabelle gebildet. In der ORel-Tabelle kann die \textit{OID} positiv, sowie negativ sein. Bei einem negativen Wert stellt die \textit{OID}, eine \textit{GID} der Tabelle \textit{SysGroup} dar. Zur Auflösung von Gruppen in einzelne Personen werden folgende Verbunde gebildet. Zuerst zwischen \textit{SysGroup} und \textit{SysGroupMember}, um alle Personen die zu einer Gruppe gehören zu erhalten. Anschließend zwischen \textit{SysGroupMember} und \textit{SysUser}, um die \textit{OID} der Person zu erhalten. 
 

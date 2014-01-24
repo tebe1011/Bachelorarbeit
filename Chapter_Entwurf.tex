@@ -149,15 +149,7 @@ Abbildung \ref{konzept:etl} zeigt das erarbeitete Konzept zur Umsetzung eines so
 
 Zunächst dient die Extraktion primär der Beschaffung von Daten aus der MSSQL-Datenbank. Überdies können durch den Prozess Daten bereits reduziert,  zusammengeführt und ersetzt werden. Für eine zutreffende Formulierung der Abfragen müssen Besonderheiten in die Ermittlung der Daten beachtet werden. Eine vollständige und korrekte Datenmenge stellt die Grundlage jeder guten Analyse dar.
 
-In der Abbildung \ref{konzept_extract} ist die geplante Vorgehensweise der Informationsbeschaffung für die Tabelle \textit{Data} dargestellt. Mithilfe eines Verbundes der Tabellen SysUser und Address0 besteht die Möglichkeit die Werte für die Spalten \textit{isEmpleyee},\textit{isContact}, \textit{isFirm}, \textit{Town} und \textit{Country} zu erhalten. Die Werte der Spalten \textit{startID}, \textit{Date}, \textit{DataTyp} und \textit{endID} können durch den Verbund der anderen Tabellen besorgt werden.
-
-\begin{figure}[htbp]
-\centering
-  \includegraphics[width=1.0\textwidth]{pics/konzept_extraktion.pdf}
-\caption{Vorgehensweise bei der Extraktion}
-\label{konzept_extract}
-\end{figure} 
-
+In der Extraktion sollen SQL-Abfragen formuliert werden mit denen die Daten aus der MSSQL-Datenbank in die H2-Datenbank überführt werden können. Dabei gilt es die Abfragen so zu formulieren, dass das Ergebnis den Attributen aus der Tabelle des neuen Schemas entspricht.
 
 Weiterhin sind Besonderheiten in der Extraktion zu beachten. Es existieren Datensätze in der MSSQL-Datenbank die sich über längere Zeiträume erstrecken. Beispielsweise erstrecken sich Termine wie Tagungen über mehrere Tage. In der MSSQL-Datenbank werden diese Termine in einer Tupel aufbewahrt. Bei unserer Analyse hingegen stellt jede Tupel eine Verbindung zu einem bestimmten Tag dar. Somit muss ein Datensatz der sich über mehrere Tage erstreckt, in der H2-Datenbank durch mehrere Tupeln repräsentiert werden. Aufgrund dessen wird im Ergebnis der SQL-Abfrage die Zeitspanne eines CRM-Objektes in Tagen vermerkt. In späteren Transformationen kann mithilfe dieser Angaben die entsprechende Anzahl an Tupeln erzeugt werden.
 

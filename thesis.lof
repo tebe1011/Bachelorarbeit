@@ -14,23 +14,23 @@
 \contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Komponenten des Systems und der Umwelt\relax }}{30}{figure.caption.27}
 \contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Neues Datenbankschema\relax }}{32}{figure.caption.33}
 \contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces ETL-Prozess\relax }}{35}{figure.caption.35}
-\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Vorgehensweise bei der Extraktion\relax }}{35}{figure.caption.36}
-\contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Entwurf der Oberfl\IeC {\"a}che\relax }}{37}{figure.caption.37}
-\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Entw\IeC {\"u}rfe f\IeC {\"u}r die Oberfl\IeC {\"a}che\relax }}{38}{figure.caption.38}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Netzdiagramm}}}{38}{figure.caption.38}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Liniendiagramm}}}{38}{figure.caption.38}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Tree Map}}}{38}{figure.caption.38}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Tortendiagramm}}}{38}{figure.caption.38}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Balkendiagramm}}}{38}{figure.caption.38}
+\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Entwurf der Oberfl\IeC {\"a}che\relax }}{37}{figure.caption.36}
+\contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Entw\IeC {\"u}rfe f\IeC {\"u}r die Oberfl\IeC {\"a}che\relax }}{37}{figure.caption.37}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Netzdiagramm}}}{37}{figure.caption.37}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Liniendiagramm}}}{37}{figure.caption.37}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Tree Map}}}{37}{figure.caption.37}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Tortendiagramm}}}{37}{figure.caption.37}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Balkendiagramm}}}{37}{figure.caption.37}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Server Klassendiagramm\relax }}{43}{figure.caption.44}
-\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Client Klassendiagramm\relax }}{44}{figure.caption.45}
-\contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Gewichtung der Zeit\relax }}{46}{figure.caption.46}
-\contentsline {figure}{\numberline {\relax 6.4}{\ignorespaces Ausschnitt einer CSV-Datei nach der Extraktion\relax }}{47}{figure.caption.47}
-\contentsline {figure}{\numberline {\relax 6.5}{\ignorespaces Klassendiagramm Plugin\relax }}{49}{figure.caption.48}
-\contentsline {figure}{\numberline {\relax 6.6}{\ignorespaces Sequenzdiagramm f\IeC {\"u}r einen neuen Datensatz\relax }}{49}{figure.caption.49}
-\contentsline {figure}{\numberline {\relax 6.7}{\ignorespaces Anmeldefenster\relax }}{50}{figure.caption.50}
-\contentsline {figure}{\numberline {\relax 6.8}{\ignorespaces Hauptseite der Anwendung\relax }}{51}{figure.caption.51}
+\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Server Klassendiagramm\relax }}{43}{figure.caption.43}
+\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Client Klassendiagramm\relax }}{44}{figure.caption.44}
+\contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Gewichtung der Zeit\relax }}{46}{figure.caption.45}
+\contentsline {figure}{\numberline {\relax 6.4}{\ignorespaces Vorgehensweise bei der Extraktion\relax }}{47}{figure.caption.46}
+\contentsline {figure}{\numberline {\relax 6.5}{\ignorespaces Ausschnitt einer CSV-Datei nach der Extraktion\relax }}{48}{figure.caption.47}
+\contentsline {figure}{\numberline {\relax 6.6}{\ignorespaces Klassendiagramm Plugin\relax }}{49}{figure.caption.48}
+\contentsline {figure}{\numberline {\relax 6.7}{\ignorespaces Sequenzdiagramm f\IeC {\"u}r einen neuen Datensatz\relax }}{50}{figure.caption.49}
+\contentsline {figure}{\numberline {\relax 6.8}{\ignorespaces Anmeldefenster\relax }}{50}{figure.caption.50}
+\contentsline {figure}{\numberline {\relax 6.9}{\ignorespaces Hauptseite der Anwendung\relax }}{51}{figure.caption.51}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Abfragegeschwindigkeit Vergleich\relax }}{55}{figure.caption.53}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Performance}}}{55}{figure.caption.53}
