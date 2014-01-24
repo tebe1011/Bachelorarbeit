@@ -54,15 +54,16 @@ Einstiegspunkt in der Client.war ist die Klasse \textit{CasAnalyticUI}. Sie ist 
 
 \textit{RootUI} wird dabei von der \textit{CasAnalayticUI} instanziiert. Die Klasse \textit{RootUI} beinhaltet das Anmeldefenster, sowie die Hauptansicht. Mithilfe der Methode buildLoginView() werden die Komponenten des Anmeldefensters zur \textit{UI} Komponente hinzugefügt. Nach der Erzeugung der Komponenten, wird eine \textit{JerseyClient} Klasse instanziiert. Diese wird verwendet sobald der Nutzer IP, Port und einen Namen eingegeben hat und auf anmelden klickt. Anschließend wird die Methode \textit{doPostRequestUserData()} gerufen, um zu überprüfen ob der Nutzer im System vorhanden ist. 
 
-\begin{figure}[H]
+
+Falls ja, werden durch die Methode \textit{MainView()} alle bisherigen Komponenten der \textit{UI} entfernt und durch Komponenten des Hauptfensters ersetzt. Das \textit{JerseyClient} Objekt wird direkt im Anschluss verwendet, um Mithilfe der Methode \textit{doPostRequestData()} einen REST-Request an den Server zu senden. Dieser liefert das Ergebnis der Abfrage in einem JSON-Objekt zurück. Mit dessen eine erste Erzeugung des Diagramms durchgeführt wird. Das Diagramm selbst besitzt eine eigene Klasse namens \textit{ChartComponent}. Sie leitet sich von der Klasse \textit{Chart} ab, die Teil der VaadinChart-Bibliothek ist. Mithilfe der Methode \textit{refreshChart()} wird das Diagramm bei Benutzerabfragen aktualisiert. Dazu werden ihr die Namen der Personen für die x-Achse übergeben, sowie die neuen Balkenwerte. Weiterhin wird für jedes Vaadin-Objekt eine separate Methode zur Erzeugung verwendet. Jedes dieser Vaadin-Objekt stellt ein Element an der Oberfläche dar. Änderungen am Aussehen oder an der Funktionalität der jeweiligen Vaadin-Objekte, werden nur innerhalb der entsprechenden Methode vorgenommen.
+
+\begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=1.0\textwidth]{pics/ClientKlassendiagramm.pdf}
+\includegraphics[width=0.9\textwidth]{pics/ClientKlassendiagramm.pdf}
 \caption{Client Klassendiagramm}
 \label{umsetzung_klassendiagramm_client}
 \end{center}
 \end{figure}
-
-Falls ja, werden durch die Methode \textit{MainView()} alle bisherigen Komponenten der \textit{UI} entfernt und durch Komponenten des Hauptfensters ersetzt. Das \textit{JerseyClient} Objekt wird direkt im Anschluss verwendet, um Mithilfe der Methode \textit{doPostRequestData()} einen REST-Request an den Server zu senden. Dieser liefert das Ergebnis der Abfrage in einem JSON-Objekt zurück. Mit dessen eine erste Erzeugung des Diagramms durchgeführt wird. Das Diagramm selbst besitzt eine eigene Klasse namens \textit{ChartComponent}. Sie leitet sich von der Klasse \textit{Chart} ab, die Teil der VaadinChart-Bibliothek ist. Mithilfe der Methode \textit{refreshChart()} wird das Diagramm bei Benutzerabfragen aktualisiert. Dazu werden ihr die Namen der Personen für die x-Achse übergeben, sowie die neuen Balkenwerte. Weiterhin wird für jedes Vaadin-Objekt eine separate Methode zur Erzeugung verwendet. Jedes dieser Vaadin-Objekt stellt ein Element an der Oberfläche dar. Änderungen am Aussehen oder an der Funktionalität der jeweiligen Vaadin-Objekte, werden nur innerhalb der entsprechenden Methode vorgenommen.
 
 An der Oberfläche gibt es Felder die nur Zahlen erwarten. Eingaben die nicht numerisch sind werden durch den Einsatz der Klasse \textit{IntegerField} verhindert. Diese erweitert die Klasse \textit{TextField}. Sie besitzt einen Event-Listener, der jede Eingabe des Benutzers abfängt. Gibt der Nutzer nicht numerische Zeichen ein werden diese direkt wieder entfernt. Dadurch werden Falscheingaben durch den Nutzer ausgeschlossen.
 
