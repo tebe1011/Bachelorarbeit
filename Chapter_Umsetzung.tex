@@ -70,9 +70,19 @@ An der Oberfläche gibt es Eingabefelder die nur Zahlen erwarten. Eingaben die n
 \section{Aufbau der H2-Datenbankabfrage}
 %% ===========================
 
-Um eine SQL-Abfragen möglichst schlank zu halten werden Teile der SQL-Anweisung nur bei entsprechenden Eingaben der Benutzer verwendet. Die SQL-Abfrage kann dadurch je nach Benutzereingabe unterschiedlich aufgebaut sein kann. Die Basisfunktionalität ändert sich allerdings nicht. Diese besteht aus der Bildung von Summen der verschiedenen CRM-Objekte. Nachdem festgestellt wurde wie viele CRM-Objekte von den jeweiligen Typen zu einer Person verlaufen, wird zusätzlich die Gesamtsumme der CRM-Objekte zu einer Person gebildet. Die Summe wird zur Sortierung der Ergebnisse verwendet. Bei der Sortierung wird absteigend vorgegangen, um die Personen mit den meisten CRM-Objekten zu der von der Suche ausgehend Person zu ermitteln. Das Ergebnis wird wiederum auf eine durch den Benutzer festgelegte Anzahl reduziert. Überdies beschränkt die SQL-Anweisung den Zeitraum der Analyse.
+Die Abfrage an die H2-Datenbank ist geschachtelt aufgebaut und unterteilt sich in eine innere und äußere Abfrage. In Abbildung \ref{umsetzung_sql} sind die Resultate der inneren und äußeren Abfrage abgebildet. Die Tabelle (A) zeigt einen aufs wesentliche reduzierten Ausschnitt der Datenbasis. In diesem Beispiel wird zur Bewertung von Beziehungen, die Person mit der \textit{startID} 1 zum Betrachten ausgewählt. Mithilfe der inneren Abfrage wird zuerst die Anzahl der jeweiligen CRM-Objekte in Bezug auf die \textit{endID} ermittelt. Das Ergebnis ist in der Tabelle (B) zu sehen. In ihr ist beispielsweise zu erkennen, dass die betrachtete Person 8 Dokumente mit einer Person teilt, welche die \textit{endID} 3 besitzt. Die Tabelle (B) enthält allerdings noch nicht alle benötigten Informationen. Um an diese zu gelangen wird basierend auf ihr die äußere Abfrage gestellt. Dessen Ergebnis ist in der Tabelle (C) dargestellt. Hier sind die Anzahl der verschiedenen CRM-Objekte in einer Tupel festgehalten. Weiterhin ist die Summe aller CRM-Objekte gebildet worden. Diese wird benötigt um eine Reihenfolge unter den Tupeln zu bilden. Diese Reihenfolge benötigt der Client zur Darstellung eines Rankings der Beziehungen.
 
-Eine weiterer Bestandteil der SQL-Anweisung ist die Gewichtung von Zeitspannen. Das Verfahren zur Gewichtung der Zeit wird anhand der Abbildung \ref{fig:umsetzung:gewichtungderzeit} erläutert. Die Abbildung zeigt ein Koordinatensystem mit der Gewichtung von einzelnen Zeitpunkten. Die x-Achse stellt den zeitlichen Verlauf und die y-Achse die Gewichtung dar. Der Startzeitpunkt wird durch $t_{s}$ markiert, wohingegen $t_{e}$ den Endzeitpunkt angibt. Mithilfe von $t_1$ und $t_2$ werden die zu gewichtenden Zeitspannen festgelegt. Um nun die Zeitspannen anders zu gewichten wird eine lineare Abstufung der Tage vorgenommen. Für die Zeitspanne zwischen $t_{s}$ und $t_1$ bedeutet dies, dass der Wert eines Tages zunehmend steigt. Wird $t_1$ erreicht, besitzt jeder Tage wieder eine Wertigkeit von 1. Bei $t_2$ verhält es sich ähnlich. Mit jedem Tag ab $t_2$ sinkt der Wert des Tages bis der Zeitpunkt $t_{e}$ erreicht ist.
+Mit diesem Vorgehen werden noch nicht alle Funktionen abgedeckt, sie stellt allerdings die Basisfunktonalität dar. Diese kann durch Eingaben der Nutzer erweitert werden. Diese zusätzlichen Parameter die vom Benutzer übergeben werden müssen in der SQL-Abfrage berücksichtigt werden. Um die SQL-Abfrage so schlank wie möglich zu halten werden die optionalen Konfigurationen nur bei Bedarf in der SQL-Abfrage beachtet. Ein Beispiel dafür ist die Gewichtung von Zeit die eine höhere Komplexität der Abfrage bewirkt und nur bei Benutzereingaben zur Basisabfrage hinzugezogen wird.
+
+
+\begin{figure}[htbp]
+\centering
+  \includegraphics[width=1.0\textwidth]{pics/sql_abfrage.pdf}
+\caption{Ergebnisse der verschachtelten SQL-Abfrage}
+\label{umsetzung_sql}
+\end{figure}
+
+Das Verfahren zur Gewichtung der Zeit wird anhand der Abbildung \ref{fig:umsetzung:gewichtungderzeit} erläutert. Die Abbildung zeigt ein Koordinatensystem mit der Gewichtung von einzelnen Zeitpunkten. Die x-Achse stellt den zeitlichen Verlauf und die y-Achse die Gewichtung dar. Der Startzeitpunkt wird durch $t_{s}$ markiert, wohingegen $t_{e}$ den Endzeitpunkt angibt. Mithilfe von $t_1$ und $t_2$ werden die zu gewichtenden Zeitspannen festgelegt. Um nun die Zeitspannen anders zu gewichten wird eine lineare Abstufung der Tage vorgenommen. Für die Zeitspanne zwischen $t_{s}$ und $t_1$ bedeutet dies, dass der Wert eines Tages zunehmend steigt. Wird $t_1$ erreicht, besitzt jeder Tage wieder eine Wertigkeit von 1. Bei $t_2$ verhält es sich ähnlich. Mit jedem Tag ab $t_2$ sinkt der Wert des Tages bis der Zeitpunkt $t_{e}$ erreicht ist.
 
 Um die Gewichtung eines bestimmten Tages zu berechnen werden die folgenden zwei Faktoren verwendet:
 
@@ -87,6 +97,8 @@ Neben den Faktoren $f_1$ und $f_2$ werden Variablen zum erfassen der schrittweis
 $t_{s}$ und $t_{1}$ wird die Variable $v_{1}$ verwendet. Der andere Zeitraum arbeitet mit der Variable $v_{2}$. Die Variable $v_{1}$ beginnt mit dem Wert 0 und erhöht sich mit jedem Tag um 1. Die Differenz zwischen $t_{2}$ und $t_{e}$ stellt den Wert von $v_{2}$ dar. Dieser wird mit jedem Tag ab $t_{2}$ um 1 verringert.
 
 Mit den Faktoren und Variablen werden die Werte der Tage berechnet. Dazu wird der Faktor mit der Variabel multipliziert. Das Produkt bildet den Wert eines Tages. Dieser wird in der Datenbankabfrage verwendet, um Tupeln einen geringeren Wert zuzuweisen. 
+
+Die SQL-Abfrage wird dazu um eine weitere innere Abfrage erweitert, die das zuvor beschriebene Vorgehen umsetzt. Diese Abfrage wird zuerst gestellt, da nach der anderen inneren Abfrage kein Datum mehr vorhanden ist. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -142,9 +154,9 @@ Mit den Faktoren und Variablen werden die Werte der Tage berechnet. Dazu wird de
 \label{fig:umsetzung:gewichtungderzeit}
 \end{figure}
 
-Neben der Zeit lassen sich die jeweiligen CRM-Objekte unterschiedlich gewichten. Bei einer Abweichung von 100 Prozent wird die Anzahl des jeweiligen CRM-Objektes, um den entsprechenden Prozentsatz verringert. 
+Neben der Zeit lassen sich die jeweiligen CRM-Objekte unterschiedlich gewichten. Bei einer Abweichung von 100 Prozent wird die Anzahl des jeweiligen CRM-Objektes, um den entsprechenden Prozentsatz verringert. Diese Gewichtung findet in der inneren Abfrage statt. Dazu wird die Anzahl mit dem jeweiligen Prozentsatz verrechnet.
 
-Die restlichen vom Benutzer festgelegten Parameter fügen weitere Bedingungen in die SQL-Anweisung ein. Eine muss zuvor ermittelt werden und wird daher näher beschrieben. Es handelt sich dabei um Gruppen, die aus der Ergebnismenge ausgeschlossen werden können. Ihre Konstellation in Bezug auf Personen ist im Laufe der Zeit variabel. Um dies zu berücksichtigen wird die Tabelle \textit{UserGroup} verwendet. Dabei wird folgendermaßen vorgegangen: Zuerst wird für jede Gruppe ein eigener Container erzeugt. Der Container beinhaltet die IDs der Personen aus der Gruppe. Liegt nun der Zeitpunkt des Feldes \textit{Date} nach dem Anfangszeitpunkt der Abfrage und die Spalte \textit{Action} enthält eine 1, wird der Container um diese Person reduziert. Enthält sie eine 0, wird die Person zum Container hinzugefügt. Mit einer 1 in der Spalte \textit{Action} wird der Austritt einer Person aus der Gruppe markiert. Eine 0 weist auf den Eintritt einer Person in die Gruppe hin. Dadurch wird die Struktur der Gruppe zum Anfangszeitpunkt wiederhergestellt. Mithilfe des Containers wird anschließend die SQL-Anweisung um weitere auszuschließende Personen erweitert.
+Die restlichen vom Benutzer festgelegten Parameter fügen weitere WHERE-Klauseln in die SQL-Anweisung ein. Eine muss zuvor ermittelt werden und wird daher näher beschrieben. Es handelt sich dabei um Gruppen, die aus der Ergebnismenge ausgeschlossen werden können. Ihre Konstellation in Bezug auf Personen ist im Laufe der Zeit variabel. Um dies zu berücksichtigen wird die Tabelle \textit{UserGroup} verwendet. Dabei wird folgendermaßen vorgegangen: Zuerst wird für jede Gruppe ein eigener Container erzeugt. Der Container beinhaltet die IDs der Personen aus der Gruppe. Liegt nun der Zeitpunkt des Feldes \textit{Date} nach dem Anfangszeitpunkt der Abfrage und die Spalte \textit{Action} enthält eine 1, wird der Container um diese Person reduziert. Enthält sie eine 0, wird die Person zum Container hinzugefügt. Mit einer 1 in der Spalte \textit{Action} wird der Austritt einer Person aus der Gruppe markiert. Eine 0 weist auf den Eintritt einer Person in die Gruppe hin. Dadurch wird die Struktur der Gruppe zum Anfangszeitpunkt wiederhergestellt. Mithilfe des Containers werden anschließend die WHERE-Klauseln um weitere auszuschließende Personen erweitert.
 
 Innerhalb von Zeiträumen können sich Gruppen auch verändern, jedoch kann dies nicht berücksichtigt werden. Es kann jeweils nur ein bestimmter Zeitpunkt betrachtet werden. In unserem Fall entschied man sich für den Anfangszeitpunkt $t_{s}$.
 
@@ -200,18 +212,18 @@ Die Funktionen der Abbildung \ref{ergebniss_plugin_klassendiagramm} gehören von
 \label{ergebniss_plugin_klassendiagramm}
 \end{figure}
 
-Die Funktionsweise wird im Folgenden anhand der Kommunikationen während einer Aktualisierung erläutert und in der Abbildung \ref{konzept_sequenz} dargestellt. Nachdem der Benutzer Datensätze geändert hat wird das Plugin aufgerufen. Die entsprechende Funktion erhält die \textit{GGUID} der Tupel, den Namen der Spalte, sowie die veränderten Werte. Anschließend wird überprüft, ob die Änderungen für unser System von Relevanz ist. Falls sie sich als relevant herausstellen, wird die \textit{aGGUID} in einen String konvertiert. Anschließend werden die Header-Werte der \textit{idHttp} Variable gesetzt. Sie beinhalten Werte wie die URI oder HTTP-Metadaten. Sobald alle Daten in der \textit{idHttp} gesetzt sind, wird ein POST-Request an unser System übermittelt. 
-
-Der POST-Request enthält die \textit{GGUID} und die Art der Operation, die auf den Daten ausgeführt wurde. Bei neuen Daten beispielsweise wird ein Header namens "newGGUID" und dem Wert der \textit{GGUID} gesetzt. Im Anwendungsserver wird der neue Wert zuerst in eine CSV-Datei geschrieben und anschließend in die Datenbank eingefügt.
-
+Die Funktionsweise wird im Folgenden anhand der Kommunikationen beim Anlegen eines neuen Datensatzes durch einen CAS genesisWorld-Client erläutert und in der Abbildung \ref{umsetzung_sequenz} dargestellt. Nachdem ein Benutzer einen neuen Datensatz angelegt hat wird das Plugin benachrichtigt. Die Funktion \textit{BeforeAddNew()} enthält die \textit{GGUID} der Tupel, den Namen der Spalte, sowie die neuen Werte des Datensatzes. In unserem Plugin führt das zu keiner Reaktion an dieser Stelle, da wir erst auf Änderungen im Nachhinein reagieren. Im Anschluss an die Benachrichtigung wird der neue Datensatz in die MSSQL-Datenbank eingefügt. Nachdem das passiert ist werden die registrierten Plugins wieder benachrichtigt.
 
 \begin{figure}[htbp]
 \centering
   \includegraphics[width=0.8\textwidth]{pics/sequenzdiagramm.pdf}
 \caption{Sequenzdiagramm für einen neuen Datensatz}
-\label{konzept_sequenz}
+\label{umsetzung_sequenz}
 \end{figure}
 
+Dieses mal allerdings ist die entsprechende Methode \textit{AfterAddNew()} mit einer Logik hinterlegt. Diese prüft zuerst ob der Datensatz eine Relevanz für uns darstellt. Falls er sich als relevant herausstellt, wird die \textit{aGGUID} in einen String konvertiert. Anschließend werden die Header-Werte der \textit{idHttp} Variable gesetzt. Sie beinhalten Werte, wie die URI oder HTTP-Metadaten. Sobald alle Daten in der \textit{idHttp} gesetzt sind, wird ein POST-Request an das Server-Webprojekt im Tomcat-Server übermittelt. 
+
+Der POST-Request enthält die \textit{GGUID} und die Art der Operation, die auf den Daten ausgeführt wurde. Bei neuen Daten beispielsweise wird ein Header namens "newGGUID" und dem Wert der \textit{GGUID} gesetzt. Im Server-Webprojekt wird der neue Wert zuerst in eine CSV-Datei geschrieben und anschließend in die H2-Datenbank eingefügt.
 
 
 %% ===========================
