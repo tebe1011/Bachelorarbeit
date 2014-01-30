@@ -79,7 +79,7 @@
 \contentsline {section}{\numberline {6.3}Aufbau der H2-Datenbankabfrage}{44}{section.6.3}
 \contentsline {section}{\numberline {6.4}ETL-Prozess}{47}{section.6.4}
 \contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes}{49}{section.6.5}
-\contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{50}{section.6.6}
+\contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{51}{section.6.6}
 \contentsline {chapter}{\numberline {7}Fazit und Ausblick}{53}{chapter.7}
 \contentsline {section}{\numberline {7.1}Zusammenfassung}{53}{section.7.1}
 \contentsline {section}{\numberline {7.2}Bewertung der Ergebnisse}{53}{section.7.2}
