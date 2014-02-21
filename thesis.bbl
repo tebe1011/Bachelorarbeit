@@ -142,6 +142,13 @@
   \mbox{\btxISSN~\btxISSNfont {0163-5700}}}.
 \newblock {\latintext \btxurlfont{http://doi.acm.org/10.1145/564585.564601}}.
 
+\bibitem [{Gro14}]{vaadin2014}
+\btxnamefont {Marko \btxlastnamefont {Groenroos}}\btxauthorcolon\ \btxtitlefont
+  {\btxifchangecase {Book of vaadin}{Book of Vaadin}}, 2014.
+\newblock {\latintext
+  \btxurlfont{https://vaadin.com/download/book-of-vaadin/vaadin-7/pdf/book-of-vaadin.pdf}},
+  [Online;accessed 20-Januar-2014].
+
 \bibitem [{Hel13}]{SWB-375372644}
 \btxnamefont {Stefan \btxlastnamefont {Helmke}}\btxauthorcolon\ \btxtitlefont
   {\btxifchangecase {Effektives customer relationship management : Instrumente
@@ -263,7 +270,8 @@
   2013\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont {978-1-449-35626-2;
   1-449-35626-5}}}.
 \newblock {\latintext
-  \btxurlfont{http://deposit.d-nb.de/cgi-bin/dokserv?id=4300566&prov=M&dok_var=1&dok_ext=htm}}.
+  \btxurlfont{http://deposit.d-nb.de/cgi-bin/dokserv?id=4300566&prov=M&dok_var=1&dok_ext=htm
+  ; http://swbplus.bsz-bw.de/bsz386976589cov.htm}}.
 
 \bibitem [{Seg13}]{red2013}
 \btxnamefont {Karl \btxlastnamefont {Seguin}}\btxauthorcolon\ \btxjtitlefont

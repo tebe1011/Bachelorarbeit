@@ -40,48 +40,51 @@
 \contentsline {subsection}{\numberline {3.2.1}Funktionale Anforderungen}{17}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Nichtfunktionale Anforderungen}{17}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Ermittlung relevanter Daten}{18}{section.3.3}
+\contentsline {section}{\numberline {3.4}Charakteristika der Datenbankabfrage}{20}{section.3.4}
 \contentsline {chapter}{\numberline {4}Bestimmung einer Datenbank}{21}{chapter.4}
 \contentsline {section}{\numberline {4.1}Einzelbetrachtung von Datenbanken}{21}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}CouchDB}{21}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}MongoDB}{22}{subsection.4.1.2}
 \contentsline {subsection}{\numberline {4.1.3}Voldemort}{22}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}Redis}{23}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.4}Redis}{22}{subsection.4.1.4}
 \contentsline {subsection}{\numberline {4.1.5}HBase}{23}{subsection.4.1.5}
 \contentsline {subsection}{\numberline {4.1.6}Cassandra}{23}{subsection.4.1.6}
 \contentsline {subsection}{\numberline {4.1.7}VoltDB}{24}{subsection.4.1.7}
-\contentsline {subsection}{\numberline {4.1.8}H2}{24}{subsection.4.1.8}
-\contentsline {section}{\numberline {4.2}Gegen\IeC {\"u}berstellung}{24}{section.4.2}
-\contentsline {section}{\numberline {4.3}Auswahl einer Datenbank}{26}{section.4.3}
-\contentsline {chapter}{\numberline {5}Konzeption}{29}{chapter.5}
-\contentsline {section}{\numberline {5.1}Architektur}{29}{section.5.1}
-\contentsline {paragraph}{Vaadin Client-Side-Engine}{29}{section*.28}
-\contentsline {paragraph}{Client-Webprojekt}{30}{section*.29}
-\contentsline {paragraph}{Server-Webprojekt}{30}{section*.30}
-\contentsline {paragraph}{H2-Datenbank}{31}{section*.31}
-\contentsline {paragraph}{CAS genesisWorld Plugin}{31}{section*.32}
-\contentsline {section}{\numberline {5.2}Datenbankdesign}{31}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Konzeptionelles Design}{31}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Zugriffsstrukturen}{34}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}ETL-Prozess}{34}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Extract}{35}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Transform}{36}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Load}{36}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}Entwurf der Oberfl\IeC {\"a}che}{36}{section.5.4}
-\contentsline {section}{\numberline {5.5}Technologien}{38}{section.5.5}
-\contentsline {paragraph}{Vaadin}{38}{section*.38}
-\contentsline {paragraph}{Jersey}{39}{section*.39}
-\contentsline {paragraph}{Apache Tomcat7}{39}{section*.40}
-\contentsline {paragraph}{opencsv}{39}{section*.41}
-\contentsline {paragraph}{JDBC}{39}{section*.42}
-\contentsline {chapter}{\numberline {6}Umsetzung}{41}{chapter.6}
-\contentsline {section}{\numberline {6.1}Server-Webprojekt}{41}{section.6.1}
-\contentsline {section}{\numberline {6.2}Client-Webprojekt}{43}{section.6.2}
-\contentsline {section}{\numberline {6.3}Aufbau der H2-Datenbankabfrage}{44}{section.6.3}
-\contentsline {section}{\numberline {6.4}ETL-Prozess}{47}{section.6.4}
-\contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes}{49}{section.6.5}
-\contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{50}{section.6.6}
-\contentsline {chapter}{\numberline {7}Fazit und Ausblick}{53}{chapter.7}
-\contentsline {section}{\numberline {7.1}Zusammenfassung}{53}{section.7.1}
-\contentsline {section}{\numberline {7.2}Bewertung der Ergebnisse}{53}{section.7.2}
-\contentsline {section}{\numberline {7.3}Ausblick}{55}{section.7.3}
-\contentsline {chapter}{Literaturverzeichnis}{57}{section*.55}
+\contentsline {subsection}{\numberline {4.1.8}H2}{25}{subsection.4.1.8}
+\contentsline {subsection}{\numberline {4.1.9}Neo4J}{25}{subsection.4.1.9}
+\contentsline {section}{\numberline {4.2}Gegen\IeC {\"u}berstellung}{25}{section.4.2}
+\contentsline {section}{\numberline {4.3}Auswahl einer Datenbank}{28}{section.4.3}
+\contentsline {chapter}{\numberline {5}Konzeption}{31}{chapter.5}
+\contentsline {section}{\numberline {5.1}Architektur}{31}{section.5.1}
+\contentsline {paragraph}{Vaadin Client-Side-Engine}{31}{section*.31}
+\contentsline {paragraph}{Client-Webprojekt}{32}{section*.32}
+\contentsline {paragraph}{Server-Webprojekt}{32}{section*.33}
+\contentsline {paragraph}{H2-Datenbank}{33}{section*.34}
+\contentsline {paragraph}{CAS genesisWorld Plugin}{33}{section*.35}
+\contentsline {section}{\numberline {5.2}Datenbankdesign}{33}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Konzeptionelles Modell}{33}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Datenbankschema}{34}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Zugriffsstrukturen}{36}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}ETL-Prozess}{37}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Extract}{37}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Transform}{38}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Load}{39}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Entwurf der Oberfl\IeC {\"a}che}{39}{section.5.4}
+\contentsline {section}{\numberline {5.5}Technologien}{41}{section.5.5}
+\contentsline {paragraph}{Vaadin 7}{41}{section*.42}
+\contentsline {paragraph}{Jersey}{42}{section*.43}
+\contentsline {paragraph}{Apache Tomcat7}{42}{section*.44}
+\contentsline {paragraph}{opencsv}{42}{section*.45}
+\contentsline {paragraph}{JDBC}{42}{section*.46}
+\contentsline {chapter}{\numberline {6}Umsetzung}{43}{chapter.6}
+\contentsline {section}{\numberline {6.1}Server-Webprojekt}{43}{section.6.1}
+\contentsline {section}{\numberline {6.2}Client-Webprojekt}{45}{section.6.2}
+\contentsline {section}{\numberline {6.3}Aufbau der H2-Datenbankabfrage}{46}{section.6.3}
+\contentsline {section}{\numberline {6.4}ETL-Prozess}{49}{section.6.4}
+\contentsline {section}{\numberline {6.5}Aktualisierung des Datenbestandes}{51}{section.6.5}
+\contentsline {section}{\numberline {6.6}Oberfl\IeC {\"a}che}{52}{section.6.6}
+\contentsline {chapter}{\numberline {7}Fazit und Ausblick}{55}{chapter.7}
+\contentsline {section}{\numberline {7.1}Zusammenfassung}{55}{section.7.1}
+\contentsline {section}{\numberline {7.2}Bewertung der Ergebnisse}{55}{section.7.2}
+\contentsline {section}{\numberline {7.3}Ausblick}{57}{section.7.3}
+\contentsline {chapter}{Literaturverzeichnis}{59}{section*.59}

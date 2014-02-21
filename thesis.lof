@@ -10,30 +10,34 @@
 \contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Beispiel zur Benachrichtigung von Plugins anhand eines Ablaufs bei einem Update\relax }}{16}{figure.caption.24}
 \contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Auszug aus dem Schema der MSSQL-Datenbank\relax }}{18}{figure.caption.25}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Komponenten des Systems und der Umwelt\relax }}{23}{figure.caption.26}
+\contentsline {figure}{\numberline {\relax 4.2}{\ignorespaces Schematische Darstellung des Cassandra Datenmodells\relax }}{24}{figure.caption.27}
+\contentsline {figure}{\numberline {\relax 4.3}{\ignorespaces Datenmodell anhand eines Social-Network-Beispiels\relax }}{25}{figure.caption.28}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Komponenten des Systems und der Umwelt\relax }}{30}{figure.caption.27}
-\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Neues Datenbankschema\relax }}{32}{figure.caption.33}
-\contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces ETL-Prozess\relax }}{35}{figure.caption.35}
-\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Entwurf der Oberfl\IeC {\"a}che\relax }}{37}{figure.caption.36}
-\contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Entw\IeC {\"u}rfe f\IeC {\"u}r die Oberfl\IeC {\"a}che\relax }}{37}{figure.caption.37}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Netzdiagramm}}}{37}{figure.caption.37}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Liniendiagramm}}}{37}{figure.caption.37}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Tree Map}}}{37}{figure.caption.37}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Tortendiagramm}}}{37}{figure.caption.37}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Balkendiagramm}}}{37}{figure.caption.37}
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Komponenten des Systems und der Umwelt\relax }}{32}{figure.caption.30}
+\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces ER-Modell als Darstellungsform des Konzeptionelles Modell\relax }}{34}{figure.caption.36}
+\contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Neues Datenbankschema\relax }}{35}{figure.caption.37}
+\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces ETL-Prozess\relax }}{38}{figure.caption.39}
+\contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Entwurf der Oberfl\IeC {\"a}che\relax }}{40}{figure.caption.40}
+\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Entw\IeC {\"u}rfe f\IeC {\"u}r die Oberfl\IeC {\"a}che\relax }}{40}{figure.caption.41}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Netzdiagramm}}}{40}{figure.caption.41}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Liniendiagramm}}}{40}{figure.caption.41}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Tree Map}}}{40}{figure.caption.41}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Tortendiagramm}}}{40}{figure.caption.41}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Balkendiagramm}}}{40}{figure.caption.41}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Server Klassendiagramm\relax }}{42}{figure.caption.43}
-\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Client Klassendiagramm\relax }}{44}{figure.caption.44}
-\contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Ergebnisse der verschachtelten SQL-Abfrage\relax }}{45}{figure.caption.45}
-\contentsline {figure}{\numberline {\relax 6.4}{\ignorespaces Gewichtung der Zeit\relax }}{46}{figure.caption.46}
-\contentsline {figure}{\numberline {\relax 6.5}{\ignorespaces Vorgehensweise bei der Extraktion\relax }}{47}{figure.caption.47}
-\contentsline {figure}{\numberline {\relax 6.6}{\ignorespaces Ausschnitt einer CSV-Datei nach der Extraktion\relax }}{48}{figure.caption.48}
-\contentsline {figure}{\numberline {\relax 6.7}{\ignorespaces Klassendiagramm Plugin\relax }}{49}{figure.caption.49}
-\contentsline {figure}{\numberline {\relax 6.8}{\ignorespaces Sequenzdiagramm f\IeC {\"u}r einen neuen Datensatz\relax }}{50}{figure.caption.50}
-\contentsline {figure}{\numberline {\relax 6.9}{\ignorespaces Anmeldefenster\relax }}{51}{figure.caption.51}
-\contentsline {figure}{\numberline {\relax 6.10}{\ignorespaces Hauptseite der Anwendung\relax }}{52}{figure.caption.52}
+\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Server Klassendiagramm\relax }}{44}{figure.caption.47}
+\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Client Klassendiagramm\relax }}{46}{figure.caption.48}
+\contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Ergebnisse der verschachtelten SQL-Abfrage\relax }}{47}{figure.caption.49}
+\contentsline {figure}{\numberline {\relax 6.4}{\ignorespaces Gewichtung der Zeit\relax }}{48}{figure.caption.50}
+\contentsline {figure}{\numberline {\relax 6.5}{\ignorespaces Vorgehensweise bei der Extraktion\relax }}{49}{figure.caption.51}
+\contentsline {figure}{\numberline {\relax 6.6}{\ignorespaces Ausschnitt einer CSV-Datei nach der Extraktion\relax }}{50}{figure.caption.52}
+\contentsline {figure}{\numberline {\relax 6.7}{\ignorespaces Klassendiagramm Plugin\relax }}{51}{figure.caption.53}
+\contentsline {figure}{\numberline {\relax 6.8}{\ignorespaces Sequenzdiagramm f\IeC {\"u}r einen neuen Datensatz\relax }}{52}{figure.caption.54}
+\contentsline {figure}{\numberline {\relax 6.9}{\ignorespaces Anmeldefenster\relax }}{53}{figure.caption.55}
+\contentsline {figure}{\numberline {\relax 6.10}{\ignorespaces Hauptseite der Anwendung\relax }}{54}{figure.caption.56}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Vergleich von Antwortzeiten\relax }}{55}{figure.caption.54}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Operationen}}}{55}{figure.caption.54}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vergleich anhand Update-Operationen}}}{55}{figure.caption.54}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vergleich anhand Insert-Operationen}}}{55}{figure.caption.54}
+\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Vergleich von Antwortzeiten\relax }}{57}{figure.caption.58}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Operationen}}}{57}{figure.caption.58}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vergleich anhand Update-Operationen}}}{57}{figure.caption.58}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vergleich anhand Insert-Operationen}}}{57}{figure.caption.58}
