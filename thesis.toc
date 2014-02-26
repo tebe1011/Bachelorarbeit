@@ -86,5 +86,5 @@
 \contentsline {chapter}{\numberline {7}Fazit und Ausblick}{57}{chapter.7}
 \contentsline {section}{\numberline {7.1}Zusammenfassung}{57}{section.7.1}
 \contentsline {section}{\numberline {7.2}Bewertung der Ergebnisse}{57}{section.7.2}
-\contentsline {section}{\numberline {7.3}Ausblick}{58}{section.7.3}
+\contentsline {section}{\numberline {7.3}Ausblick}{59}{section.7.3}
 \contentsline {chapter}{Literaturverzeichnis}{61}{section*.61}

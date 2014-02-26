@@ -6,11 +6,11 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Verkn\IeC {\"u}pfungen in CAS genesisWorld\relax }}{13}{figure.caption.21}
 \contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Schematische Darstellung der Architektur von CAS genesisWorld\relax }}{14}{figure.caption.22}
-\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces ER-Modell\relax }}{15}{figure.caption.23}
+\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces ER-Modell zu den CRM-Objekten\relax }}{15}{figure.caption.23}
 \contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Beispiel zur Benachrichtigung von Plugins anhand eines Ablaufs bei einem Update\relax }}{16}{figure.caption.24}
 \contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Auszug aus dem Schema der MSSQL-Datenbank\relax }}{18}{figure.caption.25}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Komponenten des Systems und der Umwelt\relax }}{23}{figure.caption.26}
+\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Beispiel zu den HBase-Spaltenfamilien\relax }}{23}{figure.caption.26}
 \contentsline {figure}{\numberline {\relax 4.2}{\ignorespaces Schematische Darstellung des Cassandra Datenmodells\relax }}{24}{figure.caption.27}
 \contentsline {figure}{\numberline {\relax 4.3}{\ignorespaces Datenmodell anhand eines Social-Network-Beispiels\relax }}{25}{figure.caption.28}
 \addvspace {10\p@ }
@@ -35,8 +35,8 @@
 \contentsline {figure}{\numberline {\relax 6.7}{\ignorespaces Ausschnitt einer CSV-Datei nach der Extraktion\relax }}{51}{figure.caption.54}
 \contentsline {figure}{\numberline {\relax 6.8}{\ignorespaces Klassendiagramm Plugin\relax }}{52}{figure.caption.55}
 \contentsline {figure}{\numberline {\relax 6.9}{\ignorespaces Sequenzdiagramm f\IeC {\"u}r einen neuen Datensatz\relax }}{53}{figure.caption.56}
-\contentsline {figure}{\numberline {\relax 6.10}{\ignorespaces Anmeldefenster\relax }}{54}{figure.caption.57}
-\contentsline {figure}{\numberline {\relax 6.11}{\ignorespaces Hauptseite der Anwendung\relax }}{55}{figure.caption.58}
+\contentsline {figure}{\numberline {\relax 6.10}{\ignorespaces Anmeldefenster\relax }}{53}{figure.caption.57}
+\contentsline {figure}{\numberline {\relax 6.11}{\ignorespaces Hauptseite der Anwendung\relax }}{54}{figure.caption.58}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Vergleich von Antwortzeiten\relax }}{59}{figure.caption.60}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Vergleich anhand Select-Operationen}}}{59}{figure.caption.60}
